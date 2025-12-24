@@ -7,55 +7,120 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        /* FONT PREMIUM */
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
         
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: #ffffff;
             color: #1a1a1a;
+            overflow-x: hidden; /* Mencegah horizontal scroll akibat animasi */
         }
 
+        /* WARNA BRAND */
         .text-teal-abi { color: #4A6D6D; }
         .bg-teal-abi { background-color: #4A6D6D; }
+        .bg-dark-abi { background-color: #1a1a1a; }
+        .bg-stone-abi { background-color: #fafaf9; } /* Warna abu sangat muda nan elegan */
 
-        /* SGG Style: Thin lines & Elegant Borders */
-        .border-light { border-color: #f0f0f0; }
-
-        /* Hero Section - Clean & High Impact */
-        .hero-viewport {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+        /* ============ 1. ELEGANT PRELOADER ============ */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+        .preloader-hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-line {
+            width: 150px;
+            height: 2px;
+            background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .loader-line::after {
+            content: '';
+            position: absolute;
+            left: -50%;
+            height: 100%;
+            width: 40%;
+            background-color: #4A6D6D;
+            animation: lineAnim 1.5s infinite ease-in-out;
+        }
+        @keyframes lineAnim {
+            0% { left: -50%; }
+            100% { left: 120%; }
         }
 
-        /* Modal Blur Effect */
+        /* ============ 2. CINEMATIC IMAGE MOTION ============ */
+        /* Animasi Slow Pan/Zoom Otomatis untuk Hero */
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        .hero-image-animate {
+            animation: slowZoom 25s infinite alternate ease-in-out;
+        }
+
+        /* Efek Hover Zoom yang Sangat Halus (SGG Style) */
+        .img-zoom-slow { overflow: hidden; }
+        .img-zoom-slow img { 
+            transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease; 
+        }
+        .img-zoom-slow:hover img { 
+            transform: scale(1.06); /* Zoom yang tidak terlalu agresif */
+        }
+
+        /* ============ LAINNYA ============ */
+        /* Modal Blur */
         .modal-blur {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px); /* Blur lebih kuat */
             z-index: 1000;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+        .modal-show { display: flex; opacity: 1; }
 
-        /* Portfolio Hover Effect */
-        .img-zoom { overflow: hidden; }
-        .img-zoom img { transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
-        .img-zoom:hover img { transform: scale(1.08); }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #4A6D6D; }
+        /* Custom Scrollbar yang Tipis */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #ffffff; }
+        ::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4A6D6D; }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full top-0 z-[60] bg-white/70 backdrop-blur-md border-b border-gray-100">
+    <div id="preloader">
+        <div class="flex items-center space-x-3 mb-4 animate-pulse">
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                <rect x="20" y="40" width="12" height="45" rx="1" fill="#4A6D6D"/>
+                <rect x="44" y="20" width="12" height="65" rx="1" fill="#4A6D6D"/>
+                <rect x="68" y="45" width="12" height="40" rx="1" fill="#1a1a1a"/>
+            </svg>
+            <h1 class="font-extrabold text-2xl tracking-tighter text-gray-900">ABI STUDIO</h1>
+        </div>
+        <div class="loader-line"></div>
+        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mt-4">Memuat Pengalaman...</p>
+    </div>
+
+
+    <nav class="fixed w-full top-0 z-[60] bg-white/80 backdrop-blur-md border-b border-gray-100/50 transition-all duration-300">
         <div class="container mx-auto px-8 py-5 flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
@@ -65,241 +130,59 @@
                 </svg>
                 <div class="leading-none">
                     <h1 class="font-extrabold text-xl tracking-tighter">ABI STUDIO</h1>
-                    <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400 mt-1">Architecture & Design</p>
+                    <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400 mt-1">Architecture & Structure</p>
                 </div>
             </div>
             <div class="hidden md:flex space-x-10 text-[11px] font-bold uppercase tracking-widest text-gray-600">
-                <a href="#about" class="hover:text-teal-abi transition">Tentang</a>
-                <a href="#paket" class="hover:text-teal-abi transition">Layanan</a>
-                <a href="#portfolio" class="hover:text-teal-abi transition">Portfolio</a>
+                <a href="#about" class="hover:text-teal-abi transition relative group">Tentang <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-teal-abi transition-all group-hover:w-full"></span></a>
+                <a href="#paket" class="hover:text-teal-abi transition relative group">Layanan <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-teal-abi transition-all group-hover:w-full"></span></a>
+                <a href="#portfolio" class="hover:text-teal-abi transition relative group">Portfolio <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-teal-abi transition-all group-hover:w-full"></span></a>
                 <a href="https://wa.me/6285157577465" class="text-teal-abi border-b-2 border-teal-abi pb-1">Hubungi Kami</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero-viewport flex items-center px-8">
-        <div class="container mx-auto">
-            <div class="max-w-3xl text-white">
-                <h2 class="text-6xl md:text-8xl font-light leading-tight mb-8">Elevating <br><span class="font-bold">Human Experience.</span></h2>
+    <section class="relative h-screen flex items-center overflow-hidden bg-gray-900">
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover hero-image-animate opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+        </div>
+
+        <div class="container mx-auto px-8 relative z-10">
+            <div class="max-w-4xl text-white">
+                <h2 class="text-6xl md:text-8xl font-extralight leading-none mb-8 tracking-tight">Precision in <br><span class="font-black">Every Structure.</span></h2>
                 <div class="h-1 w-24 bg-teal-abi mb-8"></div>
                 <p class="text-lg md:text-xl font-light opacity-90 max-w-xl leading-relaxed">
-                    Kami menghadirkan solusi perencanaan arsitektur dan struktur yang presisi, estetis, dan terukur secara finansial.
+                    Menghadirkan arsitektur yang estetis dan perhitungan struktur yang kokoh, aman, dan efisien.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 bg-white">
-        <div class="container mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <span class="text-teal-abi font-bold text-xs uppercase tracking-[0.4em] mb-4 block">Siapa Kami</span>
-                <h3 class="text-4xl font-bold leading-snug mb-8">Dedikasi dalam setiap detail, presisi dalam setiap perhitungan.</h3>
-                <p class="text-gray-500 leading-relaxed mb-6">Berbasis di Tangerang, ABI STUDIO melayani kebutuhan perencanaan bangunan mulai dari rumah tinggal hingga skala komersial dengan standar teknik sipil profesional.</p>
-                <a href="https://wa.me/6285157577465" class="inline-block border-b border-black pb-2 font-bold text-sm uppercase tracking-widest hover:text-teal-abi hover:border-teal-abi transition">Konsultasi Sekarang</a>
+    <section id="about" class="py-40 bg-white relative z-20">
+        <div class="container mx-auto px-8 grid md:grid-cols-2 gap-24 items-center">
+            <div class="pr-10">
+                <span class="text-teal-abi font-bold text-xs uppercase tracking-[0.4em] mb-6 block relative pl-12">
+                    <span class="absolute left-0 top-1/2 w-8 h-[1px] bg-teal-abi"></span>Siapa Kami
+                </span>
+                <h3 class="text-4xl md:text-5xl font-bold leading-tight mb-10">Kami tidak hanya mendesain, kami memperhitungkan.</h3>
+                <p class="text-gray-500 leading-relaxed mb-8 text-lg font-light">ABI STUDIO menggabungkan seni arsitektur dengan ketelitian teknik sipil. Setiap garis yang kami gambar didukung oleh perhitungan struktur yang matang untuk memastikan bangunan Anda berdiri kokoh dan efisien biaya.</p>
+                <a href="#portfolio" class="group inline-flex items-center font-bold text-sm uppercase tracking-widest transition">
+                    Lihat Karya Kami 
+                    <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-2 transition"></i>
+                </a>
             </div>
-            <div class="img-zoom rounded-2xl">
-                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop" class="w-full h-[500px] object-cover">
-            </div>
-        </div>
-    </section>
-
-    <section id="paket" class="py-32 bg-gray-50">
-        <div class="container mx-auto px-8 text-center mb-20">
-            <h3 class="text-xs font-bold uppercase tracking-[0.5em] text-teal-abi mb-4">Layanan Kami</h3>
-            <h2 class="text-4xl font-bold">Pilihan Paket Perencanaan</h2>
-        </div>
-
-        <div class="container mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div onclick="openOrder('Paket 1 (Basic Plan)', 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=800')" class="bg-white border border-gray-100 p-10 group cursor-pointer hover:shadow-2xl transition duration-500">
-                <p class="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-10">01</p>
-                <h4 class="text-xl font-bold mb-4">Basic Plan</h4>
-                <p class="text-4xl font-light mb-10">7rb<span class="text-sm">/m²</span></p>
-                <ul class="text-[11px] uppercase tracking-widest text-gray-500 space-y-3 mb-12">
-                    <li>- Gambar Denah 2D</li>
-                    <li>- Gambar Denah 3D</li>
-                    <li>- 3D Exterior</li>
-                </ul>
-                <button class="text-[10px] font-black uppercase tracking-widest border-b-2 border-teal-abi pb-1">Detail & Pesan</button>
-            </div>
-
-            <div onclick="openOrder('Paket 2 (Standard Design)', 'https://images.unsplash.com/photo-1600585154526-990dbee3f27e?q=80&w=800')" class="bg-white border border-gray-100 p-10 group cursor-pointer hover:shadow-2xl transition duration-500 relative">
-                <div class="absolute top-0 right-0 p-4"><span class="bg-teal-abi text-white text-[9px] px-3 py-1 font-bold rounded-full">Best Seller</span></div>
-                <p class="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-10">02</p>
-                <h4 class="text-xl font-bold mb-4">Standard</h4>
-                <p class="text-4xl font-light mb-10">22rb<span class="text-sm">/m²</span></p>
-                <ul class="text-[11px] uppercase tracking-widest text-gray-500 space-y-3 mb-12">
-                    <li>- Detail Tampak</li>
-                    <li>- Detail Potongan</li>
-                    <li>- 3D Modeling Full</li>
-                </ul>
-                <button class="text-[10px] font-black uppercase tracking-widest border-b-2 border-teal-abi pb-1">Detail & Pesan</button>
-            </div>
-
-            <div onclick="openOrder('Paket 3 (Advance Design)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=800')" class="bg-white border border-gray-100 p-10 group cursor-pointer hover:shadow-2xl transition duration-500">
-                <p class="text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-10">03</p>
-                <h4 class="text-xl font-bold mb-4">Advance</h4>
-                <p class="text-4xl font-light mb-10">33rb<span class="text-sm">/m²</span></p>
-                <ul class="text-[11px] uppercase tracking-widest text-gray-500 space-y-3 mb-12">
-                    <li>- Gambar Struktural</li>
-                    <li>- Gambar MEP</li>
-                    <li>- Paket 2 Lengkap</li>
-                </ul>
-                <button class="text-[10px] font-black uppercase tracking-widest border-b-2 border-teal-abi pb-1">Detail & Pesan</button>
-            </div>
-
-            <div onclick="openOrder('Paket RAB (Budget Estimation)', 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800')" class="bg-gray-900 text-white p-10 group cursor-pointer hover:shadow-2xl transition duration-500">
-                <p class="text-[10px] font-bold text-gray-700 uppercase tracking-widest mb-10">04</p>
-                <h4 class="text-xl font-bold mb-4 text-teal-abi">Estimasi RAB</h4>
-                <p class="text-4xl font-light mb-10">10rb<span class="text-sm opacity-50">/m²</span></p>
-                <ul class="text-[11px] uppercase tracking-widest text-gray-400 space-y-3 mb-12">
-                    <li>- RAP & Analisis Harga</li>
-                    <li>- Spesifikasi Material</li>
-                    <li>- Format SPK & Jadwal</li>
-                </ul>
-                <button class="text-[10px] font-black uppercase tracking-widest border-b-2 border-teal-abi pb-1">Detail & Pesan</button>
+            <div class="img-zoom-slow h-[600px] relative">
+                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000">
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="py-32">
-        <div class="container mx-auto px-8 mb-20 flex flex-col md:flex-row justify-between items-end">
-            <div>
-                <h3 class="text-xs font-bold uppercase tracking-[0.5em] text-teal-abi mb-4">Our Work</h3>
-                <h2 class="text-4xl font-bold">Terpilih & Terencana.</h2>
-            </div>
-            <p class="text-gray-400 text-sm max-w-xs mt-6 md:mt-0 italic">Kami percaya bahwa desain yang baik adalah investasi masa depan.</p>
+    <section id="paket" class="py-40 bg-stone-abi relative z-20">
+        <div class="container mx-auto px-8 text-center mb-24">
+             <span class="text-teal-abi font-bold text-xs uppercase tracking-[0.4em] mb-6 block">Layanan Terukur</span>
+            <h2 class="text-5xl font-bold text-gray-900">Paket Perencanaan</h2>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-            <div class="img-zoom relative group cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" class="w-full h-[600px] object-cover">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                    <span class="text-white uppercase tracking-widest text-sm font-bold border-b border-white pb-2">Lihat Proyek</span>
-                </div>
-            </div>
-            <div class="img-zoom relative group cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop" class="w-full h-[600px] object-cover">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                    <span class="text-white uppercase tracking-widest text-sm font-bold border-b border-white pb-2">Lihat Proyek</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer class="py-20 border-t border-gray-100">
-        <div class="container mx-auto px-8 grid md:grid-cols-3 gap-16">
-            <div>
-                <h5 class="font-bold text-lg mb-6">ABI STUDIO</h5>
-                <p class="text-gray-400 text-sm leading-relaxed">Jalan Hidup Baru, I no.8, Kota Tangerang, Banten, Indonesia.</p>
-            </div>
-            <div>
-                <h5 class="font-bold text-xs uppercase tracking-widest mb-6">Contact</h5>
-                <p class="text-gray-500 text-sm mb-2">0851-5757-7465</p>
-                <p class="text-gray-500 text-sm">abi.studio.id@gmail.com</p>
-            </div>
-            <div class="flex flex-col items-end">
-                <h5 class="font-bold text-[10px] uppercase tracking-[0.3em] mb-4">Follow Us</h5>
-                <div class="flex space-x-6 text-gray-400">
-                    <a href="#" class="hover:text-teal-abi transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-teal-abi transition"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="container mx-auto px-8 mt-20 text-[10px] text-gray-300 uppercase tracking-widest flex justify-between">
-            <p>&copy; 2025 ABI STUDIO</p>
-            <p>Built with Precision</p>
-        </div>
-    </footer>
-
-    <div id="orderModal" class="modal-blur">
-        <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative">
-            
-            <button onclick="closeOrder()" class="absolute top-6 right-6 text-gray-300 hover:text-black transition text-2xl z-10">&times;</button>
-            
-            <div class="md:w-1/2 bg-gray-100">
-                <img id="modalImg" src="" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
-            </div>
-
-            <div class="md:w-1/2 p-12">
-                <h4 id="modalTitle" class="text-2xl font-bold mb-2">Nama Paket</h4>
-                <p class="text-xs text-gray-400 uppercase tracking-widest mb-10">Lengkapi data proyek Anda</p>
-                
-                <div class="space-y-6">
-                    <div class="border-b border-gray-100 py-2">
-                        <label class="block text-[10px] font-bold text-gray-300 uppercase mb-2">Luas Bangunan (m²)</label>
-                        <input type="number" id="area" placeholder="cth: 150" class="w-full focus:outline-none text-sm font-bold">
-                    </div>
-                    <div class="border-b border-gray-100 py-2">
-                        <label class="block text-[10px] font-bold text-gray-300 uppercase mb-2">Jenis Bangunan</label>
-                        <select id="type" class="w-full focus:outline-none text-sm font-bold bg-transparent">
-                            <option value="Rumah">Rumah Tinggal</option>
-                            <option value="Kantor">Kantor</option>
-                            <option value="Ruko">Ruko</option>
-                            <option value="Gudang">Gudang</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                    </div>
-                    <div class="border-b border-gray-100 py-2">
-                        <label class="block text-[10px] font-bold text-gray-300 uppercase mb-2">Lokasi Proyek</label>
-                        <input type="text" id="location" placeholder="cth: Tangerang" class="w-full focus:outline-none text-sm font-bold">
-                    </div>
-                    <div class="border-b border-gray-100 py-2">
-                        <label class="block text-[10px] font-bold text-gray-300 uppercase mb-2">Rencana Pembangunan</label>
-                        <input type="text" id="date" placeholder="cth: Akhir 2025" class="w-full focus:outline-none text-sm font-bold">
-                    </div>
-
-                    <button onclick="sendWhatsApp()" class="w-full bg-teal-abi text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:shadow-xl transition-all duration-500 mt-8">
-                        Kirim Pesanan Sekarang
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let currentPkg = "";
-
-        function openOrder(pkg, img) {
-            currentPkg = pkg;
-            document.getElementById('modalTitle').innerText = pkg;
-            document.getElementById('modalImg').src = img;
-            document.getElementById('orderModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeOrder() {
-            document.getElementById('orderModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function sendWhatsApp() {
-            const area = document.getElementById('area').value;
-            const type = document.getElementById('type').value;
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-
-            if(!area || !location || !date) {
-                alert("Mohon lengkapi data proyek Anda.");
-                return;
-            }
-
-            const msg = `Halo ABI Studio,%0A` +
-                        `Saya tertarik dengan layanan:%0A%0A` +
-                        `📝 Nama Paket : *${currentPkg}*%0A` +
-                        `📐 Luas Bangunan : ${area} m²%0A` +
-                        `🏡 Jenis Bangunan : ${type}%0A` +
-                        `📍 Lokasi Proyek : ${location}%0A` +
-                        `📅 Rencana Pembangunan : ${date}%0A%0A` +
-                        `Mohon info lebih lanjut mengenai paket ini.%0A` +
-                        `Terima kasih 🙏`;
-
-            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank');
-            closeOrder();
-        }
-
-        window.onclick = function(e) {
-            if(e.target == document.getElementById('orderModal')) closeOrder();
-        }
-    </script>
-</body>
-</html>
+        <div class="container mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div onclick="openOrder('Paket 1 (Basic Plan)', 'https://images
