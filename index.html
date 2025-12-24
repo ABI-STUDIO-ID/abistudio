@@ -3,259 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABI STUDIO - Jasa Perencanaan Konstruksi Profesional</title>
+    <title>ABI STUDIO - Jasa Arsitek & Struktur Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Import Font Premium: Plus Jakarta Sans */
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* Warna Brand Custom */
         .bg-teal-abi { background-color: #4A6D6D; }
         .text-teal-abi { color: #4A6D6D; }
         .border-teal-abi { border-color: #4A6D6D; }
-        .hover\:bg-teal-dark:hover { background-color: #3A5757; }
 
-        /* Hero Background Gradient yang Lebih "Manis" */
-        .hero-bg { 
-            background: linear-gradient(to bottom right, rgba(74, 109, 109, 0.9), rgba(30, 41, 41, 0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop'); 
+        /* Desain Hero yang Elegan */
+        .hero-section { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover; 
             background-position: center; 
         }
 
-        /* Styling untuk Modal Pop-up */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; 
-            z-index: 1000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow-y: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-            backdrop-filter: blur(5px);
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
         }
 
-        /* Animasi halus untuk kartu */
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 2rem;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Animasi Card */
+        .card-abi { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-abi:hover { transform: translateY(-12px); shadow: 0 25px 50px -12px rgba(74, 109, 109, 0.25); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-slate-800">
 
-    <nav class="bg-white/95 backdrop-blur-lg fixed w-full z-50 shadow-sm border-b border-gray-100">
+    <nav class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3 group cursor-pointer">
-                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" class="transition-transform group-hover:scale-110 duration-300">
-                    <rect x="20" y="40" width="15" height="45" rx="3" fill="#4A6D6D"/>
-                    <rect x="42" y="25" width="15" height="60" rx="3" fill="#4A6D6D"/>
-                    <rect x="65" y="45" width="15" height="40" rx="3" fill="#334444"/>
+            <div class="flex items-center space-x-3">
+                <svg width="35" height="35" viewBox="0 0 100 100" fill="none">
+                    <rect x="20" y="40" width="15" height="45" rx="2" fill="#4A6D6D"/>
+                    <rect x="42" y="25" width="15" height="60" rx="2" fill="#4A6D6D"/>
+                    <rect x="65" y="45" width="15" height="40" rx="2" fill="#334444"/>
                 </svg>
-                <div>
-                    <h1 class="font-extrabold text-xl tracking-tight leading-none text-gray-900">ABI STUDIO</h1>
-                    <p class="text-[10px] text-gray-500 uppercase tracking-[0.2em] font-semibold mt-1">Architect & Structure</p>
-                </div>
+                <span class="font-extrabold text-xl tracking-tighter text-slate-900 underline decoration-teal-500 decoration-4">ABI STUDIO</span>
             </div>
-            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm text-gray-600">
-                <a href="#paket" class="hover:text-teal-abi transition">Paket Harga</a>
-                <a href="#ketentuan" class="hover:text-teal-abi transition">Ketentuan</a>
-                <a href="https://wa.me/6285157577465" class="bg-teal-abi text-white px-6 py-2.5 rounded-full hover:bg-teal-dark transition shadow-md hover:shadow-lg">Konsultasi Gratis</a>
-            </div>
+            <a href="https://wa.me/6285157577465" class="bg-teal-abi text-white px-6 py-2.5 rounded-full text-sm font-bold hover:opacity-90 shadow-lg transition">Konsultasi</a>
         </div>
     </nav>
 
-    <header class="hero-bg h-screen md:h-[85vh] flex items-center justify-center text-center text-white px-6 pt-20">
-        <div class="max-w-4xl md:-mt-20">
-            <span class="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-xs font-bold tracking-wider mb-6 uppercase backdrop-blur-sm">Professional Planning Partner</span>
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight drop-shadow-sm">Wujudkan Bangunan Impian Dengan Perencanaan Presisi</h2>
-            <p class="text-lg md:text-2xl mb-12 text-gray-100 font-light max-w-2xl mx-auto leading-relaxed opacity-90">Dari desain arsitektur yang estetis hingga perhitungan struktur yang kokoh dan aman.</p>
-            <div class="flex flex-col md:flex-row justify-center gap-5">
-                <a href="#paket" class="bg-white text-teal-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-2xl hover:-translate-y-1">Lihat Pilihan Paket</a>
-                <a href="https://wa.me/6285157577465" class="bg-teal-abi/30 border-2 border-white/70 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/20 backdrop-blur-md transition hover:-translate-y-1">Tanya Estimasi Biaya</a>
+    <header class="hero-section h-screen flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-4xl">
+            <h2 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Membangun Dengan <span class="text-teal-400">Presisi</span> & Estetika</h2>
+            <p class="text-lg md:text-xl mb-10 text-slate-200 max-w-2xl mx-auto">Partner profesional untuk desain arsitektur, struktur bangunan, dan estimasi biaya (RAB) terakurat.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#paket" class="bg-white text-slate-900 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-slate-100 shadow-2xl transition">Lihat Pilihan Paket</a>
+                <a href="#portfolio" class="bg-transparent border-2 border-white/50 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/10 transition">Lihat Portfolio</a>
             </div>
         </div>
     </header>
 
-    <section id="paket" class="py-28 container mx-auto px-6 relative z-10 -mt-20 md:-mt-32">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-            <h3 class="text-3xl md:text-4xl font-extrabold mb-4 text-gray-900">Pilihan Paket Layanan</h3>
-            <p class="text-gray-600 text-lg leading-relaxed">Transparan, hemat, dan sesuai kebutuhan proyek Anda. Klik paket untuk detail.</p>
+    <section id="paket" class="py-24 container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h3 class="text-4xl font-extrabold mb-4 text-slate-900">Pilihan Paket Layanan</h3>
+            <p class="text-slate-500">Klik paket untuk melihat detail gambar dan mulai memesan.</p>
+            <div class="w-20 h-1.5 bg-teal-abi mx-auto mt-6 rounded-full"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            <div onclick="openOrder('Paket 1 (Basic Plan)', 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1000&auto=format&fit=crop')" class="card-hover bg-white rounded-[2.5rem] p-10 text-center shadow-[0_20px_50px_rgba(8,_112,_184,_0.07)] border border-gray-100 cursor-pointer flex flex-col">
-                <div class="flex-grow">
-                    <h4 class="text-lg font-bold text-teal-abi mb-2 tracking-wide uppercase">PAKET-1</h4>
-                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-6">Basic Design</p>
-                    <p class="text-5xl font-black mb-10 text-gray-800 tracking-tight">7rb<span class="text-lg font-medium text-gray-400">/m²</span></p>
-                    <ul class="text-left space-y-4 text-sm text-gray-600 font-medium mb-8">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> Gambar Denah 2D</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> Gambar Denah 3D</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> 3D Exterior (1 View)</li>
-                    </ul>
-                </div>
-                <button class="w-full py-3 rounded-full font-bold text-teal-abi border-2 border-teal-abi hover:bg-teal-abi hover:text-white transition duration-300">Lihat Detail & Pesan</button>
+            <div onclick="openModal('Paket 1 (Basic Plan)', '7.000', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800')" class="card-abi bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100 cursor-pointer flex flex-col items-center">
+                <h4 class="font-bold text-teal-abi mb-1">PAKET-1</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-4 font-bold">Basic Plan</p>
+                <p class="text-4xl font-black mb-6">7.000<span class="text-sm font-normal text-slate-400">/m²</span></p>
+                <div class="w-full bg-slate-50 py-3 rounded-xl text-xs font-bold text-slate-500 text-center">Lihat Detail & Pesan</div>
             </div>
 
-            <div onclick="openOrder('Paket 2 (Standard Design)', 'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1000&auto=format&fit=crop')" class="card-hover bg-white rounded-[2.5rem] p-10 text-center shadow-[0_25px_60px_rgba(74,109,109,0.2)] border-2 border-teal-abi relative md:-translate-y-6 cursor-pointer flex flex-col z-20">
-                <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-abi text-white text-xs font-bold px-6 py-2 rounded-full uppercase tracking-wider shadow-lg">Paling Laris</span>
-                <div class="flex-grow pt-4">
-                    <h4 class="text-lg font-bold text-teal-abi mb-2 tracking-wide uppercase">PAKET-2</h4>
-                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-6">Standard Design</p>
-                    <p class="text-5xl font-black mb-10 text-gray-800 tracking-tight">22rb<span class="text-lg font-medium text-gray-400">/m²</span></p>
-                    <ul class="text-left space-y-4 text-sm text-gray-600 font-medium mb-8">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> Denah 2D & 3D</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> Detail Tampak & Potongan</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> 3D Modeling Full</li>
-                    </ul>
-                </div>
-                <button class="w-full py-3 rounded-full font-bold text-white bg-teal-abi hover:bg-teal-dark transition duration-300 shadow-md">Lihat Detail & Pesan</button>
+            <div onclick="openModal('Paket 2 (Standard Design)', '22.000', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800')" class="card-abi bg-white p-8 rounded-[2.5rem] shadow-2xl border-2 border-teal-abi cursor-pointer relative flex flex-col items-center">
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-teal-900 text-[10px] font-black px-4 py-1 rounded-full uppercase">Paling Populer</span>
+                <h4 class="font-bold text-teal-abi mb-1">PAKET-2</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-4 font-bold">Standard Design</p>
+                <p class="text-4xl font-black mb-6">22.000<span class="text-sm font-normal text-slate-400">/m²</span></p>
+                <div class="w-full bg-teal-abi py-3 rounded-xl text-xs font-bold text-white text-center">Lihat Detail & Pesan</div>
             </div>
 
-            <div onclick="openOrder('Paket 3 (Advance Design)', 'https://images.unsplash.com/photo-1633638807782-6342092e2455?q=80&w=1000&auto=format&fit=crop')" class="card-hover bg-white rounded-[2.5rem] p-10 text-center shadow-[0_20px_50px_rgba(8,_112,_184,_0.07)] border border-gray-100 cursor-pointer flex flex-col">
-                <div class="flex-grow">
-                    <h4 class="text-lg font-bold text-teal-abi mb-2 tracking-wide uppercase">PAKET-3</h4>
-                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-6">Advance Design</p>
-                    <p class="text-5xl font-black mb-10 text-gray-800 tracking-tight">33rb<span class="text-lg font-medium text-gray-400">/m²</span></p>
-                    <ul class="text-left space-y-4 text-sm text-gray-600 font-medium mb-8">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> Termasuk Paket 2</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> Gambar Struktural Lengkap</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-abi text-lg mr-3"></i> Gambar MEP (Listrik/Air)</li>
-                    </ul>
-                </div>
-                <button class="w-full py-3 rounded-full font-bold text-teal-abi border-2 border-teal-abi hover:bg-teal-abi hover:text-white transition duration-300">Lihat Detail & Pesan</button>
+            <div onclick="openModal('Paket 3 (Advance Design)', '33.000', 'https://images.unsplash.com/photo-1600607687940-4e5a48a257c3?q=80&w=800')" class="card-abi bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100 cursor-pointer flex flex-col items-center">
+                <h4 class="font-bold text-teal-abi mb-1">PAKET-3</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-4 font-bold">Advance Design</p>
+                <p class="text-4xl font-black mb-6">33.000<span class="text-sm font-normal text-slate-400">/m²</span></p>
+                <div class="w-full bg-slate-50 py-3 rounded-xl text-xs font-bold text-slate-500 text-center">Lihat Detail & Pesan</div>
             </div>
 
-            <div onclick="openOrder('Paket RAB (Budget Estimation)', 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop')" class="card-hover bg-gray-900 rounded-[2.5rem] p-10 text-center shadow-xl text-white cursor-pointer flex flex-col">
-                <div class="flex-grow">
-                    <h4 class="text-lg font-bold text-teal-300 mb-2 tracking-wide uppercase">PAKET-RAB</h4>
-                    <p class="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-6">Budget Control</p>
-                    <p class="text-5xl font-black mb-10 text-white tracking-tight">10rb<span class="text-lg font-medium text-gray-400">/m²</span></p>
-                    <ul class="text-left space-y-4 text-sm text-gray-300 font-medium mb-8">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-300 text-lg mr-3"></i> RAP & Analisis Harga</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-300 text-lg mr-3"></i> Rekapitulasi Biaya</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-teal-300 text-lg mr-3"></i> Format SPK (Kontrak)</li>
-                    </ul>
-                </div>
-                <button class="w-full py-3 rounded-full font-bold text-gray-900 bg-white hover:bg-gray-200 transition duration-300">Lihat Detail & Pesan</button>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="ketentuan" class="py-24 bg-gray-100/50">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="bg-white rounded-[3rem] p-12 shadow-xl border-l-[16px] border-teal-abi relative overflow-hidden">
-                <div class="absolute top-0 right-0 opacity-5">
-                    <i class="fas fa-clipboard-list text-9xl text-teal-abi"></i>
-                </div>
-                <h5 class="text-3xl font-extrabold mb-10 flex items-center text-gray-900">
-                    <i class="fas fa-shield-alt text-teal-abi mr-4 text-4xl"></i> Ketentuan Layanan
-                </h5>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-700 font-medium text-lg">
-                    <div class="flex items-start bg-gray-50 p-4 rounded-2xl"><i class="fas fa-check-circle text-teal-abi mt-1 mr-4 text-xl"></i> Free 3x revisi desain untuk kepuasan maksimal.</div>
-                    <div class="flex items-start bg-gray-50 p-4 rounded-2xl"><i class="fas fa-check-circle text-teal-abi mt-1 mr-4 text-xl"></i> Harga berlaku untuk luas minimal 100 m².</div>
-                    <div class="flex items-start bg-gray-50 p-4 rounded-2xl"><i class="fas fa-check-circle text-teal-abi mt-1 mr-4 text-xl"></i> Luas di bawah 100 m² tetap dihitung 100 m².</div>
-                    <div class="flex items-start bg-gray-50 p-4 rounded-2xl"><i class="fas fa-check-circle text-teal-abi mt-1 mr-4 text-xl"></i> Konsultasi online gratis via WhatsApp.</div>
-                </div>
+            <div onclick="openModal('Paket RAB (Budget Estimation)', '10.000', 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800')" class="card-abi bg-slate-800 p-8 rounded-[2.5rem] shadow-xl text-white cursor-pointer flex flex-col items-center">
+                <h4 class="font-bold mb-1 text-teal-400 uppercase">Paket RAB</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-4 font-bold">Budget Estimation</p>
+                <p class="text-4xl font-black mb-6">10.000<span class="text-sm font-normal text-slate-400">/m²</span></p>
+                <div class="w-full bg-white/10 py-3 rounded-xl text-xs font-bold text-slate-300 text-center">Lihat Detail & Pesan</div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-teal-abi text-white pt-20 pb-10">
+    <section id="portfolio" class="py-20 bg-slate-100/50">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-16 text-center md:text-left">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-white p-2 rounded-xl shadow-md">
-                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
-                            <rect x="20" y="40" width="15" height="45" rx="3" fill="#4A6D6D"/>
-                            <rect x="42" y="25" width="15" height="60" rx="3" fill="#4A6D6D"/>
-                            <rect x="65" y="45" width="15" height="40" rx="3" fill="#334444"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h5 class="text-2xl font-extrabold tracking-tight">ABI STUDIO</h5>
-                        <p class="text-teal-100 text-sm tracking-wider uppercase opacity-80">Professional Architect & Structure</p>
+            <h3 class="text-3xl font-extrabold text-center mb-12">Portfolio Proyek Kami</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-300 group relative">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                        <span class="text-white font-bold">Proyek Retail Mall PIM</span>
                     </div>
                 </div>
-                <div class="space-y-3 font-medium text-lg">
-                    <p class="flex items-center justify-center md:justify-start"><i class="fab fa-whatsapp mr-4 text-teal-200"></i> 0851-5757-7465</p>
-                    <p class="flex items-center justify-center md:justify-start"><i class="far fa-envelope mr-4 text-teal-200"></i> abi.studio.id@gmail.com</p>
+                <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-300 group relative">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                        <span class="text-white font-bold">Pembangunan Rumah Modern</span>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-lg h-64 bg-slate-300 group relative">
+                    <img src="https://images.unsplash.com/photo-1590348697159-f9612110294b?q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                        <span class="text-white font-bold">Estimasi RAB Pabrik</span>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-teal-800/30 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-teal-200/60">
-                <p class="mb-4 md:mb-0"><i class="fas fa-map-marker-alt mr-2"></i> Jalan Hidup Baru, I no.8, Kota Tangerang, Banten</p>
-                <p class="uppercase tracking-widest font-bold">&copy; 2025 ABI STUDIO. All rights reserved.</p>
+        </div>
+    </section>
+
+    <section class="py-20 container mx-auto px-6">
+        <div class="bg-white p-10 rounded-[3rem] shadow-sm border-l-8 border-teal-abi max-w-4xl mx-auto">
+            <h5 class="font-bold text-xl mb-6 flex items-center"><i class="fas fa-info-circle mr-3 text-teal-abi"></i> Ketentuan Umum:</h5>
+            <ul class="space-y-4 text-sm text-slate-600">
+                <li class="flex items-start"><i class="fas fa-check text-teal-abi mt-1 mr-3"></i> Free 3x revisi desain untuk kepuasan maksimal.</li>
+                <li class="flex items-start"><i class="fas fa-check text-teal-abi mt-1 mr-3"></i> Harga berlaku untuk luas minimal 100 m².</li>
+                <li class="flex items-start"><i class="fas fa-check text-teal-abi mt-1 mr-3"></i> Luas bangunan di bawah 100 m² tetap dihitung 100 m².</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="bg-teal-abi text-white py-16">
+        <div class="container mx-auto px-6 text-center md:text-left grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h5 class="text-2xl font-extrabold mb-4">ABI STUDIO</h5>
+                <p class="opacity-70 text-sm leading-relaxed">Partner terpercaya untuk perencanaan hunian, komersial, dan industrial di area Jabodetabek.</p>
             </div>
+            <div>
+                <h6 class="font-bold uppercase tracking-widest text-xs mb-6 opacity-50">Kontak Kami</h6>
+                <p class="mb-3 text-sm flex items-center justify-center md:justify-start"><i class="fab fa-whatsapp mr-3"></i> 0851-5757-7465</p>
+                <p class="mb-3 text-sm flex items-center justify-center md:justify-start"><i class="far fa-envelope mr-3"></i> abi.studio.id@gmail.com</p>
+            </div>
+            <div>
+                <h6 class="font-bold uppercase tracking-widest text-xs mb-6 opacity-50">Workshop & Office</h6>
+                <p class="text-sm leading-relaxed"><i class="fas fa-map-marker-alt mr-3"></i> Jalan Hidup Baru, I no.8, kota Tangerang, Banten, Indonesia</p>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-white/10 text-center text-[10px] opacity-40">
+            &copy; 2025 ABI STUDIO. All rights reserved.
         </div>
     </footer>
 
-    <div id="orderModal" class="modal py-6 px-4 flex items-center justify-center">
-        <div class="bg-white w-full max-w-2xl mx-auto rounded-[2.5rem] shadow-2xl overflow-hidden relative animate-[fadeIn_0.3s_ease-in-out]">
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content shadow-2xl animate-[fadeIn_0.3s_ease-out]">
+            <div class="sticky top-0 bg-white p-6 border-b flex justify-between items-center z-10">
+                <h4 id="modal-title" class="font-extrabold text-xl text-teal-abi">Detail Pemesanan</h4>
+                <button onclick="closeModal()" class="w-10 h-10 rounded-full hover:bg-slate-100 text-slate-400 flex items-center justify-center text-2xl transition">&times;</button>
+            </div>
             
-            <button onclick="closeOrder()" class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-gray-800 hover:bg-red-50 hover:text-red-500 w-10 h-10 rounded-full flex items-center justify-center transition shadow-sm z-10">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            
-            <div class="flex flex-col md:flex-row h-full max-h-[90vh]">
-                <div class="md:w-2/5 h-48 md:h-auto relative">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-0 md:hidden"></div>
-                    <img id="modalImage" src="" alt="Detail Paket" class="w-full h-full object-cover">
-                    <div class="absolute bottom-4 left-4 text-white md:hidden z-10">
-                        <h3 class="text-xl font-bold" id="modalTitleMobile">Nama Paket</h3>
-                        <p class="text-sm opacity-90">Isi formulir untuk memesan.</p>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-6">
+                    <img id="modal-img" src="" class="w-full rounded-3xl shadow-md border" alt="Package Details">
+                    <div class="mt-6 p-6 bg-slate-50 rounded-3xl">
+                        <p id="modal-price" class="text-3xl font-black text-teal-abi mb-2">0</p>
+                        <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Harga per Meter Persegi</p>
                     </div>
                 </div>
-
-                <div class="md:w-3/5 p-8 overflow-y-auto">
-                    <h3 class="text-2xl font-extrabold text-teal-abi mb-6 hidden md:block" id="modalTitleDesktop">Detail Pemesanan</h3>
-                    <p class="text-gray-500 text-sm mb-8 hidden md:block leading-relaxed">Lengkapi data proyek Anda di bawah ini agar kami dapat memberikan estimasi yang akurat via WhatsApp.</p>
-
+                
+                <div class="md:w-1/2 p-8">
+                    <p class="text-sm text-slate-500 mb-8 font-medium">Lengkapi data berikut untuk mendapatkan estimasi penawaran resmi via WhatsApp.</p>
+                    
                     <div class="space-y-5">
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 pl-1">Luas Bangunan (m²)</label>
-                            <div class="relative">
-                                <i class="fas fa-ruler-combined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                                <input type="number" id="area" placeholder="Contoh: 150" class="w-full bg-gray-50 border-2 border-gray-100 pl-12 pr-4 py-3.5 rounded-xl focus:outline-none focus:border-teal-abi focus:bg-white transition font-medium text-gray-800">
-                            </div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Luas Bangunan (m²)</label>
+                            <input type="number" id="area" placeholder="Misal: 150" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl focus:outline-none focus:border-teal-abi transition font-bold">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 pl-1">Jenis Bangunan</label>
-                             <div class="relative">
-                                <i class="fas fa-building absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 z-10"></i>
-                                <select id="type" class="w-full bg-gray-50 border-2 border-gray-100 pl-12 pr-10 py-3.5 rounded-xl focus:outline-none focus:border-teal-abi focus:bg-white transition font-medium text-gray-800 appearance-none cursor-pointer relative">
-                                    <option value="Rumah">Rumah Tinggal</option>
-                                    <option value="Kantor">Kantor / Office</option>
-                                    <option value="Ruko">Ruko (Rumah Toko)</option>
-                                    <option value="Gudang">Gudang / Pabrik</option>
-                                    <option value="Lainnya">Lainnya...</option>
-                                </select>
-                                <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                            </div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Jenis Bangunan</label>
+                            <select id="type" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl focus:outline-none focus:border-teal-abi transition font-bold appearance-none">
+                                <option value="Rumah">Rumah Tinggal</option>
+                                <option value="Kantor">Kantor / Office</option>
+                                <option value="Ruko">Ruko (Rumah Toko)</option>
+                                <option value="Gudang">Gudang / Pabrik</option>
+                                <option value="Lainnya">Lainnya...</option>
+                            </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 pl-1">Lokasi Proyek</label>
-                            <div class="relative">
-                                <i class="fas fa-map-marker-alt absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                                <input type="text" id="location" placeholder="Contoh: Cipondoh, Tangerang" class="w-full bg-gray-50 border-2 border-gray-100 pl-12 pr-4 py-3.5 rounded-xl focus:outline-none focus:border-teal-abi focus:bg-white transition font-medium text-gray-800">
-                            </div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Lokasi Proyek</label>
+                            <input type="text" id="location" placeholder="Misal: Poris, Tangerang" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl focus:outline-none focus:border-teal-abi transition font-bold">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2 pl-1">Rencana Pembangunan</label>
-                             <div class="relative">
-                                <i class="far fa-calendar-alt absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                                <input type="text" id="date" placeholder="Contoh: Akhir Tahun 2025" class="w-full bg-gray-50 border-2 border-gray-100 pl-12 pr-4 py-3.5 rounded-xl focus:outline-none focus:border-teal-abi focus:bg-white transition font-medium text-gray-800">
-                            </div>
+                            <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Rencana Pembangunan</label>
+                            <input type="text" id="date" placeholder="Misal: Januari 2026" class="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-2xl focus:outline-none focus:border-teal-abi transition font-bold">
                         </div>
                         
-                        <button onclick="sendWhatsApp()" class="w-full bg-teal-abi text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-teal-dark hover:shadow-xl hover:-translate-y-1 transition-all duration-300 mt-8 flex items-center justify-center">
-                            <i class="fab fa-whatsapp text-2xl mr-3"></i> Kirim Pesanan Sekarang
+                        <button onclick="sendOrder()" class="w-full bg-teal-abi text-white py-5 rounded-2xl font-bold text-lg shadow-xl hover:-translate-y-1 transition duration-300 flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-3 text-2xl"></i> Kirim Pesanan Sekarang
                         </button>
-                        <p class="text-center text-xs text-gray-400 mt-4">Data Anda aman dan akan langsung terkirim ke WhatsApp Admin ABI STUDIO.</p>
                     </div>
                 </div>
             </div>
@@ -263,47 +227,36 @@
     </div>
 
     <script>
-        let selectedPackage = "";
-        const modal = document.getElementById('orderModal');
-        const body = document.body;
+        let currentPackage = "";
 
-        function openOrder(packageName, imageUrl) {
-            selectedPackage = packageName;
-            // Update teks judul di desktop dan mobile
-            document.getElementById('modalTitleDesktop').innerText = "Pesan " + packageName;
-            document.getElementById('modalTitleMobile').innerText = packageName;
-            
-            // Update gambar (Gunakan placeholder jika belum ada gambar asli)
-            document.getElementById('modalImage').src = imageUrl;
-            
-            // Tampilkan modal dan matikan scroll halaman utama
-            modal.style.display = 'flex';
-            body.style.overflow = 'hidden'; 
+        function openModal(name, price, img) {
+            currentPackage = name;
+            document.getElementById('modal-title').innerText = name;
+            document.getElementById('modal-price').innerText = price + "/m²";
+            document.getElementById('modal-img').src = img;
+            document.getElementById('modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeOrder() {
-            // Sembunyikan modal dan aktifkan kembali scroll
-            modal.style.display = 'none';
-            body.style.overflow = 'auto';
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
-        function sendWhatsApp() {
-            // Ambil nilai dari input form
+        function sendOrder() {
             const area = document.getElementById('area').value;
             const type = document.getElementById('type').value;
             const location = document.getElementById('location').value;
             const date = document.getElementById('date').value;
 
-            // Validasi sederhana: Pastikan semua data terisi
             if(!area || !location || !date) {
-                alert("Mohon lengkapi semua data formulir terlebih dahulu ya! 🙏");
+                alert("Mohon lengkapi seluruh data proyek ya! 🙏");
                 return;
             }
 
-            // Format pesan WhatsApp sesuai permintaan (gunakan %0A untuk baris baru)
             const message = `Halo ABI Studio,%0A` +
                             `Saya tertarik dengan layanan:%0A%0A` +
-                            `📝 Nama Paket : *${selectedPackage}*%0A` +
+                            `📝 Nama Paket : *${currentPackage}*%0A` +
                             `📐 Luas Bangunan : ${area} m²%0A` +
                             `🏡 Jenis Bangunan : ${type}%0A` +
                             `📍 Lokasi Proyek : ${location}%0A` +
@@ -311,21 +264,14 @@
                             `Mohon info lebih lanjut mengenai paket ini.%0A` +
                             `Terima kasih 🙏`;
 
-            // Buka link WhatsApp di tab baru
-            const waLink = `https://wa.me/6285157577465?text=${message}`;
-            window.open(waLink, '_blank');
-            
-            // Opsional: Tutup modal setelah mengirim
-            closeOrder();
+            window.open(`https://wa.me/6285157577465?text=${message}`, '_blank');
         }
 
-        // Tutup modal jika area hitam di luar form diklik
         window.onclick = function(event) {
-            if (event.target == modal) {
-                closeOrder();
+            if (event.target == document.getElementById('modal')) {
+                closeModal();
             }
         }
     </script>
-
 </body>
 </html>
