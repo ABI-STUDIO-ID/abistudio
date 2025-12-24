@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABI STUDIO - Perencanaan Konstruksi & RAB</title>
+    <title>ABI STUDIO - Form Order Professional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -11,10 +11,7 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         .bg-teal-abi { background-color: #4A6D6D; }
         .text-teal-abi { color: #4A6D6D; }
-        .hero-gradient { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop'); 
-            background-size: cover; background-position: center; 
-        }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); overflow-y: auto; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -22,87 +19,143 @@
     <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="35" height="35" viewBox="0 0 100 100" fill="none">
                     <rect x="20" y="40" width="15" height="45" rx="2" fill="#4A6D6D"/>
                     <rect x="42" y="25" width="15" height="60" rx="2" fill="#4A6D6D"/>
                     <rect x="65" y="45" width="15" height="40" rx="2" fill="#334444"/>
                 </svg>
-                <h1 class="font-bold text-lg tracking-tighter">ABI STUDIO</h1>
+                <h1 class="font-bold text-lg">ABI STUDIO</h1>
             </div>
-            <a href="https://wa.me/6285157577465" class="bg-teal-abi text-white px-5 py-2 rounded-full text-xs font-bold">Chat Admin</a>
+            <p class="text-[10px] hidden md:block opacity-50 uppercase tracking-widest font-bold">Tangerang - Professional Architect</p>
         </div>
     </nav>
 
-    <header class="hero-gradient h-[80vh] flex items-center justify-center text-center text-white px-6">
-        <div class="max-w-3xl">
-            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Solusi Lengkap Perencanaan Konstruksi</h2>
-            <p class="text-lg mb-10 text-gray-200">Desain presisi dan RAB transparan untuk hasil bangunan maksimal.</p>
-            <a href="#paket" class="bg-white text-gray-900 px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-gray-100 transition">Lihat Paket</a>
-        </div>
-    </header>
-
-    <section id="paket" class="py-20 container mx-auto px-6">
-        <h3 class="text-3xl font-extrabold text-center mb-12 text-teal-abi">Pilihan Paket Layanan</h3>
+    <section class="py-16 container mx-auto px-6">
+        <h2 class="text-3xl font-extrabold text-center mb-4 text-teal-abi">Pilih Paket Perencanaan</h2>
+        <p class="text-center text-gray-500 mb-12">Klik pada kartu paket untuk melihat detail dan memesan.</p>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100 flex flex-col">
+            <div onclick="openOrder('Paket 1 (Basic Plan)', 'paket1.jpg')" class="bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100 cursor-pointer hover:scale-105 transition">
                 <h4 class="font-bold text-teal-abi text-center">PAKET-1</h4>
-                <p class="text-3xl font-black text-center mb-8">7.000<span class="text-sm font-normal">/m²</span></p>
-                <ul class="text-sm space-y-4 mb-8 flex-grow">
-                    <li><i class="fas fa-check text-teal-abi mr-2"></i> Gambar Denah 2D/3D</li>
-                    <li><i class="fas fa-check text-teal-abi mr-2"></i> 3D Exterior</li>
-                </ul>
-                <a href="https://wa.me/6285157577465?text=Tertarik%20Paket%201" class="text-center border-2 border-teal-abi text-teal-abi py-2 rounded-xl font-bold">Pilih Paket</a>
+                <p class="text-3xl font-black text-center mb-6">7.000<span class="text-sm">/m²</span></p>
+                <p class="text-xs text-center text-gray-400">Klik untuk Detail & Pesan</p>
             </div>
 
-            <div class="bg-white p-8 rounded-[2rem] shadow-2xl border-2 border-teal-abi transform scale-105 flex flex-col">
-                <h4 class="font-bold text-teal-abi text-center">PAKET-2</h4>
-                <p class="text-3xl font-black text-center mb-8">22.000<span class="text-sm font-normal">/m²</span></p>
-                <ul class="text-sm space-y-4 mb-8 flex-grow font-semibold">
-                    <li><i class="fas fa-check text-teal-abi mr-2"></i> Detail Tampak & Potongan</li>
-                    <li><i class="fas fa-check text-teal-abi mr-2"></i> 3D Modeling Full</li>
-                </ul>
-                <a href="https://wa.me/6285157577465?text=Tertarik%20Paket%202" class="text-center bg-teal-abi text-white py-2 rounded-xl font-bold shadow-lg">Pilih Paket</a>
+            <div onclick="openOrder('Paket 2 (Standart Design)', 'paket2.jpg')" class="bg-white p-8 rounded-[2rem] shadow-2xl border-2 border-teal-abi scale-105 cursor-pointer hover:shadow-teal-100 transition">
+                <h4 class="font-bold text-teal-abi text-center uppercase">Paket 2</h4>
+                <p class="text-3xl font-black text-center mb-6">22.000<span class="text-sm">/m²</span></p>
+                <p class="text-xs text-center text-gray-400 font-bold">Populer - Klik untuk Pesan</p>
             </div>
 
-            <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100 flex flex-col">
-                <h4 class="font-bold text-teal-abi text-center">PAKET-3</h4>
-                <p class="text-3xl font-black text-center mb-8">33.000<span class="text-sm font-normal">/m²</span></p>
-                <ul class="text-sm space-y-4 mb-8 flex-grow">
-                    <li><i class="fas fa-check text-teal-abi mr-2"></i> Gambar Struktural</li>
-                    <li><i class="fas fa-check text-teal-abi mr-2"></i> Gambar MEP</li>
-                </ul>
-                <a href="https://wa.me/6285157577465?text=Tertarik%20Paket%203" class="text-center border-2 border-teal-abi text-teal-abi py-2 rounded-xl font-bold">Pilih Paket</a>
+            <div onclick="openOrder('Paket 3 (Advance Design)', 'paket3.jpg')" class="bg-white p-8 rounded-[2rem] shadow-xl border border-gray-100 cursor-pointer hover:scale-105 transition">
+                <h4 class="font-bold text-teal-abi text-center uppercase">Paket 3</h4>
+                <p class="text-3xl font-black text-center mb-6">33.000<span class="text-sm">/m²</span></p>
+                <p class="text-xs text-center text-gray-400">Klik untuk Detail & Pesan</p>
             </div>
 
-            <div class="bg-gray-800 p-8 rounded-[2rem] shadow-xl text-white flex flex-col">
-                <h4 class="font-bold text-center text-teal-400">PAKET-RAB</h4>
-                <p class="text-3xl font-black text-center mb-8">10.000<span class="text-sm font-normal">/m²</span></p>
-                <ul class="text-[10px] space-y-2 mb-8 flex-grow opacity-90">
-                    <li><i class="fas fa-check text-teal-400 mr-2"></i> RAP & Analisis Harga Satuan</li>
-                    <li><i class="fas fa-check text-teal-400 mr-2"></i> Spesifikasi Struktur & SPK</li>
-                </ul>
-                <a href="https://wa.me/6285157577465?text=Tertarik%20Paket%20RAB" class="text-center bg-white text-gray-800 py-2 rounded-xl font-bold">Pilih Paket</a>
+            <div onclick="openOrder('Paket RAB (Budget Estimation)', 'paketrab.jpg')" class="bg-gray-800 p-8 rounded-[2rem] shadow-xl text-white cursor-pointer hover:scale-105 transition">
+                <h4 class="font-bold text-center text-teal-400 uppercase">Paket RAB</h4>
+                <p class="text-3xl font-black text-center mb-6">10.000<span class="text-sm">/m²</span></p>
+                <p class="text-[10px] text-center opacity-50">Klik untuk Detail & Pesan</p>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6 max-w-4xl bg-white p-10 rounded-3xl shadow-sm border-l-8 border-teal-abi">
-            <h5 class="font-bold text-xl mb-6 text-gray-800">Ketentuan Umum:</h5>
-            <ul class="space-y-4 text-sm text-gray-600">
-                <li><i class="fas fa-info-circle text-teal-abi mr-3"></i> Free 3x revisi desain untuk kepuasan maksimal.</li>
-                <li><i class="fas fa-info-circle text-teal-abi mr-3"></i> Harga berlaku untuk luas minimal 100 m².</li>
-                <li><i class="fas fa-info-circle text-teal-abi mr-3"></i> Luas di bawah 100 m² tetap dihitung 100 m².</li>
-            </ul>
+    <div id="orderModal" class="modal py-10 px-4">
+        <div class="bg-white max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-2xl">
+            <div class="p-4 flex justify-end">
+                <button onclick="closeOrder()" class="text-gray-400 hover:text-red-500 text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="px-6 pb-6">
+                <img id="modalImage" src="" alt="Detail Paket" class="w-full h-auto rounded-xl shadow-md mb-6 border border-gray-100">
+                
+                <h3 class="text-2xl font-bold text-teal-abi mb-6 text-center" id="modalTitle">Detail Pemesanan</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Luas Bangunan (m²)</label>
+                        <input type="number" id="area" placeholder="Contoh: 150" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-xl focus:outline-none focus:border-teal-abi">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Jenis Bangunan</label>
+                        <select id="type" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-xl focus:outline-none focus:border-teal-abi">
+                            <option value="Rumah">Rumah</option>
+                            <option value="Kantor">Kantor</option>
+                            <option value="Ruko">Ruko</option>
+                            <option value="Gudang">Gudang</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Lokasi Proyek</label>
+                        <input type="text" id="location" placeholder="Contoh: Poris, Tangerang" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-xl focus:outline-none focus:border-teal-abi">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Rencana Pembangunan</label>
+                        <input type="text" id="date" placeholder="Contoh: Januari 2026" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-xl focus:outline-none focus:border-teal-abi">
+                    </div>
+                    
+                    <button onclick="sendWhatsApp()" class="w-full bg-teal-abi text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:opacity-90 transition mt-6">
+                        <i class="fab fa-whatsapp mr-2"></i> Kirim Pesanan Sekarang
+                    </button>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="bg-teal-abi text-white py-12 text-center text-sm">
-        <p class="font-bold mb-2">ABI STUDIO</p>
-        <p class="opacity-70 mb-2">Jalan Hidup Baru, I no.8, kota Tangerang, Banten</p>
-        <p class="opacity-70 mb-6">abi.studio.id@gmail.com | 0851-5757-7465</p>
-        <p class="text-[10px] opacity-40">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
+    <script>
+        let selectedPackage = "";
+
+        function openOrder(packageName, imageUrl) {
+            selectedPackage = packageName;
+            document.getElementById('modalTitle').innerText = packageName;
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('orderModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Stop scroll
+        }
+
+        function closeOrder() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scroll
+        }
+
+        function sendWhatsApp() {
+            const area = document.getElementById('area').value;
+            const type = document.getElementById('type').value;
+            const location = document.getElementById('location').value;
+            const date = document.getElementById('date').value;
+
+            if(!area || !location || !date) {
+                alert("Mohon lengkapi semua data ya!");
+                return;
+            }
+
+            const message = `Halo ABI Studio,%0A` +
+                            `Saya tertarik dengan layanan:%0A%0A` +
+                            `📝 Nama Paket : ${selectedPackage}%0A` +
+                            `📐 Luas Bangunan : ${area} m²%0A` +
+                            `🏡 Jenis Bangunan : ${type}%0A` +
+                            `📍 Lokasi Proyek : ${location}%0A` +
+                            `📅 Rencana Pembangunan : ${date}%0A%0A` +
+                            `Mohon info lebih lanjut mengenai paket ini.%0A` +
+                            `Terima kasih 🙏`;
+
+            const waLink = `https://wa.me/6285157577465?text=${message}`;
+            window.open(waLink, '_blank');
+        }
+
+        // Close if click outside modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('orderModal')) {
+                closeOrder();
+            }
+        }
+    </script>
+
+    <footer class="bg-gray-100 py-10 text-center text-xs text-gray-400 border-t">
+        <p class="font-bold text-gray-600 mb-2">ABI STUDIO - 0851-5757-7465</p>
+        <p>Jalan Hidup Baru, I no.8, kota Tangerang, Banten</p>
     </footer>
 
 </body>
