@@ -21,14 +21,12 @@
         }
         .slide.active { opacity: 1; }
         
-        /* Ken Burns Effect (Slow Zoom) */
         .slide.active { animation: kenBurns 8s infinite alternate; }
         @keyframes kenBurns {
             from { transform: scale(1); }
             to { transform: scale(1.1); }
         }
 
-        /* Text Animation Inside Slide */
         .slide-content { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; transition-delay: 0.5s; }
         .slide.active .slide-content { opacity: 1; transform: translateY(0); }
 
@@ -76,7 +74,6 @@
                 <a href="#paket" class="inline-block border border-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300">Lihat Paket</a>
             </div>
         </div>
-
         <div class="slide flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');">
             <div class="slide-content max-w-4xl text-white">
                 <p class="text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-6 text-teal-400">Structure Engineering</p>
@@ -84,19 +81,12 @@
                 <a href="#paket" class="inline-block border border-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300">Lihat Paket</a>
             </div>
         </div>
-
         <div class="slide flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070');">
             <div class="slide-content max-w-4xl text-white">
                 <p class="text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-6 text-teal-400">Cost Estimation</p>
                 <h2 class="text-5xl md:text-8xl font-light mb-8 leading-tight">Efficient <br><span class="font-bold">Budgeting.</span></h2>
                 <a href="#paket" class="inline-block border border-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300">Lihat Paket</a>
             </div>
-        </div>
-
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-4 z-10">
-            <div class="dot w-12 h-1 bg-white/30 cursor-pointer hover:bg-white transition" onclick="setSlide(0)"></div>
-            <div class="dot w-12 h-1 bg-white/30 cursor-pointer hover:bg-white transition" onclick="setSlide(1)"></div>
-            <div class="dot w-12 h-1 bg-white/30 cursor-pointer hover:bg-white transition" onclick="setSlide(2)"></div>
         </div>
     </section>
 
@@ -117,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="h-[500px] bg-gray-100 overflow-hidden relative group">
+            <div class="h-[500px] bg-gray-100 overflow-hidden relative group rounded-2xl">
                 <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000" class="w-full h-full object-cover transition duration-[2s] group-hover:scale-110">
             </div>
         </div>
@@ -130,49 +120,94 @@
         </div>
 
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div onclick="openOrder('Paket 1 (Basic)', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750')" class="bg-white p-10 group cursor-pointer hover:shadow-xl transition duration-500 border-t-4 border-transparent hover:border-teal-abi">
+            
+            <div onclick="openOrder('Paket 1 (Basic)', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750')" class="bg-white p-8 group cursor-pointer hover:shadow-xl transition duration-500 border-t-4 border-transparent hover:border-teal-abi flex flex-col h-full">
                 <span class="text-xs font-bold text-gray-300">01</span>
-                <h4 class="text-xl font-bold mt-4 mb-2">Basic</h4>
-                <p class="text-3xl font-light text-teal-abi mb-8">7rb<span class="text-xs text-gray-400">/m²</span></p>
-                <ul class="text-[11px] text-gray-500 space-y-3 uppercase tracking-wider mb-10">
-                    <li>Denah 2D</li>
-                    <li>Denah 3D</li>
-                    <li>3D Exterior</li>
-                </ul>
-                <button class="text-[10px] font-bold uppercase border-b border-gray-300 pb-1 group-hover:border-teal-abi transition">Pesan Paket</button>
+                <h4 class="text-xl font-bold mt-4 mb-2">Basic Plan</h4>
+                <p class="text-3xl font-light text-teal-abi mb-6">7rb<span class="text-xs text-gray-400">/m²</span></p>
+                
+                <div class="flex-grow">
+                    <p class="text-[10px] font-bold uppercase text-gray-400 mb-3">Include:</p>
+                    <ul class="text-[11px] text-gray-600 space-y-2 mb-8">
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Denah Layout 2D</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Denah Perspektif 3D</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> 3D Tampak Depan (Render)</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Revisi Minor 3x</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-xl mt-4 border border-gray-100">
+                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-gray-500 leading-relaxed mb-2">"Pengerjaan cepat, cocok banget buat saya yang cuma butuh gambar buat tukang biar ga salah bangun."</p>
+                    <p class="text-[9px] font-bold text-gray-800">— Bpk. A.R (Renovasi Rumah)</p>
+                </div>
             </div>
-            <div onclick="openOrder('Paket 2 (Standard)', 'https://images.unsplash.com/photo-1600585154526-990dbee3f27e')" class="bg-teal-abi text-white p-10 group cursor-pointer shadow-xl transition duration-500 transform md:-translate-y-4">
+
+            <div onclick="openOrder('Paket 2 (Standard)', 'https://images.unsplash.com/photo-1600585154526-990dbee3f27e')" class="bg-teal-abi text-white p-8 group cursor-pointer shadow-xl transition duration-500 transform md:-translate-y-4 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4"><span class="bg-white text-teal-abi text-[8px] px-2 py-1 font-bold rounded uppercase">Best Seller</span></div>
                 <span class="text-xs font-bold text-teal-200">02</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Standard</h4>
-                <p class="text-3xl font-light mb-8">22rb<span class="text-xs text-teal-200">/m²</span></p>
-                <ul class="text-[11px] text-teal-100 space-y-3 uppercase tracking-wider mb-10">
-                    <li>Potongan Detail</li>
-                    <li>Tampak Detail</li>
-                    <li>3D Modeling Full</li>
-                </ul>
-                <button class="text-[10px] font-bold uppercase border-b border-teal-200 pb-1 hover:text-teal-200 transition">Pesan Paket</button>
+                <p class="text-3xl font-light mb-6">22rb<span class="text-xs text-teal-200">/m²</span></p>
+                
+                <div class="flex-grow">
+                    <p class="text-[10px] font-bold uppercase text-teal-200 mb-3">Include:</p>
+                    <ul class="text-[11px] text-teal-50 space-y-2 mb-8">
+                        <li class="flex items-start"><i class="fas fa-check text-teal-200 mr-2 mt-0.5"></i> Denah & Tampak Lengkap</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-200 mr-2 mt-0.5"></i> Potongan A-A & B-B</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-200 mr-2 mt-0.5"></i> Rencana Atap & Pola Lantai</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-200 mr-2 mt-0.5"></i> 3D Modeling Full View</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white/10 p-4 rounded-xl mt-4 border border-white/20">
+                    <div class="flex text-yellow-300 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-teal-50 leading-relaxed mb-2">"Hasil 3D-nya detail banget, saya jadi bisa bayangin bentuk rumah sebelum dibangun. Worth it!"</p>
+                    <p class="text-[9px] font-bold text-white">— Ibu S.W (Rumah Tinggal)</p>
+                </div>
             </div>
-            <div onclick="openOrder('Paket 3 (Advance)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f')" class="bg-white p-10 group cursor-pointer hover:shadow-xl transition duration-500 border-t-4 border-transparent hover:border-teal-abi">
+
+            <div onclick="openOrder('Paket 3 (Advance)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f')" class="bg-white p-8 group cursor-pointer hover:shadow-xl transition duration-500 border-t-4 border-transparent hover:border-teal-abi flex flex-col h-full">
                 <span class="text-xs font-bold text-gray-300">03</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Advance</h4>
-                <p class="text-3xl font-light text-teal-abi mb-8">33rb<span class="text-xs text-gray-400">/m²</span></p>
-                <ul class="text-[11px] text-gray-500 space-y-3 uppercase tracking-wider mb-10">
-                    <li>Struktural</li>
-                    <li>MEP (Listrik/Air)</li>
-                    <li>Paket 2 Lengkap</li>
-                </ul>
-                <button class="text-[10px] font-bold uppercase border-b border-gray-300 pb-1 group-hover:border-teal-abi transition">Pesan Paket</button>
+                <p class="text-3xl font-light text-teal-abi mb-6">33rb<span class="text-xs text-gray-400">/m²</span></p>
+                
+                <div class="flex-grow">
+                    <p class="text-[10px] font-bold uppercase text-gray-400 mb-3">Include:</p>
+                    <ul class="text-[11px] text-gray-600 space-y-2 mb-8">
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Detail Struktur (Pondasi/Balok)</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Gambar MEP (Listrik & Air)</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Detail Kusen Pintu/Jendela</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Detail Septictank & Resapan</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-xl mt-4 border border-gray-100">
+                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-gray-500 leading-relaxed mb-2">"Dokumennya lengkap standar kontraktor. Mandor saya senang bacanya, struktur jadi aman."</p>
+                    <p class="text-[9px] font-bold text-gray-800">— Bpk. H.T (Proyek Ruko)</p>
+                </div>
             </div>
-            <div onclick="openOrder('Paket RAB', 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c')" class="bg-white p-10 group cursor-pointer hover:shadow-xl transition duration-500 border-t-4 border-transparent hover:border-gray-800">
+
+            <div onclick="openOrder('Paket RAB', 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c')" class="bg-white p-8 group cursor-pointer hover:shadow-xl transition duration-500 border-t-4 border-transparent hover:border-gray-800 flex flex-col h-full">
                 <span class="text-xs font-bold text-gray-300">04</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">RAB Only</h4>
-                <p class="text-3xl font-light text-gray-800 mb-8">10rb<span class="text-xs text-gray-400">/m²</span></p>
-                <ul class="text-[11px] text-gray-500 space-y-3 uppercase tracking-wider mb-10">
-                    <li>Analisis Harga</li>
-                    <li>Spesifikasi</li>
-                    <li>Format SPK</li>
-                </ul>
-                <button class="text-[10px] font-bold uppercase border-b border-gray-300 pb-1 group-hover:border-gray-800 transition">Pesan Paket</button>
+                <p class="text-3xl font-light text-gray-800 mb-6">10rb<span class="text-xs text-gray-400">/m²</span></p>
+                
+                <div class="flex-grow">
+                    <p class="text-[10px] font-bold uppercase text-gray-400 mb-3">Include:</p>
+                    <ul class="text-[11px] text-gray-600 space-y-2 mb-8">
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Analisis Harga Satuan (AHS)</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Kebutuhan Material (Volume)</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Rekapitulasi Biaya Total</li>
+                        <li class="flex items-start"><i class="fas fa-check text-teal-abi mr-2 mt-0.5"></i> Format SPK & Kurva S</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-xl mt-4 border border-gray-100">
+                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-gray-500 leading-relaxed mb-2">"Sangat membantu untuk pengajuan pinjaman bank. Hitungannya masuk akal dan transparan."</p>
+                    <p class="text-[9px] font-bold text-gray-800">— Bpk. D.P (Kontraktor)</p>
+                </div>
             </div>
         </div>
     </section>
@@ -227,25 +262,21 @@
     </div>
 
     <script>
-        // --- SLIDER LOGIC ---
+        // Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const slideInterval = 6000; // 6 detik per slide
+        const slideInterval = 6000;
 
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.replace('bg-white', 'bg-white/30'));
-            
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.replace('bg-white/30', 'bg-white');
         }
 
         function nextSlide() { showSlide(currentSlide + 1); }
         setInterval(nextSlide, slideInterval);
 
-        // --- MODAL LOGIC ---
+        // Modal Logic
         let selectedPkg = "";
 
         function openOrder(pkg, img) {
@@ -282,15 +313,10 @@
             closeOrder();
         }
 
-        // Close modal on outside click
         window.onclick = function(e) {
             if(e.target == document.getElementById('orderModal')) closeOrder();
         }
         
-        // Initial state for dots
-        dots[0].classList.replace('bg-white/30', 'bg-white');
-        
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
