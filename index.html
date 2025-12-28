@@ -24,7 +24,7 @@
                 extend: {
                     colors: {
                         abi: {
-                            teal: '#4A6D6D', // Warna Hijau Teal Khas ABI
+                            teal: '#4A6D6D',
                             dark: '#1a1a1a',
                             light: '#f8f9fa'
                         }
@@ -54,17 +54,12 @@
         .slide-content { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; transition-delay: 0.5s; }
         .slide.active .slide-content { opacity: 1; transform: translateY(0); }
 
-        /* MODAL */
-        .modal-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            z-index: 3000; align-items: center; justify-content: center; padding: 20px;
-        }
-        .animate-up { animation: slideUp 0.5s ease-out forwards; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-
         /* TEAM CARD */
         .team-card:hover { transform: translateY(-10px); }
+        
+        /* IMAGE LOADING */
+        img { transition: transform 0.5s ease; }
+        .group:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -77,11 +72,11 @@
             </a>
 
             <div class="hidden md:flex space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-700 items-center">
-                <a href="index.html" class="hover:text-abi-teal transition border-b-2 border-transparent hover:border-abi-teal pb-1">Home</a>
-                <a href="about.html" class="hover:text-abi-teal transition border-b-2 border-transparent hover:border-abi-teal pb-1">About</a>
-                <a href="services.html" class="hover:text-abi-teal transition border-b-2 border-transparent hover:border-abi-teal pb-1">Layanan</a>
-                <a href="paket.html" class="hover:text-abi-teal transition border-b-2 border-transparent hover:border-abi-teal pb-1">Paket</a>
-                <a href="portfolio.html" class="hover:text-abi-teal transition border-b-2 border-transparent hover:border-abi-teal pb-1">Portfolio</a>
+                <a href="index.html" class="text-abi-teal border-b-2 border-abi-teal pb-1">Home</a>
+                <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
+                <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
+                <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
+                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
                 
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2.5 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg">Contact</a>
             </div>
@@ -93,7 +88,7 @@
 
         <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-white text-black py-6 px-6 shadow-2xl border-t">
             <div class="flex flex-col space-y-6 text-xs font-bold uppercase tracking-widest text-center">
-                <a href="index.html" class="hover:text-abi-teal">Home</a>
+                <a href="index.html" class="text-abi-teal">Home</a>
                 <a href="about.html" class="hover:text-abi-teal">About Us</a>
                 <a href="services.html" class="hover:text-abi-teal">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal">Paket</a>
@@ -102,24 +97,25 @@
             </div>
         </div>
     </nav>
+
     <section class="slider-container">
         <div class="slide active flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');">
             <div class="slide-content max-w-4xl text-white pt-20">
                 <p class="text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-6 text-abi-teal bg-white/90 inline-block px-4 py-1.5 rounded-full shadow-lg">Architect Building & Interior</p>
                 <h2 class="text-4xl md:text-7xl font-light mb-8 leading-tight">Mewujudkan Bangunan <br><span class="font-bold">Impian Anda.</span></h2>
-                <a href="#paket" class="inline-block bg-abi-teal text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
+                <a href="paket.html" class="inline-block bg-abi-teal text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
             </div>
         </div>
         <div class="slide flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');">
             <div class="slide-content max-w-4xl text-white pt-20">
                 <p class="text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-6 text-abi-teal bg-white/90 inline-block px-4 py-1.5 rounded-full shadow-lg">Integrated Solution</p>
                 <h2 class="text-4xl md:text-7xl font-light mb-8 leading-tight">Desain Presisi <br><span class="font-bold">Konstruksi Kokoh.</span></h2>
-                <a href="#paket" class="inline-block bg-abi-teal text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
+                <a href="paket.html" class="inline-block bg-abi-teal text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-32 bg-white px-6">
+    <section class="py-32 bg-white px-6">
         <div class="container mx-auto">
             <div class="grid md:grid-cols-2 gap-16 mb-24">
                 <div>
@@ -128,6 +124,7 @@
                     <p class="text-gray-500 leading-relaxed mb-6 font-light text-justify">
                         ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi, menciptakan ruang yang menyatukan dan menginspirasi.
                     </p>
+                    <a href="about.html" class="text-abi-teal text-xs font-bold uppercase tracking-widest border-b border-abi-teal pb-1 hover:text-black hover:border-black transition">Baca Selengkapnya</a>
                 </div>
                 <div class="grid grid-cols-1 gap-8">
                     <h4 class="text-2xl font-bold border-b pb-4">Our Leadership</h4>
@@ -158,7 +155,7 @@
         </div>
     </section>
 
-    <section id="services" class="py-24 bg-abi-dark text-white px-6">
+    <section class="py-24 bg-abi-dark text-white px-6">
         <div class="container mx-auto">
             <div class="text-center mb-16">
                 <span class="text-abi-teal text-[10px] font-bold uppercase tracking-[0.4em]">Our Expertise</span>
@@ -170,7 +167,7 @@
                     <i class="fas fa-drafting-compass text-4xl text-abi-teal mb-6"></i>
                     <h3 class="text-2xl font-bold mb-4">Architecture & Building</h3>
                     <p class="text-sm text-gray-400 leading-relaxed mb-6">
-                        Layanan lengkap mulai dari Konsep Desain, Skematik, Pengembangan Desain, hingga Dokumen Kontrak dan Fase Konstruksi. Kami memastikan bangunan tidak hanya estetis tapi juga praktis dan efisien.
+                        Layanan lengkap mulai dari Konsep Desain, Skematik, Pengembangan Desain, hingga Dokumen Kontrak dan Fase Konstruksi.
                     </p>
                     <ul class="text-xs space-y-2 text-gray-300">
                         <li><i class="fas fa-check mr-2 text-abi-teal"></i> Desain 2D & 3D Rendering</li>
@@ -183,7 +180,7 @@
                     <i class="fas fa-couch text-4xl text-abi-teal mb-6"></i>
                     <h3 class="text-2xl font-bold mb-4">Interior Design</h3>
                     <p class="text-sm text-gray-400 leading-relaxed mb-6">
-                        Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang (Space Planning), pemilihan furnitur & material, hingga desain pencahayaan (Lighting Design).
+                        Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang, furnitur, hingga pencahayaan.
                     </p>
                     <ul class="text-xs space-y-2 text-gray-300">
                         <li><i class="fas fa-check mr-2 text-abi-teal"></i> Furniture & Material Selection</li>
@@ -192,155 +189,133 @@
                     </ul>
                 </div>
             </div>
+            
+            <div class="text-center mt-12">
+                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition">Lihat Selengkapnya</a>
+            </div>
         </div>
     </section>
 
-    <section id="paket" class="py-32 bg-gray-50 px-6">
+    <section class="py-32 bg-gray-50 px-6">
         <div class="container mx-auto mb-20 text-center">
             <h3 class="text-[10px] font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Pricing</h3>
             <h2 class="text-4xl font-light">Pilihan Paket Perencanaan</h2>
         </div>
 
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div onclick="openOrder('Paket 1 (Basic)', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal flex flex-col h-full rounded-2xl">
+            <div onclick="window.open('paket.html', '_self')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal flex flex-col h-full rounded-2xl group">
                 <span class="text-xs font-bold text-gray-300">01</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Basic Plan</h4>
                 <p class="text-3xl font-light text-abi-teal mb-6">7rb<span class="text-xs text-gray-400">/m²</span></p>
-                <div class="flex-grow">
-                    <ul class="text-[11px] text-gray-600 space-y-2 mb-8">
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Denah 2D & 3D</li>
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> 3D Exterior Render</li>
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Revisi Minor 3x</li>
-                    </ul>
+                <ul class="text-[11px] text-gray-600 space-y-3 mb-8 flex-grow">
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Denah 2D & 3D</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> 3D Exterior Render</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Revisi Minor 3x</li>
+                </ul>
+                <div class="pt-6 border-t border-gray-100 mt-auto">
+                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-gray-500 mb-2">"Solusi hemat buat renovasi dapur."</p>
+                    <p class="text-[10px] font-bold text-gray-800">— Bpk. R.D</p>
                 </div>
-                <div class="bg-gray-50 p-3 rounded text-[10px] italic text-gray-500">"Cocok untuk visualisasi awal." - Klien A.</div>
             </div>
 
-            <div onclick="openOrder('Paket 2 (Standard)', 'https://images.unsplash.com/photo-1600585154526-990dbee3f27e')" class="bg-abi-teal text-white p-8 shadow-xl transition cursor-pointer transform md:-translate-y-4 flex flex-col h-full relative rounded-2xl">
+            <div onclick="window.open('paket.html', '_self')" class="bg-abi-teal text-white p-8 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl flex flex-col h-full">
                 <div class="absolute top-0 right-0 p-4"><span class="bg-white text-abi-teal text-[9px] px-2 py-1 font-bold rounded">BEST SELLER</span></div>
                 <span class="text-xs font-bold text-white/50">02</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Standard</h4>
                 <p class="text-3xl font-light mb-6">22rb<span class="text-xs text-white/50">/m²</span></p>
-                <div class="flex-grow">
-                    <ul class="text-[11px] text-white/80 space-y-2 mb-8">
-                        <li><i class="fas fa-check text-white mr-2"></i> Denah & Tampak Lengkap</li>
-                        <li><i class="fas fa-check text-white mr-2"></i> Potongan & Pola Lantai</li>
-                        <li><i class="fas fa-check text-white mr-2"></i> 3D Modeling Full</li>
-                    </ul>
+                <ul class="text-[11px] text-white/80 space-y-3 mb-8 flex-grow">
+                    <li><i class="fas fa-check text-white mr-2"></i> Denah & Tampak Lengkap</li>
+                    <li><i class="fas fa-check text-white mr-2"></i> Potongan & Pola Lantai</li>
+                    <li><i class="fas fa-check text-white mr-2"></i> 3D Modeling Full</li>
+                </ul>
+                <div class="pt-6 border-t border-white/20 mt-auto">
+                    <div class="flex text-yellow-300 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-white/90 mb-2">"Render 3D-nya real banget!"</p>
+                    <p class="text-[10px] font-bold text-white">— Ibu M.S</p>
                 </div>
-                <div class="bg-white/10 p-3 rounded text-[10px] italic text-white/80">"Hasil 3D sangat detail." - Klien B.</div>
             </div>
 
-            <div onclick="openOrder('Paket 3 (Advance)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal flex flex-col h-full rounded-2xl">
+            <div onclick="window.open('paket.html', '_self')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal flex flex-col h-full rounded-2xl group">
                 <span class="text-xs font-bold text-gray-300">03</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Advance</h4>
                 <p class="text-3xl font-light text-abi-teal mb-6">33rb<span class="text-xs text-gray-400">/m²</span></p>
-                <div class="flex-grow">
-                    <ul class="text-[11px] text-gray-600 space-y-2 mb-8">
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Struktur & MEP Lengkap</li>
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Detail Kusen & Sanitasi</li>
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Paket Standard Include</li>
-                    </ul>
+                <ul class="text-[11px] text-gray-600 space-y-3 mb-8 flex-grow">
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Struktur & MEP Lengkap</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Detail Kusen & Sanitasi</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Paket Standard Include</li>
+                </ul>
+                <div class="pt-6 border-t border-gray-100 mt-auto">
+                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-gray-500 mb-2">"Hitungan struktur detail & aman."</p>
+                    <p class="text-[10px] font-bold text-gray-800">— Bpk. H.T</p>
                 </div>
-                <div class="bg-gray-50 p-3 rounded text-[10px] italic text-gray-500">"Dokumen lengkap untuk kontraktor." - Klien C.</div>
             </div>
 
-            <div onclick="openOrder('Paket RAB', 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 flex flex-col h-full rounded-2xl">
+            <div onclick="window.open('paket.html', '_self')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 flex flex-col h-full rounded-2xl group">
                 <span class="text-xs font-bold text-gray-300">04</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">RAB Only</h4>
                 <p class="text-3xl font-light text-gray-800 mb-6">10rb<span class="text-xs text-gray-400">/m²</span></p>
-                <div class="flex-grow">
-                    <ul class="text-[11px] text-gray-600 space-y-2 mb-8">
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Analisis Harga Satuan</li>
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Kebutuhan Material</li>
-                        <li><i class="fas fa-check text-abi-teal mr-2"></i> Format SPK</li>
-                    </ul>
+                <ul class="text-[11px] text-gray-600 space-y-3 mb-8 flex-grow">
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Analisis Harga Satuan</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Kebutuhan Material</li>
+                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Format SPK</li>
+                </ul>
+                <div class="pt-6 border-t border-gray-100 mt-auto">
+                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-[10px] italic text-gray-500 mb-2">"Sangat terbantu buat pinjaman bank."</p>
+                    <p class="text-[10px] font-bold text-gray-800">— Ibu L.A</p>
                 </div>
-                <div class="bg-gray-50 p-3 rounded text-[10px] italic text-gray-500">"Estimasi budget jadi aman." - Klien D.</div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="py-32 bg-white px-6">
-        <div class="container mx-auto mb-20 text-center">
-            <h3 class="text-[10px] font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Portfolio</h3>
-            <h2 class="text-4xl font-light">Residential, Office & Industrial</h2>
+    <section class="py-32 bg-white px-6">
+        <div class="container mx-auto mb-16 text-center">
+            <h3 class="text-[10px] font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Featured Works</h3>
+            <h2 class="text-4xl font-light">Karya & Inspirasi</h2>
         </div>
         
-        <div class="container mx-auto columns-1 md:columns-3 gap-6 space-y-6">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1600596542815-274ef3c53b94?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Modern Tropical Facade</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Residential</p>
+            <div class="group relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg" onclick="window.open('portfolio.html', '_self')">
+                <img src="proyek1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+                <div class="absolute bottom-0 left-0 p-8">
+                    <span class="bg-abi-teal text-white text-[9px] font-bold uppercase px-3 py-1 rounded-full mb-3 inline-block">Real Project</span>
+                    <h4 class="text-white text-2xl font-bold group-hover:translate-x-2 transition duration-300">Private Residential</h4>
                 </div>
             </div>
 
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Steel Structure Warehouse</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Industrial / Gudang</p>
+            <div class="group relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg" onclick="window.open('portfolio.html', '_self')">
+                <img src="proyek2.jpg" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+                <div class="absolute bottom-0 left-0 p-8">
+                    <span class="bg-abi-teal text-white text-[9px] font-bold uppercase px-3 py-1 rounded-full mb-3 inline-block">Real Project</span>
+                    <h4 class="text-white text-2xl font-bold group-hover:translate-x-2 transition duration-300">Commercial / Office</h4>
                 </div>
             </div>
 
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Executive Meeting Room</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Office Interior</p>
+             <div class="group relative h-[250px] rounded-2xl overflow-hidden cursor-pointer shadow-lg md:col-span-1" onclick="window.open('portfolio.html', '_self')">
+                <img src="proyek3.jpg" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+                <div class="absolute bottom-0 left-0 p-6">
+                    <h4 class="text-white text-lg font-bold">Interior Detail</h4>
                 </div>
             </div>
 
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1616486338812-3aeee7e3652e?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Scandinavian Living Room</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Interior Design</p>
+            <div class="group relative h-[250px] rounded-2xl overflow-hidden cursor-pointer shadow-lg md:col-span-1" onclick="window.open('portfolio.html', '_self')">
+                <img src="proyek4.jpg" onerror="this.src='https://images.unsplash.com/photo-1616486338812-3aeee7e3652e?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
+                <div class="absolute bottom-0 left-0 p-6">
+                    <h4 class="text-white text-lg font-bold">Facade Design</h4>
                 </div>
             </div>
 
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">High-Rise Office Building</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Commercial Architecture</p>
-                </div>
-            </div>
+        </div>
 
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1565514020176-db7936eb7862?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Logistics Center</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Industrial Facade</p>
-                </div>
-            </div>
-
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Modern Shophouse (Ruko)</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Commercial</p>
-                </div>
-            </div>
-
-            <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Minimalist Kitchen Set</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Interior Detail</p>
-                </div>
-            </div>
-
-             <div class="break-inside-avoid relative group pin-card rounded-2xl overflow-hidden cursor-pointer mb-6">
-                <img src="https://images.unsplash.com/photo-1590348697159-f9612110294b?q=80&w=800" class="w-full object-cover">
-                <div class="pin-overlay absolute inset-0 bg-black/60 opacity-0 transition duration-500 flex flex-col justify-end p-8">
-                    <p class="text-white font-bold text-lg">Structural Planning</p>
-                    <p class="text-xs text-gray-300 uppercase tracking-widest mt-1">Construction Phase</p>
-                </div>
-            </div>
-
+        <div class="text-center">
+            <a href="portfolio.html" class="inline-block bg-abi-dark text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-abi-teal transition shadow-lg hover:-translate-y-1">Lihat Semua Portfolio</a>
         </div>
     </section>
 
@@ -375,38 +350,12 @@
                     <h5 class="text-[10px] uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Social</h5>
                     <div class="flex md:justify-end space-x-6 text-xl opacity-60">
                         <a href="https://www.instagram.com/abi.studio.id/" target="_blank" class="hover:text-abi-teal transition"><i class="fab fa-instagram"></i></a>
-                        </div>
+                    </div>
                 </div>
                 <p class="text-[10px] uppercase tracking-[0.3em] opacity-40 mt-10">© 2025 ABI STUDIO</p>
             </div>
         </div>
     </footer>
-
-    <div id="orderModal" class="modal-overlay">
-        <div class="bg-white w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative animate-up">
-            <button onclick="closeOrder()" class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition">×</button>
-            <div class="md:w-2/5 h-48 md:h-auto relative">
-                <img id="modalImg" src="" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-abi-teal/20"></div>
-            </div>
-            <div class="md:w-3/5 p-8 md:p-12">
-                <h4 id="modalTitle" class="text-2xl font-bold mb-1">Nama Paket</h4>
-                <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-8">Lengkapi Detail Proyek</p>
-                <div class="space-y-4">
-                    <input type="number" id="area" placeholder="Luas Bangunan (m²)" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
-                    <select id="type" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600">
-                        <option value="Rumah">Rumah Tinggal</option>
-                        <option value="Kantor">Kantor</option>
-                        <option value="Ruko">Ruko</option>
-                        <option value="Gudang">Gudang</option>
-                    </select>
-                    <input type="text" id="location" placeholder="Lokasi Proyek" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
-                    <input type="text" id="date" placeholder="Rencana Pembangunan" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
-                    <button onclick="sendWhatsApp()" class="w-full bg-abi-teal text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-abi-dark transition duration-300 mt-6">Kirim via WhatsApp</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         // SLIDER
@@ -418,45 +367,11 @@
             slides[currentSlide].classList.add('active');
         }, 6000);
 
-        // MODAL
-        let selectedPkg = "";
-        function openOrder(pkg, img) {
-            selectedPkg = pkg;
-            document.getElementById('modalTitle').innerText = pkg;
-            document.getElementById('modalImg').src = img;
-            document.getElementById('orderModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeOrder() {
-            document.getElementById('orderModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // WHATSAPP
-        function sendWhatsApp() {
-            const area = document.getElementById('area').value;
-            const type = document.getElementById('type').value;
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            if(!area || !location || !date) { alert("Mohon lengkapi data."); return; }
-            const msg = `Halo ABI Studio,%0A` +
-                        `Saya tertarik dengan layanan:%0A%0A` +
-                        `📝 Nama Paket : *${selectedPkg}*%0A` +
-                        `📐 Luas Bangunan : ${area} m²%0A` +
-                        `🏡 Jenis Bangunan : ${type}%0A` +
-                        `📍 Lokasi Proyek : ${location}%0A` +
-                        `📅 Rencana Pembangunan : ${date}%0A%0A` +
-                        `Mohon info lebih lanjut.`;
-            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank');
-            closeOrder();
-        }
-
+        // MOBILE MENU
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
-
-        window.onclick = function(e) { if(e.target == document.getElementById('orderModal')) closeOrder(); }
     </script>
 </body>
 </html>
