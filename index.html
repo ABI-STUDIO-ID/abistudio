@@ -12,52 +12,30 @@
 <meta property="og:type" content="website">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jasa Arsitek, Desain Rumah, & Hitung RAB Profesional di Tangerang. Paket hemat mulai Rp 7.000/m².">
+    <meta name="description" content="Jasa Arsitek, Desain Rumah, & Hitung RAB Profesional di Tangerang.">
     <title>ABI STUDIO | Architect Building & Interior</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        abi: {
-                            teal: '#4A6D6D',
-                            dark: '#1a1a1a',
-                            light: '#f8f9fa'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    }
+                    colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a', light: '#f8f9fa' } },
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
                 }
             }
         }
     </script>
-    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
-        
-        body { background-color: #ffffff; color: #1a1a1a; overflow-x: hidden; }
-
-        /* SLIDER ANIMATIONS */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { background-color: #ffffff; color: #1a1a1a; overflow-x: hidden; font-size: 16px; }
         .slider-container { position: relative; height: 100vh; overflow: hidden; z-index: 0; }
-        .slide {
-            position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out;
-            background-size: cover; background-position: center;
-        }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; animation: kenBurns 8s infinite alternate; }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
-        
         .slide-content { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; transition-delay: 0.5s; }
         .slide.active .slide-content { opacity: 1; transform: translateY(0); }
-
-        /* TEAM CARD */
         .team-card:hover { transform: translateY(-10px); }
-        
-        /* IMAGE LOADING */
         img { transition: transform 0.5s ease; }
         .group:hover img { transform: scale(1.05); }
     </style>
@@ -65,29 +43,20 @@
 <body>
 
     <nav class="fixed w-full top-0 z-[9999] bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300 border-b border-gray-100" id="navbar">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            
-            <a href="index.html" class="flex items-center py-2">
-                <img src="logo.png" alt="ABI STUDIO" class="h-24 w-auto object-contain">
-            </a>
-
-            <div class="hidden md:flex space-x-8 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-700 items-center">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center py-2"><img src="logo.png" alt="ABI STUDIO" class="h-28 w-auto object-contain"></a>
+            <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
                 <a href="index.html" class="text-abi-teal border-b-2 border-abi-teal pb-1">Home</a>
                 <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
                 <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
                 <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
-                
-                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2.5 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg">Contact</a>
+                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-7 py-3 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg">Contact</a>
             </div>
-
-            <button class="md:hidden text-abi-teal text-2xl" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="md:hidden text-abi-teal text-2xl" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
         </div>
-
         <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-white text-black py-6 px-6 shadow-2xl border-t">
-            <div class="flex flex-col space-y-6 text-xs font-bold uppercase tracking-widest text-center">
+            <div class="flex flex-col space-y-6 text-sm font-bold uppercase tracking-widest text-center">
                 <a href="index.html" class="text-abi-teal">Home</a>
                 <a href="about.html" class="hover:text-abi-teal">About Us</a>
                 <a href="services.html" class="hover:text-abi-teal">Layanan</a>
@@ -100,17 +69,17 @@
 
     <section class="slider-container">
         <div class="slide active flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');">
-            <div class="slide-content max-w-4xl text-white pt-20">
-                <p class="text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-6 text-abi-teal bg-white/90 inline-block px-4 py-1.5 rounded-full shadow-lg">Architect Building & Interior</p>
-                <h2 class="text-4xl md:text-7xl font-light mb-8 leading-tight">Mewujudkan Bangunan <br><span class="font-bold">Impian Anda.</span></h2>
-                <a href="paket.html" class="inline-block bg-abi-teal text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
+            <div class="slide-content max-w-5xl text-white pt-20">
+                <p class="text-sm md:text-base font-bold uppercase tracking-[0.4em] mb-6 text-abi-teal bg-white/90 inline-block px-6 py-2 rounded-full shadow-lg">Architect Building & Interior</p>
+                <h2 class="text-5xl md:text-7xl font-light mb-8 leading-tight">Mewujudkan Bangunan <br><span class="font-bold">Impian Anda.</span></h2>
+                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
             </div>
         </div>
         <div class="slide flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');">
-            <div class="slide-content max-w-4xl text-white pt-20">
-                <p class="text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-6 text-abi-teal bg-white/90 inline-block px-4 py-1.5 rounded-full shadow-lg">Integrated Solution</p>
-                <h2 class="text-4xl md:text-7xl font-light mb-8 leading-tight">Desain Presisi <br><span class="font-bold">Konstruksi Kokoh.</span></h2>
-                <a href="paket.html" class="inline-block bg-abi-teal text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
+            <div class="slide-content max-w-5xl text-white pt-20">
+                <p class="text-sm md:text-base font-bold uppercase tracking-[0.4em] mb-6 text-abi-teal bg-white/90 inline-block px-6 py-2 rounded-full shadow-lg">Integrated Solution</p>
+                <h2 class="text-5xl md:text-7xl font-light mb-8 leading-tight">Desain Presisi <br><span class="font-bold">Konstruksi Kokoh.</span></h2>
+                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1">Lihat Paket</a>
             </div>
         </div>
     </section>
@@ -119,35 +88,33 @@
         <div class="container mx-auto">
             <div class="grid md:grid-cols-2 gap-16 mb-24">
                 <div>
-                    <span class="text-abi-teal text-[10px] font-bold uppercase tracking-[0.4em] block mb-6">Company Profile</span>
-                    <h3 class="text-3xl md:text-4xl font-light leading-tight mb-8">Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.</h3>
-                    <p class="text-gray-500 leading-relaxed mb-6 font-light text-justify">
-                        ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi, menciptakan ruang yang menyatukan dan menginspirasi.
+                    <span class="text-abi-teal text-sm font-bold uppercase tracking-[0.3em] block mb-6">Company Profile</span>
+                    <h3 class="text-3xl md:text-5xl font-light leading-tight mb-8">Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.</h3>
+                    <p class="text-gray-600 leading-relaxed mb-8 text-lg font-light text-justify">
+                        ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi.
                     </p>
-                    <a href="about.html" class="text-abi-teal text-xs font-bold uppercase tracking-widest border-b border-abi-teal pb-1 hover:text-black hover:border-black transition">Baca Selengkapnya</a>
+                    <a href="about.html" class="text-abi-teal text-sm font-bold uppercase tracking-widest border-b-2 border-abi-teal pb-1 hover:text-black hover:border-black transition">Baca Selengkapnya</a>
                 </div>
                 <div class="grid grid-cols-1 gap-8">
-                    <h4 class="text-2xl font-bold border-b pb-4">Meet Our Professional Team</h4>
-                    
-                    <div class="team-card flex items-center space-x-6 bg-gray-50 p-6 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
-                        <div class="w-20 h-20 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-2 border-abi-teal">
+                    <h4 class="text-3xl font-bold border-b pb-4">Our Leadership</h4>
+                    <div class="team-card flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
+                        <div class="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-2 border-abi-teal">
                             <img src="rama.jpg" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h5 class="text-lg font-bold">Ir. Rama Ganeza, ST., MPr.</h5>
-                            <p class="text-[10px] uppercase tracking-widest text-abi-teal font-bold">Founder & CEO</p>
-                            <p class="text-xs text-gray-500 mt-1">Ahli konstruksi dan manajemen proyek.</p>
+                            <h5 class="text-xl font-bold">Ir. Rama Ganeza, ST., MPr.</h5>
+                            <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Founder & CEO</p>
+                            <p class="text-sm text-gray-500 mt-2">Ahli konstruksi dan manajemen proyek.</p>
                         </div>
                     </div>
-
-                    <div class="team-card flex items-center space-x-6 bg-gray-50 p-6 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
-                        <div class="w-20 h-20 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-2 border-abi-teal">
+                    <div class="team-card flex items-center space-x-6 bg-gray-50 p-8 rounded-2xl transition duration-500 cursor-pointer border border-gray-100 shadow-sm">
+                        <div class="w-24 h-24 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 border-2 border-abi-teal">
                             <img src="angga.jpg" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h5 class="text-lg font-bold">Angga Aditya Pratama, SE.</h5>
-                            <p class="text-[10px] uppercase tracking-widest text-abi-teal font-bold">Co-Founder & Head of Marketing</p>
-                            <p class="text-xs text-gray-500 mt-1">Strategi bisnis dan hubungan klien.</p>
+                            <h5 class="text-xl font-bold">Angga Aditya Pratama, SE.</h5>
+                            <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Co-Founder & Head of Marketing</p>
+                            <p class="text-sm text-gray-500 mt-2">Strategi bisnis dan hubungan klien.</p>
                         </div>
                     </div>
                 </div>
@@ -158,220 +125,82 @@
     <section class="py-24 bg-abi-dark text-white px-6">
         <div class="container mx-auto">
             <div class="text-center mb-16">
-                <span class="text-abi-teal text-[10px] font-bold uppercase tracking-[0.4em]">Our Expertise</span>
-                <h2 class="text-3xl md:text-4xl font-light mt-4">Layanan Komprehensif</h2>
+                <span class="text-abi-teal text-sm font-bold uppercase tracking-[0.3em]">Our Expertise</span>
+                <h2 class="text-4xl md:text-5xl font-light mt-4">Layanan Komprehensif</h2>
             </div>
-            
             <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-white/5 p-10 rounded-3xl hover:bg-white/10 transition border border-white/10">
-                    <i class="fas fa-drafting-compass text-4xl text-abi-teal mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">Architecture & Building</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                <div class="bg-white/5 p-12 rounded-3xl hover:bg-white/10 transition border border-white/10">
+                    <i class="fas fa-drafting-compass text-5xl text-abi-teal mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-6">Architecture & Building</h3>
+                    <p class="text-base text-gray-300 leading-relaxed mb-6">
                         Layanan lengkap mulai dari Konsep Desain, Skematik, Pengembangan Desain, hingga Dokumen Kontrak dan Fase Konstruksi.
                     </p>
-                    <ul class="text-xs space-y-2 text-gray-300">
-                        <li><i class="fas fa-check mr-2 text-abi-teal"></i> Desain 2D & 3D Rendering</li>
-                        <li><i class="fas fa-check mr-2 text-abi-teal"></i> Gambar Struktural Detail</li>
-                        <li><i class="fas fa-check mr-2 text-abi-teal"></i> Pengawasan Konstruksi</li>
+                    <ul class="text-sm space-y-3 text-gray-300">
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Desain 2D & 3D Rendering</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Gambar Struktural Detail</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Pengawasan Konstruksi</li>
                     </ul>
                 </div>
-
-                <div class="bg-white/5 p-10 rounded-3xl hover:bg-white/10 transition border border-white/10">
-                    <i class="fas fa-couch text-4xl text-abi-teal mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">Interior Design</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                <div class="bg-white/5 p-12 rounded-3xl hover:bg-white/10 transition border border-white/10">
+                    <i class="fas fa-couch text-5xl text-abi-teal mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-6">Interior Design</h3>
+                    <p class="text-base text-gray-300 leading-relaxed mb-6">
                         Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang, furnitur, hingga pencahayaan.
                     </p>
-                    <ul class="text-xs space-y-2 text-gray-300">
-                        <li><i class="fas fa-check mr-2 text-abi-teal"></i> Furniture & Material Selection</li>
-                        <li><i class="fas fa-check mr-2 text-abi-teal"></i> Custom Furniture Design</li>
-                        <li><i class="fas fa-check mr-2 text-abi-teal"></i> Interior Renovation</li>
+                    <ul class="text-sm space-y-3 text-gray-300">
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Furniture & Material Selection</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Custom Furniture Design</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Interior Renovation</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="text-center mt-12">
-                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition">Lihat Selengkapnya</a>
+            <div class="text-center mt-16">
+                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition">Lihat Selengkapnya</a>
             </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-gray-50 px-6">
-        <div class="container mx-auto mb-20 text-center">
-            <h3 class="text-[10px] font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Pricing</h3>
-            <h2 class="text-4xl font-light">Pilihan Paket Perencanaan</h2>
-        </div>
-
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div onclick="window.open('paket.html', '_self')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal flex flex-col h-full rounded-2xl group">
-                <span class="text-xs font-bold text-gray-300">01</span>
-                <h4 class="text-xl font-bold mt-4 mb-2">Basic Plan</h4>
-                <p class="text-3xl font-light text-abi-teal mb-6">7rb<span class="text-xs text-gray-400">/m²</span></p>
-                <ul class="text-[11px] text-gray-600 space-y-3 mb-8 flex-grow">
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Denah 2D & 3D</li>
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> 3D Exterior Render</li>
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Revisi Minor 3x</li>
-                </ul>
-                <div class="pt-6 border-t border-gray-100 mt-auto">
-                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-[10px] italic text-gray-500 mb-2">"Solusi hemat buat renovasi dapur."</p>
-                    <p class="text-[10px] font-bold text-gray-800">— Bpk. R.D</p>
-                </div>
-            </div>
-
-            <div onclick="window.open('paket.html', '_self')" class="bg-abi-teal text-white p-8 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl flex flex-col h-full">
-                <div class="absolute top-0 right-0 p-4"><span class="bg-white text-abi-teal text-[9px] px-2 py-1 font-bold rounded">BEST SELLER</span></div>
-                <span class="text-xs font-bold text-white/50">02</span>
-                <h4 class="text-xl font-bold mt-4 mb-2">Standard</h4>
-                <p class="text-3xl font-light mb-6">22rb<span class="text-xs text-white/50">/m²</span></p>
-                <ul class="text-[11px] text-white/80 space-y-3 mb-8 flex-grow">
-                    <li><i class="fas fa-check text-white mr-2"></i> Denah & Tampak Lengkap</li>
-                    <li><i class="fas fa-check text-white mr-2"></i> Potongan & Pola Lantai</li>
-                    <li><i class="fas fa-check text-white mr-2"></i> 3D Modeling Full</li>
-                </ul>
-                <div class="pt-6 border-t border-white/20 mt-auto">
-                    <div class="flex text-yellow-300 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-[10px] italic text-white/90 mb-2">"Render 3D-nya real banget!"</p>
-                    <p class="text-[10px] font-bold text-white">— Ibu M.S</p>
-                </div>
-            </div>
-
-            <div onclick="window.open('paket.html', '_self')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal flex flex-col h-full rounded-2xl group">
-                <span class="text-xs font-bold text-gray-300">03</span>
-                <h4 class="text-xl font-bold mt-4 mb-2">Advance</h4>
-                <p class="text-3xl font-light text-abi-teal mb-6">33rb<span class="text-xs text-gray-400">/m²</span></p>
-                <ul class="text-[11px] text-gray-600 space-y-3 mb-8 flex-grow">
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Struktur & MEP Lengkap</li>
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Detail Kusen & Sanitasi</li>
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Paket Standard Include</li>
-                </ul>
-                <div class="pt-6 border-t border-gray-100 mt-auto">
-                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-[10px] italic text-gray-500 mb-2">"Hitungan struktur detail & aman."</p>
-                    <p class="text-[10px] font-bold text-gray-800">— Bpk. H.T</p>
-                </div>
-            </div>
-
-            <div onclick="window.open('paket.html', '_self')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 flex flex-col h-full rounded-2xl group">
-                <span class="text-xs font-bold text-gray-300">04</span>
-                <h4 class="text-xl font-bold mt-4 mb-2">RAB Only</h4>
-                <p class="text-3xl font-light text-gray-800 mb-6">10rb<span class="text-xs text-gray-400">/m²</span></p>
-                <ul class="text-[11px] text-gray-600 space-y-3 mb-8 flex-grow">
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Analisis Harga Satuan</li>
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Kebutuhan Material</li>
-                    <li><i class="fas fa-check text-abi-teal mr-2"></i> Format SPK</li>
-                </ul>
-                <div class="pt-6 border-t border-gray-100 mt-auto">
-                    <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-[10px] italic text-gray-500 mb-2">"Sangat terbantu buat pinjaman bank."</p>
-                    <p class="text-[10px] font-bold text-gray-800">— Ibu L.A</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-white px-6">
-        <div class="container mx-auto mb-16 text-center">
-            <h3 class="text-[10px] font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Featured Works</h3>
-            <h2 class="text-4xl font-light">Karya & Inspirasi</h2>
-        </div>
-        
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            
-            <div class="group relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg" onclick="window.open('portfolio.html', '_self')">
-                <img src="proyek1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
-                <div class="absolute bottom-0 left-0 p-8">
-                    <span class="bg-abi-teal text-white text-[9px] font-bold uppercase px-3 py-1 rounded-full mb-3 inline-block">Real Project</span>
-                    <h4 class="text-white text-2xl font-bold group-hover:translate-x-2 transition duration-300">Private Residential</h4>
-                </div>
-            </div>
-
-            <div class="group relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden cursor-pointer shadow-lg" onclick="window.open('portfolio.html', '_self')">
-                <img src="proyek2.jpg" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
-                <div class="absolute bottom-0 left-0 p-8">
-                    <span class="bg-abi-teal text-white text-[9px] font-bold uppercase px-3 py-1 rounded-full mb-3 inline-block">Real Project</span>
-                    <h4 class="text-white text-2xl font-bold group-hover:translate-x-2 transition duration-300">Commercial / Office</h4>
-                </div>
-            </div>
-
-             <div class="group relative h-[250px] rounded-2xl overflow-hidden cursor-pointer shadow-lg md:col-span-1" onclick="window.open('portfolio.html', '_self')">
-                <img src="proyek3.jpg" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
-                <div class="absolute bottom-0 left-0 p-6">
-                    <h4 class="text-white text-lg font-bold">Interior Detail</h4>
-                </div>
-            </div>
-
-            <div class="group relative h-[250px] rounded-2xl overflow-hidden cursor-pointer shadow-lg md:col-span-1" onclick="window.open('portfolio.html', '_self')">
-                <img src="proyek4.jpg" onerror="this.src='https://images.unsplash.com/photo-1616486338812-3aeee7e3652e?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-500"></div>
-                <div class="absolute bottom-0 left-0 p-6">
-                    <h4 class="text-white text-lg font-bold">Facade Design</h4>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="text-center">
-            <a href="portfolio.html" class="inline-block bg-abi-dark text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-abi-teal transition shadow-lg hover:-translate-y-1">Lihat Semua Portfolio</a>
         </div>
     </section>
 
     <footer id="contact" class="bg-abi-dark text-white py-20 px-6 border-t border-white/10 relative z-50">
-        <div class="container mx-auto grid md:grid-cols-3 gap-12 text-sm font-light">
+        <div class="container mx-auto grid md:grid-cols-3 gap-12 text-base font-light">
             <div>
-                <h5 class="text-lg font-bold mb-6">ABI STUDIO</h5>
-                <a href="https://goo.gl/maps/YOUR_MAP_LINK_HERE" target="_blank" class="opacity-60 leading-relaxed hover:text-abi-teal hover:opacity-100 transition flex items-start group">
+                <h5 class="text-xl font-bold mb-6">ABI STUDIO</h5>
+                <a href="https://goo.gl/maps/YOUR_MAP_LINK_HERE" target="_blank" class="opacity-80 leading-relaxed hover:text-abi-teal hover:opacity-100 transition flex items-start group text-base">
                     <i class="fas fa-map-marker-alt mt-1 mr-3 text-abi-teal group-hover:scale-110 transition"></i>
                     <span>Cluster Puri Asri 1 Blok B No.2,<br>Poris Plawad Utara, Cipondoh,<br>Tangerang 15141.</span>
                 </a>
             </div>
             <div>
-                <h5 class="text-[10px] uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Contact Us</h5>
-                <div class="space-y-4">
-                    <div class="flex items-center opacity-60 hover:opacity-100 transition cursor-pointer" onclick="window.open('https://wa.me/6285157577465','_blank')">
-                        <i class="fab fa-whatsapp mr-3 text-lg"></i>
+                <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Contact Us</h5>
+                <div class="space-y-6">
+                    <div class="flex items-center opacity-80 hover:opacity-100 transition cursor-pointer" onclick="window.open('https://wa.me/6285157577465','_blank')">
+                        <i class="fab fa-whatsapp mr-4 text-2xl"></i>
                         <div>
-                            <p class="font-bold">Angga Aditya Pratama, SE</p>
-                            <p class="text-xs">Co-Founder & Head of Marketing</p>
-                            <p class="text-xs mt-1">0851-5757-7465</p>
+                            <p class="font-bold text-base">Angga Aditya Pratama, SE</p>
+                            <p class="text-sm">Co-Founder & Head of Marketing</p>
+                            <p class="text-sm mt-1">0851-5757-7465</p>
                         </div>
                     </div>
-                    <div class="flex items-center opacity-60">
-                        <i class="far fa-envelope mr-3 text-lg"></i>
-                        <span>abi.studio.id@gmail.com</span>
+                    <div class="flex items-center opacity-80">
+                        <i class="far fa-envelope mr-4 text-2xl"></i>
+                        <span class="text-base">abi.studio.id@gmail.com</span>
                     </div>
                 </div>
             </div>
             <div class="md:text-right flex flex-col justify-between">
                 <div>
-                    <h5 class="text-[10px] uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Social</h5>
-                    <div class="flex md:justify-end space-x-6 text-xl opacity-60">
+                    <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Social</h5>
+                    <div class="flex md:justify-end space-x-8 text-2xl opacity-80">
                         <a href="https://www.instagram.com/abi.studio.id/" target="_blank" class="hover:text-abi-teal transition"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <p class="text-[10px] uppercase tracking-[0.3em] opacity-40 mt-10">© 2025 ABI STUDIO</p>
+                <p class="text-xs uppercase tracking-[0.3em] opacity-50 mt-10">© 2025 ABI STUDIO</p>
             </div>
         </div>
     </footer>
-
     <script>
-        // SLIDER
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        setInterval(() => {
-            slides.forEach(slide => slide.classList.remove('active'));
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 6000);
-
-        // MOBILE MENU
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
+        let currentSlide = 0; const slides = document.querySelectorAll('.slide');
+        setInterval(() => { slides.forEach(s => s.classList.remove('active')); currentSlide = (currentSlide + 1) % slides.length; slides[currentSlide].classList.add('active'); }, 6000);
+        function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
     </script>
 </body>
 </html>
