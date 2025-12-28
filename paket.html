@@ -16,7 +16,19 @@
             }
         }
     </script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); 
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* MODAL CSS (Dikembalikan) */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px);
+            z-index: 9999; align-items: center; justify-content: center; padding: 20px;
+        }
+        .animate-up { animation: slideUp 0.4s ease-out forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
@@ -46,7 +58,7 @@
     <section class="py-20 px-6 flex-grow">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
             
-            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20Basic', '_blank')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full">
+            <div onclick="openOrder('Paket 1 (Basic)', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full group">
                 <span class="text-xs font-bold text-gray-300">01</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Basic Plan</h4>
                 <p class="text-3xl font-light text-abi-teal mb-6">7rb<span class="text-xs text-gray-400">/m²</span></p>
@@ -55,7 +67,7 @@
                     <li><i class="fas fa-check text-abi-teal mr-2"></i> 3D Exterior Render</li>
                     <li><i class="fas fa-check text-abi-teal mr-2"></i> Revisi Minor 3x</li>
                 </ul>
-                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full mb-6">Pilih Paket</button>
+                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest group-hover:bg-abi-teal group-hover:text-white transition rounded-full mb-6">Pilih Paket</button>
                 
                 <div class="pt-6 border-t border-gray-100 mt-auto">
                     <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -64,7 +76,7 @@
                 </div>
             </div>
 
-            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20Standard', '_blank')" class="bg-abi-teal text-white p-8 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl flex flex-col h-full">
+            <div onclick="openOrder('Paket 2 (Standard)', 'https://images.unsplash.com/photo-1600585154526-990dbee3f27e')" class="bg-abi-teal text-white p-8 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl flex flex-col h-full group">
                 <div class="absolute top-0 right-0 p-4"><span class="bg-white text-abi-teal text-[9px] px-2 py-1 font-bold rounded">BEST SELLER</span></div>
                 <span class="text-xs font-bold text-white/50">02</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Standard</h4>
@@ -83,7 +95,7 @@
                 </div>
             </div>
 
-            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20Advance', '_blank')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full">
+            <div onclick="openOrder('Paket 3 (Advance)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full group">
                 <span class="text-xs font-bold text-gray-300">03</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">Advance</h4>
                 <p class="text-3xl font-light text-abi-teal mb-6">33rb<span class="text-xs text-gray-400">/m²</span></p>
@@ -92,7 +104,7 @@
                     <li><i class="fas fa-check text-abi-teal mr-2"></i> Detail Kusen & Sanitasi</li>
                     <li><i class="fas fa-check text-abi-teal mr-2"></i> Paket Standard Include</li>
                 </ul>
-                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full mb-6">Pilih Paket</button>
+                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest group-hover:bg-abi-teal group-hover:text-white transition rounded-full mb-6">Pilih Paket</button>
 
                 <div class="pt-6 border-t border-gray-100 mt-auto">
                     <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -101,7 +113,7 @@
                 </div>
             </div>
 
-            <div onclick="window.open('https://wa.me/6285157577465?text=Halo%20saya%20tertarik%20Paket%20RAB', '_blank')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 rounded-2xl flex flex-col h-full">
+            <div onclick="openOrder('Paket RAB', 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c')" class="bg-white p-8 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 rounded-2xl flex flex-col h-full group">
                 <span class="text-xs font-bold text-gray-300">04</span>
                 <h4 class="text-xl font-bold mt-4 mb-2">RAB Only</h4>
                 <p class="text-3xl font-light text-gray-800 mb-6">10rb<span class="text-xs text-gray-400">/m²</span></p>
@@ -110,7 +122,7 @@
                     <li><i class="fas fa-check text-abi-teal mr-2"></i> Kebutuhan Material</li>
                     <li><i class="fas fa-check text-abi-teal mr-2"></i> Format SPK</li>
                 </ul>
-                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full mb-6">Pilih Paket</button>
+                <button class="w-full py-3 border border-gray-200 text-[10px] font-bold uppercase tracking-widest group-hover:bg-abi-dark group-hover:text-white transition rounded-full mb-6">Pilih Paket</button>
 
                 <div class="pt-6 border-t border-gray-100 mt-auto">
                     <div class="flex text-yellow-400 text-[10px] mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -126,5 +138,82 @@
         <p class="opacity-40 uppercase tracking-[0.2em]">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
+    <div id="orderModal" class="modal-overlay">
+        <div class="bg-white w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative animate-up">
+            <button onclick="closeOrder()" class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition">×</button>
+            
+            <div class="md:w-2/5 h-48 md:h-auto relative">
+                <img id="modalImg" src="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-abi-teal/20"></div>
+            </div>
+
+            <div class="md:w-3/5 p-8 md:p-12">
+                <h4 id="modalTitle" class="text-2xl font-bold mb-1">Nama Paket</h4>
+                <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-8">Lengkapi Detail Proyek</p>
+                
+                <div class="space-y-4">
+                    <input type="number" id="area" placeholder="Luas Bangunan (m²)" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    <select id="type" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600">
+                        <option value="Rumah">Rumah Tinggal</option>
+                        <option value="Kantor">Kantor</option>
+                        <option value="Ruko">Ruko</option>
+                        <option value="Gudang">Gudang</option>
+                    </select>
+                    <input type="text" id="location" placeholder="Lokasi Proyek" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    <input type="text" id="date" placeholder="Rencana Pembangunan" class="w-full border-b border-gray-200 py-3 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent">
+                    
+                    <button onclick="sendWhatsApp()" class="w-full bg-abi-teal text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-abi-dark transition duration-300 mt-6">
+                        Kirim via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // MODAL
+        let selectedPkg = "";
+        
+        function openOrder(pkg, img) {
+            selectedPkg = pkg;
+            document.getElementById('modalTitle').innerText = pkg;
+            // Gunakan gambar default jika tidak ada img yang dipassing
+            document.getElementById('modalImg').src = img || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80';
+            document.getElementById('orderModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOrder() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // WHATSAPP
+        function sendWhatsApp() {
+            const area = document.getElementById('area').value;
+            const type = document.getElementById('type').value;
+            const location = document.getElementById('location').value;
+            const date = document.getElementById('date').value;
+
+            if(!area || !location || !date) { alert("Mohon lengkapi data."); return; }
+
+            const msg = `Halo ABI Studio,%0A` +
+                        `Saya tertarik dengan layanan:%0A%0A` +
+                        `📝 Nama Paket : *${selectedPkg}*%0A` +
+                        `📐 Luas Bangunan : ${area} m²%0A` +
+                        `🏡 Jenis Bangunan : ${type}%0A` +
+                        `📍 Lokasi Proyek : ${location}%0A` +
+                        `📅 Rencana Pembangunan : ${date}%0A%0A` +
+                        `Mohon info lebih lanjut.`;
+
+            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank');
+            closeOrder();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(e) {
+            if(e.target == document.getElementById('orderModal')) closeOrder();
+        }
+    </script>
 </body>
 </html>
