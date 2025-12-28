@@ -21,6 +21,7 @@
         }
         .slide.active { opacity: 1; }
         
+        /* Ken Burns Effect (Slow Zoom) */
         .slide.active { animation: kenBurns 8s infinite alternate; }
         @keyframes kenBurns {
             from { transform: scale(1); }
@@ -94,16 +95,18 @@
         <div class="container mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
                 <span class="text-teal-abi text-[10px] font-bold uppercase tracking-[0.4em] block mb-6">About Studio</span>
-                <h3 class="text-4xl font-light leading-snug mb-8">Menggabungkan estetika arsitektur dengan <strong class="font-bold">kekuatan struktur.</strong></h3>
-                <p class="text-gray-500 leading-relaxed mb-8 font-light">ABI STUDIO hadir di Tangerang sebagai solusi perencanaan konstruksi terpadu. Kami memastikan setiap garis desain dapat dibangun dengan aman dan biaya yang terukur.</p>
+                <h3 class="text-4xl font-light leading-snug mb-8">Sinergi antara manajemen profesional & <strong class="font-bold">keahlian konstruksi.</strong></h3>
+                <p class="text-gray-500 leading-relaxed mb-8 font-light">
+                    ABI STUDIO menggabungkan perencanaan arsitektur presisi dengan manajemen proyek yang responsif. Dipimpin oleh Founder berpengalaman di bidang konstruksi dan didukung tim Marketing & Relationship yang berdedikasi, kami memastikan proyek Anda berjalan aman, tepat waktu, dan sesuai budget.
+                </p>
                 <div class="flex space-x-12">
                     <div>
-                        <h4 class="text-3xl font-bold text-teal-abi">100+</h4>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-1">Projects</p>
+                        <h4 class="text-3xl font-bold text-teal-abi">100%</h4>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-1">Professional</p>
                     </div>
                     <div>
-                        <h4 class="text-3xl font-bold text-teal-abi">5+</h4>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-1">Years Exp</p>
+                        <h4 class="text-3xl font-bold text-teal-abi">Target</h4>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-1">On Schedule</p>
                     </div>
                 </div>
             </div>
@@ -216,22 +219,25 @@
         <div class="container mx-auto grid md:grid-cols-3 gap-12 text-sm font-light">
             <div>
                 <h5 class="text-lg font-bold mb-6">ABI STUDIO</h5>
-                <p class="opacity-60 leading-relaxed">Jl. Hidup Baru I no.8,<br>Kota Tangerang, Banten.</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Cluster+Puri+Asri+1+Blok+B+No.2,+Poris+Plawad+Utara,+Cipondoh,+Tangerang+15141" target="_blank" class="opacity-60 leading-relaxed hover:text-teal-400 hover:opacity-100 transition flex items-start">
+                    <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                    <span>Cluster Puri Asri 1 Blok B No.2,<br>Poris Plawad Utara, Cipondoh,<br>Tangerang 15141.</span>
+                </a>
             </div>
             <div>
                 <h5 class="text-[10px] uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Contact</h5>
-                <p class="opacity-60 mb-2">0851-5757-7465</p>
+                <p class="opacity-60 mb-2 hover:text-teal-400 transition cursor-pointer" onclick="window.open('https://wa.me/6285157577465','_blank')">0851-5757-7465 (Marketing)</p>
                 <p class="opacity-60">abi.studio.id@gmail.com</p>
             </div>
             <div class="md:text-right">
-                <p class="text-[10px] uppercase tracking-[0.3em] opacity-40">&copy; 2025 ABI STUDIO</p>
+                <p class="text-[10px] uppercase tracking-[0.3em] opacity-40">© 2025 ABI STUDIO</p>
             </div>
         </div>
     </footer>
 
     <div id="orderModal" class="modal-overlay">
         <div class="bg-white w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative animate-up">
-            <button onclick="closeOrder()" class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition">&times;</button>
+            <button onclick="closeOrder()" class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition">×</button>
             
             <div class="md:w-2/5 h-48 md:h-auto relative">
                 <img id="modalImg" src="" class="w-full h-full object-cover">
