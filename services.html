@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layanan - ABI STUDIO</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a' } },
+                    colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a', light: '#f8f9fa' } },
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
                 }
             }
         }
     </script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
@@ -30,7 +31,7 @@
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
                 <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
                 <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
-                <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
+                <a href="services.html" class="hover:text-abi-teal transition pb-1 text-abi-teal">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
                 <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
                 
@@ -54,91 +55,209 @@
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
+    <header class="pt-48 pb-24 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000')] bg-cover bg-center"></div>
         <div class="relative z-10">
             <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Our Expertise</p>
             <h1 class="text-4xl md:text-6xl font-light">Solusi Terintegrasi</h1>
+            <p class="mt-6 text-gray-300 font-light text-lg max-w-2xl mx-auto">Dari desain rumah impian hingga pengerjaan detail sipil seperti kolam renang dan kanopi.</p>
         </div>
     </header>
 
     <section class="py-20 px-6">
-        <div class="container mx-auto grid md:grid-cols-2 gap-12">
-            
-            <div class="bg-white p-10 rounded-2xl shadow-lg border-t-4 border-abi-teal">
-                <div class="w-16 h-16 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6">
-                    <i class="fas fa-drafting-compass"></i>
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6 group-hover:bg-abi-teal group-hover:text-white transition">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-abi-dark">Arsitek & Bangun Baru</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6 h-20">
+                        Layanan lengkap dari nol. Perencanaan denah, desain fasade 3D, perhitungan struktur, hingga pembangunan fisik terima kunci.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 mb-6 border-t pt-4">
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Desain Rumah Tinggal & Villa</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Bangunan Komersial (Ruko/Kost)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Gambar IMB/PBG</li>
+                    </ul>
+                    <button onclick="contactService('Jasa Arsitek & Bangun')" class="w-full py-3 border border-abi-teal text-abi-teal text-xs font-bold uppercase rounded-lg hover:bg-abi-teal hover:text-white transition">Konsultasi Arsitek</button>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 text-abi-dark">Architecture & Engineering</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                    Layanan perencanaan bangunan menyeluruh. Kami memastikan setiap struktur aman, legal (sesuai standar IMB/PBG), dan estetis.
-                </p>
-                <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-teal mr-3"></i>Konsep & Denah Tata Ruang</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-teal mr-3"></i>Desain Fasade 3D (Eksterior)</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-teal mr-3"></i>Gambar Kerja Arsitektur (DED)</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-teal mr-3"></i>Perhitungan Struktur (Sipil)</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-teal mr-3"></i>Rencana Anggaran Biaya (RAB)</li>
-                </ul>
-            </div>
 
-            <div class="bg-white p-10 rounded-2xl shadow-lg border-t-4 border-abi-dark">
-                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-abi-dark text-2xl mb-6">
-                    <i class="fas fa-couch"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6 group-hover:bg-abi-teal group-hover:text-white transition">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-abi-dark">Interior & Kitchen Set</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6 h-20">
+                        Transformasi ruang dalam agar estetik dan fungsional. Kami memproduksi furniture custom berkualitas tinggi di workshop sendiri.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 mb-6 border-t pt-4">
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Custom Kitchen Set & Wardrobe</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Desain Interior Kantor/Cafe</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Instalasi Lantai Vinyl/Parquet</li>
+                    </ul>
+                    <button onclick="contactService('Jasa Interior')" class="w-full py-3 border border-abi-teal text-abi-teal text-xs font-bold uppercase rounded-lg hover:bg-abi-teal hover:text-white transition">Konsultasi Interior</button>
                 </div>
-                <h3 class="text-2xl font-bold mb-4 text-abi-dark">Interior Design & Build</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                    Menciptakan suasana ruang yang nyaman, fungsional, dan personal. Mulai dari pemilihan material hingga pencahayaan.
-                </p>
-                <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-dark mr-3"></i>Space Planning (Tata Letak)</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-dark mr-3"></i>Desain 3D Interior</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-dark mr-3"></i>Pemilihan Furniture & Material</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-dark mr-3"></i>Desain Pencahayaan (Lighting)</li>
-                    <li class="flex items-center"><i class="fas fa-check-circle text-abi-dark mr-3"></i>Custom Furniture & Kitchen Set</li>
-                </ul>
-            </div>
 
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-xs font-bold px-3 py-1 rounded-bl-lg text-abi-dark">POPULAR</div>
+                    <div class="w-14 h-14 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6 group-hover:bg-abi-teal group-hover:text-white transition">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-abi-dark">Kanopi & Eksterior</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6 h-20">
+                        Lindungi dan percantik area luar rumah Anda. Spesialisasi kami pada struktur baja ringan dan besi hollow dengan finishing rapi.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 mb-6 border-t pt-4">
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Kanopi Kaca Tempered / Alderon</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Pagar Laser Cutting / Minimalis</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Railing Tangga & Balkon</li>
+                    </ul>
+                    <button onclick="contactService('Pembuatan Kanopi/Pagar')" class="w-full py-3 border border-abi-teal text-abi-teal text-xs font-bold uppercase rounded-lg hover:bg-abi-teal hover:text-white transition">Tanya Harga Kanopi</button>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6 group-hover:bg-abi-teal group-hover:text-white transition">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-abi-dark">Kolam Renang</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6 h-20">
+                        Hadirkan kemewahan private pool di rumah Anda. Kami menangani struktur anti-bocor, sistem sirkulasi, hingga perawatan.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 mb-6 border-t pt-4">
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Sistem Skimmer & Overflow</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Finishing Mozaik / Batu Alam</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Maintenance & Water Treatment</li>
+                    </ul>
+                    <button onclick="contactService('Pembuatan Kolam Renang')" class="w-full py-3 border border-abi-teal text-abi-teal text-xs font-bold uppercase rounded-lg hover:bg-abi-teal hover:text-white transition">Konsultasi Pool</button>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6 group-hover:bg-abi-teal group-hover:text-white transition">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-abi-dark">Renovasi & Sipil</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6 h-20">
+                        Solusi untuk perbaikan atau penambahan ruang. Tim tukang berpengalaman kami siap mengerjakan renovasi skala kecil hingga besar.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 mb-6 border-t pt-4">
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Dak Beton & Penambahan Lantai</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Perbaikan Atap Bocor & Plafon</li>
+                        <li class="flex items-center"><i class="fas fa-check text-abi-teal mr-2"></i>Pengecatan Ulang & Pasang Keramik</li>
+                    </ul>
+                    <button onclick="contactService('Jasa Renovasi Sipil')" class="w-full py-3 border border-abi-teal text-abi-teal text-xs font-bold uppercase rounded-lg hover:bg-abi-teal hover:text-white transition">Butuh Tukang</button>
+                </div>
+
+                <div class="bg-abi-dark p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 group flex flex-col justify-center items-center text-center">
+                    <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center text-abi-teal text-3xl mb-6">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Lihat Paket Harga?</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Sudah punya gambaran luasan bangunan? Cek paket harga desain arsitek kami yang transparan mulai Rp 7.000/m².
+                    </p>
+                    <a href="paket.html" class="w-full py-4 bg-abi-teal text-white text-xs font-bold uppercase rounded-lg hover:bg-white hover:text-abi-dark transition shadow-lg">Buka Menu Paket</a>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-white">
+    <section class="py-20 px-6 bg-white border-t border-gray-100">
         <div class="container mx-auto text-center mb-16">
-            <h3 class="text-2xl font-bold">Bagaimana Cara Kerjanya?</h3>
-            <p class="text-gray-500 text-sm mt-2">4 Langkah mudah mewujudkan bangunan impian.</p>
+            <h3 class="text-2xl font-bold">Alur Kerja</h3>
+            <p class="text-gray-500 text-sm mt-2">Simpel & Transparan.</p>
         </div>
         
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
             <div class="text-center">
-                <div class="w-12 h-12 bg-abi-teal text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-lg">1</div>
-                <h4 class="font-bold mb-2">Konsultasi</h4>
-                <p class="text-xs text-gray-500 px-4">Diskusikan kebutuhan, lokasi, dan budget Anda dengan tim kami.</p>
+                <div class="w-10 h-10 bg-abi-teal text-white rounded-full flex items-center justify-center font-bold mx-auto mb-4">1</div>
+                <h4 class="font-bold text-sm mb-2">Konsultasi</h4>
             </div>
             <div class="text-center">
-                <div class="w-12 h-12 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-lg">2</div>
-                <h4 class="font-bold mb-2">Konsep & Layout</h4>
-                <p class="text-xs text-gray-500 px-4">Kami membuat denah tata ruang untuk Anda review dan setujui.</p>
+                <div class="w-10 h-10 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center font-bold mx-auto mb-4">2</div>
+                <h4 class="font-bold text-sm mb-2">Survey/Desain</h4>
             </div>
             <div class="text-center">
-                <div class="w-12 h-12 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-lg">3</div>
-                <h4 class="font-bold mb-2">Visualisasi 3D</h4>
-                <p class="text-xs text-gray-500 px-4">Melihat bentuk bangunan secara nyata melalui render 3D.</p>
+                <div class="w-10 h-10 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center font-bold mx-auto mb-4">3</div>
+                <h4 class="font-bold text-sm mb-2">RAB & SPK</h4>
             </div>
             <div class="text-center">
-                <div class="w-12 h-12 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center font-bold mx-auto mb-4 text-lg">4</div>
-                <h4 class="font-bold mb-2">Gambar Kerja</h4>
-                <p class="text-xs text-gray-500 px-4">Dokumen teknis lengkap (DED & RAB) siap untuk pembangunan.</p>
+                <div class="w-10 h-10 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center font-bold mx-auto mb-4">4</div>
+                <h4 class="font-bold text-sm mb-2">Pelaksanaan</h4>
             </div>
-        </div>
-
-        <div class="text-center mt-16">
-            <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-abi-dark transition shadow-lg hover:-translate-y-1">Lihat Harga Paket</a>
         </div>
     </section>
 
-    <footer class="bg-abi-dark text-white py-10 text-center text-xs mt-auto">
-        <p class="opacity-40 uppercase tracking-[0.2em]">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
+    <footer id="contact" class="bg-abi-dark text-white py-20 px-6 border-t border-white/10 relative z-50">
+        <div class="container mx-auto grid md:grid-cols-3 gap-12 text-base font-light">
+            <div>
+                <h5 class="text-xl font-bold mb-6">ABI STUDIO</h5>
+                <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="opacity-80 leading-relaxed hover:text-abi-teal hover:opacity-100 transition flex items-start group text-base mb-6">
+                    <i class="fas fa-map-marker-alt mt-1 mr-3 text-abi-teal group-hover:scale-110 transition"></i>
+                    <span>Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>Sudimara Pinang, Kec. Pinang,<br>Kota Tangerang, Banten 15145.</span>
+                </a>
+                
+                <div class="rounded-xl overflow-hidden shadow-lg border border-white/10 relative group h-40 w-full hover:border-abi-teal transition duration-300">
+                    <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="block w-full h-full">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.339472620703!2d106.69085697587784!3d-6.218883660911768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f9a466336421%3A0x705c750059c0499!2sJl.%20Hidup%20Baru%20I%20No.8%2C%20RT.004%2FRW.001%2C%20Sudimara%20Pinang%2C%20Kec.%20Pinang%2C%20Kota%20Tangerang%2C%20Banten%2015145!5e0!3m2!1sid!2sid!4v1709650000000!5m2!1sid!2sid" 
+                            width="100%" height="100%" style="border:0; pointer-events: none;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                            <span class="opacity-0 group-hover:opacity-100 bg-abi-teal text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition">
+                                <i class="fas fa-map-marked-alt mr-2"></i>Buka Maps
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Contact Us</h5>
+                <div class="space-y-6">
+                    <div class="flex items-center opacity-80 hover:opacity-100 transition cursor-pointer" onclick="window.open('https://wa.me/6285157577465','_blank')">
+                        <i class="fab fa-whatsapp mr-4 text-2xl"></i>
+                        <div>
+                            <p class="font-bold text-base">Angga Aditya Pratama, SE</p>
+                            <p class="text-sm">Co-Founder & Head of Marketing</p>
+                            <p class="text-sm mt-1">0851-5757-7465</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center opacity-80">
+                        <i class="far fa-envelope mr-4 text-2xl"></i>
+                        <span class="text-base">abi.studio.id@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:text-right flex flex-col justify-between">
+                <div>
+                    <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Social</h5>
+                    <div class="flex md:justify-end space-x-8 text-2xl opacity-80">
+                        <a href="https://www.instagram.com/abi.studio.id/" target="_blank" class="hover:text-abi-teal transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <p class="text-xs uppercase tracking-[0.3em] opacity-50 mt-10">© 2025 ABI STUDIO</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // Script Tombol Lead Langsung ke WA
+        function contactService(serviceName) {
+            const msg = `Halo ABI Studio,%0A` + 
+                        `Saya melihat website dan tertarik konsultasi tentang:%0A` + 
+                        `👉 *${serviceName}*%0A%0A` + 
+                        `Mohon info estimasi harga dan prosedurnya. Terima kasih.`;
+            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank');
+        }
+    </script>
 
 </body>
 </html>
