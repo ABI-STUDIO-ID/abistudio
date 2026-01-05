@@ -17,7 +17,19 @@
             }
         }
     </script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap'); body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap'); 
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+        .animate-zoom { animation: zoomIn 0.3s ease-out forwards; }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        
+        /* Typography untuk Artikel agar enak dibaca */
+        .article-prose h3 { font-size: 1.25rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #1a1a1a; }
+        .article-prose p { margin-bottom: 1rem; line-height: 1.7; color: #4b5563; }
+        .article-prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; color: #4b5563; }
+        .article-prose li { margin-bottom: 0.5rem; }
+    </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
@@ -59,47 +71,47 @@
     <section class="py-20 px-6">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
             
-            <div class="lg:col-span-2 space-y-12">
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row">
-                    <div class="md:w-2/5 h-64 md:h-auto relative">
-                        <img src="https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800" class="w-full h-full object-cover">
+            <div class="lg:col-span-2 space-y-8">
+                
+                 <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="md:w-3/5 p-8 flex flex-col justify-center">
-                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Tips Sipil</div>
-                        <h2 class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer">Ciri-ciri Pondasi Rumah yang Kuat & Tahan Gempa</h2>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Jangan salah pilih material! Simak 5 hal wajib yang harus dicek saat pembuatan pondasi cakar ayam agar rumah aman bertahun-tahun.</p>
-                        <a href="#" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Artikel</a>
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Tips Sipil • 5 Jan 2026</div>
+                        <h2 onclick="openArticle('article1')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Ciri-ciri Pondasi Rumah yang Kuat & Tahan Gempa</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Jangan salah pilih material! Simak 5 hal wajib yang harus dicek saat pembuatan pondasi cakar ayam agar rumah aman.</p>
+                        <button onclick="openArticle('article1')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row">
-                    <div class="md:w-2/5 h-64 md:h-auto relative">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="w-full h-full object-cover">
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="md:w-3/5 p-8 flex flex-col justify-center">
-                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Renovasi</div>
-                        <h2 class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer">Hitungan Biaya Ngedak Lantai 2 (Beton vs Bondek)</h2>
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Renovasi • 2 Jan 2026</div>
+                        <h2 onclick="openArticle('article2')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Hitungan Biaya Ngedak Lantai 2 (Beton vs Bondek)</h2>
                         <p class="text-gray-500 text-sm leading-relaxed mb-6">Bingung pilih metode cor dak? Kami bedah perbandingan biaya dan kekuatan antara metode konvensional dan bondek.</p>
-                        <a href="#" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Artikel</a>
+                        <button onclick="openArticle('article2')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
 
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row">
-                    <div class="md:w-2/5 h-64 md:h-auto relative">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="w-full h-full object-cover">
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition border border-gray-100 flex flex-col md:flex-row group">
+                    <div class="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="md:w-3/5 p-8 flex flex-col justify-center">
-                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Inspirasi</div>
-                        <h2 class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer">Trend Interior Industrial: Hemat tapi Mewah</h2>
+                        <div class="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider text-abi-teal">Inspirasi • 28 Des 2025</div>
+                        <h2 onclick="openArticle('article3')" class="text-2xl font-bold mb-3 text-abi-dark hover:text-abi-teal cursor-pointer transition">Trend Interior Industrial: Hemat tapi Mewah</h2>
                         <p class="text-gray-500 text-sm leading-relaxed mb-6">Penerapan dinding unfinished dan plafon ekspos yang justru menaikkan nilai estetika rumah Anda.</p>
-                        <a href="#" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Artikel</a>
+                        <button onclick="openArticle('article3')" class="text-sm font-bold border-b border-gray-300 pb-1 self-start hover:border-abi-teal hover:text-abi-teal transition">Baca Selengkapnya</button>
                     </div>
                 </article>
 
             </div>
 
             <div class="space-y-8">
-                
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                     <h4 class="font-bold mb-4">Cari Artikel</h4>
                     <div class="flex">
@@ -124,10 +136,8 @@
                         <li class="flex justify-between items-center cursor-pointer hover:text-abi-teal transition"><span><i class="fas fa-folder mr-2 text-gray-300"></i>Tips Konstruksi</span> <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">12</span></li>
                         <li class="flex justify-between items-center cursor-pointer hover:text-abi-teal transition"><span><i class="fas fa-folder mr-2 text-gray-300"></i>Desain Interior</span> <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">8</span></li>
                         <li class="flex justify-between items-center cursor-pointer hover:text-abi-teal transition"><span><i class="fas fa-folder mr-2 text-gray-300"></i>Renovasi Rumah</span> <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">5</span></li>
-                        <li class="flex justify-between items-center cursor-pointer hover:text-abi-teal transition"><span><i class="fas fa-folder mr-2 text-gray-300"></i>Info Material</span> <span class="bg-gray-100 px-2 py-0.5 rounded text-xs">3</span></li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </section>
@@ -178,7 +188,122 @@
         </div>
     </footer>
 
-    <script>function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }</script>
+
+    <div id="articleModal" class="modal-overlay">
+        <div class="bg-white w-full max-w-4xl h-[90vh] md:h-auto md:max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col relative animate-zoom mx-4">
+            
+            <button onclick="closeArticle()" class="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 hover:bg-gray-200 text-gray-800 text-2xl transition shadow-md">&times;</button>
+            
+            <div class="h-48 md:h-64 relative flex-shrink-0">
+                <img id="modalBlogImg" src="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 md:left-10 right-6 text-white">
+                    <span id="modalBlogDate" class="bg-abi-teal px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider mb-2 inline-block">Tips</span>
+                    <h2 id="modalBlogTitle" class="text-2xl md:text-3xl font-bold leading-tight">Judul Artikel Disini</h2>
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12 overflow-y-auto bg-white flex-grow">
+                <div id="modalBlogContent" class="article-prose text-gray-600">
+                    </div>
+                
+                <div class="mt-12 pt-8 border-t border-gray-100 text-center">
+                    <p class="font-bold text-abi-dark mb-4">Tertarik menerapkan konsep ini di rumah Anda?</p>
+                    <a href="paket.html" class="inline-block bg-abi-teal text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-abi-dark transition">Hubungi Kami Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="content-article1" class="hidden">
+        <p class="font-bold">Pondasi adalah kaki dari bangunan Anda.</p>
+        <p>Banyak kasus rumah retak rambut hingga miring bukan karena kualitas bata yang buruk, melainkan pondasi yang tidak stabil. Berikut ciri-ciri pondasi cakar ayam yang kuat:</p>
+        <h3>1. Kedalaman Galian Minimal</h3>
+        <p>Untuk rumah 2 lantai, kedalaman galian cakar ayam minimal harus 1.5 meter hingga mencapai tanah keras. Jika tanah di lokasi Anda adalah bekas sawah atau rawa, diperlukan teknik strauss pile agar bangunan tidak amblas.</p>
+        <h3>2. Besi Tulangan Ulir</h3>
+        <p>Jangan gunakan besi polos untuk tulangan utama. Besi ulir (deformed bar) memiliki cengkraman yang jauh lebih kuat terhadap beton. Standar minimal untuk rumah tinggal adalah besi diameter 13mm ulir.</p>
+        <h3>3. Mutu Beton K-225 ke Atas</h3>
+        <p>Campuran beton tidak boleh asal "1 ember semen 3 ember pasir". Gunakan standar K-225 atau K-250 untuk struktur utama. Jika memungkinkan, gunakan beton ready mix agar kualitasnya terjaga.</p>
+        <p>ABI STUDIO selalu melakukan tes sondir tanah sebelum mendesain pondasi untuk memastikan keamanan jangka panjang bangunan Anda.</p>
+    </div>
+
+    <div id="content-article2" class="hidden">
+        <p>Menambah lantai (meningkat rumah) seringkali menjadi solusi lahan sempit. Namun, biayanya seringkali menjadi pertanyaan besar.</p>
+        <h3>Metode Konvensional (Dak Cor)</h3>
+        <p>Menggunakan bekisting kayu/triplek. Kelebihannya adalah fleksibel untuk bentuk ruangan yang tidak siku. Namun, butuh waktu kering (curing) minimal 21-28 hari sebelum bekisting bisa dibuka. Ini memakan waktu dan biaya sewa steger.</p>
+        <h3>Metode Bondek & Wiremesh</h3>
+        <p>Metode modern menggunakan plat baja galvanis (bondek) sebagai pengganti bekisting bawah. Kelebihannya jauh lebih cepat, tidak perlu banyak tiang penyangga di bawahnya, dan lebih hemat beton sekitar 15-20%.</p>
+        <h3>Mana yang Lebih Murah?</h3>
+        <p>Secara material, Bondek terlihat mahal di awal. Tapi jika dihitung dengan upah tukang dan waktu pengerjaan yang terpangkas 50%, metode <strong>Bondek jatuh lebih hemat sekitar 10-15%</strong> dibanding konvensional untuk luasan di atas 50m2.</p>
+    </div>
+
+    <div id="content-article3" class="hidden">
+        <p>Gaya Industrial tidak harus terlihat seperti gudang yang kotor. Tahun 2026, tren ini bergeser menjadi "Industrial Luxury".</p>
+        <h3>Material Kunci</h3>
+        <ul>
+            <li><strong>Semen Ekspos Halus:</strong> Dinding acian kelabu namun dengan coating glossy agar tidak berdebu.</li>
+            <li><strong>Kayu Solid:</strong> Elemen kayu (seperti Jati atau Merbau) digunakan untuk menyeimbangkan kesan dingin dari beton.</li>
+            <li><strong>Besi Hitam:</strong> Tetap menjadi ciri khas untuk frame jendela, railing tangga, atau kaki meja.</li>
+        </ul>
+        <h3>Pencahayaan adalah Kunci</h3>
+        <p>Karena warna dominan gelap (abu-abu/hitam), pencahayaan warm white (3000K) sangat krusial. Gunakan track light atau lampu gantung filamen untuk mempertegas suasana hangat dan mewah.</p>
+    </div>
+
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // Script Modal Blog
+        function openArticle(id) {
+            // 1. Ambil data dari Card yang diklik (secara manual kita set di JS ini agar simpel)
+            let title, date, img, contentHtml;
+
+            // Mapping Data (Cara simpel tanpa database)
+            if(id === 'article1') {
+                title = "Ciri-ciri Pondasi Rumah yang Kuat & Tahan Gempa";
+                date = "Tips Sipil • 5 Jan 2026";
+                img = "https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800";
+                contentHtml = document.getElementById('content-article1').innerHTML;
+            } 
+            else if(id === 'article2') {
+                title = "Hitungan Biaya Ngedak Lantai 2 (Beton vs Bondek)";
+                date = "Renovasi • 2 Jan 2026";
+                img = "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800";
+                contentHtml = document.getElementById('content-article2').innerHTML;
+            }
+            else if(id === 'article3') {
+                title = "Trend Interior Industrial: Hemat tapi Mewah";
+                date = "Inspirasi • 28 Des 2025";
+                img = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800";
+                contentHtml = document.getElementById('content-article3').innerHTML;
+            }
+
+            // 2. Masukkan data ke Modal
+            document.getElementById('modalBlogTitle').innerText = title;
+            document.getElementById('modalBlogDate').innerText = date;
+            document.getElementById('modalBlogImg').src = img;
+            document.getElementById('modalBlogContent').innerHTML = contentHtml;
+
+            // 3. Tampilkan Modal
+            document.getElementById('articleModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Matikan scroll background
+        }
+
+        function closeArticle() {
+            document.getElementById('articleModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Hidupkan scroll background
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('articleModal')) {
+                closeArticle();
+            }
+        }
+    </script>
 
 </body>
 </html>
