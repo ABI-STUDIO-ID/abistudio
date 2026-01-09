@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paket Harga - ABI STUDIO</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
@@ -33,10 +34,8 @@
         messagingSenderId: "249751405902",
         appId: "1:249751405902:web:6061648be8e6a51a69ca1f"
       };
-
-      // Inisialisasi Firebase
       firebase.initializeApp(firebaseConfig);
-      const db = firebase.firestore(); // Siap menyimpan data!
+      const db = firebase.firestore();
     </script>
 
     <style>
@@ -45,14 +44,17 @@
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
         .animate-up { animation: slideUp 0.4s ease-out forwards; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
         .marquee-container { overflow: hidden; white-space: nowrap; position: relative; }
-        .marquee-content { display: inline-block; animation: marquee 35s linear infinite; padding-left: 100%; }
+        
+        /* FIX SPEED: Diperlambat jadi 60 detik (sebelumnya 35s) */
+        .marquee-content { display: inline-block; animation: marquee 60s linear infinite; padding-left: 100%; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen pt-10">
 
-    <div class="fixed top-0 w-full z-[60] bg-promo text-white text-[10px] md:text-xs font-bold leading-9 md:leading-10 shadow-md">
+    <div class="fixed top-0 w-full z-[60] bg-abi-dark text-white text-[10px] md:text-xs font-bold leading-9 md:leading-10 shadow-md border-b border-white/10">
         <div class="marquee-container">
             <div id="tickerContent" class="marquee-content uppercase tracking-wider"></div>
         </div>
@@ -110,11 +112,6 @@
                     <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Revisi Minor 3x</li>
                 </ul>
                 <button class="w-full py-4 border border-gray-200 text-xs font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-                <div class="pt-6 border-t border-gray-100 mt-auto">
-                    <div class="flex text-yellow-400 text-xs mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm italic text-gray-500 mb-2">"Solusi hemat buat renovasi dapur."</p>
-                    <p class="text-sm font-bold text-gray-800">— Bpk. R.D</p>
-                </div>
             </div>
 
             <div onclick="openOrder('Paket 2 (Standard)', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800')" class="bg-abi-teal text-white p-10 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl flex flex-col h-full">
@@ -128,11 +125,6 @@
                     <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> 3D Modeling Full</li>
                 </ul>
                 <button class="w-full py-4 bg-white text-abi-teal text-xs font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-                <div class="pt-6 border-t border-white/20 mt-auto">
-                    <div class="flex text-yellow-300 text-xs mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm italic text-white/90 mb-2">"Render 3D-nya real banget!"</p>
-                    <p class="text-sm font-bold text-white">— Ibu M.S</p>
-                </div>
             </div>
 
             <div onclick="openOrder('Paket 3 (Advance)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f')" class="bg-white p-10 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full">
@@ -145,11 +137,6 @@
                     <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Paket Standard Include</li>
                 </ul>
                 <button class="w-full py-4 border border-gray-200 text-xs font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-                <div class="pt-6 border-t border-gray-100 mt-auto">
-                    <div class="flex text-yellow-400 text-xs mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm italic text-gray-500 mb-2">"Hitungan struktur detail."</p>
-                    <p class="text-sm font-bold text-gray-800">— Bpk. H.T</p>
-                </div>
             </div>
 
             <div onclick="openOrder('Paket RAB', 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c')" class="bg-white p-10 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 rounded-2xl flex flex-col h-full">
@@ -162,11 +149,6 @@
                     <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Format SPK</li>
                 </ul>
                 <button class="w-full py-4 border border-gray-200 text-xs font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-                <div class="pt-6 border-t border-gray-100 mt-auto">
-                    <div class="flex text-yellow-400 text-xs mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-sm italic text-gray-500 mb-2">"Sangat terbantu buat pinjaman."</p>
-                    <p class="text-sm font-bold text-gray-800">— Ibu L.A</p>
-                </div>
             </div>
         </div>
     </section>
@@ -214,16 +196,15 @@
                         <label class="text-xs font-bold text-gray-500 uppercase">Rencana Bangun</label>
                         <input type="text" id="date" placeholder="Contoh: Bulan Depan" class="w-full border-b border-gray-200 py-3 text-base focus:outline-none focus:border-abi-teal transition bg-transparent">
                     </div>
-                    <button onclick="sendWhatsApp()" class="w-full bg-abi-teal text-white py-5 rounded-full font-bold text-sm uppercase tracking-[0.2em] hover:bg-abi-dark transition duration-300 mt-6">Kirim via WhatsApp</button>
+                    <button onclick="sendWhatsApp()" class="w-full bg-abi-teal text-white py-5 rounded-full font-bold text-sm uppercase tracking-[0.2em] hover:bg-abi-dark transition duration-300 mt-6 shadow-lg transform active:scale-95">Kirim via WhatsApp</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-    // --- 1. SCRIPT DETEKSI LEADS DARI SERVICES.HTML ---
     window.onload = function() {
-        updateTickerDisplay(); // Jalankan running text
+        updateTickerDisplay(); 
         const urlParams = new URLSearchParams(window.location.search);
         const serviceType = urlParams.get('service');
         if(serviceType) {
@@ -233,12 +214,12 @@
             else if(serviceType === 'kanopi') { customTitle = "Jasa Kanopi & Eksterior"; customImg = "https://images.unsplash.com/photo-1497366216548-37526070297c"; autoSelectType = "Kanopi/Eksterior"; } 
             else if(serviceType === 'pool') { customTitle = "Pembuatan Kolam Renang"; customImg = "https://images.unsplash.com/photo-1572331165267-854da2b00dc1"; autoSelectType = "Kolam Renang"; } 
             else if(serviceType === 'renovasi') { customTitle = "Jasa Renovasi Sipil"; customImg = "https://images.unsplash.com/photo-1503387762-592deb58ef4e"; autoSelectType = "Renovasi"; }
+            else if(serviceType === 'rab') { customTitle = "Jasa Hitung RAB"; customImg = "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"; autoSelectType = "Rumah Tinggal"; }
             openOrder(customTitle, customImg);
             setTimeout(() => { document.getElementById('type').value = autoSelectType; }, 100);
         }
     }
 
-    // --- 2. SCRIPT FAKE DATA & RUNNING TEXT ---
     const fakeBuyers = ["MUHAMMAD FAIZAL", "SITI AMINAH", "CV. BERKAH JAYA", "RUDI HARTONO", "ANDI PRATAMA", "DEWI SARTIKA", "PT. BANGUN INDAH"];
     function maskName(name) { if (name.length <= 4) return name; return `${name.slice(0, 3)}********${name.slice(-3)}`; }
     function updateTickerDisplay() {
@@ -252,7 +233,6 @@
         container.innerHTML = htmlContent + htmlContent;
     }
 
-    // --- 3. LOGIKA UTAMA (FIREBASE + WA) ---
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
     
     let selectedPkg = "";
@@ -270,6 +250,7 @@
         window.history.pushState({}, document.title, window.location.pathname);
     }
     
+    // --- FIX WHATSAPP LOGIC ---
     function sendWhatsApp() {
         const name = document.getElementById('clientName').value.toUpperCase(); 
         const area = document.getElementById('area').value; 
@@ -279,13 +260,28 @@
         
         if(!name || !area || !location || !date) { alert("Mohon lengkapi data proyek (termasuk Nama Anda)."); return; }
         
-        // 1. UPDATE UI (Loading)
         const btn = document.querySelector('button[onclick="sendWhatsApp()"]');
         const originalText = btn.innerText;
-        btn.innerText = "Menyimpan Data...";
+        btn.innerText = "Memproses...";
         btn.disabled = true;
 
-        // 2. SIMPAN KE FIREBASE
+        // Pesan WhatsApp yang akan dikirim
+        const msg = `Halo ABI Studio,%0A` + 
+                    `Saya tertarik dengan layanan:%0A%0A` + 
+                    `📝 *${selectedPkg}*%0A` + 
+                    `--------------------------------%0A` +
+                    `👤 Nama Klien : ${name}%0A` + 
+                    `📐 Luas/Area : ${area} m²%0A` + 
+                    `🏡 Kategori : ${type}%0A` + 
+                    `📍 Lokasi : ${location}%0A` + 
+                    `📅 Rencana : ${date}%0A` + 
+                    `--------------------------------%0A` +
+                    `Mohon info estimasi biaya. Terima kasih.`;
+        
+        // Link WhatsApp Lengkap
+        const waLink = `https://wa.me/6285157577465?text=${msg}`;
+
+        // SIMPAN KE FIREBASE
         db.collection("leads").add({
             nama_klien: name,
             paket_dipilih: selectedPkg,
@@ -296,37 +292,18 @@
             waktu_input: new Date()
         })
         .then((docRef) => {
-            console.log("Data tersimpan di Firebase ID: ", docRef.id);
-            
-            // 3. UPDATE RUNNING TEXT & BUKA WA
+            console.log("Sukses DB:", docRef.id);
+            // UPDATE RUNNING TEXT
             fakeBuyers.unshift(name); if(fakeBuyers.length > 15) fakeBuyers.pop(); updateTickerDisplay();
-
-            const msg = `Halo ABI Studio,%0A` + 
-                        `Saya tertarik dengan layanan:%0A%0A` + 
-                        `📝 *${selectedPkg}*%0A` + 
-                        `--------------------------------%0A` +
-                        `👤 Nama Klien : ${name}%0A` + 
-                        `📐 Luas/Area : ${area} m²%0A` + 
-                        `🏡 Kategori : ${type}%0A` + 
-                        `📍 Lokasi : ${location}%0A` + 
-                        `📅 Rencana : ${date}%0A` + 
-                        `--------------------------------%0A` +
-                        `Mohon info estimasi biaya. Terima kasih.`;
             
-            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank'); 
-            
-            btn.innerText = originalText;
-            btn.disabled = false;
-            closeOrder();
+            // REDIRECT LANGSUNG KE WHATSAPP (Aman dari Popup Blocker)
+            window.location.href = waLink;
         })
         .catch((error) => {
-            console.error("Gagal simpan database: ", error);
-            // Fallback: Tetap buka WA walaupun database error (koneksi buruk dll)
-            const msg = `Halo ABI Studio (Manual Mode),%0A` + `Saya tertarik dengan layanan: ${selectedPkg} (Nama: ${name})`;
-            window.open(`https://wa.me/6285157577465?text=${msg}`, '_blank');
-            btn.innerText = originalText;
-            btn.disabled = false;
-            closeOrder();
+            console.error("Error DB:", error);
+            // JIKA ERROR DATABASE, TETAP LANJUT KE WA
+            alert("Koneksi database sibuk, mengalihkan ke WhatsApp...");
+            window.location.href = waLink;
         });
     }
     
