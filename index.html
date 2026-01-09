@@ -41,9 +41,13 @@
         img { transition: transform 0.5s ease; }
         .group:hover img { transform: scale(1.05); }
         
-        /* Client Logo Grayscale Effect */
-        .client-logo { filter: grayscale(100%) opacity(0.6); transition: all 0.3s ease; }
-        .client-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
+        /* Client Logo Styling */
+        .client-logo { transition: all 0.3s ease; }
+        .client-logo:hover { transform: translateY(-5px); border-color: #4A6D6D; }
+        
+        /* Org Logo Styling (Grayscale to Color) */
+        .org-logo { filter: grayscale(100%) opacity(0.7); transition: all 0.4s ease; mix-blend-mode: multiply; }
+        .org-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
     </style>
 </head>
 <body>
@@ -139,32 +143,23 @@
         </div>
     </section>
 
-    <section class="py-20 bg-gray-50 border-y border-gray-100 px-6">
+    <section class="py-24 bg-gray-50 border-y border-gray-100 px-6">
         <div class="container mx-auto">
             
-            <div class="text-center mb-16">
-                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Proudly Member Of</span>
-                <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-8 items-center">
+            <div class="text-center mb-20">
+                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em] mb-8 block">Proudly Part Of</span>
+                <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
                     
-                    <div class="group flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-abi-teal text-2xl mb-3 border border-gray-100 group-hover:bg-abi-teal group-hover:text-white transition">
-                            <i class="fas fa-hard-hat"></i>
-                        </div>
-                        <span class="font-bold text-sm text-gray-600">Persatuan Insinyur<br>Indonesia (PII)</span>
+                    <div class="group cursor-pointer">
+                        <img src="PII.png" alt="Persatuan Insinyur Indonesia" class="org-logo h-24 md:h-28 w-auto object-contain">
                     </div>
 
-                    <div class="group flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-abi-teal text-2xl mb-3 border border-gray-100 group-hover:bg-abi-teal group-hover:text-white transition">
-                            <i class="fas fa-drafting-compass"></i>
-                        </div>
-                        <span class="font-bold text-sm text-gray-600">Ikatan Arsitek<br>Indonesia (IAI)</span>
+                    <div class="group cursor-pointer">
+                        <img src="IAI.png" alt="Ikatan Arsitek Indonesia" class="org-logo h-20 md:h-24 w-auto object-contain">
                     </div>
 
-                    <div class="group flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-abi-teal text-2xl mb-3 border border-gray-100 group-hover:bg-abi-teal group-hover:text-white transition">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <span class="font-bold text-sm text-gray-600">Himpunan Pengusaha<br>Muda Indonesia (HIPMI)</span>
+                    <div class="group cursor-pointer">
+                        <img src="HIPMI.png" alt="Himpunan Pengusaha Muda Indonesia" class="org-logo h-20 md:h-24 w-auto object-contain">
                     </div>
 
                 </div>
@@ -173,39 +168,42 @@
             <div class="w-24 h-1 bg-gray-200 mx-auto rounded-full mb-16"></div>
 
             <div class="text-center">
-                <h3 class="text-2xl font-light mb-12">Dipercaya oleh <span class="font-bold">Pemimpin Industri</span></h3>
+                <h3 class="text-2xl md:text-3xl font-light mb-4">Dipercaya oleh <span class="font-bold">Pemimpin Industri</span></h3>
+                <p class="text-gray-400 text-sm mb-12">Portofolio kolaborasi kami dengan berbagai korporasi terkemuka.</p>
                 
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PARAMOUNT<br>LAND</span>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+                    
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PARAMOUNT<br>LAND</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">ALAM SUTERA<br>SAWANGAN</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">ALAM SUTERA<br>SAWANGAN</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">SUMMARECON<br>MALL SERPONG</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">SUMMARECON<br>MALL SERPONG</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. PROTERA</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PT. PROTERA</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. PRIMA POOL</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PT. PRIMA POOL</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. VISTA LAND<br>GROUP</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PT. VISTA LAND<br>GROUP</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. FLAME</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PT. FLAME</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. SINAR MANDIRI<br>SENTOSA</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PT. SINAR MANDIRI<br>SENTOSA</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. DEKA MEDIA</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PT. DEKA MEDIA</span>
                     </div>
-                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
-                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. SUMBER<br>PRALINE UTAMA</span>
+                    <div class="client-logo bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-xs md:text-sm leading-tight">PT. SUMBER<br>PRALINE UTAMA</span>
                     </div>
+
                 </div>
             </div>
         </div>
