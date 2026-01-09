@@ -23,12 +23,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        /* Efek Hover Kartu */
         .service-card:hover .service-img { transform: scale(1.1); }
         .service-card:hover .service-icon { background-color: #4A6D6D; color: white; border-color: #4A6D6D; }
-        
-        /* Mengatasi Tombol Terpotong di HP (Safe Area) */
         .safe-bottom { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
     </style>
 </head>
@@ -62,7 +58,7 @@
         </div>
     </nav>
 
-    <header class="pt-32 pb-20 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
+    <header class="pt-32 pb-16 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000')] bg-cover bg-center"></div>
         <div class="relative z-10">
             <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Our Expertise</p>
@@ -77,7 +73,9 @@
             <div onclick="goToPackage('arsitek')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 cursor-pointer border border-gray-100">
                 <div class="h-64 overflow-hidden relative">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" 
+                         onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'"
+                         class="service-img w-full h-full object-cover transition duration-700">
                 </div>
                 <div class="p-8 relative">
                     <div class="service-icon w-14 h-14 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center text-xl text-abi-teal absolute -top-7 right-8 shadow-lg transition duration-300">
@@ -92,7 +90,9 @@
             <div onclick="goToPackage('interior')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 cursor-pointer border border-gray-100">
                 <div class="h-64 overflow-hidden relative">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" 
+                         onerror="this.src='https://images.unsplash.com/photo-1616486338812-3aeee7e3652e?q=80&w=800'"
+                         class="service-img w-full h-full object-cover transition duration-700">
                 </div>
                 <div class="p-8 relative">
                     <div class="service-icon w-14 h-14 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center text-xl text-abi-teal absolute -top-7 right-8 shadow-lg transition duration-300">
@@ -107,7 +107,9 @@
             <div onclick="goToPackage('renovasi')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 cursor-pointer border border-gray-100">
                 <div class="h-64 overflow-hidden relative">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800" 
+                         onerror="this.src='https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800'"
+                         class="service-img w-full h-full object-cover transition duration-700">
                 </div>
                 <div class="p-8 relative">
                     <div class="service-icon w-14 h-14 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center text-xl text-abi-teal absolute -top-7 right-8 shadow-lg transition duration-300">
@@ -122,7 +124,9 @@
             <div onclick="goToPackage('kanopi')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 cursor-pointer border border-gray-100">
                 <div class="h-64 overflow-hidden relative">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" 
+                         onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800'"
+                         class="service-img w-full h-full object-cover transition duration-700">
                 </div>
                 <div class="p-8 relative">
                     <div class="service-icon w-14 h-14 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center text-xl text-abi-teal absolute -top-7 right-8 shadow-lg transition duration-300">
@@ -137,7 +141,9 @@
             <div onclick="goToPackage('pool')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 cursor-pointer border border-gray-100">
                 <div class="h-64 overflow-hidden relative">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1572331165267-854da2b00dc1?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1572331165267-854da2b00dc1?q=80&w=800" 
+                         onerror="this.src='https://images.unsplash.com/photo-1572331165267-854da2b00dc1?q=80&w=800'"
+                         class="service-img w-full h-full object-cover transition duration-700">
                 </div>
                 <div class="p-8 relative">
                     <div class="service-icon w-14 h-14 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center text-xl text-abi-teal absolute -top-7 right-8 shadow-lg transition duration-300">
@@ -149,10 +155,12 @@
                 </div>
             </div>
 
-             <div onclick="goToPackage('rab')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 cursor-pointer border border-gray-100">
+            <div onclick="goToPackage('rab')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 cursor-pointer border border-gray-100">
                 <div class="h-64 overflow-hidden relative">
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800" 
+                         onerror="this.src='https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800'"
+                         class="service-img w-full h-full object-cover transition duration-700">
                 </div>
                 <div class="p-8 relative">
                     <div class="service-icon w-14 h-14 bg-white border-2 border-gray-100 rounded-full flex items-center justify-center text-xl text-abi-teal absolute -top-7 right-8 shadow-lg transition duration-300">
@@ -172,7 +180,7 @@
     </a>
 
     <footer class="bg-abi-dark text-white py-12 text-center text-sm mt-auto">
-        <p class="opacity-50 uppercase tracking-[0.2em]">© 2025 ABI STUDIO. All Rights Reserved.</p>
+        <p class="opacity-50 uppercase tracking-[0.2em]">© 2026 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -181,7 +189,6 @@
         }
 
         function goToPackage(type) {
-            // Mengarahkan ke halaman paket dengan membawa data layanan yang dipilih
             window.location.href = `paket.html?service=${type}`;
         }
     </script>
