@@ -40,6 +40,10 @@
         .team-card:hover { transform: translateY(-10px); }
         img { transition: transform 0.5s ease; }
         .group:hover img { transform: scale(1.05); }
+        
+        /* Client Logo Grayscale Effect */
+        .client-logo { filter: grayscale(100%) opacity(0.6); transition: all 0.3s ease; }
+        .client-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -48,7 +52,7 @@
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
             
             <a href="index.html" class="flex items-center">
-                <img src="logo.png" alt="ABI STUDIO" class="h-24 w-auto object-contain">
+                <img src="logo.png" alt="ABI STUDIO" class="h-28 w-auto object-contain">
             </a>
 
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
@@ -97,7 +101,7 @@
         </div>
     </section>
 
-    <section class="py-32 bg-white px-6">
+    <section class="py-24 bg-white px-6">
         <div class="container mx-auto">
             <div class="grid md:grid-cols-2 gap-16 mb-24">
                 <div>
@@ -129,6 +133,78 @@
                             <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mt-1">Co-Founder & Head of Marketing</p>
                             <p class="text-sm text-gray-500 mt-2">Strategi bisnis dan hubungan klien.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gray-50 border-y border-gray-100 px-6">
+        <div class="container mx-auto">
+            
+            <div class="text-center mb-16">
+                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Proudly Member Of</span>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-16 mt-8 items-center">
+                    
+                    <div class="group flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-abi-teal text-2xl mb-3 border border-gray-100 group-hover:bg-abi-teal group-hover:text-white transition">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <span class="font-bold text-sm text-gray-600">Persatuan Insinyur<br>Indonesia (PII)</span>
+                    </div>
+
+                    <div class="group flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-abi-teal text-2xl mb-3 border border-gray-100 group-hover:bg-abi-teal group-hover:text-white transition">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <span class="font-bold text-sm text-gray-600">Ikatan Arsitek<br>Indonesia (IAI)</span>
+                    </div>
+
+                    <div class="group flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-abi-teal text-2xl mb-3 border border-gray-100 group-hover:bg-abi-teal group-hover:text-white transition">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <span class="font-bold text-sm text-gray-600">Himpunan Pengusaha<br>Muda Indonesia (HIPMI)</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="w-24 h-1 bg-gray-200 mx-auto rounded-full mb-16"></div>
+
+            <div class="text-center">
+                <h3 class="text-2xl font-light mb-12">Dipercaya oleh <span class="font-bold">Pemimpin Industri</span></h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PARAMOUNT<br>LAND</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">ALAM SUTERA<br>SAWANGAN</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">SUMMARECON<br>MALL SERPONG</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. PROTERA</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. PRIMA POOL</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. VISTA LAND<br>GROUP</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. FLAME</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. SINAR MANDIRI<br>SENTOSA</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. DEKA MEDIA</span>
+                    </div>
+                    <div class="client-logo bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center h-24">
+                        <span class="font-bold text-gray-600 text-center text-sm leading-tight">PT. SUMBER<br>PRALINE UTAMA</span>
                     </div>
                 </div>
             </div>
@@ -238,7 +314,7 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="blog.html" class="inline-block text-sm font-bold text-abi-teal border-b border-abi-teal pb-1 hover:text-abi-dark hover:border-abi-dark transition">Lihat Arsip Artikel Lainnya &rarr;</a>
+                <a href="blog.html" class="inline-block text-sm font-bold text-abi-teal border-b border-abi-teal pb-1 hover:text-abi-dark hover:border-abi-dark transition">Lihat Arsip Artikel Lainnya →</a>
             </div>
         </div>
     </section>
@@ -306,17 +382,12 @@
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
 
         // --- SEARCH BLOG LOGIC ---
-        // Fungsi ini akan mengarahkan user ke halaman blog.html dengan membawa kata kunci pencarian
         function searchBlog() {
             const query = document.getElementById('homeSearchBlog').value;
             if(query) {
-                // Redirect ke blog.html dengan parameter ?search=keyword
-                // Contoh: blog.html?search=renovasi
                 window.location.href = `blog.html?search=${encodeURIComponent(query)}`;
             }
         }
-
-        // Biar bisa tekan Enter juga
         function handleEnter(e) {
             if(e.key === 'Enter') {
                 searchBlog();
