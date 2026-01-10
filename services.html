@@ -23,9 +23,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .service-card:hover .service-img { transform: scale(1.1); }
-        .service-card:hover .service-icon { background-color: #4A6D6D; color: white; border-color: #4A6D6D; }
-        .safe-bottom { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+        
+        /* Card Animation */
+        .category-card { transition: all 0.5s ease; }
+        .category-card:hover { transform: translateY(-10px); }
+        .category-card:hover .cat-icon { background-color: #4A6D6D; color: white; border-color: #4A6D6D; transform: scale(1.1); }
         
         /* Modal Animation */
         .modal-overlay { display: none; }
@@ -34,6 +36,18 @@
         @keyframes popIn {
             0% { opacity: 0; transform: scale(0.95); }
             100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Flow Chart Styles */
+        .flow-step { position: relative; }
+        .flow-step::after { 
+            content: ''; position: absolute; top: 50%; right: -20px; width: 20px; height: 2px; background: #e5e7eb; transform: translateY(-50%); 
+        }
+        .flow-step:last-child::after { display: none; }
+        @media (max-width: 768px) {
+            .flow-step::after { 
+                top: auto; bottom: -20px; right: 50%; width: 2px; height: 20px; transform: translateX(50%); 
+            }
         }
     </style>
 </head>
@@ -61,7 +75,7 @@
             <div class="flex flex-col space-y-4 text-sm font-bold uppercase tracking-widest text-center">
                 <a href="index.html" class="hover:text-abi-teal py-2">Home</a>
                 <a href="services.html" class="hover:text-abi-teal py-2 text-abi-teal">Layanan</a>
-                <a href="paket.html" class="hover:text-abi-teal py-2">Paket Harga</a>
+                <a href="paket.html" class="hover:text-abi-teal py-2">Paket</a>
                 <a href="blog.html" class="hover:text-abi-teal py-2">Blog</a>
             </div>
         </div>
@@ -72,264 +86,64 @@
         <div class="relative z-10">
             <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Our Expertise</p>
             <h1 class="text-4xl md:text-6xl font-light mb-6">Lingkup Layanan</h1>
-            <p class="text-gray-300 font-light max-w-2xl mx-auto mb-8">Solusi terintegrasi mulai dari konsep desain, pelaksanaan konstruksi, hingga konsultasi legalitas.</p>
-            
-            <button onclick="toggleFlowModal()" class="bg-white/10 backdrop-blur-sm border border-abi-teal text-abi-teal px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition duration-300 flex items-center mx-auto gap-3">
-                <i class="fas fa-info-circle"></i> Lihat Alur Umum
-            </button>
+            <p class="text-gray-300 font-light max-w-2xl mx-auto mb-8">Pilih kategori layanan yang Anda butuhkan untuk melihat detail dan alur pemesanan.</p>
         </div>
     </header>
 
-    <section class="py-20 px-6 bg-white">
+    <section class="py-20 px-6 bg-white min-h-[60vh] flex items-center">
         <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-abi-dark">Layanan Desain</h2>
-                <div class="w-24 h-1 bg-abi-teal mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-gray-500">Perencanaan matang untuk hasil visual dan fungsional terbaik.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div onclick="openServiceDetail('arsitek')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-
-[Image of architectural blueprints on table]
-
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                
+                <div onclick="openCategoryModal('design')" class="category-card group bg-gray-50 rounded-3xl p-10 text-center cursor-pointer border border-gray-100 hover:shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-abi-teal scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
+                    
+                    <div class="cat-icon w-20 h-20 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center text-3xl text-abi-teal mx-auto mb-8 shadow-sm transition duration-300">
+                        <i class="fas fa-pencil-ruler"></i>
                     </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-pencil-ruler"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Desain Arsitektur</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Perencanaan bangunan yang estetis, fungsional, dan sesuai kebutuhan.</p>
-                    </div>
+                    
+                    <h2 class="text-2xl font-bold text-abi-dark mb-4 group-hover:text-abi-teal transition">Layanan Desain</h2>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                        Perencanaan arsitektur, interior, dan struktur yang presisi untuk mewujudkan visi bangunan Anda.
+                    </p>
+                    
+                    <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-abi-teal pb-1">Lihat Detail & Alur →</span>
                 </div>
 
-                <div onclick="openServiceDetail('interior')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-
-[Image of modern minimalist interior living room design]
-
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                <div onclick="openCategoryModal('kontraktor')" class="category-card group bg-gray-50 rounded-3xl p-10 text-center cursor-pointer border border-gray-100 hover:shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-abi-teal scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
+                    
+                    <div class="cat-icon w-20 h-20 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center text-3xl text-abi-teal mx-auto mb-8 shadow-sm transition duration-300">
+                        <i class="fas fa-hard-hat"></i>
                     </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-couch"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Desain Interior</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Penataan ruang yang nyaman, efisien, dan mencerminkan karakter pengguna.</p>
-                    </div>
+                    
+                    <h2 class="text-2xl font-bold text-abi-dark mb-4 group-hover:text-abi-teal transition">Layanan Kontraktor</h2>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                        Pelaksanaan konstruksi fisik, renovasi, hingga finishing dengan standar mutu tinggi.
+                    </p>
+                    
+                    <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-abi-teal pb-1">Lihat Detail & Alur →</span>
                 </div>
 
-                <div onclick="openServiceDetail('struktur')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c7c?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
+                <div onclick="openCategoryModal('konsultan')" class="category-card group bg-gray-50 rounded-3xl p-10 text-center cursor-pointer border border-gray-100 hover:shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-abi-teal scale-x-0 group-hover:scale-x-100 transition duration-500"></div>
+                    
+                    <div class="cat-icon w-20 h-20 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center text-3xl text-abi-teal mx-auto mb-8 shadow-sm transition duration-300">
+                        <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-cubes"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Desain Struktur</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Perhitungan struktur yang aman, kuat, dan sesuai standar teknis.</p>
-                    </div>
+                    
+                    <h2 class="text-2xl font-bold text-abi-dark mb-4 group-hover:text-abi-teal transition">Layanan Konsultan</h2>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                        Pendampingan legalitas, manajemen proyek, RAB, dan audit teknis profesional.
+                    </p>
+                    
+                    <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-abi-teal pb-1">Lihat Detail & Alur →</span>
                 </div>
 
-                <div onclick="openServiceDetail('landscape')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-tree"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Desain Landscape</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Penataan area luar bangunan agar asri, fungsional, dan bernilai estetika.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('mep')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-bolt"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Desain MEP</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Perencanaan sistem utilitas (Mekanikal, Elektrikal, Plumbing) yang efisien.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-gray-50 border-t border-gray-200">
-        <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-abi-dark">Layanan Kontraktor</h2>
-                <div class="w-24 h-1 bg-abi-teal mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-gray-500">Pelaksanaan konstruksi berkualitas dengan tim berpengalaman.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div onclick="openServiceDetail('kontraktor_sipil')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1632759132029-2342df220551?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-trowel-bricks"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Pekerjaan Sipil</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Pelaksanaan konstruksi dari pondasi hingga finishing (Bangun dari nol).</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('kontraktor_baja')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-industry"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Struktur Beton & Baja</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Penambahan ruang/lantai, pergudangan, dan pembuatan mezzanine.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('renovasi')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-hammer"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Renovasi Bangunan</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Perbaikan, penyesuaian fungsi, dan peningkatan kualitas bangunan.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('fitout')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-
-[Image of office interior fit out construction]
-
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-chair"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Fit Out Interior</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Pengerjaan interior fisik untuk hunian, komersial, dan perkantoran.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('finishing')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1620626012053-93f537236872?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-paint-roller"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Pekerjaan Finishing</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Pemasangan material finishing dengan hasil yang rapi dan presisi.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('maintenance')" class="service-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-tools"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Maintenance</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Layanan pasca konstruksi, pengecatan ulang, dan perawatan rutin.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-6 bg-white border-t border-gray-200 pb-32">
-        <div class="container mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-abi-dark">Layanan Konsultan</h2>
-                <div class="w-24 h-1 bg-abi-teal mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-gray-500">Pendampingan profesional untuk legalitas dan manajemen proyek.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div onclick="openServiceDetail('legal')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1554224154-260327c00c4b?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-file-contract"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Legal & Perizinan</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Pengurusan PBG, SLF, dan dokumen pendukung sesuai regulasi.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('supervisi')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1531816458010-fb7685eec548?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-clipboard-check"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Supervisi Proyek</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Pengawasan pelaksanaan agar sesuai desain, spesifikasi, dan jadwal.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('manajemen')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-tasks"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Manajemen Proyek</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Pengendalian waktu, biaya, mutu, dan keselamatan kerja (K3).</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('tenaga_ahli')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-user-tie"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Tenaga Ahli</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Penyediaan Arsitek, Engineer, dan Konsultan berpengalaman.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('rab')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-calculator"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Studi Kelayakan & RAB</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Analisis teknis dan finansial yang akurat sebelum proyek dimulai.</p>
-                    </div>
-                </div>
-
-                <div onclick="openServiceDetail('audit')" class="service-card group bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500 cursor-pointer border border-gray-100">
-                    <div class="h-56 overflow-hidden relative">
-                         
-                        <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?q=80&w=800" class="service-img w-full h-full object-cover transition duration-700">
-                    </div>
-                    <div class="p-8 relative">
-                        <div class="service-icon w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center text-lg text-abi-teal absolute -top-6 right-8 shadow-md transition duration-300"><i class="fas fa-search-location"></i></div>
-                        <h3 class="text-xl font-bold mb-2 text-abi-dark">Audit Teknis</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Evaluasi kondisi struktur, fungsi, dan keselamatan bangunan eksisting.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio,%20saya%20tertarik%20konsultasi%20layanan." target="_blank" class="fixed bottom-8 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition animate-bounce">
+    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio,%20saya%20ingin%20konsultasi%20layanan." target="_blank" class="fixed bottom-8 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition animate-bounce">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
@@ -337,63 +151,41 @@
         <p class="opacity-50 uppercase tracking-[0.2em]">© 2026 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
-    <div id="serviceModal" class="modal-overlay fixed inset-0 bg-black/70 z-[9999] items-center justify-center p-4">
-        <div class="bg-white w-full max-w-2xl rounded-2xl relative animate-pop max-h-[90vh] overflow-y-auto flex flex-col">
-            <button onclick="closeServiceModal()" class="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition">×</button>
+    <div id="categoryModal" class="modal-overlay fixed inset-0 bg-black/80 z-[9999] items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-5xl rounded-3xl relative animate-pop max-h-[90vh] overflow-y-auto flex flex-col shadow-2xl">
             
-            <div class="h-48 overflow-hidden relative flex-shrink-0">
-                <img id="modalImage" src="" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
-                    <h3 id="modalTitle" class="text-2xl font-bold text-white">Judul Layanan</h3>
+            <div class="sticky top-0 bg-white z-20 border-b border-gray-100 px-8 py-5 flex justify-between items-center">
+                <div>
+                    <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest">Detail Kategori</span>
+                    <h3 id="modalTitle" class="text-2xl font-bold text-abi-dark">Judul Kategori</h3>
                 </div>
+                <button onclick="closeCategoryModal()" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 transition font-bold text-xl">×</button>
             </div>
 
-            <div class="p-6 md:p-8">
-                <p id="modalDesc" class="text-gray-600 mb-6 text-sm leading-relaxed">Deskripsi layanan akan muncul di sini.</p>
-
-                <div class="bg-gray-50 p-5 rounded-xl border border-gray-100">
-                    <h4 class="text-sm font-bold text-abi-teal uppercase tracking-widest mb-4">Lingkup Pekerjaan & Output:</h4>
-                    <ul id="modalList" class="space-y-3 text-sm text-gray-700">
-                        </ul>
+            <div class="p-8 md:p-10 space-y-12">
+                
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    <div class="text-center mb-8">
+                        <span class="bg-abi-teal text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Prosedur Pemesanan</span>
+                        <h4 class="text-xl font-bold mt-3 text-gray-800">Alur Kerja Layanan Ini</h4>
+                    </div>
+                    
+                    <div id="workflowContainer" class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-0">
+                        </div>
                 </div>
 
-                <div class="mt-8 flex gap-4">
-                    <button onclick="closeServiceModal()" class="w-1/2 py-3 border border-gray-200 rounded-full text-sm font-bold text-gray-500 hover:bg-gray-100 transition">Tutup</button>
-                    <button onclick="goToPaketPage()" class="w-1/2 py-3 bg-abi-teal text-white rounded-full text-sm font-bold hover:bg-abi-dark transition shadow-lg">Pilih Paket Ini</button>
+                <div>
+                    <h4 class="text-xl font-bold mb-6 text-gray-800 border-l-4 border-abi-teal pl-4">Daftar Layanan & Lingkup Kerja</h4>
+                    <div id="subServiceContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        </div>
                 </div>
+
             </div>
-        </div>
-    </div>
 
-    <div id="flowModal" class="modal-overlay fixed inset-0 bg-black/70 z-[9999] items-center justify-center p-4">
-        <div class="bg-white w-full max-w-4xl rounded-2xl relative animate-pop max-h-[90vh] overflow-y-auto">
-            <button onclick="toggleFlowModal()" class="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 text-xl transition">×</button>
-            <div class="p-8 md:p-12">
-                <div class="text-center mb-10">
-                    <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.2em]">Workflow</span>
-                    <h3 class="text-3xl font-bold text-abi-dark mt-2">Alur Pemesanan Jasa</h3>
-                    <div class="w-16 h-1 bg-abi-teal mx-auto mt-4 rounded-full"></div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
-                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">1</div>
-                        <h4 class="font-bold text-gray-800 mb-2">Konsultasi Awal</h4>
-                        <p class="text-sm text-gray-500">Diskusi kebutuhan, budget, dan konsep awal proyek Anda via WA atau pertemuan.</p>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
-                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">2</div>
-                        <h4 class="font-bold text-gray-800 mb-2">Survei & Data</h4>
-                        <p class="text-sm text-gray-500">Tim kami melakukan survei lokasi dan pengukuran untuk data teknis yang akurat.</p>
-                    </div>
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-lg transition">
-                        <div class="w-12 h-12 bg-white text-abi-teal rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border border-gray-200 font-bold text-lg">3</div>
-                        <h4 class="font-bold text-gray-800 mb-2">Desain & RAB</h4>
-                        <p class="text-sm text-gray-500">Pembuatan desain pra-rencana dan penawaran biaya (RAB) sesuai spesifikasi.</p>
-                    </div>
-                </div>
-                <div class="text-center mt-10">
-                    <button onclick="toggleFlowModal()" class="bg-abi-dark text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal transition">Tutup</button>
-                </div>
+            <div class="sticky bottom-0 bg-white border-t border-gray-100 p-6 text-center">
+                <button onclick="window.location.href='paket.html'" class="bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-dark transition shadow-lg transform hover:-translate-y-1">
+                    Cek Paket Harga
+                </button>
             </div>
         </div>
     </div>
@@ -403,277 +195,222 @@
             document.getElementById('mobileMenu').classList.toggle('hidden');
         }
 
-        // --- DATABASE LAYANAN (Judul, Gambar, Deskripsi, List Output) ---
-        const servicesData = {
-            'arsitek': {
-                title: "Desain Arsitektur",
-                img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800",
-                desc: "Layanan perancangan bangunan komprehensif yang menggabungkan estetika visual dengan fungsi ruang yang optimal.",
-                details: [
-                    "Konsep Desain & Denah Tata Ruang",
-                    "Visualisasi 3D Eksterior (Render Halus)",
-                    "Gambar Kerja Arsitektur (DED)",
-                    "Spesifikasi Material Bangunan",
-                    "Rencana Anggaran Biaya (RAB) Desain"
+        // --- DATABASE DATA ---
+        const categoryData = {
+            'design': {
+                title: "Layanan Desain",
+                // Visualisasi Alur Desain (Gambar 1 Concept)
+                workflowSteps: [
+                    { icon: "fa-comments", title: "Konsultasi", desc: "Diskusi kebutuhan & budget" },
+                    { icon: "fa-ruler-combined", title: "Survey Lokasi", desc: "Pengukuran lahan fisik" },
+                    { icon: "fa-pencil-alt", title: "Konsep Desain", desc: "Denah & 3D Modeling" },
+                    { icon: "fa-file-invoice", title: "RAB & DED", desc: "Hitung biaya & Gambar Kerja" },
+                    { icon: "fa-handshake", title: "Serah Terima", desc: "Dokumen Hardcopy/Softcopy" }
+                ],
+                // Sub Layanan
+                services: [
+                    { 
+                        name: "Desain Arsitektur", 
+                        desc: "Perencanaan bangunan yang estetis, fungsional, dan sesuai kebutuhan.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Desain Interior", 
+                        desc: "Penataan ruang yang nyaman, efisien, dan mencerminkan karakter pengguna.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Desain Struktur", 
+                        desc: "Perhitungan struktur yang aman, kuat, dan sesuai standar teknis.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Desain Landscape", 
+                        desc: "Penataan area luar bangunan agar asri, fungsional, dan bernilai estetika.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Desain MEP", 
+                        desc: "Perencanaan sistem utilitas bangunan yang efisien dan terintegrasi (Mechanical, Electrical, Plumbing).",
+                        items: [] 
+                    }
                 ]
             },
-            'interior': {
-                title: "Desain Interior",
-                img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800",
-                desc: "Perancangan elemen dalam ruang untuk menciptakan suasana yang nyaman, ergonomis, dan merepresentasikan karakter Anda.",
-                details: [
-                    "Layout Plan & Furniture Arrangement",
-                    "Visualisasi 3D Interior (Per Ruangan)",
-                    "Gambar Detail Custom Furniture",
-                    "Skema Warna & Pencahayaan (Lighting)",
-                    "Daftar Kebutuhan Furniture & Dekorasi"
+            'kontraktor': {
+                title: "Layanan Kontraktor",
+                // Visualisasi Alur Kontraktor (Gambar 2 Concept)
+                workflowSteps: [
+                    { icon: "fa-comments", title: "Konsultasi", desc: "Review Desain/Lokasi" },
+                    { icon: "fa-search-location", title: "Survey & Opname", desc: "Cek kondisi lapangan" },
+                    { icon: "fa-calculator", title: "Penawaran (RAB)", desc: "Estimasi Biaya Fisik" },
+                    { icon: "fa-file-signature", title: "SPK & Kontrak", desc: "Kesepakatan Kerja" },
+                    { icon: "fa-hard-hat", title: "Pelaksanaan", desc: "Konstruksi & Laporan" },
+                    { icon: "fa-key", title: "Serah Terima", desc: "Kunci & Garansi" }
+                ],
+                // Sub Layanan
+                services: [
+                    { 
+                        name: "Pekerjaan Sipil & Bangunan", 
+                        desc: "Pelaksanaan konstruksi dari pondasi hingga finishing.",
+                        items: ["Pembangunan dari awal (nol)"] 
+                    },
+                    { 
+                        name: "Pekerjaan Struktur Beton & Baja", 
+                        desc: "Pengerjaan struktur sesuai spesifikasi teknis dan standar mutu.",
+                        items: ["Penambahan Ruang / Lantai", "Pergudangan", "Pembuatan Mezzanine"] 
+                    },
+                    { 
+                        name: "Renovasi & Rehabilitasi", 
+                        desc: "Perbaikan, penyesuaian fungsi, dan peningkatan kualitas bangunan.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Fit Out Interior", 
+                        desc: "Pengerjaan interior ruang hunian, komersial, dan perkantoran.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Arsitektural & Finishing", 
+                        desc: "Pemasangan material finishing dengan hasil rapi dan presisi.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Pemeliharaan Bangunan", 
+                        desc: "Layanan pasca konstruksi untuk menjaga kualitas bangunan.",
+                        items: ["Pekerjaan Pengecatan", "Perbaikan Kebocoran", "Perawatan Berkala"] 
+                    }
                 ]
             },
-            'struktur': {
-                title: "Desain Struktur",
-                img: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c7c?q=80&w=800",
-                desc: "Perhitungan teknis untuk memastikan bangunan berdiri kokoh, aman terhadap gempa, dan efisien dalam penggunaan material.",
-                details: [
-                    "Analisis Beban Struktur",
-                    "Gambar Detail Pondasi & Sloof",
-                    "Detail Kolom, Balok, dan Plat Lantai",
-                    "Rencana Atap & Kuda-kuda",
-                    "Perhitungan Pembesian"
-                ]
-            },
-            'landscape': {
-                title: "Desain Landscape",
-                img: "https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=800",
-                desc: "Penataan area luar ruangan (taman/halaman) agar asri, mendukung sirkulasi udara, dan menambah nilai estetika properti.",
-                details: [
-                    "Konsep Taman (Hardscape & Softscape)",
-                    "Denah Titik Tanam & Jenis Tanaman",
-                    "Detail Kolam / Fitur Air (Jika ada)",
-                    "Rencana Pencahayaan Taman",
-                    "Sistem Drainase Taman"
-                ]
-            },
-            'mep': {
-                title: "Desain MEP (Mekanikal Elektrikal Plumbing)",
-                img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800",
-                desc: "Perencanaan sistem utilitas bangunan agar beroperasi dengan efisien, aman, dan mudah dalam perawatan.",
-                details: [
-                    "Instalasi Titik Lampu & Saklar",
-                    "Jalur Pipa Air Bersih & Kotor",
-                    "Rencana Titik AC & CCTV",
-                    "Diagram Panel Listrik",
-                    "Sistem Penangkal Petir"
-                ]
-            },
-            'kontraktor_sipil': {
-                title: "Pekerjaan Sipil (Bangun Baru)",
-                img: "https://images.unsplash.com/photo-1632759132029-2342df220551?q=80&w=800",
-                desc: "Pelaksanaan konstruksi bangunan dari tanah kosong hingga bangunan berdiri tegak sesuai standar teknis.",
-                details: [
-                    "Pekerjaan Persiapan & Pondasi",
-                    "Pekerjaan Struktur Beton Bertulang",
-                    "Pasangan Dinding, Plester, Aci",
-                    "Pemasangan Rangka Atap & Penutup",
-                    "Laporan Progres Berkala"
-                ]
-            },
-            'kontraktor_baja': {
-                title: "Struktur Beton & Baja",
-                img: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800",
-                desc: "Spesialisasi konstruksi untuk bangunan bentang lebar, gudang, pabrik, atau penambahan lantai mezzanine.",
-                details: [
-                    "Fabrikasi Struktur Baja WF/H-Beam",
-                    "Pemasangan Konstruksi Baja Berat",
-                    "Dak Beton Bondek/Wiremesh",
-                    "Pembuatan Mezzanine Indoor/Outdoor",
-                    "Pengecatan Anti Karat"
-                ]
-            },
-            'renovasi': {
-                title: "Renovasi Bangunan",
-                img: "https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800",
-                desc: "Layanan perbaikan atau perubahan fungsi bangunan eksisting untuk meningkatkan kualitas dan kenyamanan.",
-                details: [
-                    "Bongkaran & Pembuangan Puing",
-                    "Perbaikan Struktur Rusak/Retak",
-                    "Penambahan Ruangan/Lantai",
-                    "Penggantian Lantai & Plafon",
-                    "Redesign layout ruangan"
-                ]
-            },
-            'fitout': {
-                title: "Fit Out Interior",
-                img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800",
-                desc: "Pelaksanaan fisik interior (pembuatan furniture/finishing) untuk kantor, cafe, retail, atau rumah tinggal.",
-                details: [
-                    "Pembuatan Custom Furniture (HPL/Duco)",
-                    "Pemasangan Partisi Gypsum/Kaca",
-                    "Instalasi Lantai Vinyl/Parquet/Karpet",
-                    "Pengerjaan Plafon Drop Ceiling",
-                    "Instalasi Lighting Interior"
-                ]
-            },
-            'finishing': {
-                title: "Pekerjaan Finishing",
-                img: "https://images.unsplash.com/photo-1620626012053-93f537236872?q=80&w=800",
-                desc: "Tahap akhir konstruksi yang fokus pada kerapihan detail dan estetika permukaan bangunan.",
-                details: [
-                    "Pemasangan Keramik/Granit Lantai & Dinding",
-                    "Pengecatan Dinding Interior & Eksterior",
-                    "Pemasangan Kusen Aluminium & Pintu",
-                    "Pemasangan Sanitary & Aksesoris",
-                    "Finishing Facade Bangunan"
-                ]
-            },
-            'maintenance': {
-                title: "Maintenance Gedung",
-                img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800",
-                desc: "Perawatan berkala untuk menjaga performa dan tampilan bangunan agar tetap prima dan bernilai jual tinggi.",
-                details: [
-                    "Pengecatan Ulang (Repainting)",
-                    "Perbaikan Kebocoran Atap/Dak",
-                    "Waterproofing Ulang",
-                    "Perbaikan Instalasi Listrik & Air",
-                    "Pembersihan Facade Kaca/ACP"
-                ]
-            },
-            'legal': {
-                title: "Legal & Perizinan",
-                img: "https://images.unsplash.com/photo-1554224154-260327c00c4b?q=80&w=800",
-                desc: "Bantuan profesional untuk mengurus dokumen legalitas bangunan agar sesuai dengan peraturan pemerintah daerah.",
-                details: [
-                    "Penyusunan Gambar IMB/PBG",
-                    "Perhitungan Teknis untuk SLF",
-                    "Pendampingan Sidang TPA/TPT",
-                    "Pengurusan KRK (Keterangan Rencana Kota)",
-                    "Konsultasi Regulasi Bangunan"
-                ]
-            },
-            'supervisi': {
-                title: "Supervisi Proyek",
-                img: "https://images.unsplash.com/photo-1531816458010-fb7685eec548?q=80&w=800",
-                desc: "Pengawasan independen di lapangan untuk memastikan kontraktor bekerja sesuai spesifikasi dan jadwal.",
-                details: [
-                    "Monitoring Progres Harian/Mingguan",
-                    "Quality Control Material Masuk",
-                    "Cek Kesesuaian Gambar vs Lapangan",
-                    "Laporan Deviasi Progres",
-                    "Rekomendasi Teknis di Lapangan"
-                ]
-            },
-            'manajemen': {
-                title: "Manajemen Proyek (MK)",
-                img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800",
-                desc: "Pengelolaan proyek secara menyeluruh dari tahap perencanaan hingga serah terima kunci.",
-                details: [
-                    "Penjadwalan Proyek (Kurva S)",
-                    "Pengendalian Budget (Cost Control)",
-                    "Manajemen Risiko Proyek",
-                    "Koordinasi Vendor & Sub-kontraktor",
-                    "Penerapan K3 di Lokasi"
-                ]
-            },
-            'tenaga_ahli': {
-                title: "Penyediaan Tenaga Ahli",
-                img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800",
-                desc: "Penyewaan tenaga profesional bersertifikat (SKA/SKK) untuk kebutuhan proyek spesifik.",
-                details: [
-                    "Ahli Arsitektur",
-                    "Ahli Struktur Bangunan Gedung",
-                    "Ahli Geoteknik",
-                    "Ahli MEP",
-                    "Ahli K3 Konstruksi"
-                ]
-            },
-            'rab': {
-                title: "Studi Kelayakan & RAB",
-                img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800",
-                desc: "Perhitungan estimasi biaya yang detail dan akurat untuk mencegah pembengkakan anggaran (overbudget).",
-                details: [
-                    "Volume Take Off (VTO)",
-                    "Analisa Harga Satuan Pekerjaan",
-                    "Rekapitulasi Biaya Proyek",
-                    "Daftar Harga Material Terbaru",
-                    "Analisa Kelayakan Investasi Properti"
-                ]
-            },
-            'audit': {
-                title: "Audit Teknis Bangunan",
-                img: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?q=80&w=800",
-                desc: "Pemeriksaan kesehatan bangunan untuk mengetahui tingkat kerusakan, keamanan struktur, dan kelayakan fungsi.",
-                details: [
-                    "Visual Inspection (Pemeriksaan Visual)",
-                    "Uji Kekuatan Beton (Hammer Test)",
-                    "Pemeriksaan Keretakan & Kemiringan",
-                    "Laporan Hasil Audit",
-                    "Rekomendasi Perkuatan/Perbaikan"
+            'konsultan': {
+                title: "Layanan Konsultan",
+                // Visualisasi Alur Umum Konsultan
+                workflowSteps: [
+                    { icon: "fa-comments", title: "Konsultasi", desc: "Analisis Masalah" },
+                    { icon: "fa-search", title: "Kajian Teknis", desc: "Audit/Cek Lapangan" },
+                    { icon: "fa-file-alt", title: "Laporan & Rekomendasi", desc: "Hasil Analisis Ahli" },
+                    { icon: "fa-clipboard-check", title: "Pendampingan", desc: "Supervisi/Pengurusan" }
+                ],
+                // Sub Layanan
+                services: [
+                    { 
+                        name: "Konsultan Perizinan & Legal", 
+                        desc: "Pengurusan PBG, SLF, dan dokumen pendukung sesuai regulasi.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Konsultan Supervisi", 
+                        desc: "Pengawasan pelaksanaan agar sesuai desain, spesifikasi, dan jadwal.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Manajemen Proyek", 
+                        desc: "Pendampingan perencanaan hingga serah terima. Pengendalian waktu, biaya, mutu, dan K3.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Tim Ahli & Tenaga Teknis", 
+                        desc: "Penyediaan Arsitek, engineer, dan konsultan berpengalaman.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Studi Kelayakan & RAB", 
+                        desc: "Analisis teknis dan finansial sebelum proyek dimulai.",
+                        items: [] 
+                    },
+                    { 
+                        name: "Audit Teknis Bangunan", 
+                        desc: "Evaluasi kondisi struktur, fungsi, dan keselamatan bangunan.",
+                        items: [] 
+                    }
                 ]
             }
         };
 
-        // VARIABEL GLOBAL UNTUK MENYIMPAN ID YANG SEDANG DIBUKA
-        let currentServiceId = "";
+        // --- LOGIC MODAL ---
+        function openCategoryModal(categoryKey) {
+            const data = categoryData[categoryKey];
+            if(!data) return;
 
-        // FUNGSI BUKA MODAL DETAIL LAYANAN
-        function openServiceDetail(id) {
-            currentServiceId = id;
-            const data = servicesData[id];
-            
-            if (data) {
-                // Isi Konten Modal
-                document.getElementById('modalTitle').innerText = data.title;
-                document.getElementById('modalDesc').innerText = data.desc;
-                document.getElementById('modalImage').src = data.img;
-                
-                // Generate List Output
-                const listContainer = document.getElementById('modalList');
-                listContainer.innerHTML = ""; // Bersihkan list sebelumnya
-                
-                data.details.forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = "flex items-start";
-                    li.innerHTML = `<i class="fas fa-check-circle text-abi-teal mt-1 mr-3 flex-shrink-0"></i> <span>${item}</span>`;
-                    listContainer.appendChild(li);
-                });
+            // 1. Set Judul
+            document.getElementById('modalTitle').innerText = data.title;
 
-                // Tampilkan Modal
-                const modal = document.getElementById('serviceModal');
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Stop scroll belakang
-            }
+            // 2. Generate Workflow (Alur)
+            const wfContainer = document.getElementById('workflowContainer');
+            wfContainer.innerHTML = "";
+            data.workflowSteps.forEach((step, index) => {
+                const isLast = index === data.workflowSteps.length - 1;
+                
+                const stepHtml = `
+                <div class="flow-step flex flex-col items-center text-center px-4 w-full md:w-auto">
+                    <div class="w-12 h-12 rounded-full bg-white border-2 border-abi-teal flex items-center justify-center text-abi-teal mb-3 z-10 relative">
+                        <i class="fas ${step.icon}"></i>
+                    </div>
+                    <h5 class="font-bold text-gray-800 text-sm mb-1">${step.title}</h5>
+                    <p class="text-[10px] text-gray-500">${step.desc}</p>
+                </div>
+                `;
+                wfContainer.innerHTML += stepHtml;
+            });
+
+            // 3. Generate Service List
+            const svcContainer = document.getElementById('subServiceContainer');
+            svcContainer.innerHTML = "";
+            data.services.forEach(svc => {
+                // Cek ada item detail atau tidak
+                let itemsHtml = "";
+                if(svc.items.length > 0) {
+                    itemsHtml = `<ul class="mt-3 space-y-1">
+                        ${svc.items.map(i => `<li class="text-xs text-gray-500 flex items-center"><i class="fas fa-dot-circle text-[8px] mr-2 text-abi-teal"></i>${i}</li>`).join('')}
+                    </ul>`;
+                }
+
+                const cardHtml = `
+                <div onclick="goToPackage('${svc.name}')" class="bg-white p-6 rounded-xl border border-gray-200 hover:border-abi-teal hover:shadow-md transition cursor-pointer group">
+                    <h5 class="font-bold text-lg text-gray-800 group-hover:text-abi-teal mb-2 flex justify-between items-center">
+                        ${svc.name}
+                        <i class="fas fa-arrow-right text-xs opacity-0 group-hover:opacity-100 transition transform group-hover:translate-x-1"></i>
+                    </h5>
+                    <p class="text-sm text-gray-600 leading-relaxed">${svc.desc}</p>
+                    ${itemsHtml}
+                </div>
+                `;
+                svcContainer.innerHTML += cardHtml;
+            });
+
+            // Show Modal
+            const modal = document.getElementById('categoryModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // FUNGSI TUTUP MODAL
-        function closeServiceModal() {
-            const modal = document.getElementById('serviceModal');
+        function closeCategoryModal() {
+            const modal = document.getElementById('categoryModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
-        // FUNGSI PINDAH KE PAKET.HTML DENGAN PARAMETER
-        function goToPaketPage() {
-            if (currentServiceId) {
-                window.location.href = `paket.html?service=${currentServiceId}`;
-            }
+        function goToPackage(serviceName) {
+            // Mapping sederhana untuk redirect ke paket.html dengan parameter
+            // Kita coba mapping nama layanan ke parameter yg ada di paket.html
+            let param = 'arsitek'; // default
+            const name = serviceName.toLowerCase();
+
+            if(name.includes('arsitektur')) param = 'arsitek';
+            else if(name.includes('interior')) param = 'interior';
+            else if(name.includes('sipil')) param = 'kontraktor_sipil';
+            else if(name.includes('baja') || name.includes('beton')) param = 'kontraktor_baja';
+            else if(name.includes('renovasi')) param = 'renovasi';
+            else if(name.includes('perizinan') || name.includes('legal')) param = 'legal';
+            else if(name.includes('rab')) param = 'rab';
+            else if(name.includes('audit')) param = 'audit';
+            
+            window.location.href = `paket.html?service=${param}`;
         }
 
-        // --- Logic Modal Alur Umum (Existing) ---
-        function toggleFlowModal() {
-            const modal = document.getElementById('flowModal');
-            modal.classList.toggle('active');
-            if(modal.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Close modal when clicking outside
+        // Close on outside click
         window.onclick = function(e) {
-            const sModal = document.getElementById('serviceModal');
-            const fModal = document.getElementById('flowModal');
-            if(e.target == sModal) closeServiceModal();
-            if(e.target == fModal) toggleFlowModal();
+            const modal = document.getElementById('categoryModal');
+            if(e.target == modal) closeCategoryModal();
         }
     </script>
 
