@@ -40,7 +40,7 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; scroll-behavior: smooth; }
         
         /* Modal Styles */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 15px; }
@@ -196,13 +196,30 @@
                         <div>
                             <label class="text-[10px] font-bold text-gray-400 uppercase">Kategori</label>
                             <select id="type" class="w-full border-b border-gray-200 py-2 text-sm focus:outline-none focus:border-abi-teal transition bg-transparent text-gray-600">
-                                <option value="Rumah Tinggal">Rumah Tinggal</option>
-                                <option value="Kantor/Ruko">Kantor/Ruko</option>
-                                <option value="Gudang">Gudang</option>
-                                <option value="Renovasi">Renovasi</option>
-                                <option value="Kanopi/Eksterior">Kanopi</option>
-                                <option value="Kolam Renang">Kolam Renang</option>
-                                <option value="Interior">Interior</option>
+                                <option value="" disabled selected>Pilih Layanan</option>
+                                <optgroup label="Layanan Desain">
+                                    <option value="Desain Arsitektur">Desain Arsitektur</option>
+                                    <option value="Desain Interior">Desain Interior</option>
+                                    <option value="Desain Struktur">Desain Struktur</option>
+                                    <option value="Desain Landscape">Desain Landscape</option>
+                                    <option value="Desain MEP">Desain MEP</option>
+                                </optgroup>
+                                <optgroup label="Layanan Kontraktor">
+                                    <option value="Pekerjaan Sipil">Pekerjaan Sipil (Nol)</option>
+                                    <option value="Struktur Beton/Baja">Struktur Beton & Baja</option>
+                                    <option value="Renovasi Bangunan">Renovasi Bangunan</option>
+                                    <option value="Fit Out Interior">Fit Out Interior</option>
+                                    <option value="Pekerjaan Finishing">Pekerjaan Finishing</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                </optgroup>
+                                <optgroup label="Layanan Konsultan">
+                                    <option value="Legal & Perizinan">Legal & Perizinan</option>
+                                    <option value="Supervisi Proyek">Supervisi Proyek</option>
+                                    <option value="Manajemen Proyek">Manajemen Proyek</option>
+                                    <option value="Tenaga Ahli">Tenaga Ahli</option>
+                                    <option value="Studi Kelayakan & RAB">Studi Kelayakan & RAB</option>
+                                    <option value="Audit Teknis">Audit Teknis</option>
+                                </optgroup>
                             </select>
                         </div>
                     </div>
@@ -233,14 +250,28 @@
             if(serviceType) {
                 let customTitle = "Konsultasi Layanan", 
                     customImg = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c", 
-                    autoSelectType = "Rumah Tinggal";
+                    autoSelectType = "Desain Arsitektur"; // Default fallback
 
-                if(serviceType === 'arsitek') { customTitle = "Konsultasi Arsitek"; customImg = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"; } 
-                else if(serviceType === 'interior') { customTitle = "Konsultasi Interior"; customImg = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0"; autoSelectType = "Interior"; } 
-                else if(serviceType === 'kanopi') { customTitle = "Jasa Kanopi"; customImg = "https://images.unsplash.com/photo-1497366216548-37526070297c"; autoSelectType = "Kanopi/Eksterior"; } 
-                else if(serviceType === 'pool') { customTitle = "Kolam Renang"; customImg = "https://images.unsplash.com/photo-1572331165267-854da2b00dc1"; autoSelectType = "Kolam Renang"; } 
-                else if(serviceType === 'renovasi') { customTitle = "Jasa Renovasi"; customImg = "https://images.unsplash.com/photo-1503387762-592deb58ef4e"; autoSelectType = "Renovasi"; }
-                else if(serviceType === 'rab') { customTitle = "Jasa Hitung RAB"; customImg = "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"; }
+                // Mapping URL Parameter ke Dropdown Value & Gambar
+                if(serviceType === 'arsitek') { customTitle = "Konsultasi Arsitek"; customImg = "https://images.unsplash.com/photo-1512917774080-9991f1c4c750"; autoSelectType = "Desain Arsitektur"; } 
+                else if(serviceType === 'interior') { customTitle = "Konsultasi Interior"; customImg = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6"; autoSelectType = "Desain Interior"; } 
+                else if(serviceType === 'struktur') { customTitle = "Konsultasi Struktur"; customImg = "https://images.unsplash.com/photo-1531834685032-c34bf0d84c7c"; autoSelectType = "Desain Struktur"; } 
+                else if(serviceType === 'landscape') { customTitle = "Desain Landscape"; customImg = "https://images.unsplash.com/photo-1558904541-efa843a96f01"; autoSelectType = "Desain Landscape"; } 
+                else if(serviceType === 'mep') { customTitle = "Desain MEP"; customImg = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e"; autoSelectType = "Desain MEP"; } 
+                
+                else if(serviceType === 'kontraktor_sipil') { customTitle = "Kontraktor Sipil"; customImg = "https://images.unsplash.com/photo-1632759132029-2342df220551"; autoSelectType = "Pekerjaan Sipil"; } 
+                else if(serviceType === 'kontraktor_baja') { customTitle = "Struktur Beton & Baja"; customImg = "https://images.unsplash.com/photo-1565008447742-97f6f38c985c"; autoSelectType = "Struktur Beton/Baja"; } 
+                else if(serviceType === 'renovasi') { customTitle = "Renovasi Bangunan"; customImg = "https://images.unsplash.com/photo-1581094794329-cd13693dd462"; autoSelectType = "Renovasi Bangunan"; } 
+                else if(serviceType === 'fitout') { customTitle = "Fit Out Interior"; customImg = "https://images.unsplash.com/photo-1497366216548-37526070297c"; autoSelectType = "Fit Out Interior"; } 
+                else if(serviceType === 'finishing') { customTitle = "Pekerjaan Finishing"; customImg = "https://images.unsplash.com/photo-1620626012053-93f537236872"; autoSelectType = "Pekerjaan Finishing"; } 
+                else if(serviceType === 'maintenance') { customTitle = "Maintenance"; customImg = "https://images.unsplash.com/photo-1584622650111-993a426fbf0a"; autoSelectType = "Maintenance"; } 
+                
+                else if(serviceType === 'legal') { customTitle = "Legal & Perizinan"; customImg = "https://images.unsplash.com/photo-1554224154-260327c00c4b"; autoSelectType = "Legal & Perizinan"; } 
+                else if(serviceType === 'supervisi') { customTitle = "Supervisi Proyek"; customImg = "https://images.unsplash.com/photo-1531816458010-fb7685eec548"; autoSelectType = "Supervisi Proyek"; } 
+                else if(serviceType === 'manajemen') { customTitle = "Manajemen Proyek"; customImg = "https://images.unsplash.com/photo-1542744173-8e7e53415bb0"; autoSelectType = "Manajemen Proyek"; } 
+                else if(serviceType === 'tenaga_ahli') { customTitle = "Tenaga Ahli"; customImg = "https://images.unsplash.com/photo-1556761175-5973dc0f32e7"; autoSelectType = "Tenaga Ahli"; } 
+                else if(serviceType === 'rab') { customTitle = "Studi Kelayakan & RAB"; customImg = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"; autoSelectType = "Studi Kelayakan & RAB"; } 
+                else if(serviceType === 'audit') { customTitle = "Audit Teknis"; customImg = "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5"; autoSelectType = "Audit Teknis"; }
 
                 openOrder(customTitle, customImg);
                 setTimeout(() => { document.getElementById('type').value = autoSelectType; }, 100);
