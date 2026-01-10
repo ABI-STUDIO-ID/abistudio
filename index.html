@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Jasa Arsitek, Desain Rumah, & Hitung RAB Profesional di Tangerang. Paket hemat mulai Rp 7.000/m². Melayani Jabodetabek. Konsultasi Gratis!">
     <meta name="keywords" content="Jasa Arsitek Tangerang, Jasa Desain Rumah Murah, Jasa Hitung RAB, Jasa Gambar IMB, Arsitek Poris Cipondoh, Biaya Desain Rumah per meter, ABI Studio">
     <meta name="author" content="ABI STUDIO">
@@ -11,13 +13,12 @@
     <meta property="og:url" content="https://abistudio.github.io/">
     <meta property="og:type" content="website">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABI STUDIO | Architect Building & Interior</title>
     <link rel="icon" type="image/png" href="logo.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -51,20 +52,21 @@
         .client-logo-img { filter: grayscale(100%) opacity(0.6); transition: all 0.3s ease; mix-blend-mode: multiply; }
         .client-logo-container:hover .client-logo-img { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
     </style>
+
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyC9JW1Rc3VFnJRYofHiorqDN4MWHjBrVi0",
-        authDomain: "abistudio-db.firebaseapp.com",
-        projectId: "abistudio-db",
-        storageBucket: "abistudio-db.firebasestorage.app",
-        messagingSenderId: "249751405902",
-        appId: "1:249751405902:web:6061648be8e6a51a69ca1f"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-</script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyC9JW1Rc3VFnJRYofHiorqDN4MWHjBrVi0",
+            authDomain: "abistudio-db.firebaseapp.com",
+            projectId: "abistudio-db",
+            storageBucket: "abistudio-db.firebasestorage.app",
+            messagingSenderId: "249751405902",
+            appId: "1:249751405902:web:6061648be8e6a51a69ca1f"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
 </head>
 <body>
 
@@ -267,127 +269,33 @@
     </section>
 
     <section class="py-24 px-6 bg-gray-50 border-t border-gray-100">
-    <div class="container mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div class="w-full md:w-auto">
-                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Insight & Tips</span>
-                <h3 class="text-3xl font-bold mt-2 text-abi-dark">Artikel Terbaru</h3>
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="w-full md:w-auto">
+                    <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Insight & Tips</span>
+                    <h3 class="text-3xl font-bold mt-2 text-abi-dark">Artikel Terbaru</h3>
+                </div>
+                <div class="w-full md:w-96 relative group">
+                    <input type="text" id="homeSearchBlog" onkeypress="handleEnter(event)" placeholder="Cari tips, renovasi, material..." 
+                           class="w-full bg-white border border-gray-200 rounded-full py-3 pl-6 pr-14 text-sm focus:outline-none focus:border-abi-teal transition shadow-sm">
+                    <button onclick="searchBlog()" class="absolute right-2 top-1.5 bg-abi-teal text-white w-9 h-9 rounded-full hover:bg-abi-dark transition flex items-center justify-center">
+                        <i class="fas fa-search text-xs"></i>
+                    </button>
+                </div>
             </div>
-            <div class="w-full md:w-96 relative group">
-                <input type="text" id="homeSearchBlog" onkeypress="handleEnter(event)" placeholder="Cari tips, renovasi, material..." 
-                       class="w-full bg-white border border-gray-200 rounded-full py-3 pl-6 pr-14 text-sm focus:outline-none focus:border-abi-teal transition shadow-sm">
-                <button onclick="searchBlog()" class="absolute right-2 top-1.5 bg-abi-teal text-white w-9 h-9 rounded-full hover:bg-abi-dark transition flex items-center justify-center">
-                    <i class="fas fa-search text-xs"></i>
-                </button>
-            </div>
-        </div>
 
-        <div id="latestArticlesGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="col-span-full text-center py-10">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-abi-teal"></div>
-                <p class="mt-4 text-gray-500 text-sm">Memuat artikel terbaru...</p>
-            </div>
-        </div>
-        
-        <div class="text-center mt-12">
-            <a href="blog.html" class="inline-block text-sm font-bold text-abi-teal border-b border-abi-teal pb-1 hover:text-abi-dark transition">Lihat Arsip Artikel Lainnya →</a>
-        </div>
-    </div>
-</section>
-
-<script>
-   <script>
-    // FUNGSI LOAD ARTIKEL (VERSI FIX & DEBUG)
-    async function loadLatestArticles() {
-        const grid = document.getElementById('latestArticlesGrid');
-        
-        try {
-            console.log("Sedang mengambil data dari Firebase..."); // Debugging
-
-            // Coba ambil data TANPA orderBy dulu untuk mengetes koneksi
-            // Jika ingin pakai urutan tanggal, pastikan Index sudah dibuat di Firebase Console
-            const snapshot = await db.collection("articles")
-                                     .orderBy("tanggal", "desc") 
-                                     .limit(3)
-                                     .get();
-            
-            console.log("Jumlah artikel ditemukan:", snapshot.size); // Debugging
-
-            if (snapshot.empty) {
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-10 bg-gray-50 rounded-xl border border-dashed border-gray-300">
-                        <i class="far fa-newspaper text-4xl text-gray-300 mb-3"></i>
-                        <p class="text-gray-500 text-sm font-bold">Belum ada artikel yang dipublikasikan.</p>
-                        <p class="text-xs text-gray-400 mt-1">Silakan input data di database Firebase (Collection: 'articles')</p>
-                    </div>`;
-                return;
-            }
-
-            let html = "";
-            snapshot.forEach(doc => {
-                const data = doc.data();
-                console.log("Data Artikel:", data); // Cek di Console apakah field 'gambar' ada isinya?
-
-                // Fallback Gambar yang Lebih Kuat
-                // Jika data.gambar kosong atau undefined, pakai gambar default
-                let imgUrl = data.gambar;
-                if (!imgUrl || imgUrl.trim() === "") {
-                    imgUrl = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'; 
-                }
-
-                html += `
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group cursor-pointer border border-gray-100 flex flex-col h-full" 
-                         onclick="window.location.href='blog.html?id=${doc.id}'">
-                    <div class="relative overflow-hidden h-56 flex-shrink-0 bg-gray-200">
-                        <img src="${imgUrl}" 
-                             alt="${data.judul}"
-                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800';"
-                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
-                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-abi-dark shadow-sm">
-                            ${data.kategori || 'Info'}
-                        </div>
-                    </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <div class="text-xs text-gray-400 mb-3 flex items-center">
-                            <i class="far fa-calendar-alt mr-2"></i> ${data.tanggal || '-'}
-                        </div>
-                        <h4 class="text-xl font-bold mb-3 text-abi-dark group-hover:text-abi-teal transition line-clamp-2 leading-tight">
-                            ${data.judul || 'Tanpa Judul'}
-                        </h4>
-                        <p class="text-gray-500 text-sm line-clamp-3 leading-relaxed mb-6">
-                            ${data.deskripsi || 'Tidak ada deskripsi singkat.'}
-                        </p>
-                        <div class="mt-auto">
-                            <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-gray-200 pb-1 group-hover:border-abi-teal transition">Baca Selengkapnya</span>
-                        </div>
-                    </div>
-                </article>`;
-            });
-            grid.innerHTML = html;
-
-        } catch (error) {
-            console.error("Error Detail:", error); // Lihat error lengkap di Console
-            
-            let errorMsg = "Gagal memuat artikel.";
-            
-            // Deteksi Error Indexing
-            if (error.message.includes("The query requires an index")) {
-                errorMsg = "System Error: Index Firebase belum dibuat. Cek Console Browser (F12) untuk link perbaikan.";
-            } else if (error.code === 'permission-denied') {
-                errorMsg = "Akses Ditolak: Cek 'Rules' di Firebase Console.";
-            }
-
-            grid.innerHTML = `
+            <div id="latestArticlesGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="col-span-full text-center py-10">
-                    <p class="text-red-500 font-bold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>${errorMsg}</p>
-                    <p class="text-xs text-gray-400 bg-gray-100 p-2 rounded inline-block">${error.message}</p>
-                </div>`;
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', loadLatestArticles);
-</script>
-</section>
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-abi-teal"></div>
+                    <p class="mt-4 text-gray-500 text-sm">Memuat artikel terbaru...</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="blog.html" class="inline-block text-sm font-bold text-abi-teal border-b border-abi-teal pb-1 hover:text-abi-dark transition">Lihat Arsip Artikel Lainnya →</a>
+            </div>
+        </div>
+    </section>
 
     <footer id="contact" class="bg-abi-dark text-white py-20 px-6 border-t border-white/10 relative z-50">
         <div class="container mx-auto grid md:grid-cols-3 gap-12 text-base font-light">
@@ -444,14 +352,19 @@
     </footer>
     
     <script>
-        // Slider Logic
-        let currentSlide = 0; const slides = document.querySelectorAll('.slide');
-        setInterval(() => { slides.forEach(s => s.classList.remove('active')); currentSlide = (currentSlide + 1) % slides.length; slides[currentSlide].classList.add('active'); }, 6000);
+        // --- 1. SLIDER LOGIC ---
+        let currentSlide = 0; 
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => { 
+            slides.forEach(s => s.classList.remove('active')); 
+            currentSlide = (currentSlide + 1) % slides.length; 
+            slides[currentSlide].classList.add('active'); 
+        }, 6000);
         
-        // Mobile Menu Logic
+        // --- 2. MOBILE MENU ---
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
 
-        // --- SEARCH BLOG LOGIC ---
+        // --- 3. SEARCH LOGIC ---
         function searchBlog() {
             const query = document.getElementById('homeSearchBlog').value;
             if(query) {
@@ -463,6 +376,88 @@
                 searchBlog();
             }
         }
+
+        // --- 4. LOAD ARTICLES (FIXED) ---
+        async function loadLatestArticles() {
+            const grid = document.getElementById('latestArticlesGrid');
+            
+            try {
+                console.log("Sedang mengambil data dari Firebase...");
+
+                // Gunakan orderBy dan limit untuk 3 artikel terbaru
+                // JIKA ERROR MERAH DI CONSOLE: Klik link di console browser untuk buat Index Firebase
+                const snapshot = await db.collection("articles")
+                                         .orderBy("tanggal", "desc") 
+                                         .limit(3)
+                                         .get();
+                
+                if (snapshot.empty) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-10 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+                            <i class="far fa-newspaper text-4xl text-gray-300 mb-3"></i>
+                            <p class="text-gray-500 text-sm font-bold">Belum ada artikel.</p>
+                        </div>`;
+                    return;
+                }
+
+                let html = "";
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    
+                    // FALLBACK GAMBAR: Jika data.gambar kosong, pakai gambar default
+                    let imgUrl = data.gambar;
+                    if (!imgUrl || imgUrl.trim() === "") {
+                        imgUrl = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'; 
+                    }
+
+                    html += `
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 group cursor-pointer border border-gray-100 flex flex-col h-full" 
+                             onclick="window.location.href='blog.html?id=${doc.id}'">
+                        <div class="relative overflow-hidden h-56 flex-shrink-0 bg-gray-200">
+                            <img src="${imgUrl}" 
+                                 alt="${data.judul}"
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581094794329-cd13693dd462?q=80&w=800';"
+                                 class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-abi-dark shadow-sm">
+                                ${data.kategori || 'Info'}
+                            </div>
+                        </div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="text-xs text-gray-400 mb-3 flex items-center">
+                                <i class="far fa-calendar-alt mr-2"></i> ${data.tanggal || '-'}
+                            </div>
+                            <h4 class="text-xl font-bold mb-3 text-abi-dark group-hover:text-abi-teal transition line-clamp-2 leading-tight">
+                                ${data.judul || 'Tanpa Judul'}
+                            </h4>
+                            <p class="text-gray-500 text-sm line-clamp-3 leading-relaxed mb-6">
+                                ${data.deskripsi || 'Klik untuk membaca selengkapnya.'}
+                            </p>
+                            <div class="mt-auto">
+                                <span class="inline-block text-xs font-bold text-abi-teal uppercase tracking-widest border-b border-gray-200 pb-1 group-hover:border-abi-teal transition">Baca Selengkapnya</span>
+                            </div>
+                        </div>
+                    </article>`;
+                });
+                grid.innerHTML = html;
+
+            } catch (error) {
+                console.error("Error Detail:", error);
+                
+                let errorMsg = "Gagal memuat artikel.";
+                // Cek error indexing
+                if (error.message && error.message.includes("The query requires an index")) {
+                    errorMsg = "System Error: Index Firebase diperlukan. Cek Console Browser (F12).";
+                }
+
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-10">
+                        <p class="text-red-500 font-bold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> ${errorMsg}</p>
+                    </div>`;
+            }
+        }
+
+        // Jalankan saat halaman siap
+        document.addEventListener('DOMContentLoaded', loadLatestArticles);
     </script>
 </body>
 </html>
