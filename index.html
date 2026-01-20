@@ -9,6 +9,7 @@
 
       gtag('config', 'G-HR1R62CT8X'); 
     </script>
+    
     <title>ABI STUDIO - Arsitektur & Interior Design</title>
     
     <meta name="description" content="Jasa desain arsitektur dan interior profesional. Wujudkan hunian dan ruang kerja impian bersama ABI STUDIO.">
@@ -72,14 +73,9 @@
         .animate-scroll:hover {
             animation-play-state: paused;
         }
-        /* Hilangkan Scrollbar horizontal jika muncul */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        /* Hilangkan Scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -125,7 +121,7 @@
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
                 <a href="index.html" class="hover:text-abi-teal transition pb-1 text-abi-teal" data-i18n="nav_home">Home</a>
                 <a href="about.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_about">About</a>
-                <a href="services.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_services">Layanan</a>
+                <a href="services.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_services">Layanan & Harga</a>
                 <a href="portfolio.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_portfolio">Portfolio</a>
                 <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
                 
@@ -146,11 +142,8 @@
         <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-white text-black py-4 px-6 shadow-2xl border-t">
             <div class="flex flex-col space-y-4 text-sm font-bold uppercase tracking-widest text-center">
                 <a href="index.html" class="hover:text-abi-teal py-2" data-i18n="nav_home">Home</a>
-                <a href="about.html" class="hover:text-abi-teal py-2" data-i18n="nav_about">About Us</a>
-                <a href="services.html" class="hover:text-abi-teal py-2" data-i18n="nav_services">Layanan</a>
+                <a href="services.html" class="hover:text-abi-teal py-2" data-i18n="nav_services">Layanan & Harga</a>
                 <a href="portfolio.html" class="hover:text-abi-teal py-2" data-i18n="nav_portfolio">Portfolio</a>
-                <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
-                
                 <div class="flex justify-center space-x-4 py-2 border-t border-b border-gray-100">
                     <span onclick="changeLanguage('id')" class="cursor-pointer font-bold text-abi-teal">INDONESIA</span>
                     <span onclick="changeLanguage('en')" class="cursor-pointer font-bold text-gray-400">ENGLISH</span>
@@ -167,7 +160,7 @@
                     <span data-i18n="hero_title_1">Mewujudkan Bangunan</span> <br>
                     <span class="font-bold" data-i18n="hero_bold_1">Impian Anda.</span>
                 </h2>
-                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1" data-i18n="btn_check_package">Lihat Paket</a>
+                <a href="services.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1" data-i18n="btn_check_package">Lihat Layanan</a>
             </div>
         </div>
         <div class="slide flex items-center justify-center text-center px-6" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');">
@@ -177,7 +170,7 @@
                     <span data-i18n="hero_title_2">Desain Presisi</span> <br>
                     <span class="font-bold" data-i18n="hero_bold_2">Konstruksi Kokoh.</span>
                 </h2>
-                <a href="paket.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1" data-i18n="btn_check_package">Lihat Paket</a>
+                <a href="services.html" class="inline-block bg-abi-teal text-white px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300 shadow-xl transform hover:-translate-y-1" data-i18n="btn_check_package">Lihat Layanan</a>
             </div>
         </div>
     </section>
@@ -248,64 +241,29 @@
                 
                 <div class="relative w-full overflow-hidden no-scrollbar">
                     <div class="flex items-center space-x-12 animate-scroll w-max py-4">
-                        
                         <div class="flex items-center space-x-12">
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="paramount.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="alamsutera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="summarecon.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="protera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="rhosigma.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="mamalaundry.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="fanfora.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="reflexykuu.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="paramount.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="alamsutera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="summarecon.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="protera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="rhosigma.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="mamalaundry.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="fanfora.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="reflexykuu.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
                         </div>
-
                         <div class="flex items-center space-x-12" aria-hidden="true">
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="paramount.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="alamsutera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="summarecon.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="protera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="rhosigma.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="mamalaundry.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="fanfora.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
-                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
-                                <img src="reflexykuu.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="paramount.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="alamsutera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="summarecon.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="protera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="rhosigma.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="mamalaundry.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="fanfora.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0"><img src="reflexykuu.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300"></div>
                         </div>
-
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -314,35 +272,57 @@
             <div class="text-center mb-16">
                 <span class="text-abi-teal text-sm font-bold uppercase tracking-[0.3em]">Our Expertise</span>
                 <h2 class="text-4xl md:text-5xl font-light mt-4" data-i18n="service_title">Layanan Komprehensif</h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Solusi lengkap dari perencanaan hingga pelaksanaan, disesuaikan dengan kebutuhan Anda.</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-white/5 p-12 rounded-3xl hover:bg-white/10 transition border border-white/10">
-                    <i class="fas fa-drafting-compass text-5xl text-abi-teal mb-6"></i>
-                    <h3 class="text-3xl font-bold mb-6">Architecture & Building</h3>
-                    <p class="text-base text-gray-300 leading-relaxed mb-6" data-i18n="arch_desc">
-                        Layanan lengkap mulai dari Konsep Desain, Skematik, Pengembangan Desain, hingga Dokumen Kontrak dan Fase Konstruksi.
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="bg-white/5 p-10 rounded-3xl hover:bg-white/10 transition border border-white/10 flex flex-col cursor-pointer" onclick="window.location.href='services.html'">
+                    <i class="fas fa-pen-ruler text-5xl text-abi-teal mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">Design & Planning</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                        Perencanaan desain arsitektur, interior, struktur, hingga landscape yang estetik dan fungsional.
                     </p>
-                    <ul class="text-sm space-y-3 text-gray-300">
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_design">Desain 2D & 3D Rendering</span></li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_struk">Gambar Struktural Detail</span></li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_supervisi">Pengawasan Konstruksi</span></li>
+                    <ul class="text-sm space-y-3 text-gray-300 mb-6 flex-grow">
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Desain Arsitektur & Interior</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Desain Struktur & MEP</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Studi Kelayakan & RAB</li>
                     </ul>
+                    <a href="services.html" class="text-abi-teal font-bold text-sm hover:text-white transition mt-auto">Pilih Layanan Design <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
-                <div class="bg-white/5 p-12 rounded-3xl hover:bg-white/10 transition border border-white/10">
-                    <i class="fas fa-couch text-5xl text-abi-teal mb-6"></i>
-                    <h3 class="text-3xl font-bold mb-6">Interior Design</h3>
-                    <p class="text-base text-gray-300 leading-relaxed mb-6" data-i18n="int_desc">
-                        Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang, furnitur, hingga pencahayaan.
+
+                <div class="bg-white/5 p-10 rounded-3xl hover:bg-white/10 transition border border-white/10 flex flex-col cursor-pointer" onclick="window.location.href='services.html'">
+                    <i class="fas fa-hammer text-5xl text-abi-teal mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">Construction</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                        Realisasi fisik bangunan dari nol, renovasi, hingga finishing interior dengan standar tinggi.
                     </p>
-                    <ul class="text-sm space-y-3 text-gray-300">
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_mat">Furniture & Material Selection</span></li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_custom">Custom Furniture Design</span></li>
-                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> <span data-i18n="list_reno">Interior Renovation</span></li>
+                    <ul class="text-sm space-y-3 text-gray-300 mb-6 flex-grow">
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Bangunan Sipil & Baja</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Renovasi & Rehabilitasi</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Fit Out Interior</li>
                     </ul>
+                    <a href="services.html" class="text-abi-teal font-bold text-sm hover:text-white transition mt-auto">Pilih Layanan Konstruksi <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
+
+                <div class="bg-white/5 p-10 rounded-3xl hover:bg-white/10 transition border border-white/10 flex flex-col cursor-pointer" onclick="window.location.href='services.html'">
+                    <i class="fas fa-file-contract text-5xl text-abi-teal mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-4">Consultant & Audit</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                        Layanan legalitas, pengawasan proyek, dan pemeriksaan teknis keamanan bangunan.
+                    </p>
+                    <ul class="text-sm space-y-3 text-gray-300 mb-6 flex-grow">
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Perizinan (PBG/SLF)</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Supervisi Proyek</li>
+                        <li><i class="fas fa-check mr-3 text-abi-teal"></i> Audit Teknis Bangunan</li>
+                    </ul>
+                    <a href="services.html" class="text-abi-teal font-bold text-sm hover:text-white transition mt-auto">Pilih Layanan Konsultan <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
             </div>
+
             <div class="text-center mt-16">
-                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition" data-i18n="see_more">Lihat Selengkapnya</a>
+                <a href="services.html" class="inline-block border border-abi-teal text-abi-teal px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition" data-i18n="see_more">Lihat Semua Paket</a>
             </div>
         </div>
     </section>
@@ -411,7 +391,7 @@
         // --- 1. LANGUAGE DATA ---
         const translations = {
             id: {
-                nav_home: "Home", nav_about: "About", nav_services: "Layanan", nav_packages: "Paket", nav_portfolio: "Portfolio", nav_contact: "Contact",
+                nav_home: "Home", nav_about: "About", nav_services: "Layanan & Harga", nav_portfolio: "Portfolio", nav_contact: "Contact",
                 hero_title_1: "Mewujudkan Bangunan", hero_bold_1: "Impian Anda.",
                 hero_title_2: "Desain Presisi", hero_bold_2: "Konstruksi Kokoh.",
                 btn_check_package: "Lihat Layanan",
@@ -426,19 +406,15 @@
                 industry_leaders: "Pemimpin Industri",
                 portfolio_subtitle: "Portofolio kolaborasi kami dengan berbagai korporasi terkemuka.",
                 service_title: "Layanan Komprehensif",
-                arch_desc: "Layanan lengkap mulai dari Konsep Desain, Skematik, Pengembangan Desain, hingga Dokumen Kontrak dan Fase Konstruksi.",
-                list_design: "Desain 2D & 3D Rendering", list_struk: "Gambar Struktural Detail", list_supervisi: "Pengawasan Konstruksi",
-                int_desc: "Solusi interior yang inovatif, elegan, dan personal. Kami membantu perencanaan ruang, furnitur, hingga pencahayaan.",
-                list_mat: "Pemilihan Material & Furniture", list_custom: "Desain Furniture Custom", list_reno: "Renovasi Interior",
-                see_more: "Lihat Selengkapnya",
+                see_more: "Lihat Semua Paket",
                 latest_articles: "Artikel Terbaru",
                 view_archive: "Lihat Arsip Artikel Lainnya →"
             },
             en: {
-                nav_home: "Home", nav_about: "About", nav_services: "Services", nav_packages: "Pricing", nav_portfolio: "Portfolio", nav_contact: "Contact Us",
+                nav_home: "Home", nav_about: "About", nav_services: "Services & Pricing", nav_portfolio: "Portfolio", nav_contact: "Contact Us",
                 hero_title_1: "Manifesting Your", hero_bold_1: "Dream Building.",
                 hero_title_2: "Precision Design", hero_bold_2: "Solid Construction.",
-                btn_check_package: "Check Our Services",
+                btn_check_package: "Check Services",
                 vision_title: "Our vision is to be a leading company with the highest quality standards.",
                 vision_desc: "ABI STUDIO offers a unique combination of detailed planning, precise calculation, and interior services. Our mission is to provide a transformative experience through integrated design and construction excellence.",
                 read_more: "Read More",
@@ -450,20 +426,14 @@
                 industry_leaders: "Industry Leaders",
                 portfolio_subtitle: "Our collaboration portfolio with various leading corporations.",
                 service_title: "Comprehensive Services",
-                arch_desc: "Complete services from Design Concept, Schematic, Design Development, to Contract Documents and Construction Phase.",
-                list_design: "2D & 3D Rendering Design", list_struk: "Detailed Structural Drawings", list_supervisi: "Construction Supervision",
-                int_desc: "Innovative, elegant, and personalized interior solutions. We assist in space planning, furniture, to lighting.",
-                list_mat: "Material & Furniture Selection", list_custom: "Custom Furniture Design", list_reno: "Interior Renovation",
-                see_more: "See All Services",
+                see_more: "See All Packages",
                 latest_articles: "Latest Articles",
                 view_archive: "View Article Archive →"
             }
         };
 
         function changeLanguage(lang) {
-            localStorage.setItem('selectedLang', lang); // Simpan pilihan
-            
-            // Update Text
+            localStorage.setItem('selectedLang', lang); 
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -471,8 +441,6 @@
                     el.innerText = translations[lang][key];
                 }
             });
-
-            // Update Style Button
             document.getElementById('btn-id').classList.toggle('active', lang === 'id');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-id').style.fontWeight = lang === 'id' ? 'bold' : 'normal';
