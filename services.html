@@ -161,7 +161,7 @@
     </footer>
 
     <script>
-    // --- 1. LANGUAGE DATA ---
+    // --- 1. SETTING BAHASA ---
     const translations = {
         id: {
             nav_home: "Home", nav_about: "About", nav_services: "Layanan & Harga", nav_portfolio: "Portfolio", nav_contact: "Contact",
@@ -218,22 +218,27 @@
         document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     }
 
-    // --- 2. SLIDER LOGIC ---
+    // --- 2. LOGIKA SLIDER ---
     let currentSlide = 0; 
     const slides = document.querySelectorAll('.slide');
-    setInterval(() => { 
-        slides.forEach(s => s.classList.remove('active')); 
-        currentSlide = (currentSlide + 1) % slides.length; 
-        slides[currentSlide].classList.add('active'); 
-    }, 6000);
+    if(slides.length > 0) {
+        setInterval(() => { 
+            slides.forEach(s => s.classList.remove('active')); 
+            currentSlide = (currentSlide + 1) % slides.length; 
+            slides[currentSlide].classList.add('active'); 
+        }, 6000);
+    }
     
     // --- 3. MOBILE MENU ---
-    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
+    function toggleMobileMenu() { 
+        const menu = document.getElementById('mobileMenu');
+        if(menu) menu.classList.toggle('hidden'); 
+    }
 
-    // --- 4. LOAD ARTICLES ---
+    // --- 4. LOAD ARTIKEL BLOG ---
     async function loadLatestArticles() {
         const grid = document.getElementById('latestArticlesGrid');
-        if(!grid) return; // Prevent error on pages without blog grid
+        if(!grid) return; 
         try {
             const snapshot = await db.collection("articles").orderBy("tanggal", "desc").limit(3).get();
             if (snapshot.empty) {
@@ -257,10 +262,10 @@
                 </article>`;
             });
             grid.innerHTML = html;
-        } catch (error) { console.error(error); }
+        } catch (error) { console.error("Error loading articles:", error); }
     }
 
-    // --- 5. SERVICES DATA (UPDATED & LENGKAP) ---
+    // --- 5. DATA LAYANAN LENGKAP ---
     const servicesData = {
         design: [
             { 
@@ -396,6 +401,7 @@
         if(!grid) return;
         grid.innerHTML = ''; 
         const data = servicesData[category];
+        
         data.forEach((item, index) => {
             let detailsHtml = '<ul class="mt-4 space-y-2 mb-6 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">';
             item.details.forEach(det => { detailsHtml += `<li class="flex items-start"><i class="fas fa-check text-abi-teal mt-1 mr-2 text-xs"></i> <span>${det}</span></li>`; });
@@ -435,7 +441,7 @@
         renderServices(category);
     }
 
-    // --- 8. MODAL LOGIC (DIPERBAIKI) ---
+    // --- 8. MODAL LOGIC ---
     const modal = document.getElementById('orderModal');
     const body = document.querySelector('body');
     const serviceInput = document.getElementById('selectedService');
@@ -444,30 +450,24 @@
     function openModal(category, index) {
         if(!modal) return;
         
-        // Ambil data spesifik
         const data = servicesData[category][index];
-        
-        // Reset Form & Dropdown
         serviceInput.value = data.title;
         packageSelect.innerHTML = '<option value="" disabled selected>-- Pilih Detail / Paket (Wajib) --</option>';
         
-        // Isi Dropdown dengan opsi baru (Pastikan value terisi)
         if (data.options && data.options.length > 0) {
             data.options.forEach(opt => {
                 const option = document.createElement('option');
-                option.value = opt; // Set value string
-                option.innerText = opt; // Set text display
+                option.value = opt; 
+                option.innerText = opt;
                 packageSelect.appendChild(option);
             });
         } else {
-            // Fallback jika tidak ada opsi (opsional)
             const option = document.createElement('option');
-            option.value = "General Inquiry";
-            option.innerText = "Konsultasi Umum";
+            option.value = "General Request";
+            option.innerText = "General Request";
             packageSelect.appendChild(option);
         }
 
-        // Tampilkan Modal
         modal.classList.remove('opacity-0', 'pointer-events-none');
         body.classList.add('modal-active');
     }
@@ -483,45 +483,82 @@
         modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
     }
 
-    // --- 9. WHATSAPP SUBMIT LOGIC (VALIDASI KETAT) ---
+    // --- 9. FUNGSI SUBMIT (FIREBASE + WHATSAPP) ---
     function submitToWA(e) {
         e.preventDefault();
-        
+
+        // 1. Ambil Data Form
         const name = document.getElementById('clientName').value;
         const wa = document.getElementById('clientWA').value;
         const service = document.getElementById('selectedService').value;
-        
-        // Ambil value dropdown
         const packageDetail = document.getElementById('packageSelect').value; 
-        
         const loc = document.getElementById('projectLoc').value;
         const area = document.getElementById('projectArea').value;
         const note = document.getElementById('projectNote').value;
 
-        // Validasi: Detail harus dipilih!
+        // Validasi
         if (!packageDetail || packageDetail === "") {
-            alert("Mohon pilih Detail / Paket Layanan terlebih dahulu di dalam formulir.");
+            alert("Mohon pilih Detail / Paket Layanan terlebih dahulu.");
             document.getElementById('packageSelect').focus();
             return;
         }
 
-        const message = `Halo ABI STUDIO, saya tertarik dengan layanan Anda.%0A%0A` +
-                        `📋 *DATA KLIEN* %0A` +
-                        `Nama: ${name}%0A` +
-                        `No. WA: ${wa}%0A%0A` +
-                        `🏗️ *DETAIL PROYEK* %0A` +
-                        `Layanan Utama: ${service}%0A` +
-                        `*Pilihan Paket/Tipe: ${packageDetail}*%0A` + 
-                        `Domisili Proyek: ${loc}%0A` +
-                        `Estimasi Luas: ${area} m²%0A` +
-                        `Catatan: ${note}%0A%0A` +
-                        `Mohon info penawaran harganya. Terima kasih.`;
+        // Tampilkan Loading di Tombol (Opsional UX)
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+        btn.disabled = true;
 
-        window.open(`https://wa.me/6285157577465?text=${message}`, '_blank');
-        closeModal();
+        // 2. Simpan ke Firebase Firestore
+        // Nama field disesuaikan dengan screenshot database Anda (snake_case)
+        db.collection("leads").add({
+            nama_klien: name,
+            no_hp: wa,
+            jenis_bangunan: service, // Layanan Utama
+            paket_dipilih: packageDetail, // Paket Spesifik
+            lokasi: loc,
+            luas_bangunan: area,
+            catatan: note,
+            waktu_input: firebase.firestore.FieldValue.serverTimestamp() // Waktu otomatis server
+        })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            
+            // 3. Setelah Sukses Simpan, Kirim ke WhatsApp
+            const message = `Halo ABI STUDIO, saya tertarik dengan layanan Anda.%0A%0A` +
+                            `📋 *DATA KLIEN* %0A` +
+                            `Nama: ${name}%0A` +
+                            `No. WA: ${wa}%0A%0A` +
+                            `🏗️ *DETAIL PROYEK* %0A` +
+                            `Layanan Utama: ${service}%0A` +
+                            `*Pilihan Paket/Tipe: ${packageDetail}*%0A` + 
+                            `Domisili Proyek: ${loc}%0A` +
+                            `Estimasi Luas: ${area} m²%0A` +
+                            `Catatan: ${note}%0A%0A` +
+                            `Mohon info penawaran harganya. Terima kasih.`;
+            
+            window.open(`https://wa.me/6285157577465?text=${message}`, '_blank');
+            
+            // Reset Form & Tutup Modal
+            e.target.reset();
+            closeModal();
+        })
+        .catch((error) => {
+            console.error("Error adding document: ", error);
+            alert("Terjadi kesalahan saat menyimpan data. Namun, kami akan tetap mengarahkan Anda ke WhatsApp.");
+            
+            // Fallback: Tetap buka WA meski gagal simpan DB (agar tidak kehilangan lead)
+            const message = `Halo ABI STUDIO... (Backup) ... Nama: ${name}`; 
+            window.open(`https://wa.me/6285157577465`, '_blank');
+        })
+        .finally(() => {
+            // Kembalikan tombol seperti semula
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
     }
 
-    // Init Language & Script
+    // Init Script
     document.addEventListener('DOMContentLoaded', () => {
         const savedLang = localStorage.getItem('selectedLang') || 'id';
         changeLanguage(savedLang);
