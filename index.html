@@ -37,7 +37,16 @@
             theme: {
                 extend: {
                     colors: { abi: { teal: '#4A6D6D', dark: '#1a1a1a', light: '#f8f9fa' } },
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    animation: {
+                        'scroll': 'scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
                 }
             }
         }
@@ -58,6 +67,19 @@
         /* Language Switcher Style */
         .lang-btn { cursor: pointer; font-weight: bold; padding: 0 5px; transition: color 0.3s; }
         .lang-btn.active { color: #4A6D6D; border-bottom: 2px solid #4A6D6D; }
+
+        /* Custom Scroll Animation Pause on Hover */
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+        /* Hilangkan Scrollbar horizontal jika muncul */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -202,21 +224,21 @@
         </div>
     </section>
 
-    <section class="py-24 bg-gray-50 border-y border-gray-100 px-6">
-        <div class="container mx-auto">
-            <div class="text-center mb-20">
+    <section class="py-24 bg-gray-50 border-y border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
                 <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em] mb-8 block" data-i18n="part_of">Proudly Part Of</span>
                 <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-    <div class="group cursor-pointer">
-        <img src="PII.png" class="org-logo h-24 md:h-28 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" grayscale hover:grayscale-0 transition duration-300>
-    </div>
-    <div class="group cursor-pointer">
-        <img src="IAI.png" class="org-logo h-20 md:h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" grayscale hover:grayscale-0 transition duration-300>
-    </div>
-    <div class="group cursor-pointer">
-        <img src="HIPMI.png" class="org-logo h-20 md:h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300" grayscale hover:grayscale-0 transition duration-300>
-    </div>
-</div>
+                    <div class="group cursor-pointer">
+                        <img src="PII.png" class="org-logo h-24 md:h-28 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="IAI.png" class="org-logo h-20 md:h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="HIPMI.png" class="org-logo h-20 md:h-24 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                    </div>
+                </div>
             </div>
             <div class="w-24 h-1 bg-gray-200 mx-auto rounded-full mb-16"></div>
             <div class="text-center">
@@ -225,33 +247,67 @@
                     <span class="font-bold" data-i18n="industry_leaders">Pemimpin Industri</span>
                 </h3>
                 <p class="text-gray-400 text-sm mb-12" data-i18n="portfolio_subtitle">Portofolio kolaborasi kami dengan berbagai korporasi terkemuka.</p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="paramount.png" class="client-logo-img max-h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="alamsutera.png" class="client-logo-img max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="summarecon.png" class="client-logo-img max-h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="protera.png" class="client-logo-img max-h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="rhosigma.png" class="client-logo-img max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="mamalaundry.png" class="client-logo-img max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="fanfora.png" class="client-logo-img max-h-14 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-    <div class="client-logo-container bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center h-24 md:h-28">
-        <img src="reflexykuu.png" class="client-logo-img max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
-    </div>
-</div>
-            </div>
+                
+                <div class="relative w-full overflow-hidden no-scrollbar">
+                    <div class="flex items-center space-x-12 animate-scroll w-max py-4">
+                        
+                        <div class="flex items-center space-x-12">
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="paramount.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="alamsutera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="summarecon.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="protera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="rhosigma.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="mamalaundry.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="fanfora.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="reflexykuu.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-12" aria-hidden="true">
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="paramount.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="alamsutera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="summarecon.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="protera.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="rhosigma.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="mamalaundry.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="fanfora.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                            <div class="w-32 md:w-40 h-24 bg-white p-4 rounded-xl shadow-sm border border-gray-50 flex items-center justify-center flex-shrink-0">
+                                <img src="reflexykuu.png" class="max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition duration-300">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
         </div>
     </section>
 
