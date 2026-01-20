@@ -523,11 +523,9 @@
 
     // --- FUNGSI SUBMIT (FIREBASE + WHATSAPP) ---
     function submitToWA(e) {
-        e.preventDefault();
+        e.preventDefault(); // Mencegah reload halaman
 
-        // Validasi elemen form
-        if(!document.getElementById('clientName')) return;
-
+        // 1. Ambil Data Form
         const name = document.getElementById('clientName').value;
         const wa = document.getElementById('clientWA').value;
         const service = document.getElementById('selectedService').value;
@@ -536,52 +534,62 @@
         const area = document.getElementById('projectArea').value;
         const note = document.getElementById('projectNote').value;
 
+        // 2. Validasi Wajib
         if (!packageDetail || packageDetail === "") {
             alert("Mohon pilih Detail / Paket Layanan terlebih dahulu.");
             document.getElementById('packageSelect').focus();
             return;
         }
 
+        // 3. SIAPKAN LINK WHATSAPP
+        const message = `Halo ABI STUDIO, saya tertarik dengan layanan Anda.%0A%0A` +
+                        `📋 *DATA KLIEN* %0A` +
+                        `Nama: ${name}%0A` +
+                        `No. WA: ${wa}%0A%0A` +
+                        `🏗️ *DETAIL PROYEK* %0A` +
+                        `Layanan Utama: ${service}%0A` +
+                        `*Pilihan Paket/Tipe: ${packageDetail}*%0A` + 
+                        `Domisili Proyek: ${loc}%0A` +
+                        `Estimasi Luas: ${area} m²%0A` +
+                        `Catatan: ${note}%0A%0A` +
+                        `Mohon info penawaran harganya. Terima kasih.`;
+        
+        const waUrl = `https://wa.me/6285157577465?text=${message}`;
+
+        // 4. BUKA WHATSAPP LANGSUNG (CRITICAL FIX)
+        // Ini ditaruh di sini agar dianggap "Direct User Action" dan tidak diblokir browser
+        window.open(waUrl, '_blank');
+
+        // 5. SIMPAN KE DATABASE (DI BACKGROUND)
         const btn = e.target.querySelector('button[type="submit"]');
         const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+        btn.innerHTML = '<i class="fas fa-check"></i> Terkirim!';
         btn.disabled = true;
 
-        // SIMPAN KE FIREBASE
         db.collection("leads").add({
             nama_klien: name,
             no_hp: wa,
-            jenis_bangunan: service, 
-            paket_dipilih: packageDetail, 
+            jenis_bangunan: service,
+            paket_dipilih: packageDetail,
             lokasi: loc,
             luas_bangunan: area,
             catatan: note,
             waktu_input: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then((docRef) => {
-            // KIRIM KE WHATSAPP SETELAH SUKSES SIMPAN
-            const message = `Halo ABI STUDIO, saya tertarik dengan layanan Anda.%0A%0A` +
-                            `📋 *DATA KLIEN* %0A` +
-                            `Nama: ${name}%0A` +
-                            `No. WA: ${wa}%0A%0A` +
-                            `🏗️ *DETAIL PROYEK* %0A` +
-                            `Layanan Utama: ${service}%0A` +
-                            `*Pilihan Paket/Tipe: ${packageDetail}*%0A` + 
-                            `Domisili Proyek: ${loc}%0A` +
-                            `Estimasi Luas: ${area} m²%0A` +
-                            `Catatan: ${note}%0A%0A` +
-                            `Mohon info penawaran harganya. Terima kasih.`;
-            
-            window.open(`https://wa.me/6285157577465?text=${message}`, '_blank');
-            e.target.reset();
-            closeModal();
+            console.log("Data leads berhasil disimpan: ", docRef.id);
+            // Reset form setelah 1 detik
+            setTimeout(() => {
+                e.target.reset();
+                closeModal();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1000);
         })
         .catch((error) => {
-            console.error("Error adding document: ", error);
-            alert("Terjadi kesalahan sistem, namun kami akan mengarahkan Anda ke WhatsApp.");
-            window.open(`https://wa.me/6285157577465`, '_blank');
-        })
-        .finally(() => {
+            console.error("Gagal simpan database: ", error);
+            // Tetap tutup modal karena WA sudah terbuka
+            closeModal();
             btn.innerHTML = originalText;
             btn.disabled = false;
         });
