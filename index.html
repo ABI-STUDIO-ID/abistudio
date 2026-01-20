@@ -20,9 +20,12 @@
     <meta name="robots" content="index, follow">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://abistudio.id/"> <meta property="og:title" content="ABI STUDIO - Wujudkan Bangunan Impian Anda">
+    <meta property="og:url" content="https://abistudio.id/"> 
+    <meta property="og:title" content="ABI STUDIO - Wujudkan Bangunan Impian Anda">
     <meta property="og:description" content="Solusi desain arsitektur, interior, dan konstruksi terintegrasi. Dari perencanaan hingga serah terima kunci.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200"> <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200"> 
+
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ABI STUDIO - Architecture & Interior">
     <meta name="twitter:description" content="Jasa desain dan bangun rumah profesional dengan standar kualitas tinggi.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200">
@@ -56,6 +59,8 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .lang-btn { cursor: pointer; font-weight: bold; padding: 0 5px; transition: color 0.3s; }
         .lang-btn.active { color: #4A6D6D; border-bottom: 2px solid #4A6D6D; }
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow-x: hidden; overflow-y: hidden !important; }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -77,7 +82,7 @@
                 <a href="about.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_about">About</a>
                 <a href="services.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_services">Layanan & Harga</a>
                 <a href="portfolio.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_portfolio">Portfolio</a>
-                <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
+                <a href="blog.html" class="hover:text-abi-teal transition pb-1" data-i18n="nav_blog">Blog</a>
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg text-xs md:text-sm" data-i18n="nav_contact">Contact</a>
                 <div class="flex items-center border-l pl-4 border-gray-300 space-x-2">
                     <span onclick="changeLanguage('id')" class="lang-btn active" id="btn-id">ID</span><span class="text-gray-300">|</span><span onclick="changeLanguage('en')" class="lang-btn" id="btn-en">EN</span>
@@ -93,7 +98,7 @@
                 <a href="about.html" class="hover:text-abi-teal py-2" data-i18n="nav_about">About</a>
                 <a href="services.html" class="hover:text-abi-teal py-2" data-i18n="nav_services">Layanan & Harga</a>
                 <a href="portfolio.html" class="hover:text-abi-teal py-2" data-i18n="nav_portfolio">Portfolio</a>
-                <a href="blog.html" class="hover:text-abi-teal py-2">Blog</a>
+                <a href="blog.html" class="hover:text-abi-teal py-2" data-i18n="nav_blog">Blog</a>
             </div>
         </div>
     </nav>
@@ -250,7 +255,7 @@
             </div>
 
             <div id="latestArticlesGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                </div>
+            </div>
             
             <div class="text-center mt-12">
                 <a href="blog.html" class="inline-block text-sm font-bold text-abi-teal border-b border-abi-teal pb-1 hover:text-abi-dark transition" data-i18n="view_archive">Lihat Arsip Artikel Lainnya →</a>
@@ -301,10 +306,10 @@
     </footer>
     
     <script>
-    // --- 1. SETTING BAHASA (TRANSLATION) ---
+    // --- 1. SETTING BAHASA ---
     const translations = {
         id: {
-            nav_home: "Home", nav_about: "About", nav_services: "Layanan & Harga", nav_portfolio: "Portfolio", nav_contact: "Contact",
+            nav_home: "Home", nav_about: "About", nav_services: "Layanan & Harga", nav_portfolio: "Portfolio", nav_blog: "Blog & Artikel", nav_contact: "Contact",
             hero_title_1: "Mewujudkan Bangunan", hero_bold_1: "Impian Anda.",
             hero_title_2: "Desain Presisi", hero_bold_2: "Konstruksi Kokoh.",
             btn_check_package: "Lihat Layanan",
@@ -324,7 +329,7 @@
             view_archive: "Lihat Arsip Artikel Lainnya →"
         },
         en: {
-            nav_home: "Home", nav_about: "About", nav_services: "Services & Pricing", nav_portfolio: "Portfolio", nav_contact: "Contact Us",
+            nav_home: "Home", nav_about: "About", nav_services: "Services & Pricing", nav_portfolio: "Portfolio", nav_blog: "Blog & Insights", nav_contact: "Contact Us",
             hero_title_1: "Manifesting Your", hero_bold_1: "Dream Building.",
             hero_title_2: "Precision Design", hero_bold_2: "Solid Construction.",
             btn_check_package: "Check Services",
@@ -405,144 +410,38 @@
         } catch (error) { console.error("Error loading articles:", error); }
     }
 
-    // --- 5. DATA LAYANAN LENGKAP (INI BAGIAN PENTING) ---
-    // Pastikan bagian ini tercopy agar semua dropdown opsi muncul
+    // --- 5. LOGIKA FORMULIR (UNTUK SERVICES.HTML / JIKA DIIMPLEMENTASIKAN DI SINI) ---
+    // Kode di bawah ini berisi Data Layanan Lengkap & Fungsi Submit ke Firebase
+    
     const servicesData = {
         design: [
-            { 
-                title: "Desain Arsitektur", 
-                icon: "fas fa-home", 
-                desc: "Perencanaan bangunan estetik dan fungsional.", 
-                details: ["Pilihan Paket: Basic, Standard, Premium"], 
-                options: ["Paket Basic", "Paket Standard", "Paket Premium"],
-                price: "Hubungi Admin" 
-            },
-            { 
-                title: "Desain Interior", 
-                icon: "fas fa-couch", 
-                desc: "Menciptakan suasana ruang yang nyaman.", 
-                details: ["Paket Basic (3D View)", "Paket Advance (3D + Gambar Kerja)"], 
-                options: ["Paket Basic (3D View)", "Paket Advance (3D + Kerja)"],
-                price: "Mulai Rp 25.000 /m²" 
-            },
-            { 
-                title: "Desain Struktur", 
-                icon: "fas fa-layer-group", 
-                desc: "Perhitungan kekuatan gedung, jalan, dan jembatan.", 
-                details: ["Gedung, Baja, Pabrik, Dermaga", "Jalan & Jembatan"], 
-                options: ["Gedung", "Baja", "Jalan", "Jembatan", "Dermaga", "Pabrik"],
-                price: "Rp 8.500 - 15.000 /m²" 
-            },
-            { 
-                title: "Desain Landscape", 
-                icon: "fas fa-tree", 
-                desc: "Penataan area luar ruangan hunian atau komersil.", 
-                details: ["Type: Hunian & Komersil"], 
-                options: ["Type Hunian", "Type Komersil"],
-                price: "Rp 15.000 /m²" 
-            },
-            { 
-                title: "Desain MEP", 
-                icon: "fas fa-bolt", 
-                desc: "Mekanikal, Elektrikal, dan Plumbing.", 
-                details: ["Spesifikasi: Elektrikal & Plumbing"], 
-                options: ["Elektrikal", "Plumbing", "Full MEP"],
-                price: "Rp 15.000 /m²" 
-            },
-            { 
-                title: "Studi Kelayakan & RAB", 
-                icon: "fas fa-calculator", 
-                desc: "Estimasi biaya dan kelayakan proyek.", 
-                details: ["Pilihan: Paket Sipil & Paket Interior"], 
-                options: ["Paket Sipil", "Paket Interior"],
-                price: "Rp 10.000 /m²" 
-            }
+            { title: "Desain Arsitektur", icon: "fas fa-home", desc: "Perencanaan bangunan estetik dan fungsional.", details: ["Pilihan Paket: Basic, Standard, Premium"], options: ["Paket Basic", "Paket Standard", "Paket Premium"], price: "Hubungi Admin" },
+            { title: "Desain Interior", icon: "fas fa-couch", desc: "Menciptakan suasana ruang yang nyaman.", details: ["Paket Basic (3D View)", "Paket Advance (3D + Gambar Kerja)"], options: ["Paket Basic (3D View)", "Paket Advance (3D + Kerja)"], price: "Mulai Rp 25.000 /m²" },
+            { title: "Desain Struktur", icon: "fas fa-layer-group", desc: "Perhitungan kekuatan gedung, jalan, dan jembatan.", details: ["Gedung, Baja, Pabrik, Dermaga", "Jalan & Jembatan"], options: ["Gedung", "Baja", "Jalan", "Jembatan", "Dermaga", "Pabrik"], price: "Rp 8.500 - 15.000 /m²" },
+            { title: "Desain Landscape", icon: "fas fa-tree", desc: "Penataan area luar ruangan hunian atau komersil.", details: ["Type: Hunian & Komersil"], options: ["Type Hunian", "Type Komersil"], price: "Rp 15.000 /m²" },
+            { title: "Desain MEP", icon: "fas fa-bolt", desc: "Mekanikal, Elektrikal, dan Plumbing.", details: ["Spesifikasi: Elektrikal & Plumbing"], options: ["Elektrikal", "Plumbing", "Full MEP"], price: "Rp 15.000 /m²" },
+            { title: "Studi Kelayakan & RAB", icon: "fas fa-calculator", desc: "Estimasi biaya dan kelayakan proyek.", details: ["Pilihan: Paket Sipil & Paket Interior"], options: ["Paket Sipil", "Paket Interior"], price: "Rp 10.000 /m²" }
         ],
         construction: [
-            { 
-                title: "Pekerjaan Sipil & Bangunan", 
-                icon: "fas fa-hard-hat", 
-                desc: "Konstruksi fisik bangunan dari nol.", 
-                details: ["Rumah Tinggal, Ruko, Kantor", "Sekolah, Ibadah, Gedung Bertingkat"], 
-                options: ["Rumah Tinggal", "Ruko", "Kantor", "Sarana Pendidikan", "Sarana Ibadah", "Gedung Bertingkat"],
-                price: "Sesuai RAB" 
-            },
-            { 
-                title: "Struktur Beton & Baja", 
-                icon: "fas fa-girders", 
-                desc: "Pekerjaan struktur berat dan modifikasi.", 
-                details: ["Penambahan Ruang, Gudang, Mezzanine", "Penguatan Struktur, Tangga/Kanopi"], 
-                options: ["Penambahan Ruang/Lantai", "Pergudangan", "Mezzanine", "Penguatan Struktur", "Struktur Tangga/Kanopi Baja"],
-                price: "Sesuai RAB" 
-            },
-            { 
-                title: "Renovasi & Rehabilitasi", 
-                icon: "fas fa-tools", 
-                desc: "Perbaikan sebagian atau menyeluruh.", 
-                details: ["Dapur, Plafon, Atap, Dinding", "Kamar Mandi, Struktur Ringan"], 
-                options: ["Perbaikan Dapur", "Perbaikan Plafon", "Perbaikan Atap/Dak", "Perbaikan Dinding", "Renovasi Kamar Mandi", "Perbaikan Struktur Ringan"],
-                price: "Sesuai Survey" 
-            },
-            { 
-                title: "Fit Out Interior", 
-                icon: "fas fa-paint-roller", 
-                desc: "Pengisian dan penyelesaian interior ruangan.", 
-                details: ["Hunian, Komersial, Kantor", "Cafe, Toko, Klinik"], 
-                options: ["Ruang Hunian", "Komersial", "Perkantoran", "Cafe", "Toko", "Klinik"],
-                price: "Sesuai Desain" 
-            },
-            { 
-                title: "Arsitektural & Finishing", 
-                icon: "fas fa-brush", 
-                desc: "Detail akhir untuk estetika bangunan.", 
-                details: ["Eksterior (Kanopi, Pagar, Kolam)", "Interior (Pintu, Jendela, Studio)"], 
-                options: ["Elemen Eksterior (Kanopi/Pagar)", "Elemen Interior (Pintu/Jendela)"],
-                price: "Sesuai Spesifikasi" 
-            },
-            { 
-                title: "Pemeliharaan Bangunan", 
-                icon: "fas fa-broom", 
-                desc: "Perawatan berkala agar bangunan tetap prima.", 
-                details: ["Pengecatan, Sanitary, Kebocoran", "Perawatan Atap & Gedung"], 
-                options: ["Pengecatan", "Sanitary", "Perbaikan Kebocoran", "Perawatan Atap", "Perawatan Berkala Gedung"],
-                price: "Sesuai Survey" 
-            }
+            { title: "Pekerjaan Sipil & Bangunan", icon: "fas fa-hard-hat", desc: "Konstruksi fisik bangunan dari nol.", details: ["Rumah Tinggal, Ruko, Kantor", "Sekolah, Ibadah, Gedung Bertingkat"], options: ["Rumah Tinggal", "Ruko", "Kantor", "Sarana Pendidikan", "Sarana Ibadah", "Gedung Bertingkat"], price: "Sesuai RAB" },
+            { title: "Struktur Beton & Baja", icon: "fas fa-girders", desc: "Pekerjaan struktur berat dan modifikasi.", details: ["Penambahan Ruang, Gudang, Mezzanine", "Penguatan Struktur, Tangga/Kanopi"], options: ["Penambahan Ruang/Lantai", "Pergudangan", "Mezzanine", "Penguatan Struktur", "Struktur Tangga/Kanopi Baja"], price: "Sesuai RAB" },
+            { title: "Renovasi & Rehabilitasi", icon: "fas fa-tools", desc: "Perbaikan sebagian atau menyeluruh.", details: ["Dapur, Plafon, Atap, Dinding", "Kamar Mandi, Struktur Ringan"], options: ["Perbaikan Dapur", "Perbaikan Plafon", "Perbaikan Atap/Dak", "Perbaikan Dinding", "Renovasi Kamar Mandi", "Perbaikan Struktur Ringan"], price: "Sesuai Survey" },
+            { title: "Fit Out Interior", icon: "fas fa-paint-roller", desc: "Pengisian dan penyelesaian interior ruangan.", details: ["Hunian, Komersial, Kantor", "Cafe, Toko, Klinik"], options: ["Ruang Hunian", "Komersial", "Perkantoran", "Cafe", "Toko", "Klinik"], price: "Sesuai Desain" },
+            { title: "Arsitektural & Finishing", icon: "fas fa-brush", desc: "Detail akhir untuk estetika bangunan.", details: ["Eksterior (Kanopi, Pagar, Kolam)", "Interior (Pintu, Jendela, Studio)"], options: ["Elemen Eksterior (Kanopi/Pagar)", "Elemen Interior (Pintu/Jendela)"], price: "Sesuai Spesifikasi" },
+            { title: "Pemeliharaan Bangunan", icon: "fas fa-broom", desc: "Perawatan berkala agar bangunan tetap prima.", details: ["Pengecatan, Sanitary, Kebocoran", "Perawatan Atap & Gedung"], options: ["Pengecatan", "Sanitary", "Perbaikan Kebocoran", "Perawatan Atap", "Perawatan Berkala Gedung"], price: "Sesuai Survey" }
         ],
         consultant: [
-            { 
-                title: "Konsultan Perizinan", 
-                icon: "fas fa-stamp", 
-                desc: "Pengurusan legalitas bangunan.", 
-                details: ["PBG, SLF, IMB lama ke PBG", "Pendampingan hingga terbit"], 
-                options: ["PBG", "SLF", "IMB Lama -> PBG", "Pendampingan Full"],
-                price: "Hubungi Kami" 
-            },
-            { 
-                title: "Supervisi & Manajemen", 
-                icon: "fas fa-tasks", 
-                desc: "Pengawasan proyek agar sesuai standar.", 
-                details: ["Kontrol Mutu, Waktu, & Biaya", "Laporan Harian/Mingguan/Bulanan"], 
-                options: ["Kontrol Mutu/Waktu/Biaya", "Laporan Berkala"],
-                price: "Bulanan / Proyek" 
-            },
-            { 
-                title: "Audit Teknis Bangunan", 
-                icon: "fas fa-search-location", 
-                desc: "Pemeriksaan kesehatan dan keamanan bangunan.", 
-                details: ["Audit Struktur", "Audit Fungsi Bangunan"], 
-                options: ["Audit Struktur", "Audit Fungsi Bangunan"],
-                price: "Hubungi Kami" 
-            }
+            { title: "Konsultan Perizinan", icon: "fas fa-stamp", desc: "Pengurusan legalitas bangunan.", details: ["PBG, SLF, IMB lama ke PBG", "Pendampingan hingga terbit"], options: ["PBG", "SLF", "IMB Lama -> PBG", "Pendampingan Full"], price: "Hubungi Kami" },
+            { title: "Supervisi & Manajemen", icon: "fas fa-tasks", desc: "Pengawasan proyek agar sesuai standar.", details: ["Kontrol Mutu, Waktu, & Biaya", "Laporan Harian/Mingguan/Bulanan"], options: ["Kontrol Mutu/Waktu/Biaya", "Laporan Berkala"], price: "Bulanan / Proyek" },
+            { title: "Audit Teknis Bangunan", icon: "fas fa-search-location", desc: "Pemeriksaan kesehatan dan keamanan bangunan.", details: ["Audit Struktur", "Audit Fungsi Bangunan"], options: ["Audit Struktur", "Audit Fungsi Bangunan"], price: "Hubungi Kami" }
         ]
     };
 
-    // --- 6. RENDER KARTU LAYANAN ---
     function renderServices(category) {
         const grid = document.getElementById('services-grid');
         if(!grid) return;
         grid.innerHTML = ''; 
         const data = servicesData[category];
-        
         data.forEach((item, index) => {
             let detailsHtml = '<ul class="mt-4 space-y-2 mb-6 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">';
             item.details.forEach(det => { detailsHtml += `<li class="flex items-start"><i class="fas fa-check text-abi-teal mt-1 mr-2 text-xs"></i> <span>${det}</span></li>`; });
@@ -570,7 +469,6 @@
         });
     }
 
-    // --- 7. LOGIKA TAB KATEGORI ---
     function filterCategory(category) {
         ['design', 'construction', 'consultant'].forEach(c => {
             const btn = document.getElementById(`btn-${c}`);
@@ -582,7 +480,6 @@
         renderServices(category);
     }
 
-    // --- 8. LOGIKA MODAL FORM ---
     const modal = document.getElementById('orderModal');
     const body = document.querySelector('body');
     const serviceInput = document.getElementById('selectedService');
@@ -590,15 +487,9 @@
 
     function openModal(category, index) {
         if(!modal) return;
-        
-        // Ambil data dari database servicesData
         const data = servicesData[category][index];
-        
-        // Reset Form & Dropdown
         serviceInput.value = data.title;
         packageSelect.innerHTML = '<option value="" disabled selected>-- Pilih Detail / Paket (Wajib) --</option>';
-        
-        // Isi Dropdown secara Dinamis
         if (data.options && data.options.length > 0) {
             data.options.forEach(opt => {
                 const option = document.createElement('option');
@@ -607,14 +498,11 @@
                 packageSelect.appendChild(option);
             });
         } else {
-            // Fallback jika lupa input data
             const option = document.createElement('option');
             option.value = "General Request";
             option.innerText = "General Request";
             packageSelect.appendChild(option);
         }
-
-        // Tampilkan Modal
         modal.classList.remove('opacity-0', 'pointer-events-none');
         body.classList.add('modal-active');
     }
@@ -630,52 +518,81 @@
         modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
     }
 
-    // --- 9. KIRIM KE WHATSAPP (FIXED) ---
+    // --- FUNGSI SUBMIT (FIREBASE + WHATSAPP) ---
     function submitToWA(e) {
         e.preventDefault();
-        
+
+        // Validasi elemen form
+        if(!document.getElementById('clientName')) return;
+
         const name = document.getElementById('clientName').value;
         const wa = document.getElementById('clientWA').value;
         const service = document.getElementById('selectedService').value;
         const packageDetail = document.getElementById('packageSelect').value; 
-        
         const loc = document.getElementById('projectLoc').value;
         const area = document.getElementById('projectArea').value;
         const note = document.getElementById('projectNote').value;
 
-        // VALIDASI: Cegah kirim jika paket kosong
         if (!packageDetail || packageDetail === "") {
-            alert("Mohon pilih Detail / Paket Layanan terlebih dahulu di dalam formulir.");
+            alert("Mohon pilih Detail / Paket Layanan terlebih dahulu.");
             document.getElementById('packageSelect').focus();
             return;
         }
 
-        const message = `Halo ABI STUDIO, saya tertarik dengan layanan Anda.%0A%0A` +
-                        `📋 *DATA KLIEN* %0A` +
-                        `Nama: ${name}%0A` +
-                        `No. WA: ${wa}%0A%0A` +
-                        `🏗️ *DETAIL PROYEK* %0A` +
-                        `Layanan Utama: ${service}%0A` +
-                        `*Pilihan Paket/Tipe: ${packageDetail}*%0A` + 
-                        `Domisili Proyek: ${loc}%0A` +
-                        `Estimasi Luas: ${area} m²%0A` +
-                        `Catatan: ${note}%0A%0A` +
-                        `Mohon info penawaran harganya. Terima kasih.`;
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+        btn.disabled = true;
 
-        window.open(`https://wa.me/6285157577465?text=${message}`, '_blank');
-        closeModal();
+        // SIMPAN KE FIREBASE
+        db.collection("leads").add({
+            nama_klien: name,
+            no_hp: wa,
+            jenis_bangunan: service, 
+            paket_dipilih: packageDetail, 
+            lokasi: loc,
+            luas_bangunan: area,
+            catatan: note,
+            waktu_input: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then((docRef) => {
+            // KIRIM KE WHATSAPP SETELAH SUKSES SIMPAN
+            const message = `Halo ABI STUDIO, saya tertarik dengan layanan Anda.%0A%0A` +
+                            `📋 *DATA KLIEN* %0A` +
+                            `Nama: ${name}%0A` +
+                            `No. WA: ${wa}%0A%0A` +
+                            `🏗️ *DETAIL PROYEK* %0A` +
+                            `Layanan Utama: ${service}%0A` +
+                            `*Pilihan Paket/Tipe: ${packageDetail}*%0A` + 
+                            `Domisili Proyek: ${loc}%0A` +
+                            `Estimasi Luas: ${area} m²%0A` +
+                            `Catatan: ${note}%0A%0A` +
+                            `Mohon info penawaran harganya. Terima kasih.`;
+            
+            window.open(`https://wa.me/6285157577465?text=${message}`, '_blank');
+            e.target.reset();
+            closeModal();
+        })
+        .catch((error) => {
+            console.error("Error adding document: ", error);
+            alert("Terjadi kesalahan sistem, namun kami akan mengarahkan Anda ke WhatsApp.");
+            window.open(`https://wa.me/6285157577465`, '_blank');
+        })
+        .finally(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
     }
 
-    // Init Language & Script saat halaman dimuat
+    // Init Script
     document.addEventListener('DOMContentLoaded', () => {
         const savedLang = localStorage.getItem('selectedLang') || 'id';
         changeLanguage(savedLang);
         loadLatestArticles();
-        // Render default tab
         if(document.getElementById('services-grid')) {
             filterCategory('design'); 
         }
     });
-</script>
+    </script>
 </body>
 </html>
