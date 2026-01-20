@@ -8,15 +8,12 @@
       gtag('js', new Date());
       gtag('config', 'G-HR1R62CT8X'); 
     </script>
-    
     <title>Layanan & Harga - ABI STUDIO</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="logo.png">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             theme: {
@@ -29,29 +26,21 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        body { background-color: #ffffff; color: #1a1a1a; overflow-x: hidden; font-size: 16px; }
-        
-        /* Animasi fade in */
+        body { background-color: #ffffff; color: #1a1a1a; overflow-x: hidden; font-size: 16px; font-family: 'Plus Jakarta Sans', sans-serif; }
         .fade-in { animation: fadeIn 0.5s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* Tab Styles */
         .tab-active { background-color: #4A6D6D; color: white; border-color: #4A6D6D; }
         .tab-inactive { background-color: white; color: #1a1a1a; border-color: #e5e7eb; }
         .tab-inactive:hover { border-color: #4A6D6D; color: #4A6D6D; }
-
-        /* Modal Transition */
         .modal { transition: opacity 0.25s ease; }
         body.modal-active { overflow-x: hidden; overflow-y: hidden !important; }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full top-0 z-[50] bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <nav class="fixed w-full top-0 z-[50] bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
-            <a href="index.html" class="flex items-center">
-                <img src="logo.png" alt="ABI STUDIO" class="h-28 w-auto object-contain">
-            </a>
+            <a href="index.html" class="flex items-center"><img src="logo.png" alt="ABI STUDIO" class="h-28 w-auto object-contain"></a>
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
                 <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
                 <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
@@ -60,15 +49,15 @@
                 <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition text-xs md:text-sm">Contact</a>
             </div>
-             <button class="md:hidden text-abi-teal text-2xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
-                <i class="fas fa-bars"></i>
-            </button>
+             <button class="md:hidden text-abi-teal text-2xl" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"><i class="fas fa-bars"></i></button>
         </div>
         <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-white text-black py-4 px-6 shadow-2xl border-t">
             <div class="flex flex-col space-y-4 text-sm font-bold uppercase tracking-widest text-center">
-                <a href="index.html" class="py-2">Home</a>
+                <a href="index.html" class="hover:text-abi-teal py-2">Home</a>
+                <a href="about.html" class="hover:text-abi-teal py-2">About</a>
                 <a href="services.html" class="text-abi-teal py-2">Layanan & Harga</a>
-                <a href="portfolio.html" class="py-2">Portfolio</a>
+                <a href="portfolio.html" class="hover:text-abi-teal py-2">Portfolio</a>
+                <a href="blog.html" class="hover:text-abi-teal py-2">Blog</a>
             </div>
         </div>
     </nav>
@@ -77,86 +66,43 @@
         <div class="container mx-auto">
             <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Our Services</span>
             <h1 class="text-4xl md:text-6xl font-light mt-4 mb-6">Pilih Kebutuhan Anda</h1>
-            <p class="text-gray-400 max-w-2xl mx-auto text-lg font-light">
-                Isi detail kebutuhan proyek Anda, dan tim ahli kami akan memberikan solusi terbaik.
-            </p>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg font-light">Isi detail kebutuhan proyek Anda, dan tim ahli kami akan memberikan solusi terbaik.</p>
         </div>
     </header>
 
     <section class="py-20 px-6 bg-gray-50 min-h-screen">
         <div class="container mx-auto max-w-6xl">
-            
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="filterCategory('design')" id="btn-design" class="tab-active px-8 py-4 rounded-full border-2 text-sm font-bold uppercase tracking-widest transition duration-300 shadow-sm flex items-center">
-                    <i class="fas fa-pen-ruler mr-3"></i> Design & Planning
-                </button>
-                <button onclick="filterCategory('construction')" id="btn-construction" class="tab-inactive px-8 py-4 rounded-full border-2 text-sm font-bold uppercase tracking-widest transition duration-300 shadow-sm flex items-center">
-                    <i class="fas fa-hammer mr-3"></i> Construction
-                </button>
-                <button onclick="filterCategory('consultant')" id="btn-consultant" class="tab-inactive px-8 py-4 rounded-full border-2 text-sm font-bold uppercase tracking-widest transition duration-300 shadow-sm flex items-center">
-                    <i class="fas fa-file-contract mr-3"></i> Consultant & Audit
-                </button>
+                <button onclick="filterCategory('design')" id="btn-design" class="tab-active px-8 py-4 rounded-full border-2 text-sm font-bold uppercase tracking-widest transition duration-300 shadow-sm flex items-center"><i class="fas fa-pen-ruler mr-3"></i> Design & Planning</button>
+                <button onclick="filterCategory('construction')" id="btn-construction" class="tab-inactive px-8 py-4 rounded-full border-2 text-sm font-bold uppercase tracking-widest transition duration-300 shadow-sm flex items-center"><i class="fas fa-hammer mr-3"></i> Construction</button>
+                <button onclick="filterCategory('consultant')" id="btn-consultant" class="tab-inactive px-8 py-4 rounded-full border-2 text-sm font-bold uppercase tracking-widest transition duration-300 shadow-sm flex items-center"><i class="fas fa-file-contract mr-3"></i> Consultant & Audit</button>
             </div>
-
-            <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
-
+            <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
         </div>
     </section>
 
     <div id="orderModal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-        
         <div class="modal-container bg-white w-11/12 md:max-w-lg mx-auto rounded-2xl shadow-2xl z-50 overflow-y-auto max-h-[90vh]">
-            
             <div class="modal-content py-6 text-left px-6">
                 <div class="flex justify-between items-center pb-3">
                     <p class="text-2xl font-bold text-abi-dark">Formulir Konsultasi</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="closeModal()">
-                        <i class="fas fa-times text-gray-500 hover:text-red-500 text-xl"></i>
-                    </div>
+                    <div class="modal-close cursor-pointer z-50" onclick="closeModal()"><i class="fas fa-times text-gray-500 hover:text-red-500 text-xl"></i></div>
                 </div>
-
                 <p class="text-sm text-gray-500 mb-6">Silakan lengkapi data di bawah ini agar kami dapat memberikan estimasi yang akurat.</p>
-
                 <form id="consultationForm" onsubmit="submitToWA(event)">
                     <div class="space-y-4">
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Nama Lengkap</label>
-                            <input type="text" id="clientName" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Contoh: Budi Santoso">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Nomor WhatsApp</label>
-                            <input type="tel" id="clientWA" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Contoh: 08123456789">
-                        </div>
-
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Layanan yang Dipilih</label>
-                            <input type="text" id="selectedService" readonly class="w-full px-4 py-3 rounded-lg bg-gray-100 border border-gray-200 text-gray-500 font-bold cursor-not-allowed">
-                        </div>
-
+                        <div><label class="block text-gray-700 text-sm font-bold mb-2">Nama Lengkap</label><input type="text" id="clientName" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Contoh: Budi Santoso"></div>
+                        <div><label class="block text-gray-700 text-sm font-bold mb-2">Nomor WhatsApp</label><input type="tel" id="clientWA" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Contoh: 08123456789"></div>
+                        <div><label class="block text-gray-700 text-sm font-bold mb-2">Layanan yang Dipilih</label><input type="text" id="selectedService" readonly class="w-full px-4 py-3 rounded-lg bg-gray-100 border border-gray-200 text-gray-500 font-bold cursor-not-allowed"></div>
                         <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Domisili Proyek</label>
-                                <input type="text" id="projectLoc" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Cth: BSD, Tangerang">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Estimasi Luas (m²)</label>
-                                <input type="number" id="projectArea" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Cth: 120">
-                            </div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Domisili Proyek</label><input type="text" id="projectLoc" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Cth: BSD, Tangerang"></div>
+                            <div><label class="block text-gray-700 text-sm font-bold mb-2">Estimasi Luas (m²)</label><input type="number" id="projectArea" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Cth: 120"></div>
                         </div>
-
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Detail Kebutuhan / Catatan</label>
-                            <textarea id="projectNote" rows="3" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Ceritakan detail tambahan, misal: ingin gaya minimalis, renovasi lantai 2, dll."></textarea>
-                        </div>
+                        <div><label class="block text-gray-700 text-sm font-bold mb-2">Detail Kebutuhan / Catatan</label><textarea id="projectNote" rows="3" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-abi-teal focus:bg-white focus:outline-none transition" placeholder="Ceritakan detail tambahan, misal: ingin gaya minimalis, renovasi lantai 2, dll."></textarea></div>
                     </div>
-
                     <div class="mt-8">
-                        <button type="submit" class="w-full bg-abi-teal text-white font-bold py-4 rounded-lg hover:bg-abi-dark transition duration-300 shadow-lg flex justify-center items-center">
-                            <i class="fab fa-whatsapp text-xl mr-2"></i> Kirim ke WhatsApp
-                        </button>
+                        <button type="submit" class="w-full bg-abi-teal text-white font-bold py-4 rounded-lg hover:bg-abi-dark transition duration-300 shadow-lg flex justify-center items-center"><i class="fab fa-whatsapp text-xl mr-2"></i> Kirim ke WhatsApp</button>
                         <p class="text-center text-xs text-gray-400 mt-3">Data Anda aman. Kami akan membalas secepatnya.</p>
                     </div>
                 </form>
@@ -164,12 +110,45 @@
         </div>
     </div>
 
-    <footer class="bg-abi-dark text-white py-12 text-center border-t border-white/10">
-        <p class="text-xs uppercase tracking-[0.3em] opacity-50">© 2026 ABI STUDIO. All Rights Reserved.</p>
+    <footer id="contact" class="bg-abi-dark text-white py-20 px-6 border-t border-white/10 relative z-50">
+        <div class="container mx-auto grid md:grid-cols-3 gap-12 text-base font-light">
+            <div>
+                <h5 class="text-xl font-bold mb-6">ABI STUDIO</h5>
+                <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="opacity-80 leading-relaxed hover:text-abi-teal hover:opacity-100 transition flex items-start group text-base mb-6">
+                    <i class="fas fa-map-marker-alt mt-1 mr-3 text-abi-teal group-hover:scale-110 transition"></i>
+                    <span>Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>Sudimara Pinang, Kec. Pinang,<br>Kota Tangerang, Banten 15145.</span>
+                </a>
+            </div>
+            <div>
+                <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Contact Us</h5>
+                <div class="space-y-6">
+                    <div class="flex items-center opacity-80 hover:opacity-100 transition cursor-pointer" onclick="window.open('https://wa.me/6285157577465','_blank')">
+                        <i class="fab fa-whatsapp mr-4 text-2xl"></i>
+                        <div>
+                            <p class="font-bold text-base">Angga Aditya Pratama, SE</p>
+                            <p class="text-sm">Co-Founder & Head of Marketing</p>
+                            <p class="text-sm mt-1">0851-5757-7465</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center opacity-80">
+                        <i class="far fa-envelope mr-4 text-2xl"></i>
+                        <a href="mailto:abi.studio.id@gmail.com" class="text-base hover:text-abi-teal transition">abi.studio.id@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="md:text-right flex flex-col justify-between">
+                <div>
+                    <h5 class="text-xs uppercase tracking-[0.3em] font-bold mb-6 opacity-80">Social</h5>
+                    <div class="flex md:justify-end space-x-8 text-2xl opacity-80">
+                        <a href="https://www.instagram.com/abi.studio.id/" target="_blank" class="hover:text-abi-teal transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <p class="text-xs uppercase tracking-[0.3em] opacity-50 mt-10">© 2026 ABI STUDIO</p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // --- DATA LAYANAN (DATABASE) ---
         const servicesData = {
             design: [
                 { title: "Desain Arsitektur", icon: "fas fa-home", desc: "Perencanaan bangunan estetik dan fungsional.", details: ["Paket Basic", "Paket Standard", "Paket Premium"], price: "Hubungi untuk Penawaran" },
@@ -194,111 +173,45 @@
             ]
         };
 
-        // --- RENDER SERVICES ---
         function renderServices(category) {
             const grid = document.getElementById('services-grid');
             grid.innerHTML = ''; 
             const data = servicesData[category];
-
             data.forEach((item, index) => {
                 let detailsHtml = '<ul class="mt-4 space-y-2 mb-6 text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">';
-                item.details.forEach(det => {
-                    detailsHtml += `<li class="flex items-start"><i class="fas fa-check text-abi-teal mt-1 mr-2 text-xs"></i> <span>${det}</span></li>`;
-                });
+                item.details.forEach(det => { detailsHtml += `<li class="flex items-start"><i class="fas fa-check text-abi-teal mt-1 mr-2 text-xs"></i> <span>${det}</span></li>`; });
                 detailsHtml += '</ul>';
-
-                const card = `
-                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col fade-in" style="animation-delay: ${index * 100}ms">
-                        <div class="w-14 h-14 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6">
-                            <i class="${item.icon}"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-abi-dark mb-2">${item.title}</h3>
-                        <p class="text-gray-500 text-sm mb-4">${item.desc}</p>
-                        
-                        <div class="mt-auto w-full">
-                            <div class="border-t border-gray-100 pt-4">
-                                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Paket & Harga</span>
-                                ${detailsHtml}
-                                <div class="flex justify-between items-center mt-4">
-                                    <span class="font-bold text-abi-teal text-sm bg-abi-teal/5 px-3 py-1 rounded-full">${item.price}</span>
-                                    <button onclick="openModal('${item.title}')" class="bg-abi-dark text-white hover:bg-abi-teal px-4 py-2 rounded-lg text-sm font-bold transition">
-                                        Pilih Layanan <i class="fas fa-arrow-right ml-1"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                const card = `<div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col fade-in" style="animation-delay: ${index * 100}ms"><div class="w-14 h-14 bg-abi-teal/10 rounded-full flex items-center justify-center text-abi-teal text-2xl mb-6"><i class="${item.icon}"></i></div><h3 class="text-xl font-bold text-abi-dark mb-2">${item.title}</h3><p class="text-gray-500 text-sm mb-4">${item.desc}</p><div class="mt-auto w-full"><div class="border-t border-gray-100 pt-4"><span class="text-xs font-bold uppercase tracking-widest text-gray-400">Paket & Harga</span>${detailsHtml}<div class="flex justify-between items-center mt-4"><span class="font-bold text-abi-teal text-sm bg-abi-teal/5 px-3 py-1 rounded-full">${item.price}</span><button onclick="openModal('${item.title}')" class="bg-abi-dark text-white hover:bg-abi-teal px-4 py-2 rounded-lg text-sm font-bold transition">Pilih Layanan <i class="fas fa-arrow-right ml-1"></i></button></div></div></div></div>`;
                 grid.innerHTML += card;
             });
         }
-
-        // --- TABS LOGIC ---
         function filterCategory(category) {
             ['design', 'construction', 'consultant'].forEach(c => {
                 const btn = document.getElementById(`btn-${c}`);
-                if (c === category) {
-                    btn.classList.remove('tab-inactive');
-                    btn.classList.add('tab-active');
-                } else {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('tab-inactive');
-                }
+                if (c === category) { btn.classList.remove('tab-inactive'); btn.classList.add('tab-active'); } 
+                else { btn.classList.remove('tab-active'); btn.classList.add('tab-inactive'); }
             });
             renderServices(category);
         }
-
-        // --- MODAL LOGIC ---
         const modal = document.getElementById('orderModal');
         const body = document.querySelector('body');
         const serviceInput = document.getElementById('selectedService');
-
-        function openModal(serviceName) {
-            serviceInput.value = serviceName; // Auto-fill layanan
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            body.classList.add('modal-active');
-        }
-
-        function closeModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            body.classList.remove('modal-active');
-        }
-
-        // Tutup modal jika klik di luar area form
+        function openModal(serviceName) { serviceInput.value = serviceName; modal.classList.remove('opacity-0', 'pointer-events-none'); body.classList.add('modal-active'); }
+        function closeModal() { modal.classList.add('opacity-0', 'pointer-events-none'); body.classList.remove('modal-active'); }
         modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
-
-        // --- WHATSAPP SUBMIT LOGIC ---
         function submitToWA(e) {
             e.preventDefault();
-            
             const name = document.getElementById('clientName').value;
             const wa = document.getElementById('clientWA').value;
             const service = document.getElementById('selectedService').value;
             const loc = document.getElementById('projectLoc').value;
             const area = document.getElementById('projectArea').value;
             const note = document.getElementById('projectNote').value;
-
-            // Format Pesan WhatsApp
-            const message = `Halo ABI STUDIO, saya ingin konsultasi layanan baru.%0A%0A` +
-                            `📋 *DATA KLIEN* %0A` +
-                            `Nama: ${name}%0A` +
-                            `No. WA: ${wa}%0A%0A` +
-                            `🏗️ *DETAIL PROYEK* %0A` +
-                            `Layanan: ${service}%0A` +
-                            `Domisili Proyek: ${loc}%0A` +
-                            `Estimasi Luas: ${area} m²%0A` +
-                            `Catatan: ${note}%0A%0A` +
-                            `Mohon info ketersediaan dan penawaran harganya. Terima kasih.`;
-
-            // Buka WhatsApp
+            const message = `Halo ABI STUDIO, saya ingin konsultasi layanan baru.%0A%0A📋 *DATA KLIEN* %0ANama: ${name}%0ANo. WA: ${wa}%0A%0A🏗️ *DETAIL PROYEK* %0ALayanan: ${service}%0ADomisili Proyek: ${loc}%0AEstimasi Luas: ${area} m²%0ACatatan: ${note}%0A%0AMohon info ketersediaan dan penawaran harganya. Terima kasih.`;
             window.open(`https://wa.me/6285157577465?text=${message}`, '_blank');
             closeModal();
         }
-
-        // Init
-        document.addEventListener('DOMContentLoaded', () => {
-            filterCategory('design');
-        });
+        document.addEventListener('DOMContentLoaded', () => { filterCategory('design'); });
     </script>
 </body>
 </html>
