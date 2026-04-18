@@ -1,100 +1,169 @@
- <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - ABI STUDIO</title>
     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
-     
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'abi-dark': '#1A1A1A',
+                        'abi-teal': '#0F766E',
+                        'abi-light': '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); 
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .pin-card:hover .pin-overlay { opacity: 1; }
         /* Animasi smooth saat loading gambar */
-        img { transition: transform 0.5s ease; }
-        .pin-card:hover img { transform: scale(1.05); }
+        img { transition: transform 0.7s ease; }
         .group:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-abi-dark text-white flex items-center justify-center rounded-xl font-bold text-xl group-hover:bg-abi-teal transition duration-300">A</div>
+                <span class="font-bold text-xl tracking-tight text-abi-dark">ABI STUDIO</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-600">
+                <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
                 <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
                 <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
-                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
-                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1 text-abi-teal">Portfolio</a>
+                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1 text-abi-teal border-b-2 border-abi-teal">Portfolio</a>
                 <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
 
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg text-xs md:text-sm">Contact</a>
             </div>
 
+            <button class="md:hidden text-gray-600 focus:outline-none" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="flex flex-col px-6 py-4 text-sm font-semibold text-gray-600">
+                <a href="index.html" class="hover:text-abi-teal py-2">Home</a>
+                <a href="about.html" class="hover:text-abi-teal py-2">About</a>
                 <a href="services.html" class="hover:text-abi-teal py-2">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal py-2">Paket</a>
-                <a href="portfolio.html" class="hover:text-abi-teal py-2">Portfolio</a>
+                <a href="portfolio.html" class="text-abi-teal py-2">Portfolio</a>
                 <a href="blog.html" class="hover:text-abi-teal py-2">Blog</a>
-                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white py-3 rounded-full mt-2">Contact Us</a>
+                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white py-3 rounded-full mt-2 text-center">Contact Us</a>
             </div>
         </div>
-<section class="py-20 px-6 md:px-20 bg-white">
-  <div class="max-w-6xl mx-auto space-y-20">
+    </header>
 
-    <!-- PROJECT 1 -->
-    <div>
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Project Alam Sutera</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-
-        <!-- BEFORE -->
-        <div class="relative group overflow-hidden rounded-2xl">
-          <img src="/assets/images/proyek1.jpg" class="w-full h-[350px] object-cover">
-          <div class="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">Before</div>
-        </div>
-
-        <!-- AFTER -->
-        <div class="relative group overflow-hidden rounded-2xl">
-          <img src="/assets/images/proyek2.jpg" class="w-full h-[350px] object-cover">
-          <div class="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full">After</div>
-        </div>
-
-      </div>
-
-      <p class="mt-4 text-gray-500 max-w-2xl">
-        Transformasi rumah lama menjadi hunian modern minimalis dengan pencahayaan alami dan layout lebih efisien.
-      </p>
-    </div>
-
-
-    <!-- PROJECT 2 -->
-    <div>
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Project BSD Residence</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-
-        <div class="relative overflow-hidden rounded-2xl">
-          <img src="/assets/images/proyek3.jpg" class="w-full h-[350px] object-cover">
-          <div class="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">Before</div>
-        </div>
-
-        <div class="relative overflow-hidden rounded-2xl">
-          <img src="/assets/images/proyek4.jpg" class="w-full h-[350px] object-cover">
-          <div class="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full">After</div>
-        </div>
-
-      </div>
-
-      <p class="mt-4 text-gray-500 max-w-2xl">
-        Upgrade interior dengan konsep luxury modern, meningkatkan estetika sekaligus value properti.
-      </p>
-    </div>
-
-
-  </div>
-</section>
-     
-<h3 class="text-2xl font-bold text-abi-dark">Design Inspiration</h3>
+    <section class="pt-20 pb-10 px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-abi-dark mb-4">Our Work</h1>
+        <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            Menghadirkan transformasi ruang yang fungsional dan estetis. Lihat bagaimana kami mengubah visi menjadi realitas melalui perbandingan sebelum dan sesudah dari proyek-proyek pilihan kami.
+        </p>
     </section>
 
+    <main class="flex-grow w-full py-10 px-6">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="mb-24">
+                <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between">
+                    <div>
+                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest bg-teal-50 px-3 py-1.5 rounded-full">Residential</span>
+                        <h3 class="text-3xl font-bold text-abi-dark mt-3">Modern Minimalist House Makeover</h3>
+                        <p class="text-gray-500 mt-2 max-w-2xl text-sm leading-relaxed">
+                            Transformasi ruang keluarga dan area depan yang sebelumnya tampak usang menjadi ruang bergaya modern minimalis. Penggunaan palet warna bersih dan elegan memberikan kesan luas dan nyaman.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="relative group rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-100">
+                        <img src="before-proyek1.jpg" onerror="this.src='https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80'" class="w-full h-[300px] md:h-[400px] object-cover opacity-80 mix-blend-multiply">
+                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                            <i class="fas fa-history mr-1"></i> Before
+                        </div>
+                    </div>
+                    <div class="relative group rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+                        <img src="after-proyek1.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" class="w-full h-[300px] md:h-[400px] object-cover">
+                        <div class="absolute top-4 left-4 bg-abi-teal text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                            <i class="fas fa-magic mr-1"></i> After
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-24">
+                <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between">
+                    <div>
+                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest bg-teal-50 px-3 py-1.5 rounded-full">Commercial</span>
+                        <h3 class="text-3xl font-bold text-abi-dark mt-3">Industrial Office Setup</h3>
+                        <p class="text-gray-500 mt-2 max-w-2xl text-sm leading-relaxed">
+                            Renovasi ruko standar menjadi ruang kantor dengan sentuhan konsep industrial. Memaksimalkan struktur bangunan asli dengan tambahan elemen besi dan kayu untuk estetika yang kuat dan produktif.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="relative group rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-100">
+                        <img src="before-proyek2.jpg" onerror="this.src='https://images.unsplash.com/photo-1549834125-82d3c48159a3?auto=format&fit=crop&w=800&q=80'" class="w-full h-[300px] md:h-[400px] object-cover opacity-80 mix-blend-multiply">
+                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                            <i class="fas fa-history mr-1"></i> Before
+                        </div>
+                    </div>
+                    <div class="relative group rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+                        <img src="after-proyek2.jpg" onerror="this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'" class="w-full h-[300px] md:h-[400px] object-cover">
+                        <div class="absolute top-4 left-4 bg-abi-teal text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                            <i class="fas fa-magic mr-1"></i> After
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between">
+                    <div>
+                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest bg-teal-50 px-3 py-1.5 rounded-full">Interior Detail</span>
+                        <h3 class="text-3xl font-bold text-abi-dark mt-3">Living Room Styling</h3>
+                        <p class="text-gray-500 mt-2 max-w-2xl text-sm leading-relaxed">
+                            Penataan ulang ruang bersantai untuk memaksimalkan pencahayaan alami dan efisiensi sirkulasi udara, menggunakan furnitur modern yang presisi.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="relative group rounded-2xl overflow-hidden border border-gray-200 shadow-sm bg-gray-100">
+                        <img src="before-proyek3.jpg" onerror="this.src='https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=80'" class="w-full h-[300px] md:h-[400px] object-cover opacity-80 mix-blend-multiply">
+                        <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                            <i class="fas fa-history mr-1"></i> Before
+                        </div>
+                    </div>
+                    <div class="relative group rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+                        <img src="after-proyek3.jpg" onerror="this.src='https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'" class="w-full h-[300px] md:h-[400px] object-cover">
+                        <div class="absolute top-4 left-4 bg-abi-teal text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                            <i class="fas fa-magic mr-1"></i> After
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
     <footer class="bg-abi-dark text-white py-10 text-center text-xs mt-auto">
-        <p class="opacity-40 uppercase tracking-[0.2em]">&copy; 2025 ABI STUDIO. All Rights Reserved.</p>
         <p class="opacity-40 uppercase tracking-[0.2em]">&copy; 2026 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
