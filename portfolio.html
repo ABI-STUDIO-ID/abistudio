@@ -13,7 +13,7 @@
                 extend: {
                     colors: {
                         'abi-dark': '#1A1A1A',
-                        'abi-teal': '#0F766E',
+                        'abi-teal': '#4A6D6D',
                         'abi-light': '#F8FAFC'
                     }
                 }
@@ -21,11 +21,10 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap'); 
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap'); 
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        /* Animasi smooth saat loading gambar */
-        img { transition: transform 0.7s ease; }
-        .group:hover img { transform: scale(1.05); }
+        .project-card img { transition: transform 0.7s ease; }
+        .project-card:hover img { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
@@ -42,149 +41,120 @@
                 <a href="about.html" class="hover:text-abi-teal transition pb-1">About</a>
                 <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
                 <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
-                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1 text-abi-teal border-b-2 border-abi-teal">Portfolio</a>
-                <a href="blog.html" class="hover:text-abi-teal transition pb-1">Blog</a>
-
+                <a href="portfolio.html" class="text-abi-teal border-b-2 border-abi-teal pb-1">Portfolio</a>
                 <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white px-6 py-2 rounded-full hover:bg-abi-dark transition duration-300 shadow-lg text-xs md:text-sm">Contact</a>
             </div>
 
-            <button class="md:hidden text-gray-600 focus:outline-none" onclick="toggleMobileMenu()">
+            <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
-
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-            <div class="flex flex-col px-6 py-4 text-sm font-semibold text-gray-600">
-                <a href="index.html" class="hover:text-abi-teal py-2">Home</a>
-                <a href="about.html" class="hover:text-abi-teal py-2">About</a>
-                <a href="services.html" class="hover:text-abi-teal py-2">Layanan</a>
-                <a href="paket.html" class="hover:text-abi-teal py-2">Paket</a>
-                <a href="portfolio.html" class="text-abi-teal py-2">Portfolio</a>
-                <a href="blog.html" class="hover:text-abi-teal py-2">Blog</a>
-                <a href="https://wa.me/6285157577465" target="_blank" class="bg-abi-teal text-white py-3 rounded-full mt-2 text-center">Contact Us</a>
-            </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4">
+            <a href="index.html" class="block hover:text-abi-teal">Home</a>
+            <a href="about.html" class="block hover:text-abi-teal">About</a>
+            <a href="services.html" class="block hover:text-abi-teal">Layanan</a>
+            <a href="portfolio.html" class="block text-abi-teal">Portfolio</a>
         </div>
     </header>
 
     <section class="pt-20 pb-10 px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-abi-dark mb-4">Our Work</h1>
+        <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Our Work</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-abi-dark mb-4">Project Gallery</h1>
         <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-            Menghadirkan transformasi ruang yang fungsional dan estetis. Lihat bagaimana kami mengubah visi menjadi realitas melalui perbandingan sebelum dan sesudah dari proyek-proyek pilihan kami.
+            Menghadirkan transformasi ruang yang fungsional dan estetis. Berikut adalah proyek-proyek terbaru yang telah kami selesaikan dengan dedikasi penuh.
         </p>
     </section>
 
-    <main class="flex-grow w-full py-10 px-6">
-        <div class="max-w-6xl mx-auto">
-            
-            <div class="mb-24">
-                <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between">
-                    <div>
-                        <span class="text-abi-teal text-[10px] font-bold uppercase tracking-widest bg-teal-50 px-3 py-1.5 rounded-full">Residential</span>
-                        <section class="py-20 px-6 md:px-20 bg-white">
-  <div class="max-w-6xl mx-auto">
+    <main class="flex-grow w-full py-16 px-6">
+        <div class="max-w-6xl mx-auto space-y-24">
 
-    <h3 class="text-2xl md:text-3xl font-bold text-abi-dark mb-12">
-      Featured Projects
-    </h3>
-
-    <div class="space-y-20">
-
-      <!-- PROJECT 1 -->
-      <div>
-        <h4 class="text-xl md:text-2xl font-semibold mb-6">Project Alam Sutera</h4>
-
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <!-- BEFORE -->
-          <div class="relative group overflow-hidden rounded-2xl shadow-md">
-            <img src="proyek1.jpg" class="w-full h-[300px] md:h-[400px] object-cover">
-            <div class="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-              Before
+            <div class="project-card">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-teal-50 text-abi-teal text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Residential</span>
+                    <h4 class="text-xl md:text-2xl font-bold text-abi-dark">Pondok Indah 2 - Mr. E Project</h4>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_pi2_before.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="Before">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">Before</div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_pi2_after.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="After">
+                        <div class="absolute top-4 left-4 bg-abi-teal text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">After</div>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-500 max-w-2xl text-sm leading-relaxed">Transformasi hunian eksklusif di Pondok Indah dengan penekanan pada konsep modern klasik yang memaksimalkan sirkulasi udara dan cahaya alami.</p>
             </div>
-          </div>
 
-          <!-- AFTER -->
-          <div class="relative group overflow-hidden rounded-2xl shadow-md">
-            <img src="proyek2.jpg" class="w-full h-[300px] md:h-[400px] object-cover">
-            <div class="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full">
-              After
+            <div class="project-card">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-teal-50 text-abi-teal text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Renovation</span>
+                    <h4 class="text-xl md:text-2xl font-bold text-abi-dark">Griya Dadap - Mr. A Project</h4>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_dadap_before.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="Before">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">Before</div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_dadap_after.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="After">
+                        <div class="absolute top-4 left-4 bg-abi-teal text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">After</div>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-500 max-w-2xl text-sm leading-relaxed">Renovasi fasad dan interior untuk menciptakan kesan rumah yang lebih luas, bersih, dan fungsional bagi keluarga muda.</p>
             </div>
-          </div>
+
+            <div class="project-card">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-teal-50 text-abi-teal text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Interior Design</span>
+                    <h4 class="text-xl md:text-2xl font-bold text-abi-dark">Green Garden - Mr. R Project</h4>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_gg_before.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="Before">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">Before</div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_gg_after.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="After">
+                        <div class="absolute top-4 left-4 bg-abi-teal text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">After</div>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-500 max-w-2xl text-sm leading-relaxed">Pengerjaan interior kustom untuk area ruang tamu dan dapur dengan gaya industrial minimalist.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Commercial</span>
+                    <h4 class="text-xl md:text-2xl font-bold text-abi-dark">PT. Sumber Pralin Utama Office Project</h4>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_pralin_before.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="Before">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">Before</div>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-2xl shadow-md border border-gray-100">
+                        <img src="proyek_pralin_after.jpg" class="w-full h-[300px] md:h-[400px] object-cover" alt="After">
+                        <div class="absolute top-4 left-4 bg-abi-teal text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">After</div>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-500 max-w-2xl text-sm leading-relaxed">Perencanaan dan pengembangan area operasional kantor untuk meningkatkan produktivitas dan kenyamanan kerja karyawan.</p>
+            </div>
 
         </div>
+    </main>
 
-        <p class="mt-4 text-gray-500 max-w-2xl">
-          Transformasi rumah lama menjadi hunian modern minimalis dengan pencahayaan alami dan layout lebih efisien.
-        </p>
-      </div>
-
-
-      <!-- PROJECT 2 -->
-      <div>
-        <h4 class="text-xl md:text-2xl font-semibold mb-6">Project BSD Residence</h4>
-
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <div class="relative overflow-hidden rounded-2xl shadow-md">
-            <img src="proyek3.jpg" class="w-full h-[300px] md:h-[400px] object-cover">
-            <div class="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-              Before
-            </div>
-          </div>
-
-          <div class="relative overflow-hidden rounded-2xl shadow-md">
-            <img src="proyek4.jpg" class="w-full h-[300px] md:h-[400px] object-cover">
-            <div class="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full">
-              After
-            </div>
-          </div>
-
+    <footer class="bg-abi-dark text-white py-12 text-center border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <h5 class="text-lg font-bold mb-4 tracking-widest">ABI STUDIO</h5>
+            <p class="opacity-40 uppercase tracking-[0.2em] text-[10px] mb-6">Building Trust Through Quality Since 2026</p>
+            <p class="opacity-40 text-[10px]">&copy; 2026 ABI STUDIO. All Rights Reserved.</p>
         </div>
-
-        <p class="mt-4 text-gray-500 max-w-2xl">
-          Upgrade interior dengan konsep modern luxury untuk meningkatkan kenyamanan dan nilai properti.
-        </p>
-      </div>
-
-
-      <!-- PROJECT 3 -->
-      <div>
-        <h4 class="text-xl md:text-2xl font-semibold mb-6">Project Renovasi Interior</h4>
-
-        <div class="grid md:grid-cols-2 gap-6">
-
-          <div class="relative overflow-hidden rounded-2xl shadow-md">
-            <img src="proyek5.jpg" class="w-full h-[300px] md:h-[400px] object-cover">
-            <div class="absolute top-4 left-4 bg-black text-white text-xs px-3 py-1 rounded-full">
-              Before
-            </div>
-          </div>
-
-          <div class="relative overflow-hidden rounded-2xl shadow-md">
-            <img src="proyek2.jpg" class="w-full h-[300px] md:h-[400px] object-cover">
-            <div class="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full">
-              After
-            </div>
-          </div>
-
-        </div>
-
-        <p class="mt-4 text-gray-500 max-w-2xl">
-          Penataan ulang interior untuk menciptakan ruang yang lebih fungsional, estetik, dan nyaman.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-                        <footer class="bg-abi-dark text-white py-10 text-center text-xs mt-auto">
-        <p class="opacity-40 uppercase tracking-[0.2em]">&copy; 2026 ABI STUDIO. All Rights Reserved.</p>
     </footer>
 
     <script>
         function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
         }
     </script>
 
