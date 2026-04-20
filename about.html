@@ -1,160 +1,715 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HR1R62CT8X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HR1R62CT8X');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - ABI STUDIO</title>
     <link rel="icon" type="image/png" href="assets/images/logo.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Mengenal lebih dalam ABI STUDIO — konsultan arsitektur dan konstruksi profesional di Tangerang & Jabodetabek.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { 
-                        abi: { 
-                            teal: '#4A6D6D', 
-                            dark: '#1a1a1a',
-                            light: '#f8f9fa' 
-                        } 
-                    },
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
-                }
-            }
+
+    <style>
+        :root {
+            --teal: #4A6D6D;
+            --teal-light: #6A9494;
+            --teal-pale: #EEF4F4;
+            --dark: #111418;
+            --dark-2: #1E2328;
+            --mid: #4A5260;
+            --light: #F7F8F6;
+            --white: #FFFFFF;
+            --border: #E8EAE6;
         }
-    </script>
 
-   <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 py-4">
-    <div class="container mx-auto flex flex-wrap justify-between items-center">
-        <a href="index.html" class="flex items-center group">
-            <img src="assets/images/logo.png" alt="Logo ABI STUDIO" class="h-10 w-auto mr-2 transform group-hover:scale-105 transition duration-300">
-            <div class="text-2xl font-extrabold tracking-tighter text-abi-dark">
-                ABI<span class="text-abi-teal">STUDIO</span>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.07); }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        .nav-logo img { height: 60px; width: auto; object-fit: contain; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mid);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--teal); }
+        .nav-links a.active { color: var(--teal); }
+        .nav-cta {
+            background: var(--teal);
+            color: white !important;
+            padding: 0.55rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.72rem !important;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+        .nav-cta:hover { background: var(--dark) !important; color: white !important; transform: translateY(-1px); }
+        .lang-wrap { display: flex; align-items: center; gap: 0.5rem; padding-left: 1.5rem; border-left: 1px solid var(--border); }
+        .lang-btn { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; color: #999; transition: color 0.2s; }
+        .lang-btn.active { color: var(--teal); border-bottom: 1.5px solid var(--teal); }
+        .lang-sep { color: #ddd; font-size: 0.7rem; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--teal); font-size: 1.4rem; }
+
+        /* ── MOBILE MENU ── */
+        #mobileMenu { display: none; position: absolute; top: 80px; left: 0; right: 0; background: white; border-top: 1px solid var(--border); padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        #mobileMenu.open { display: block; }
+        #mobileMenu a { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+        #mobileMenu a:last-child { border-bottom: none; }
+        #mobileMenu a:hover, #mobileMenu a.active { color: var(--teal); }
+
+        /* ── HERO HEADER ── */
+        .page-hero {
+            position: relative;
+            height: 52vh;
+            min-height: 420px;
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(10,14,18,0.72) 0%, rgba(10,14,18,0.45) 60%, rgba(74,109,109,0.2) 100%);
+        }
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+        .page-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 0.4rem 1.1rem;
+            border-radius: 100px;
+            margin-bottom: 1.4rem;
+        }
+        .page-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #7EC8C8; }
+        .page-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.15;
+        }
+        .page-hero h1 strong { font-weight: 600; display: block; }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb {
+            background: var(--light);
+            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 2rem;
+        }
+        .breadcrumb-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            color: #aaa;
+        }
+        .breadcrumb-inner a { color: var(--teal); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .breadcrumb-inner a:hover { color: var(--dark); }
+        .breadcrumb-inner i { font-size: 0.55rem; }
+
+        /* ── SHARED ── */
+        .container { max-width: 1280px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--teal);
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+        .section-title strong { font-weight: 600; }
+        .divider { width: 40px; height: 2px; background: var(--teal); margin: 1.5rem 0; }
+        .text-link {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--teal); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border-bottom: 1.5px solid var(--teal); padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .text-link:hover { color: var(--dark); border-color: var(--dark); }
+
+        /* ── ABOUT INTRO ── */
+        .about-intro { padding: 6rem 2rem; background: white; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .about-desc { font-size: 1rem; line-height: 1.9; color: var(--mid); font-weight: 300; margin-bottom: 1.5rem; }
+
+        .visi-misi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+        .vm-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.4rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .vm-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(74,109,109,0.08); }
+        .vm-icon { font-size: 1.2rem; color: var(--teal); margin-bottom: 0.8rem; }
+        .vm-title { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+        .vm-desc { font-size: 0.8rem; color: #888; line-height: 1.65; font-weight: 300; }
+
+        /* ── IMAGE SIDE ── */
+        .img-wrap { position: relative; }
+        .img-main {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+        }
+        .img-main img { width: 100%; height: 480px; object-fit: cover; display: block; transition: transform 0.7s; }
+        .img-main:hover img { transform: scale(1.04); }
+        .img-badge {
+            position: absolute;
+            bottom: -1.5rem;
+            right: -1.5rem;
+            background: var(--teal);
+            color: white;
+            padding: 1.4rem 1.8rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 28px rgba(74,109,109,0.4);
+            z-index: 2;
+        }
+        .img-badge-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+        .img-badge-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.85; margin-top: 4px; }
+        .img-accent {
+            position: absolute;
+            top: -1.2rem;
+            left: -1.2rem;
+            width: 80px; height: 80px;
+            border: 2px solid var(--teal-pale);
+            border-radius: 14px;
+            z-index: 0;
+        }
+
+        /* ── VALUES ── */
+        .values-section { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 6rem 2rem; }
+        .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+        .value-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 1.6rem;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .value-card:hover { border-color: var(--teal); box-shadow: 0 8px 28px rgba(74,109,109,0.09); transform: translateY(-3px); }
+        .value-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: var(--teal-pale);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .value-card:hover .value-num { color: #b8d0d0; }
+        .value-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+        .value-desc { font-size: 0.8rem; color: #888; line-height: 1.65; font-weight: 300; }
+
+        /* ── TEAM ── */
+        .team-section { padding: 6rem 2rem; background: white; }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+        .team-card {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            background: white;
+        }
+        .team-card:hover { border-color: var(--teal); box-shadow: 0 12px 40px rgba(74,109,109,0.1); transform: translateY(-4px); }
+        .team-avatar-wrap {
+            position: relative;
+            width: 96px; height: 96px;
+            margin: 0 auto 1.4rem;
+        }
+        .team-avatar {
+            width: 96px; height: 96px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--teal-pale);
+            transition: border-color 0.2s;
+        }
+        .team-card:hover .team-avatar { border-color: var(--teal-light); }
+        .team-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .team-name { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+        .team-role { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.9rem; }
+        .team-desc { font-size: 0.82rem; color: #888; line-height: 1.65; font-weight: 300; }
+
+        /* ── PROCESS ── */
+        .process-section { background: var(--dark); color: white; padding: 6rem 2rem; }
+        .process-section .section-title { color: white; }
+        .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 4rem; position: relative; }
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: rgba(255,255,255,0.12);
+        }
+        .process-step { text-align: center; padding: 0 1rem; position: relative; }
+        .step-num {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: rgba(74,109,109,0.25);
+            border: 1.5px solid rgba(126,200,200,0.3);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #7EC8C8;
+            position: relative;
+            z-index: 1;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .process-step:hover .step-num { background: rgba(74,109,109,0.45); border-color: rgba(126,200,200,0.6); }
+        .step-title { font-size: 0.85rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+        .step-desc { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.6; font-weight: 300; }
+
+        /* ── CTA STRIP ── */
+        .cta-strip {
+            background: var(--teal);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .cta-strip h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 300;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .cta-strip h2 strong { font-weight: 600; }
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--teal);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            padding: 0.9rem 2.4rem;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+        }
+        .cta-btn:hover { background: var(--dark); color: white; transform: translateY(-2px); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--dark); color: white; padding: 4.5rem 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 4rem; }
+        .footer-brand { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; color: white; margin-bottom: 1.2rem; }
+        .footer-address { font-size: 0.83rem; line-height: 1.75; color: rgba(255,255,255,0.45); display: flex; align-items: flex-start; gap: 0.7rem; font-weight: 300; }
+        .footer-address i { color: var(--teal-light); margin-top: 3px; flex-shrink: 0; font-size: 0.8rem; }
+        .footer-col-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.4rem; }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1.4rem; cursor: pointer; transition: opacity 0.2s; opacity: 0.7; }
+        .footer-contact-item:hover { opacity: 1; }
+        .footer-contact-item i { font-size: 1.1rem; color: var(--teal-light); margin-top: 2px; flex-shrink: 0; }
+        .footer-contact-name { font-size: 0.88rem; font-weight: 700; color: white; }
+        .footer-contact-sub { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 2px; font-weight: 300; }
+        .footer-social { display: flex; gap: 0.8rem; }
+        .footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 0.95rem; transition: all 0.2s; text-decoration: none; }
+        .footer-social a:hover { border-color: var(--teal-light); color: #7EC8C8; background: rgba(74,109,109,0.2); }
+        .footer-bottom { max-width: 1280px; margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* ── FADE UP ── */
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .about-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+            .img-main img { height: 320px; }
+            .img-badge { right: 0; bottom: -1rem; }
+            .visi-misi-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+            .process-steps { grid-template-columns: 1fr; gap: 2rem; }
+            .process-steps::before { display: none; }
+            .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            .values-grid { grid-template-columns: 1fr; }
+            .nav-inner { padding: 0 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><img src="assets/images/logo.png" alt="ABI STUDIO"></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="services.html">Layanan & Harga</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="blog.html">Blog</a>
+            <a href="https://wa.me/6285157577465" target="_blank" class="nav-cta">Contact</a>
+            <div class="lang-wrap">
+                <span class="lang-btn active" id="btn-id" onclick="changeLanguage('id')">ID</span>
+                <span class="lang-sep">|</span>
+                <span class="lang-btn" id="btn-en" onclick="changeLanguage('en')">EN</span>
             </div>
-        </a>
-        
-        <button class="md:hidden text-abi-dark focus:outline-none" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars text-xl"></i>
-        </button>
-
-        <div id="mobileMenu" class="hidden w-full md:flex md:w-auto md:space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center mt-4 md:mt-0">
-            <a href="index.html" class="block py-2 hover:text-abi-teal transition border-b md:border-0 border-gray-100">Home</a>
-            <a href="about.html" class="block py-2 nav-link-active transition border-b md:border-0 border-gray-100">About</a>
-            <a href="services.html" class="block py-2 hover:text-abi-teal transition border-b md:border-0 border-gray-100">Layanan</a>
-            <a href="paket.html" class="block py-2 hover:text-abi-teal transition border-b md:border-0 border-gray-100">Paket</a>
-            <a href="portfolio.html" class="block py-2 hover:text-abi-teal transition">Portfolio</a>
         </div>
+        <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Layanan & Harga</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="blog.html">Blog</a>
+        <a href="https://wa.me/6285157577465" target="_blank" style="color: var(--teal);">Contact</a>
     </div>
 </nav>
 
-    <header class="pt-48 pb-24 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000')] bg-cover bg-center"></div>
-        <div class="relative z-10">
-            <p class="text-xs font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Who We Are</p>
-            <h1 class="text-4xl md:text-6xl font-light">Membangun Kepercayaan</h1>
-        </div>
-    </header>
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+    <div class="page-hero-content">
+        <div class="page-eyebrow">Who We Are</div>
+        <h1>Membangun <strong>Kepercayaan.</strong></h1>
+    </div>
+</div>
 
-    <section class="py-24 px-6">
-        <div class="container mx-auto grid md:grid-cols-2 gap-16 items-start">
-            <div class="space-y-8">
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb">
+    <div class="breadcrumb-inner">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>About Us</span>
+    </div>
+</div>
+
+<!-- ── ABOUT INTRO ── -->
+<section class="about-intro">
+    <div class="container">
+        <div class="about-grid">
+
+            <!-- Text side -->
+            <div class="fade-up">
+                <span class="section-label">Tentang Kami</span>
+                <h2 class="section-title">Solusi arsitektur & konstruksi <strong>terintegrasi.</strong></h2>
+                <div class="divider"></div>
+                <p class="about-desc">
+                    ABI STUDIO adalah konsultan perencanaan arsitektur dan konstruksi yang berbasis di Tangerang. Kami percaya bahwa setiap garis yang kami gambar adalah awal dari sebuah kehidupan baru bagi klien kami.
+                </p>
+                <p class="about-desc" style="margin-bottom: 2rem;">
+                    Dengan memadukan estetika arsitektur dan presisi teknik sipil, kami menghadirkan solusi bangunan yang tidak hanya indah dipandang, tetapi juga kokoh, fungsional, dan efisien secara biaya.
+                </p>
+
+                <div class="visi-misi-grid">
+                    <div class="vm-card">
+                        <div class="vm-icon"><i class="fas fa-eye"></i></div>
+                        <div class="vm-title">Visi</div>
+                        <div class="vm-desc">Menjadi partner konstruksi terpercaya dengan standar kualitas dan inovasi tertinggi di Indonesia.</div>
+                    </div>
+                    <div class="vm-card">
+                        <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
+                        <div class="vm-title">Misi</div>
+                        <div class="vm-desc">Memberikan layanan terintegrasi dari desain hingga konstruksi yang memuaskan setiap klien.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image side -->
+            <div class="img-wrap fade-up" style="transition-delay:.15s;">
+                <div class="img-accent"></div>
+                <div class="img-main">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900" alt="ABI Studio Project">
+                </div>
+                <div class="img-badge">
+                    <div class="img-badge-num">100+</div>
+                    <div class="img-badge-label">Projects Done</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section class="values-section">
+    <div class="container">
+        <div class="fade-up" style="text-align: center;">
+            <span class="section-label" style="display:block; text-align:center;">What We Stand For</span>
+            <h2 class="section-title">Nilai yang <strong>kami pegang.</strong></h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card fade-up">
+                <div class="value-num">01</div>
+                <div class="value-title">Presisi</div>
+                <div class="value-desc">Setiap kalkulasi dan gambar dikerjakan dengan akurasi tinggi untuk menghindari kesalahan di lapangan.</div>
+            </div>
+            <div class="value-card fade-up" style="transition-delay:.1s">
+                <div class="value-num">02</div>
+                <div class="value-title">Integritas</div>
+                <div class="value-desc">Kami menjunjung kejujuran dalam setiap penawaran harga, timeline, dan proses pengerjaan.</div>
+            </div>
+            <div class="value-card fade-up" style="transition-delay:.2s">
+                <div class="value-num">03</div>
+                <div class="value-title">Inovasi</div>
+                <div class="value-desc">Selalu mengadopsi metode dan teknologi terkini untuk menghasilkan desain yang relevan dan efisien.</div>
+            </div>
+            <div class="value-card fade-up" style="transition-delay:.3s">
+                <div class="value-num">04</div>
+                <div class="value-title">Kolaborasi</div>
+                <div class="value-desc">Kami bekerja bersama klien, bukan hanya untuk klien — keterlibatan Anda adalah kunci hasilnya.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section class="team-section">
+    <div class="container">
+        <div class="fade-up" style="text-align: center; margin-bottom: 0;">
+            <span class="section-label" style="display:block; text-align:center;">Our Team</span>
+            <h2 class="section-title">Leadership <strong>kami.</strong></h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card fade-up">
+                <div class="team-avatar-wrap">
+                    <div class="team-avatar">
+                        <img src="assets/images/rama.jpg" alt="Rama Ganeza"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Rama+Ganeza&background=4A6D6D&color=fff&size=96'">
+                    </div>
+                </div>
+                <div class="team-name">Ir. Rama Ganeza, ST., MPr.</div>
+                <div class="team-role">Founder & CEO</div>
+                <div class="team-desc">Ahli konstruksi dengan pengalaman teknis mendalam dalam menangani berbagai skala bangunan dari hunian hingga gedung komersial.</div>
+            </div>
+            <div class="team-card fade-up" style="transition-delay:.1s">
+                <div class="team-avatar-wrap">
+                    <div class="team-avatar">
+                        <img src="assets/images/angga.jpg" alt="Angga Aditya Pratama"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Angga+Aditya&background=4A6D6D&color=fff&size=96'">
+                    </div>
+                </div>
+                <div class="team-name">Angga Aditya Pratama, SE.</div>
+                <div class="team-role">Co-Founder & Head of Business</div>
+                <div class="team-desc">Spesialis strategi bisnis dan hubungan klien untuk memastikan pengalaman layanan terbaik di setiap proyek.</div>
+            </div>
+            <div class="team-card fade-up" style="transition-delay:.2s">
+                <div class="team-avatar-wrap">
+                    <div class="team-avatar">
+                        <img src="assets/images/chandra.jpg" alt="Chandra Prasetyo"
+                             onerror="this.src='https://ui-avatars.com/api/?name=Chandra+Prasetyo&background=4A6D6D&color=fff&size=96'">
+                    </div>
+                </div>
+                <div class="team-name">Chandra Prasetyo, S.T.</div>
+                <div class="team-role">Quantity Surveyor & Estimator</div>
+                <div class="team-desc">Mengawasi presisi teknis dan implementasi struktur bangunan serta estimasi biaya proyek secara akurat.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process-section">
+    <div class="container">
+        <div class="fade-up" style="text-align: center;">
+            <span class="section-label" style="color: #7EC8C8;">How We Work</span>
+            <h2 class="section-title">Proses kerja <strong>kami.</strong></h2>
+        </div>
+        <div class="process-steps">
+            <div class="process-step fade-up">
+                <div class="step-num">01</div>
+                <div class="step-title">Konsultasi</div>
+                <div class="step-desc">Diskusi kebutuhan, anggaran, dan ekspektasi proyek Anda.</div>
+            </div>
+            <div class="process-step fade-up" style="transition-delay:.1s">
+                <div class="step-num">02</div>
+                <div class="step-title">Perencanaan</div>
+                <div class="step-desc">Pembuatan konsep desain dan estimasi biaya awal (RAB).</div>
+            </div>
+            <div class="process-step fade-up" style="transition-delay:.2s">
+                <div class="step-num">03</div>
+                <div class="step-title">Desain</div>
+                <div class="step-desc">Pengembangan gambar kerja arsitektur, struktur, dan MEP.</div>
+            </div>
+            <div class="process-step fade-up" style="transition-delay:.3s">
+                <div class="step-num">04</div>
+                <div class="step-title">Konstruksi</div>
+                <div class="step-desc">Pelaksanaan pembangunan dengan pengawasan ketat di lapangan.</div>
+            </div>
+            <div class="process-step fade-up" style="transition-delay:.4s">
+                <div class="step-num">05</div>
+                <div class="step-title">Serah Terima</div>
+                <div class="step-desc">Finishing, inspeksi akhir, dan serah terima kunci kepada klien.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA STRIP ── -->
+<div class="cta-strip">
+    <div class="container">
+        <h2>Siap mewujudkan <strong>proyek impian Anda?</strong></h2>
+        <a href="https://wa.me/6285157577465" target="_blank" class="cta-btn">
+            Konsultasi Gratis Sekarang
+        </a>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">ABI STUDIO</div>
+            <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="footer-address" style="text-decoration:none;">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>Sudimara Pinang, Kec. Pinang,<br>Kota Tangerang, Banten 15145.</span>
+            </a>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact Us</div>
+            <div class="footer-contact-item" onclick="window.open('https://wa.me/6285157577465','_blank')">
+                <i class="fab fa-whatsapp"></i>
                 <div>
-                    <h3 class="text-3xl font-bold mb-6 text-abi-dark border-l-4 border-abi-teal pl-4">Tentang ABI STUDIO</h3>
-                    <p class="text-gray-600 leading-relaxed mb-6 text-justify text-lg font-light">
-                        ABI STUDIO adalah konsultan perencanaan arsitektur dan konstruksi yang berbasis di Tangerang. Kami percaya bahwa setiap garis yang kami gambar adalah awal dari sebuah kehidupan baru bagi klien kami.
-                    </p>
-                    <p class="text-gray-600 leading-relaxed text-justify text-lg font-light">
-                        Dengan memadukan estetika arsitektur dan presisi teknik sipil, kami menghadirkan solusi bangunan yang tidak hanya indah dipandang, tetapi juga kokoh, fungsional, dan efisien secara biaya.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-abi-teal transition duration-300">
-                        <i class="fas fa-eye text-abi-teal text-2xl mb-4"></i>
-                        <h4 class="text-abi-dark font-bold text-xl mb-2">Visi</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Menjadi partner konstruksi terpercaya dengan standar kualitas dan inovasi tertinggi.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-abi-teal transition duration-300">
-                        <i class="fas fa-bullseye text-abi-teal text-2xl mb-4"></i>
-                        <h4 class="text-abi-dark font-bold text-xl mb-2">Misi</h4>
-                        <p class="text-sm text-gray-500 leading-relaxed">Memberikan layanan terintegrasi dari desain hingga konstruksi yang memuaskan klien.</p>
-                    </div>
+                    <div class="footer-contact-name">Angga Aditya Pratama, SE</div>
+                    <div class="footer-contact-sub">Co-Founder & Head of Marketing</div>
+                    <div class="footer-contact-sub">0851-5757-7465</div>
                 </div>
             </div>
-
-            <div class="relative mt-8 md:mt-0">
-                <div class="rounded-3xl overflow-hidden shadow-2xl relative z-10">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800" class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
-                </div>
-                <div class="absolute -bottom-6 -right-6 bg-abi-teal text-white p-8 rounded-tl-3xl rounded-br-2xl shadow-lg z-20">
-                    <p class="text-5xl font-bold">100+</p>
-                    <p class="text-xs uppercase tracking-widest mt-2 opacity-90">Projects Done</p>
+            <div class="footer-contact-item">
+                <i class="far fa-envelope"></i>
+                <div>
+                    <a href="mailto:abi.studio.id@gmail.com" style="color:rgba(255,255,255,0.45); text-decoration:none; font-size:.83rem; font-weight:300;">abi.studio.id@gmail.com</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="py-24 px-6 bg-white border-t border-gray-100">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em]">Our Team</span>
-                <h3 class="text-3xl font-bold mt-2 text-abi-dark">Leadership</h3>
+        <div>
+            <div class="footer-col-title">Social</div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/abi.studio.id/" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="flex flex-col items-center text-center bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="w-28 h-28 rounded-full bg-gray-300 overflow-hidden border-4 border-white shadow-md mb-6">
-                        <img src="assets/images/rama.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <h5 class="text-xl font-bold text-abi-dark">Ir. Rama Ganeza, ST., MPr.</h5>
-                    <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mb-3">Founder & CEO</p>
-                    <p class="text-sm text-gray-500 leading-relaxed">Ahli konstruksi dengan pengalaman teknis mendalam dalam menangani berbagai skala bangunan.</p>
-                </div>
-
-                <div class="flex flex-col items-center text-center bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="w-28 h-28 rounded-full bg-gray-300 overflow-hidden border-4 border-white shadow-md mb-6">
-                        <img src="assets/images/angga.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <h5 class="text-xl font-bold text-abi-dark">Angga Aditya Pratama, SE.</h5>
-                    <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mb-3">Co-Founder & Head of Marketing</p>
-                    <p class="text-sm text-gray-500 leading-relaxed">Spesialis strategi bisnis dan hubungan klien untuk memastikan layanan terbaik bagi Anda.</p>
-                </div>
-
-                <div class="flex flex-col items-center text-center bg-gray-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
-                    <div class="w-28 h-28 rounded-full bg-gray-300 overflow-hidden border-4 border-white shadow-md mb-6">
-                        <img src="assets/images/chandra.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <h5 class="text-xl font-bold text-abi-dark">Chandra, ST.</h5>
-                    <p class="text-xs uppercase tracking-widest text-abi-teal font-bold mb-3">Head of Engineering</p>
-                    <p class="text-sm text-gray-500 leading-relaxed">Mengawasi presisi teknis dan implementasi struktur bangunan dengan standar keamanan tinggi.</p>
+            <div style="margin-top: 2rem;">
+                <div class="footer-col-title">Navigation</div>
+                <div style="display:flex; flex-direction:column; gap:.5rem; margin-top:.5rem;">
+                    <a href="index.html" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Home</a>
+                    <a href="services.html" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Services</a>
+                    <a href="portfolio.html" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Portfolio</a>
+                    <a href="blog.html" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Blog</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 ABI STUDIO. All rights reserved.</p>
+        <p>Tangerang & Jabodetabek</p>
+    </div>
+</footer>
 
-    <footer class="bg-abi-dark text-white py-20 px-6 mt-auto">
-        <div class="container mx-auto grid md:grid-cols-3 gap-12">
-            <div>
-                <h5 class="text-xl font-bold mb-6 text-abi-teal">ABI STUDIO</h5>
-                <p class="opacity-70 text-sm leading-relaxed mb-6">Jl. Hidup Baru I No.8 Blok A49C, Sudimara Pinang, Kota Tangerang, Banten 15145.</p>
-                <div class="flex space-x-6 text-xl opacity-80">
-                    <a href="https://www.instagram.com/abi.studio.id/" target="_blank" class="hover:text-abi-teal"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="md:text-right md:col-span-2">
-                <p class="text-xs uppercase tracking-widest opacity-50">© 2026 ABI STUDIO. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+<script>
+// ── LANGUAGE ──
+const translations = {
+    id: {},
+    en: {}
+};
+function changeLanguage(lang) {
+    localStorage.setItem('selectedLang', lang);
+    document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
 
-    <script>
-    function toggleMobileMenu() {
-        const menu = document.getElementById('mobileMenu');
-        menu.classList.toggle('hidden');
-    }
+// ── NAVBAR SCROLL ──
+window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── MOBILE MENU ──
+function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ── FADE UP ON SCROLL ──
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+    changeLanguage(localStorage.getItem('selectedLang') || 'id');
+});
 </script>
 </body>
 </html>
