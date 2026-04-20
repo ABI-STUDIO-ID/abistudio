@@ -95,69 +95,102 @@
         </div>
     </nav>
 
-    <header class="pt-48 pb-24 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000')] bg-cover bg-center"></div>
-        <div class="relative z-10">
-            <p class="text-sm font-bold uppercase tracking-[0.4em] text-abi-teal mb-4">Pricing Plans</p>
-            <h1 class="text-5xl md:text-7xl font-light">Investasi Perencanaan</h1>
-            <p class="mt-6 text-gray-300 font-light text-lg max-w-2xl mx-auto">Pilih paket yang sesuai dengan kebutuhan proyek Anda. Transparan, terukur, dan profesional.</p>
+    <header class="pt-44 pb-20 text-center px-6 bg-white">
+    <span class="text-abi-teal text-xs font-bold uppercase tracking-[0.3em] mb-4 block">
+        Pricing Plans
+    </span>
+
+    <h1 class="text-4xl md:text-6xl font-bold text-abi-dark mb-6">
+        Investasi Perencanaan Proyek
+    </h1>
+
+    <p class="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+        Pilih paket yang sesuai dengan kebutuhan proyek Anda. Semua harga transparan, fleksibel, dan dapat disesuaikan.
+    </p>
+</header>
+
+    <section class="py-20 px-6 flex-grow">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
+
+        <!-- BASIC -->
+        <div onclick="openOrder('Basic Plan')" class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition flex flex-col">
+            <h4 class="text-xl font-bold text-abi-dark mb-2">Basic</h4>
+            <p class="text-3xl font-bold text-abi-teal mb-6">7rb/m²</p>
+
+            <ul class="text-sm text-gray-500 space-y-3 mb-8 flex-grow">
+                <li>Denah 2D & 3D</li>
+                <li>3D Exterior</li>
+                <li>Revisi 3x</li>
+            </ul>
+
+            <button class="w-full py-3 border border-gray-200 rounded-full text-xs font-bold hover:bg-abi-teal hover:text-white transition">
+                Pilih Paket
+            </button>
         </div>
-    </header>
 
-    <section class="py-24 px-6 flex-grow">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
-            
-            <div onclick="openOrder('Paket 1 (Basic)', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750')" class="bg-white p-10 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full">
-                <span class="text-sm font-bold text-gray-300">01</span>
-                <h4 class="text-2xl font-bold mt-4 mb-2">Basic Plan</h4>
-                <p class="text-4xl font-light text-abi-teal mb-8">7rb<span class="text-sm text-gray-400">/m²</span></p>
-                <ul class="text-sm text-gray-600 space-y-4 mb-10 flex-grow">
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Denah 2D & 3D</li>
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> 3D Exterior Render</li>
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Revisi Minor 3x</li>
-                </ul>
-                <button class="w-full py-4 border border-gray-200 text-xs font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-            </div>
+        <!-- STANDARD (HIGHLIGHT) -->
+        <div onclick="openOrder('Standard Plan')" class="bg-abi-teal text-white p-8 rounded-3xl shadow-xl flex flex-col scale-105">
+            <span class="text-[10px] uppercase mb-2 opacity-70">Best Choice</span>
+            <h4 class="text-xl font-bold mb-2">Standard</h4>
+            <p class="text-3xl font-bold mb-6">22rb/m²</p>
 
-            <div onclick="openOrder('Paket 2 (Standard)', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800')" class="bg-abi-teal text-white p-10 shadow-xl transition cursor-pointer transform md:-translate-y-4 relative rounded-2xl flex flex-col h-full">
-                <div class="absolute top-0 right-0 p-4"><span class="bg-white text-abi-teal text-[10px] px-3 py-1 font-bold rounded">BEST SELLER</span></div>
-                <span class="text-sm font-bold text-white/50">02</span>
-                <h4 class="text-2xl font-bold mt-4 mb-2">Standard</h4>
-                <p class="text-4xl font-light mb-8">22rb<span class="text-sm text-white/50">/m²</span></p>
-                <ul class="text-sm text-white/90 space-y-4 mb-10 flex-grow">
-                    <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> Denah & Tampak Lengkap</li>
-                    <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> Potongan & Pola Lantai</li>
-                    <li class="flex items-start"><i class="fas fa-check text-white mr-3 mt-1"></i> 3D Modeling Full</li>
-                </ul>
-                <button class="w-full py-4 bg-white text-abi-teal text-xs font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-            </div>
+            <ul class="text-sm space-y-3 mb-8 flex-grow opacity-90">
+                <li>Gambar Kerja Lengkap</li>
+                <li>3D Modeling</li>
+                <li>Detail Teknis</li>
+            </ul>
 
-            <div onclick="openOrder('Paket 3 (Advance)', 'https://images.unsplash.com/photo-1600607687644-c7171b42498f')" class="bg-white p-10 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-abi-teal rounded-2xl flex flex-col h-full">
-                <span class="text-sm font-bold text-gray-300">03</span>
-                <h4 class="text-2xl font-bold mt-4 mb-2">Advance</h4>
-                <p class="text-4xl font-light text-abi-teal mb-8">33rb<span class="text-sm text-gray-400">/m²</span></p>
-                <ul class="text-sm text-gray-600 space-y-4 mb-10 flex-grow">
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Struktur & MEP Lengkap</li>
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Detail Kusen & Sanitasi</li>
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Paket Standard Include</li>
-                </ul>
-                <button class="w-full py-4 border border-gray-200 text-xs font-bold uppercase tracking-widest hover:bg-abi-teal hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-            </div>
-
-            <div onclick="openOrder('Paket RAB', 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c')" class="bg-white p-10 hover:shadow-xl transition cursor-pointer border-t-4 border-transparent hover:border-gray-800 rounded-2xl flex flex-col h-full">
-                <span class="text-sm font-bold text-gray-300">04</span>
-                <h4 class="text-2xl font-bold mt-4 mb-2">RAB Only</h4>
-                <p class="text-4xl font-light text-gray-800 mb-8">10rb<span class="text-sm text-gray-400">/m²</span></p>
-                <ul class="text-sm text-gray-600 space-y-4 mb-10 flex-grow">
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Analisis Harga Satuan</li>
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Kebutuhan Material</li>
-                    <li class="flex items-start"><i class="fas fa-check text-abi-teal mr-3 mt-1"></i> Format SPK</li>
-                </ul>
-                <button class="w-full py-4 border border-gray-200 text-xs font-bold uppercase tracking-widest hover:bg-abi-dark hover:text-white transition rounded-full mb-8">Pilih Paket</button>
-            </div>
-
+            <button class="w-full py-3 bg-white text-abi-teal rounded-full text-xs font-bold hover:bg-abi-dark hover:text-white transition">
+                Pilih Paket
+            </button>
         </div>
-    </section>
+
+        <!-- ADVANCE -->
+        <div onclick="openOrder('Advance Plan')" class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition flex flex-col">
+            <h4 class="text-xl font-bold text-abi-dark mb-2">Advance</h4>
+            <p class="text-3xl font-bold text-abi-teal mb-6">33rb/m²</p>
+
+            <ul class="text-sm text-gray-500 space-y-3 mb-8 flex-grow">
+                <li>Struktur & MEP</li>
+                <li>Detail Lengkap</li>
+                <li>Include Standard</li>
+            </ul>
+
+            <button class="w-full py-3 border border-gray-200 rounded-full text-xs font-bold hover:bg-abi-teal hover:text-white transition">
+                Pilih Paket
+            </button>
+        </div>
+
+        <!-- RAB -->
+        <div onclick="openOrder('RAB Only')" class="bg-white p-8 rounded-3xl border border-gray-100 hover:shadow-xl transition flex flex-col">
+            <h4 class="text-xl font-bold text-abi-dark mb-2">RAB Only</h4>
+            <p class="text-3xl font-bold text-gray-800 mb-6">10rb/m²</p>
+
+            <ul class="text-sm text-gray-500 space-y-3 mb-8 flex-grow">
+                <li>Analisa Harga</li>
+                <li>Kebutuhan Material</li>
+                <li>Format SPK</li>
+            </ul>
+
+            <button class="w-full py-3 border border-gray-200 rounded-full text-xs font-bold hover:bg-abi-dark hover:text-white transition">
+                Pilih Paket
+            </button>
+        </div>
+
+    </div>
+</section>
+    <section class="py-20 px-6 text-center bg-white border-t">
+    <h3 class="text-2xl md:text-3xl font-bold text-abi-dark mb-4">
+        Masih bingung pilih paket?
+    </h3>
+    <p class="text-gray-500 mb-6 text-sm">
+        Konsultasi gratis dengan tim kami untuk menentukan solusi terbaik.
+    </p>
+    <a href="https://wa.me/6285157577465" target="_blank"
+        class="bg-abi-teal text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-abi-dark transition">
+        Konsultasi Sekarang
+    </a>
+</section>
 
     <footer class="bg-abi-dark text-white py-12 text-center text-sm mt-auto">
         <p class="opacity-50 uppercase tracking-[0.2em]">© 2026 ABI STUDIO. All Rights Reserved.</p>
