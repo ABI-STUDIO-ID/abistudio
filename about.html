@@ -27,34 +27,28 @@
         }
     </script>
 
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .nav-link-active { color: #4A6D6D; border-bottom: 2px solid #4A6D6D; }
-    </style>
-</head>
-
-<body class="bg-gray-50 flex flex-col min-h-screen">
-
-    <div class="flex items-center">
-    <img src="assets/images/logo.png" alt="Logo ABI STUDIO" class="h-10 w-auto mr-3">
-    <div class="text-2xl font-extrabold tracking-tighter text-abi-dark">
-        ABI<span class="text-abi-teal">STUDIO</span>
-    </div>
-</div>
-            
-            <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center">
-                <a href="index.html" class="hover:text-abi-teal transition pb-1">Home</a>
-                <a href="about.html" class="nav-link-active transition pb-1">About</a>
-                <a href="services.html" class="hover:text-abi-teal transition pb-1">Layanan</a>
-                <a href="paket.html" class="hover:text-abi-teal transition pb-1">Paket</a>
-                <a href="portfolio.html" class="hover:text-abi-teal transition pb-1">Portfolio</a>
+   <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 py-4">
+    <div class="container mx-auto flex flex-wrap justify-between items-center">
+        <a href="index.html" class="flex items-center group">
+            <img src="assets/images/logo.png" alt="Logo ABI STUDIO" class="h-10 w-auto mr-2 transform group-hover:scale-105 transition duration-300">
+            <div class="text-2xl font-extrabold tracking-tighter text-abi-dark">
+                ABI<span class="text-abi-teal">STUDIO</span>
             </div>
+        </a>
+        
+        <button class="md:hidden text-abi-dark focus:outline-none" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
 
-            <button class="md:hidden text-abi-dark" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+        <div id="mobileMenu" class="hidden w-full md:flex md:w-auto md:space-x-8 text-sm font-bold uppercase tracking-[0.15em] text-gray-700 items-center mt-4 md:mt-0">
+            <a href="index.html" class="block py-2 hover:text-abi-teal transition border-b md:border-0 border-gray-100">Home</a>
+            <a href="about.html" class="block py-2 nav-link-active transition border-b md:border-0 border-gray-100">About</a>
+            <a href="services.html" class="block py-2 hover:text-abi-teal transition border-b md:border-0 border-gray-100">Layanan</a>
+            <a href="paket.html" class="block py-2 hover:text-abi-teal transition border-b md:border-0 border-gray-100">Paket</a>
+            <a href="portfolio.html" class="block py-2 hover:text-abi-teal transition">Portfolio</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <header class="pt-48 pb-24 bg-abi-dark text-white text-center px-6 relative overflow-hidden">
         <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000')] bg-cover bg-center"></div>
@@ -157,10 +151,10 @@
     </footer>
 
     <script>
-        function toggleMobileMenu() {
-            const menu = document.querySelector('.md:flex');
-            menu.classList.toggle('hidden');
-        }
-    </script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+    }
+</script>
 </body>
 </html>
