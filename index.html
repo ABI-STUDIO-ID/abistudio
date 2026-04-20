@@ -146,8 +146,9 @@
             text-align: center;
             padding: 6rem 2rem 3rem;
         }
-        .slide-content { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease 0.5s, transform 0.9s ease 0.5s; }
-        .slide.active .slide-content { opacity: 1; transform: translateY(0); }
+        .slide-content { display: none; opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s; }
+        .slide-content.active { display: block; }
+        .slide-content.visible { opacity: 1; transform: translateY(0); }
         .hero-eyebrow {
             display: inline-flex;
             align-items: center;
@@ -556,7 +557,7 @@
             </h1>
             <a href="services.html" class="hero-btn" data-i18n="btn_check_package">Lihat Layanan</a>
         </div>
-        <div class="slide-content" id="slideContent1" style="display:none;">
+        <div class="slide-content" id="slideContent1">
             <div class="hero-eyebrow">Integrated Solution</div>
             <h1 class="hero-title">
                 <span data-i18n="hero_title_2">Desain Presisi</span>
@@ -821,18 +822,30 @@ function changeLanguage(lang) {
 // ── SLIDER ──
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
-const contents = [document.getElementById('slideContent0'), document.getElementById('slideContent1')];
 const dots = document.querySelectorAll('.hero-dot');
+
+function getContent(idx) { return document.getElementById('slideContent' + idx); }
 
 function goToSlide(idx) {
     slides[currentSlide].classList.remove('active');
-    contents[currentSlide].style.display = 'none';
     dots[currentSlide].classList.remove('active');
+    const prev = getContent(currentSlide);
+    prev.classList.remove('active', 'visible');
+
     currentSlide = idx;
     slides[currentSlide].classList.add('active');
-    contents[currentSlide].style.display = 'block';
     dots[currentSlide].classList.add('active');
+    const next = getContent(currentSlide);
+    next.classList.add('active');
+    requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add('visible')));
 }
+
+// Init first slide
+(function() {
+    const first = getContent(0);
+    first.classList.add('active');
+    requestAnimationFrame(() => requestAnimationFrame(() => first.classList.add('visible')));
+})();
 
 setInterval(() => { goToSlide((currentSlide + 1) % slides.length); }, 6000);
 
