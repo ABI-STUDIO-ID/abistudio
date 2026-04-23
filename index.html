@@ -358,26 +358,42 @@
         .ticker-track {
             display: flex;
             gap: 1.5rem;
-            animation: ticker 30s linear infinite;
+            animation: ticker 20s linear infinite;
             width: max-content;
         }
         .ticker-track:hover { animation-play-state: paused; }
         @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .client-card {
-            width: 180px; height: 90px;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            flex-shrink: 0;
-            transition: border-color 0.2s;
-        }
-        .client-card:hover { border-color: var(--teal); }
-        .client-card img { max-height: 52px; max-width: 130px; object-fit: contain; filter: grayscale(1) opacity(0.55); transition: filter 0.3s; }
-        .client-card:hover img { filter: grayscale(0) opacity(1); }
+        /* ── LOGO SIZE UPGRADE ── */
+.client-card {
+    width: 240px;
+    height: 120px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+}
+
+.client-card:hover {
+    border-color: var(--teal);
+}
+
+.client-card img {
+    max-height: 80px;
+    max-width: 180px;
+    object-fit: contain;
+    filter: grayscale(0.3) opacity(0.85);
+    transition: all 0.3s ease;
+}
+
+.client-card:hover img {
+    filter: grayscale(0) opacity(1);
+    transform: scale(1.1);
+}
 
         /* ── SERVICES ── */
         .services-section { background: var(--dark); color: white; }
@@ -511,6 +527,15 @@
             .assoc-logos { gap: 1.5rem; }
             .assoc-logos img { height: 44px; }
             .nav-inner { padding: 0 1.25rem; }
+            .client-card {
+    width: 180px;
+    height: 100px;
+}
+
+.client-card img {
+    max-height: 70px;
+    max-width: 140px;
+}
         }
 
         /* ── FADE IN ON SCROLL ── */
