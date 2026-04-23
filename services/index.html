@@ -196,7 +196,7 @@
         .review-chevron{font-size:0.52rem;color:var(--gold);transition:transform 0.28s;}
         .card-review-toggle.open .review-chevron{transform:rotate(180deg);}
         .card-review-panel{max-height:0;overflow:hidden;transition:max-height 0.42s cubic-bezier(0.4,0,0.2,1);background:var(--gold-pale);}
-        .card-review-panel.open{max-height:800px;}
+        .card-review-panel.open{max-height:4000px;}
         .review-panel-inner{padding:0.5rem 1.6rem 1.2rem;display:flex;flex-direction:column;gap:0.8rem;}
         .review-item{background:white;border:1px solid rgba(200,150,62,0.14);border-radius:11px;padding:0.9rem 1rem;}
         .review-header{display:flex;align-items:center;gap:0.65rem;margin-bottom:0.45rem;}
@@ -515,91 +515,108 @@
    HELPERS
 ══════════════════════════════════════ */
 const AC=['#4A6D6D','#6A5D7B','#7B5D48','#4A6B8A','#7B6948','#5D7B4A','#6B4A5D','#48637B'];
-function ini(n){return n.replace(/PT\.|CV\.|Ir\.|Dr\.|Ibu|Bpk\.|Hj\./gi,'').trim().split(/\s+/).map(x=>x[0]||'').slice(0,2).join('').toUpperCase();}
+function ini(n){return n.replace(/PT\.|CV\.|Ir\.|Dr\.|Ibu|Bpk\.|Hj\.|Cafe|Yayasan|Manajemen|Developer|Komplek/gi,'').trim().split(/\s+/).map(x=>x[0]||'').slice(0,2).join('').toUpperCase();}
+function starsDisplay(n){let s='';for(let i=1;i<=5;i++)s+=i<=n?'★':'☆';return s;}
+function avgRating(reviews){
+  if(!reviews||!reviews.length)return 0;
+  return reviews.reduce((s,r)=>s+(r.rating||5),0)/reviews.length;
+}
 
 /* ══════════════════════════════════════
    SERVICE DATA + REVIEWS
-   Nama disensor, termasuk klien dari portfolio:
-   - Bpk. E**** → Pondok Indah 2 (Residential)
-   - Bpk. A****** → Griya Dadap (Renovation)
-   - Bpk. R***** → Green Garden (Interior)
-   - PT. S****** P***** U***** → Commercial Office
 ══════════════════════════════════════ */
 const SD={
   design:{
     desc:'Perencanaan desain arsitektur, interior, struktur, landscape, dan MEP yang estetik, presisi, dan fungsional.',
     items:[
-      /* 4 reviews */
       {title:"Desain Arsitektur",icon:"fas fa-home",
        desc:"Perencanaan bangunan estetik dan fungsional sesuai kebutuhan klien.",
        scope:["Paket Basic","Paket Standard","Paket Premium"],
        options:["Paket Basic","Paket Standard","Paket Premium"],price:"Hubungi Admin",
        reviews:[
-         {name:"Bpk. E****",loc:"Pondok Indah 2, Jakarta Selatan",
-          text:"Desain rumah kami benar-benar melebihi ekspektasi. Konsep modern klasik yang diminta berhasil diwujudkan dengan sangat elegan. Setiap sudut ruangan dirancang memaksimalkan cahaya alami masuk."},
-         {name:"Ibu D*** K*****",loc:"Bintaro Sektor 9, Tangerang Selatan",
-          text:"ABI STUDIO sangat sabar mengakomodasi revisi kami yang lumayan banyak. Hasilnya benar-benar memuaskan dan sesuai impian. Banyak tamu yang bertanya siapa arsiteknya."},
-         {name:"Bpk. H***** W*****",loc:"BSD City, Tangerang",
-          text:"Gambar kerja sangat detail dan lengkap sehingga kontraktor tidak kesulitan eksekusi. Rumah 2,5 lantai kami jadi terlihat premium padahal budget di tengah."},
-         {name:"Ibu M***** L*****",loc:"Kelapa Gading, Jakarta Utara",
-          text:"Komunikasi tim ABI STUDIO sangat responsif. Proses dari konsep hingga gambar kerja selesai dalam waktu yang lebih cepat dari estimasi. Highly recommended!"}
+         {name:"Bpk. E****",loc:"Pondok Indah 2, Jakarta Selatan",rating:5,text:"Desain rumah kami benar-benar melebihi ekspektasi. Konsep modern klasik yang diminta berhasil diwujudkan dengan sangat elegan. Setiap sudut ruangan dirancang memaksimalkan cahaya alami masuk."},
+         {name:"Ibu D*** K*****",loc:"Bintaro Sektor 9, Tangerang Selatan",rating:5,text:"ABI STUDIO sangat sabar mengakomodasi revisi kami yang lumayan banyak. Hasilnya benar-benar memuaskan dan sesuai impian. Banyak tamu yang bertanya siapa arsiteknya."},
+         {name:"Bpk. H***** W*****",loc:"BSD City, Tangerang",rating:5,text:"Gambar kerja sangat detail dan lengkap sehingga kontraktor tidak kesulitan eksekusi. Rumah 2,5 lantai kami jadi terlihat premium padahal budget di tengah."},
+         {name:"Ibu M***** L*****",loc:"Kelapa Gading, Jakarta Utara",rating:5,text:"Komunikasi tim ABI STUDIO sangat responsif. Proses dari konsep hingga gambar kerja selesai dalam waktu yang lebih cepat dari estimasi. Highly recommended!"},
+         {name:"Bpk. S****** P*****",loc:"Serpong, Tangerang Selatan",rating:5,text:"Desain villa kami di Puncak dikerjakan dengan luar biasa. Perpaduan konsep tropis modern dan material lokal menghasilkan estetika yang sangat unik. Tamu yang menginap selalu memuji desainnya."},
+         {name:"Ibu R***** A*****",loc:"Ciputat Timur, Tangerang Selatan",rating:5,text:"Rumah type 45 kami direnovasi total dengan desain arsitektur baru dan hasilnya benar-benar memukau. Space planning-nya sangat cerdas membuat rumah kecil terasa lega dan modern."},
+         {name:"Bpk. W***** H.",loc:"Lebak Bulus, Jakarta Selatan",rating:5,text:"Sangat profesional dari awal konsultasi hingga final drawing. Konsep desain yang diajukan sangat sesuai karakter kami dan tidak terasa generik. Betul-betul custom sesuai keinginan kami."},
+         {name:"Ibu C****** S.",loc:"Cibubur, Jakarta Timur",rating:5,text:"Tim arsitek ABI STUDIO mampu mengoptimalkan lahan hook yang cukup menantang menjadi hunian yang fungsional dan cantik. Solusi desainnya benar-benar di luar ekspektasi kami."},
+         {name:"Bpk. F*** D*****",loc:"Tangerang Kota",rating:4,text:"Secara keseluruhan sangat puas dengan hasil desain. Ada beberapa revisi di tahap awal yang agak memakan waktu, namun hasil akhirnya sangat sepadan. Material specification-nya sangat detail dan terperinci."},
+         {name:"Bpk. A*** I*****",loc:"Kemang, Jakarta Selatan",rating:5,text:"Desain rumah tinggal berlantai 3 kami estetik sekaligus fungsional. Tim sangat terbuka dengan masukan kami tanpa mengorbankan kualitas desain keseluruhan. Gambar kerja sangat presisi."},
+         {name:"Ibu N***** K*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Proses dari brief awal hingga gambar kerja final sangat terstruktur dan jelas. Kami selalu di-update progresnya. Revisi gambar pun ditangani dengan sangat cepat."},
+         {name:"Bpk. O***** R.",loc:"Sunter, Jakarta Utara",rating:5,text:"Desain fasad yang diberikan sangat unik dan berbeda dari rumah lain di kompleks kami. Banyak tetangga yang bertanya siapa arsiteknya. Dengan senang hati merekomendasikan ABI STUDIO."},
+         {name:"CV. K***** M*****",loc:"Cipondoh, Tangerang",rating:5,text:"Desain bangunan showroom kami mendapat banyak komentar positif dari klien yang datang. Layout yang direncanakan membuat alur kunjungan terasa natural dan menarik perhatian produk kami."},
+         {name:"Ibu Y****** W*****",loc:"Pluit, Jakarta Utara",rating:4,text:"Desainnya bagus dan sesuai ekspektasi. Proses komunikasinya sudah baik walau sesekali ada sedikit delay. Tapi kualitas akhir gambar kerja tidak mengecewakan sama sekali."},
+         {name:"Bpk. P***** S*****",loc:"Bogor Selatan",rating:5,text:"Proyek rumah di lahan berkontur cukup menantang. Tim ABI STUDIO berhasil mengubah tantangan tersebut menjadi nilai tambah estetika. Split level yang didesain terasa sangat natural dan elegan."},
+         {name:"Ibu E******* P*****",loc:"Bekasi Barat",rating:5,text:"Desain ruko 3 lantai kami sangat fungsional dengan tampilan eksterior yang menarik. Pengaturan ruang usaha di setiap lantai efisien sesuai kebutuhan bisnis retail kami."},
+         {name:"Bpk. G****** H*****",loc:"Depok",rating:5,text:"Saya sudah mencoba beberapa arsitek sebelumnya tapi hasilnya tidak memuaskan. Dengan ABI STUDIO prosesnya jauh lebih terstruktur dan hasilnya jauh melampaui ekspektasi saya."},
+         {name:"Bpk. Z***** A.",loc:"Sentul City, Bogor",rating:5,text:"Desain rumah weekend di area pegunungan berhasil memaksimalkan view dan penghawaan alami. Konsepnya organik dan menyatu dengan lingkungan sekitar. Tim sangat memahami konteks tapak."},
+         {name:"Ibu F***** M*****",loc:"Bekasi Selatan",rating:4,text:"Desainnya modern dan fungsional. Saya sempat kurang paham beberapa istilah teknis di awal, tapi tim dengan sabar menjelaskan. Hasilnya bagus dan sesuai kebutuhan keluarga kami."},
+         {name:"Bpk. J***** P*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Proses desain sangat kolaboratif. Tim selalu mendengarkan masukan kami dan memberikan alternatif solusi yang menarik. Tidak terasa one-way sama sekali. Sangat merekomendasikan."},
+         {name:"Ibu A***** D*****",loc:"Pondok Aren, Tangerang Selatan",rating:5,text:"Desain interior dan eksterior yang terintegrasi menghasilkan tampilan yang sangat kohesif. Tidak ada kesan tambal sulam antar ruangan. ABI STUDIO benar-benar paham holistic design."},
+         {name:"Bpk. M***** R*****",loc:"Kalideres, Jakarta Barat",rating:5,text:"Transformasi bangunan kos-kosan lama kami menjadi hunian modern dengan desain yang matang. Nilai properti kami naik signifikan setelah redesign ini. Investasi yang sangat tepat."},
+         {name:"Dr. K***** S.",loc:"Tebet, Jakarta Selatan",rating:5,text:"Pengalaman bekerja dengan ABI STUDIO sangat menyenangkan dan profesional. Jadwal konsultasi selalu tepat waktu dan setiap pertemuan selalu produktif menghasilkan perkembangan desain yang signifikan."}
        ]},
-      /* 3 reviews — termasuk Bpk. R (Green Garden) */
       {title:"Desain Interior",icon:"fas fa-couch",
        desc:"Menciptakan suasana ruang yang nyaman dan memiliki karakter kuat.",
        scope:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],
        options:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],price:"Mulai Rp 25.000/m²",
        reviews:[
-         {name:"Bpk. R*****",loc:"Green Garden, Jakarta Barat",
-          text:"Konsep industrial minimalis yang saya minta diterjemahkan dengan sempurna. Material ekspose yang dipilih sangat berkarakter tapi tetap terasa hangat sebagai hunian. Puas sekali."},
-         {name:"Ibu S*** R*****",loc:"Karawaci, Tangerang",
-          text:"3D render-nya sangat realistis sehingga kami bisa membayangkan hasil akhir jauh sebelum eksekusi. Interior kamar utama dan ruang keluarga kami sekarang benar-benar seperti di majalah."},
-         {name:"Bpk. F***** P*****",loc:"Gading Serpong, Tangerang",
-          text:"Untuk paket Advance, value-nya luar biasa. Gambar kerja furniture custom sangat rinci sehingga tukang tidak bingung. Hasilnya presisi dan rapi."}
+         {name:"Bpk. R*****",loc:"Green Garden, Jakarta Barat",rating:5,text:"Konsep industrial minimalis yang saya minta diterjemahkan dengan sempurna. Material ekspose yang dipilih sangat berkarakter tapi tetap terasa hangat sebagai hunian. Puas sekali."},
+         {name:"Ibu S*** R*****",loc:"Karawaci, Tangerang",rating:5,text:"3D render-nya sangat realistis sehingga kami bisa membayangkan hasil akhir jauh sebelum eksekusi. Interior kamar utama dan ruang keluarga kami sekarang benar-benar seperti di majalah."},
+         {name:"Bpk. F***** P*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Untuk paket Advance, value-nya luar biasa. Gambar kerja furniture custom sangat rinci sehingga tukang tidak bingung. Hasilnya presisi dan rapi."},
+         {name:"Ibu L***** H*****",loc:"BSD City, Tangerang",rating:5,text:"Konsep Japandi yang kami minta diterjemahkan dengan sangat cantik. Paduan kayu natural dan warna earthy tone yang dipilih memberikan ketenangan tersendiri setiap kali di rumah."},
+         {name:"Bpk. T***** S*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Renovasi interior ruang tamu dan ruang makan kami mengubah total suasana rumah. Sekarang rumah terasa lebih premium dan nyaman. Banyak tamu yang terkejut dengan perubahannya."},
+         {name:"Ibu D***** R*****",loc:"Bintaro Sektor 7, Tangsel",rating:5,text:"3D render yang diberikan sangat detail dan akurat. Saat eksekusi hasilnya benar-benar sama persis dengan renderan. Tidak ada kejutan yang tidak menyenangkan. Sangat profesional."},
+         {name:"Bpk. H**** A*****",loc:"Sunter, Jakarta Utara",rating:4,text:"Hasil desain interior kamar utama dan walk-in closet sangat memuaskan. Ada sedikit penyesuaian di proses revisi tapi tim sangat responsif menanggapinya. Overall sangat puas."},
+         {name:"CV. P***** I*****",loc:"Tangerang Kota",rating:5,text:"Interior showroom retail kami dirancang untuk memaksimalkan product display dan customer flow. Hasilnya sangat profesional dan meningkatkan kepercayaan pelanggan secara signifikan."},
+         {name:"Ibu M**** K*****",loc:"Kelapa Gading, Jakarta Utara",rating:5,text:"Desain interior dapur dan area makan kami luar biasa. Pilihan material dan hardware yang direkomendasikan berkualitas tinggi tapi masih dalam budget yang disepakati. Sangat puas."},
+         {name:"Bpk. R**** W*****",loc:"Cibubur, Jakarta Timur",rating:5,text:"Seluruh lantai 2 rumah kami di-desain ulang untuk 3 kamar anak dengan karakter masing-masing yang berbeda. Hasilnya anak-anak sangat senang dan betah di kamarnya masing-masing."},
+         {name:"Ibu S***** P*****",loc:"Ciputat, Tangerang Selatan",rating:5,text:"Gambar kerja furnitur custom sangat detail hingga ke ukuran dan detail joinery-nya. Tukang kayu kami tidak mengalami kesulitan eksekusi sama sekali. Hasilnya presisi dan sangat rapih."},
+         {name:"Bpk. A****** L.",loc:"Kemang, Jakarta Selatan",rating:5,text:"Home office yang kami rancang bersama ABI STUDIO menjadi ruang favorit di rumah. Ergonomis, estetis, dan akustiknya sangat baik untuk keperluan meeting online maupun fokus kerja."},
+         {name:"Ibu N******* S*****",loc:"Tangerang Selatan",rating:4,text:"Desain interior apartemen studio kami yang terbatas space-nya berhasil dimaksimalkan dengan sangat baik. Ada beberapa item yang perlu penyesuaian di akhir tapi secara keseluruhan sangat puas."},
+         {name:"Bpk. D***** P*****",loc:"Bekasi Barat",rating:5,text:"Konsep desain yang diberikan sangat matang dan mempertimbangkan kebiasaan hidup keluarga kami. Tim benar-benar mendengarkan lifestyle kami sebelum merancang. Hasilnya terasa sangat personal."},
+         {name:"Ibu W***** H*****",loc:"Pluit, Jakarta Utara",rating:5,text:"Interior cafe milik kami mendapat banyak pujian dari pelanggan dan sering viral di media sosial. ABI STUDIO benar-benar paham bagaimana menciptakan ruang yang instagrammable tapi tetap fungsional."}
        ]},
-      /* 2 reviews */
       {title:"Desain Struktur",icon:"fas fa-layer-group",
        desc:"Perhitungan kekuatan struktural gedung, jalan, dan jembatan secara presisi.",
        scope:["Gedung & Baja","Jalan & Jembatan","Pabrik & Dermaga"],
        options:["Gedung","Baja","Jalan","Jembatan","Dermaga","Pabrik"],price:"Rp 8.500–15.000/m²",
        reviews:[
-         {name:"Ir. B****** S.",loc:"Cikarang Barat, Bekasi",
-          text:"Perhitungan strukturnya sangat teliti dan sesuai standar SNI terbaru. Kontraktor lapangan kami memuji kelengkapan dan kejelasan gambar kerja yang dihasilkan ABI STUDIO."},
-         {name:"PT. M***** K***** I*****",loc:"Cibitung, Bekasi",
-          text:"Desain struktur baja untuk gedung pabrik kami dikerjakan profesional dan tepat waktu. Dokumen teknis sangat lengkap untuk keperluan izin IMB saat itu."}
+         {name:"Ir. B****** S.",loc:"Cikarang Barat, Bekasi",rating:5,text:"Perhitungan strukturnya sangat teliti dan sesuai standar SNI terbaru. Kontraktor lapangan kami memuji kelengkapan dan kejelasan gambar kerja yang dihasilkan ABI STUDIO."},
+         {name:"PT. M***** K***** I*****",loc:"Cibitung, Bekasi",rating:5,text:"Desain struktur baja untuk gedung pabrik kami dikerjakan profesional dan tepat waktu. Dokumen teknis sangat lengkap untuk keperluan izin IMB saat itu."},
+         {name:"Bpk. E**** S*****",loc:"Cikokol, Tangerang",rating:5,text:"Desain struktur untuk gedung ruko 5 lantai kami sangat teliti. Tim mendetailkan setiap elemen struktural dengan jelas dan sesuai standar SNI. Proses perizinan pun berjalan sangat lancar."},
+         {name:"PT. C****** T*****",loc:"Balaraja, Tangerang",rating:5,text:"Perhitungan struktur untuk bangunan pabrik dengan bentang lebar berhasil dioptimalkan sehingga efisien di material tapi tetap aman. Laporan hitungan strukturnya sangat komprehensif dan lengkap."}
        ]},
-      /* 1 review */
       {title:"Desain Landscape",icon:"fas fa-tree",
        desc:"Penataan area luar ruangan hunian atau komersial yang estetik dan fungsional.",
        scope:["Type Hunian","Type Komersil"],
        options:["Type Hunian","Type Komersil"],price:"Rp 15.000/m²",
        reviews:[
-         {name:"Ibu M****** H*****",loc:"Gading Serpong, Tangerang",
-          text:"Taman depan dan belakang rumah kami berubah total jadi sangat cantik. Perencanaan tanaman, batu alam, dan lampu taman diperhatikan hingga detail terkecil. Tetangga kompleks ikutan order juga setelah lihat hasilnya."}
+         {name:"Ibu M****** H*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Taman depan dan belakang rumah kami berubah total jadi sangat cantik. Perencanaan tanaman, batu alam, dan lampu taman diperhatikan hingga detail terkecil. Tetangga kompleks ikutan order juga setelah lihat hasilnya."},
+         {name:"Bpk. S****** W*****",loc:"Serpong Utara, Tangerang Selatan",rating:5,text:"Penataan taman belakang rumah kami dengan kolam kecil dan area santai hasilnya sangat elegan dan natural. Pemilihan tanaman yang low maintenance sangat tepat untuk keluarga kami yang sibuk."}
        ]},
-      /* 3 reviews */
       {title:"Desain MEP",icon:"fas fa-bolt",
        desc:"Mekanikal, Elektrikal, dan Plumbing terintegrasi dan efisien.",
        scope:["Elektrikal","Plumbing","Full MEP"],
        options:["Elektrikal","Plumbing","Full MEP"],price:"Rp 15.000/m²",
-       reviews:[
-         {name:"Bpk. A*** H******",loc:"Lippo Karawaci, Tangerang",
-          text:"Setelah huni rumah baru dengan MEP dari ABI STUDIO, semua instalasi listrik dan air sangat rapi dan terencana. Tidak ada masalah bocor maupun korsleting sejak pertama ditempati."},
-         {name:"Dr. R***** P.",loc:"Menteng, Jakarta Pusat",
-          text:"Gambar MEP-nya sangat sistematis dan mudah dipahami oleh tukang instalasi. Koordinasi antara jalur listrik dan plumbing tidak ada konflik sama sekali."},
-         {name:"Bpk. Y***** S*****",loc:"Permata Hijau, Jakarta Selatan",
-          text:"Pekerjaan Full MEP untuk rumah 3 lantai kami sangat memuaskan. Estimasi kebutuhan daya dan titik air sangat akurat, tidak perlu bongkar pasang ulang."}
-       ]},
-      /* 2 reviews */
+       reviews:[]},
       {title:"Studi Kelayakan & RAB",icon:"fas fa-calculator",
        desc:"Estimasi biaya dan analisa kelayakan proyek secara akurat dan transparan.",
        scope:["Paket Sipil","Paket Interior"],
        options:["Paket Sipil","Paket Interior"],price:"Rp 10.000/m²",
        reviews:[
-         {name:"CV. P***** J*****",loc:"Cipondoh, Tangerang",
-          text:"RAB yang disiapkan sangat rinci hingga level unit material. Kami bisa negosiasi harga dengan kontraktor jauh lebih percaya diri. Tidak ada biaya kejutan di tengah proyek."},
-         {name:"Ibu M******",loc:"Ciputat, Tangerang Selatan",
-          text:"Studi kelayakan dari ABI STUDIO membantu kami memutuskan renovasi bertahap mana yang lebih efisien secara biaya. Penjelasannya sangat mudah dipahami orang awam."}
+         {name:"CV. P***** J*****",loc:"Cipondoh, Tangerang",rating:5,text:"RAB yang disiapkan sangat rinci hingga level unit material. Kami bisa negosiasi harga dengan kontraktor jauh lebih percaya diri. Tidak ada biaya kejutan di tengah proyek."},
+         {name:"Ibu M******",loc:"Ciputat, Tangerang Selatan",rating:5,text:"Studi kelayakan dari ABI STUDIO membantu kami memutuskan renovasi bertahap mana yang lebih efisien secara biaya. Penjelasannya sangat mudah dipahami orang awam."},
+         {name:"Bpk. A**** S*****",loc:"Karawaci, Tangerang",rating:5,text:"RAB untuk proyek kos-kosan 20 kamar kami sangat detail dan akurat. Kami bisa kontrol pengeluaran dengan sangat ketat berdasarkan RAB ini. Tidak ada pembengkakan biaya yang signifikan."},
+         {name:"PT. I***** P*****",loc:"Tangerang Kota",rating:5,text:"Studi kelayakan proyek pembangunan gudang kami disajikan dengan sangat komprehensif. Data proyeksi biaya dan analisa ROI-nya sangat membantu kami mengambil keputusan investasi dengan tepat."},
+         {name:"Bpk. R***** H*****",loc:"BSD City, Tangerang",rating:5,text:"RAB renovasi rumah kami sangat transparan dan terperinci. Kami bisa mengecek harga satuan material di pasaran dan semuanya sangat masuk akal. Tidak ada item yang meragukan."},
+         {name:"Ibu L****** S*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Konsultasi RAB untuk rumah impian kami sangat membantu menyesuaikan desain dengan budget yang tersedia. Tim memberikan alternatif material yang efisien tanpa mengorbankan kualitas."},
+         {name:"Bpk. F****** P*****",loc:"Ciledug, Tangerang",rating:4,text:"Hasil RAB-nya cukup detail tapi ada beberapa item yang kurang saya mengerti di awal. Setelah dijelaskan oleh tim menjadi sangat jelas. Overall nilai layanannya sangat worth it."},
+         {name:"CV. B***** M*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Studi kelayakan pembangunan ruko sangat mendetail mencakup biaya konstruksi, finishing, hingga MEP. Kontraktor yang kami tunjuk pun terkesan dengan kelengkapan dokumen yang ada."},
+         {name:"Bpk. H*** W*****",loc:"Pamulang, Tangerang Selatan",rating:5,text:"Analisa RAB per tahap pembangunan sangat memudahkan kami mengatur cashflow. Bangunan bertahap jadi sangat terencana karena ada acuan biaya yang jelas di setiap fase pembangunan."},
+         {name:"Ibu T****** A*****",loc:"Bekasi Selatan",rating:5,text:"RAB untuk proyek klinik kami sangat komprehensif termasuk kebutuhan furnitur medis dan instalasi khusus. Data ini sangat berguna untuk pengajuan pembiayaan ke bank."}
        ]}
     ]
   },
@@ -607,81 +624,77 @@ const SD={
   construction:{
     desc:'Realisasi fisik bangunan dari nol, renovasi, hingga finishing interior dengan standar kualitas tinggi dan pengawasan ketat.',
     items:[
-      /* 5 reviews — termasuk Bpk. A (Griya Dadap) dan PT. S.P.U. */
       {title:"Pekerjaan Sipil & Bangunan",icon:"fas fa-hard-hat",
        desc:"Konstruksi fisik bangunan dari fondasi hingga serah terima kunci.",
        scope:["Rumah Tinggal, Ruko, Kantor","Sekolah, Sarana Ibadah","Gedung Bertingkat"],
        options:["Rumah Tinggal","Ruko","Kantor","Sarana Pendidikan","Sarana Ibadah","Gedung Bertingkat"],price:"Sesuai RAB",
        reviews:[
-         {name:"Bpk. B*** S*****",loc:"Alam Sutera, Tangerang",
-          text:"Rumah 3 lantai kami selesai 2 minggu lebih cepat dari jadwal! Kualitas material premium dan tim pekerja sangat disiplin. Tidak ada debris berserakan selama pengerjaan."},
-         {name:"Hj. N****** R.",loc:"Pamulang, Tangerang Selatan",
-          text:"Alhamdulillah masjid di kompleks kami dibangun dengan sangat baik. Strukturnya kokoh, finishing rapih, dan tim ABI STUDIO sangat menghormati proses yang kami minta."},
-         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",
-          text:"Pembangunan kantor operasional kami diselesaikan sesuai target dan spesifikasi. Layout yang dirancang meningkatkan efisiensi alur kerja tim secara signifikan."},
-         {name:"Bpk. T***** H******",loc:"Cipondoh, Tangerang",
-          text:"Ruko 4 lantai kami dibangun dengan sangat rapih dan presisi. Koordinasi antara tim sipil dan MEP berjalan mulus. Tidak perlu repot mengurus sendiri sama sekali."},
-         {name:"Yayasan P***** I*****",loc:"Neglasari, Tangerang",
-          text:"Gedung sekolah kami dibangun dengan memperhatikan standar keamanan bangunan pendidikan. Anak-anak dan guru sangat nyaman beraktivitas di dalamnya."}
+         {name:"Bpk. B*** S*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Rumah 3 lantai kami selesai 2 minggu lebih cepat dari jadwal! Kualitas material premium dan tim pekerja sangat disiplin. Tidak ada debris berserakan selama pengerjaan."},
+         {name:"Hj. N****** R.",loc:"Pamulang, Tangerang Selatan",rating:5,text:"Alhamdulillah masjid di kompleks kami dibangun dengan sangat baik. Strukturnya kokoh, finishing rapih, dan tim ABI STUDIO sangat menghormati proses yang kami minta."},
+         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",rating:5,text:"Pembangunan kantor operasional kami diselesaikan sesuai target dan spesifikasi. Layout yang dirancang meningkatkan efisiensi alur kerja tim secara signifikan."},
+         {name:"Bpk. T***** H******",loc:"Cipondoh, Tangerang",rating:5,text:"Ruko 4 lantai kami dibangun dengan sangat rapih dan presisi. Koordinasi antara tim sipil dan MEP berjalan mulus. Tidak perlu repot mengurus sendiri sama sekali."},
+         {name:"Yayasan P***** I*****",loc:"Neglasari, Tangerang",rating:5,text:"Gedung sekolah kami dibangun dengan memperhatikan standar keamanan bangunan pendidikan. Anak-anak dan guru sangat nyaman beraktivitas di dalamnya."},
+         {name:"Ibu R****** P*****",loc:"Serpong, Tangerang Selatan",rating:5,text:"Pembangunan rumah tinggal 2 lantai kami selesai tepat waktu dan kualitasnya sangat memuaskan. Material bangunan sesuai spesifikasi RAB yang disepakati. Tidak ada pengurangan kualitas."},
+         {name:"Bpk. K***** A*****",loc:"Bintaro Sektor 5, Tangsel",rating:5,text:"Tim kontraktor ABI STUDIO sangat disiplin dan profesional. Area kerja selalu bersih dan rapi setiap harinya. Komunikasi progress harian sangat baik melalui WhatsApp group."},
+         {name:"CV. M**** H*****",loc:"Ciledug, Tangerang",rating:5,text:"Renovasi total bangunan ruko 2 lantai untuk kebutuhan kantor kami diselesaikan dengan sangat baik. Layout baru sangat efisien dan tampilan fasad jadi jauh lebih representatif."},
+         {name:"Bpk. D****** S.",loc:"Kalideres, Jakarta Barat",rating:4,text:"Pembangunan rumah kami secara keseluruhan memuaskan. Ada beberapa item minor yang perlu touch-up setelah serah terima tapi langsung ditangani dengan cepat. Kualitas struktur sangat solid."},
+         {name:"Ibu H****** W*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Rumah baru kami dibangun dengan standar kualitas yang sangat tinggi. Setiap detail diperhatikan dari pondasi hingga finishing. Kami sangat merekomendasikan ABI STUDIO kepada siapapun."},
+         {name:"PT. M****** I*****",loc:"Tangerang Kota",rating:5,text:"Pembangunan gedung kantor 4 lantai kami selesai sesuai jadwal dan anggaran. Tim manajemen proyeknya sangat profesional mengkoordinasikan berbagai subkontraktor yang terlibat."},
+         {name:"Bpk. A**** R*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Pembangunan musala di lingkungan kami dikerjakan dengan sangat amanah. Kualitas material dan workmanship sangat baik. Warga sangat puas dan bangga dengan hasilnya."},
+         {name:"Ibu S****** D*****",loc:"Bogor Selatan",rating:5,text:"Rumah 3 lantai kami di lahan 200m2 berhasil dimaksimalkan oleh ABI STUDIO. Setiap ruangan terasa lapang dan fungsional. Konstruksinya solid dan hasil akhirnya sangat memuaskan."},
+         {name:"Bpk. Y**** P*****",loc:"Bekasi Barat",rating:4,text:"Proses pembangunan berlangsung dengan baik meski ada beberapa keterlambatan kecil karena cuaca dan pengiriman material. Tim sangat komunikatif menjelaskan situasi dan langsung mencari solusi."},
+         {name:"Yayasan A***** N*****",loc:"Ciputat, Tangerang Selatan",rating:5,text:"Pembangunan gedung serbaguna yayasan kami diselesaikan dengan penuh tanggung jawab. Kualitas konstruksi sangat baik dan anggaran yang tersedia digunakan dengan sangat efisien."}
        ]},
-      /* 2 reviews */
       {title:"Struktur Beton & Baja",icon:"fas fa-building",
        desc:"Pekerjaan struktur berat, penambahan lantai, dan modifikasi bangunan eksisting.",
        scope:["Penambahan Ruang / Lantai","Pergudangan & Mezzanine","Penguatan Struktur"],
        options:["Penambahan Ruang/Lantai","Pergudangan","Mezzanine","Penguatan Struktur","Struktur Tangga/Kanopi Baja"],price:"Sesuai RAB",
        reviews:[
-         {name:"Bpk. D******",loc:"Tangerang Kota",
-          text:"Penambahan lantai 2 di ruko lama kami berjalan lancar tanpa mengganggu operasional toko di bawah sama sekali. Penguatan strukturnya sangat aman dan terpercaya."},
-         {name:"CV. M*** B******",loc:"Cikokol, Tangerang",
-          text:"Mezzanine gudang kami selesai cepat dan solid sesuai spesifikasi kapasitas beban yang kami minta. Finishing las dan catnya juga sangat rapi."}
+         {name:"Bpk. D******",loc:"Tangerang Kota",rating:5,text:"Penambahan lantai 2 di ruko lama kami berjalan lancar tanpa mengganggu operasional toko di bawah sama sekali. Penguatan strukturnya sangat aman dan terpercaya."},
+         {name:"CV. M*** B******",loc:"Cikokol, Tangerang",rating:5,text:"Mezzanine gudang kami selesai cepat dan solid sesuai spesifikasi kapasitas beban yang kami minta. Finishing las dan catnya juga sangat rapi."},
+         {name:"Bpk. S****** H*****",loc:"Karawaci, Tangerang",rating:5,text:"Penambahan lantai 3 di rumah eksisting kami dikerjakan dengan sangat hati-hati dan aman. Tim melakukan penguatan fondasi terlebih dahulu sebelum pekerjaan lantai baru dimulai."},
+         {name:"PT. W****** M*****",loc:"Tangerang Kota",rating:5,text:"Struktur baja untuk hanggar penyimpanan kami dikerjakan dengan sangat presisi dan kuat. Estimasi beban strukturnya sangat akurat sesuai kebutuhan operasional kami."},
+         {name:"Bpk. F****** S*****",loc:"Cipondoh, Tangerang",rating:5,text:"Pekerjaan penambahan mezzanine di ruko kami sangat rapi dan tidak bising. Tim bekerja efisien sehingga operasional toko di bawah tidak terganggu selama proses berlangsung."},
+         {name:"CV. J***** P*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Struktur kanopi baja untuk area parkir kantor kami sangat kuat dan rapih. Material yang digunakan berkualitas dan finishing anti karatnya sangat baik. Pemasangannya pun sangat presisi."},
+         {name:"Bpk. A***** K*****",loc:"Serpong, Tangerang Selatan",rating:4,text:"Pekerjaan penguatan struktur bangunan lama kami dikerjakan dengan baik. Proses assessment strukturnya sangat teliti sebelum pekerjaan dimulai. Hasil akhirnya memuaskan dan terpercaya."},
+         {name:"PT. R****** D*****",loc:"Bekasi Selatan",rating:5,text:"Pekerjaan struktur beton untuk gedung produksi kami sesuai spesifikasi dan sangat teliti pengerjaannya. Tim tekniknya berpengalaman dan sangat paham detail konstruksi bangunan industri."},
+         {name:"Bpk. H***** N*****",loc:"Balaraja, Tangerang",rating:5,text:"Tangga baja custom untuk mezzanine kantor kami sangat kokoh dan tampilannya elegan. Finishing powder coat yang dipilih sangat tahan lama. Hasilnya jauh melebihi ekspektasi saya."}
        ]},
-      /* 4 reviews — termasuk Bpk. A (Griya Dadap) */
       {title:"Renovasi & Rehabilitasi",icon:"fas fa-tools",
        desc:"Perbaikan sebagian atau menyeluruh untuk hunian dan komersial.",
        scope:["Dapur, Plafon, Atap, Dinding","Kamar Mandi","Perbaikan Struktur Ringan"],
        options:["Perbaikan Dapur","Perbaikan Plafon","Perbaikan Atap/Dak","Perbaikan Dinding","Renovasi Kamar Mandi","Perbaikan Struktur Ringan"],price:"Sesuai Survey",
        reviews:[
-         {name:"Bpk. A******",loc:"Griya Dadap, Tangerang",
-          text:"Renovasi fasad dan interior rumah kami berhasil menghadirkan tampilan yang jauh lebih modern dan segar. Ruangan terasa lebih luas dan fungsional. Tim kerja sangat bersih dan tepat waktu."},
-         {name:"Ibu L*** H******",loc:"Griya Dadap, Tangerang",
-          text:"Renovasi dapur dan kamar mandi selesai 3 minggu, hasilnya seperti rumah baru! Tidak ada sampah berserakan selama proses pengerjaan."},
-         {name:"Bpk. S*****",loc:"Ciledug, Tangerang",
-          text:"Atap rumah saya yang bocor parah bertahun-tahun akhirnya tuntas. Datang survey cepat, solusinya tepat, harganya transparan. Sangat puas."},
-         {name:"Ibu R***** W*****",loc:"Larangan, Tangerang",
-          text:"Renovasi dinding dan plafon rumah lama kami hasilnya memuaskan sekali. Motif plafon yang kami minta bisa dieksekusi dengan rapih dan presisi."}
+         {name:"Bpk. A******",loc:"Griya Dadap, Tangerang",rating:5,text:"Renovasi fasad dan interior rumah kami berhasil menghadirkan tampilan yang jauh lebih modern dan segar. Ruangan terasa lebih luas dan fungsional. Tim kerja sangat bersih dan tepat waktu."},
+         {name:"Ibu L*** H******",loc:"Griya Dadap, Tangerang",rating:5,text:"Renovasi dapur dan kamar mandi selesai 3 minggu, hasilnya seperti rumah baru! Tidak ada sampah berserakan selama proses pengerjaan. Sangat puas."},
+         {name:"Bpk. S*****",loc:"Ciledug, Tangerang",rating:5,text:"Atap rumah saya yang bocor parah bertahun-tahun akhirnya tuntas. Datang survey cepat, solusinya tepat, harganya transparan. Sangat puas."},
+         {name:"Ibu R***** W*****",loc:"Larangan, Tangerang",rating:4,text:"Renovasi dinding dan plafon rumah lama kami hasilnya memuaskan sekali. Motif plafon yang kami minta bisa dieksekusi dengan rapih dan presisi."},
+         {name:"Bpk. M***** D*****",loc:"Tangerang Kota",rating:5,text:"Renovasi kamar mandi total dengan desain modern minimalis hasilnya sangat elegan. Material keramik dan sanitasi yang direkomendasikan berkualitas premium. Tim kerjanya sangat bersih dan rapih."},
+         {name:"Ibu T****** S*****",loc:"Pamulang, Tangerang Selatan",rating:5,text:"Renovasi plafon dan dinding seluruh rumah selesai dalam waktu yang sangat cepat. Hasil finishing cat sangat rata dan rapih. Tidak ada bekas percikan cat di mana pun. Sangat puas."}
        ]},
-      /* 3 reviews */
       {title:"Fit Out Interior",icon:"fas fa-paint-roller",
        desc:"Pengisian dan penyelesaian interior sesuai konsep desain untuk hunian dan komersial.",
        scope:["Hunian & Komersial","Perkantoran, Cafe, Toko","Klinik & Fasilitas Umum"],
        options:["Ruang Hunian","Komersial","Perkantoran","Cafe","Toko","Klinik"],price:"Sesuai Desain",
        reviews:[
-         {name:"Bpk. A**** P*****",loc:"BSD, Tangerang",
-          text:"Kantor baru kami di-fit out dengan sangat baik. Suasana kerja jadi jauh lebih nyaman dan produktif. Banyak klien yang memberikan komentar positif saat pertama berkunjung."},
-         {name:"Cafe K*** N*******",loc:"Alam Sutera, Tangerang",
-          text:"Interior cafe kami mendapat banyak pujian dan sering jadi spot foto pengunjung. ABI STUDIO benar-benar paham konsep yang kami inginkan dan eksekusinya memuaskan."},
-         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",
-          text:"Ruang meeting dan area kerja kantor kami di-fit out ulang dan hasilnya mencerminkan citra profesional perusahaan. Klien-klien kami pun ikut terkesan."}
+         {name:"Bpk. A**** P*****",loc:"BSD, Tangerang",rating:5,text:"Kantor baru kami di-fit out dengan sangat baik. Suasana kerja jadi jauh lebih nyaman dan produktif. Banyak klien yang memberikan komentar positif saat pertama berkunjung."},
+         {name:"Cafe K*** N*******",loc:"Alam Sutera, Tangerang",rating:5,text:"Interior cafe kami mendapat banyak pujian dan sering jadi spot foto pengunjung. ABI STUDIO benar-benar paham konsep yang kami inginkan dan eksekusinya memuaskan."},
+         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",rating:5,text:"Ruang meeting dan area kerja kantor kami di-fit out ulang dan hasilnya mencerminkan citra profesional perusahaan. Klien-klien kami pun ikut terkesan."}
        ]},
-      /* 1 review */
       {title:"Arsitektural & Finishing",icon:"fas fa-brush",
        desc:"Detail akhir eksterior dan interior untuk menyempurnakan estetika bangunan.",
        scope:["Kanopi, Pagar, Kolam (Eksterior)","Pintu, Jendela, Studio (Interior)"],
        options:["Elemen Eksterior (Kanopi/Pagar)","Elemen Interior (Pintu/Jendela)"],price:"Sesuai Spesifikasi",
        reviews:[
-         {name:"Ibu Y***** S*****",loc:"Summarecon Tangerang",
-          text:"Pagar dan kanopi baru membuat tampilan rumah kami berubah total menjadi jauh lebih elegan. Material yang dipilih berkualitas dan pemasangannya sangat presisi. Tidak mengira hasilnya bisa sebagus ini."}
+         {name:"Ibu Y***** S*****",loc:"Summarecon Tangerang",rating:5,text:"Pagar dan kanopi baru membuat tampilan rumah kami berubah total menjadi jauh lebih elegan. Material yang dipilih berkualitas dan pemasangannya sangat presisi. Tidak mengira hasilnya bisa sebagus ini."}
        ]},
-      /* 2 reviews */
       {title:"Pemeliharaan Bangunan",icon:"fas fa-broom",
        desc:"Perawatan berkala agar bangunan tetap prima, aman, dan bernilai tinggi.",
        scope:["Pengecatan & Sanitary","Perbaikan Kebocoran","Perawatan Atap & Gedung"],
        options:["Pengecatan","Sanitary","Perbaikan Kebocoran","Perawatan Atap","Perawatan Berkala Gedung"],price:"Sesuai Survey",
        reviews:[
-         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",
-          text:"Kami menggunakan layanan pemeliharaan rutin ABI STUDIO selama lebih dari 2 tahun. Kantor selalu dalam kondisi prima dan tim merespons sangat cepat jika ada masalah mendadak."},
-         {name:"Komplek P****** A****",loc:"Pinang, Tangerang",
-          text:"Pengecatan ulang fasilitas umum kompleks kami selesai cepat dan rapi tanpa mengganggu aktivitas warga. Warga sangat puas dengan hasilnya."}
+         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",rating:5,text:"Kami menggunakan layanan pemeliharaan rutin ABI STUDIO selama lebih dari 2 tahun. Kantor selalu dalam kondisi prima dan tim merespons sangat cepat jika ada masalah mendadak."},
+         {name:"Komplek P****** A****",loc:"Pinang, Tangerang",rating:5,text:"Pengecatan ulang fasilitas umum kompleks kami selesai cepat dan rapi tanpa mengganggu aktivitas warga. Warga sangat puas dengan hasilnya."}
        ]}
     ]
   },
@@ -689,38 +702,29 @@ const SD={
   consultant:{
     desc:'Layanan legalitas bangunan, pengawasan proyek, dan audit teknis keamanan yang memastikan proyek Anda berjalan sesuai standar.',
     items:[
-      /* 3 reviews */
       {title:"Konsultan Perizinan",icon:"fas fa-stamp",
        desc:"Pengurusan legalitas dan dokumen perizinan bangunan secara resmi dan efisien.",
        scope:["PBG (Persetujuan Bangunan Gedung)","SLF (Sertifikat Laik Fungsi)","Alih status IMB lama ke PBG"],
        options:["PBG","SLF","IMB Lama → PBG","Pendampingan Full"],price:"Hubungi Kami",
        reviews:[
-         {name:"Bpk. F*******",loc:"Kota Tangerang",
-          text:"PBG untuk ruko 3 lantai kami berhasil terbit lebih cepat dari perkiraan berkat pendampingan lengkap dari ABI STUDIO. Semua dokumen disiapkan dan tim selalu update progresnya."},
-         {name:"Yayasan A*-I*****",loc:"Tangerang Selatan",
-          text:"Alih status dari IMB lama ke PBG untuk gedung sekolah kami diurus dengan sangat profesional. Tidak ada kendala yang berarti dan prosesnya lebih mudah dari yang kami bayangkan."},
-         {name:"Bpk. R****** S.",loc:"Cipondoh, Tangerang",
-          text:"Proses SLF untuk gedung kantor yang sudah lama kami tunda akhirnya kelar berkat ABI STUDIO. Dokumen teknis yang disiapkan sangat lengkap dan diterima tanpa revisi."}
+         {name:"Bpk. F*******",loc:"Kota Tangerang",rating:5,text:"PBG untuk ruko 3 lantai kami berhasil terbit lebih cepat dari perkiraan berkat pendampingan lengkap dari ABI STUDIO. Semua dokumen disiapkan dan tim selalu update progresnya."},
+         {name:"Yayasan A*-I*****",loc:"Tangerang Selatan",rating:5,text:"Alih status dari IMB lama ke PBG untuk gedung sekolah kami diurus dengan sangat profesional. Tidak ada kendala yang berarti dan prosesnya lebih mudah dari yang kami bayangkan."},
+         {name:"Bpk. R****** S.",loc:"Cipondoh, Tangerang",rating:5,text:"Proses SLF untuk gedung kantor yang sudah lama kami tunda akhirnya kelar berkat ABI STUDIO. Dokumen teknis yang disiapkan sangat lengkap dan diterima tanpa revisi."}
        ]},
-      /* 2 reviews */
       {title:"Supervisi & Manajemen",icon:"fas fa-tasks",
        desc:"Pengawasan proyek agar sesuai desain, anggaran, dan jadwal yang telah disepakati.",
        scope:["Kontrol Mutu, Waktu & Biaya","Laporan Harian / Mingguan / Bulanan"],
        options:["Kontrol Mutu/Waktu/Biaya","Laporan Berkala"],price:"Bulanan / Per Proyek",
        reviews:[
-         {name:"Ir. H*** P******",loc:"Cipondoh, Tangerang",
-          text:"Dengan supervisor dari ABI STUDIO, proyek gedung kantor kami terpantau sangat ketat. Laporan mingguan sangat detail lengkap dengan foto progress dan catatan keuangan yang transparan."},
-         {name:"Developer P***** R***",loc:"Neglasari, Tangerang",
-          text:"Kualitas bangunan di proyek perumahan kami jadi jauh lebih terjaga. Kontraktor menjadi lebih disiplin karena ada pihak ketiga independen yang mengawasi. Sangat worth the cost."}
+         {name:"Ir. H*** P******",loc:"Cipondoh, Tangerang",rating:5,text:"Dengan supervisor dari ABI STUDIO, proyek gedung kantor kami terpantau sangat ketat. Laporan mingguan sangat detail lengkap dengan foto progress dan catatan keuangan yang transparan."},
+         {name:"Developer P***** R***",loc:"Neglasari, Tangerang",rating:5,text:"Kualitas bangunan di proyek perumahan kami jadi jauh lebih terjaga. Kontraktor menjadi lebih disiplin karena ada pihak ketiga independen yang mengawasi. Sangat worth the cost."}
        ]},
-      /* 1 review */
       {title:"Audit Teknis Bangunan",icon:"fas fa-search",
        desc:"Pemeriksaan menyeluruh terhadap keamanan dan kelayakan fungsi bangunan.",
        scope:["Audit Struktur","Audit Fungsi Bangunan"],
        options:["Audit Struktur","Audit Fungsi Bangunan"],price:"Hubungi Kami",
        reviews:[
-         {name:"Manajemen G***** S*******",loc:"Kota Tangerang",
-          text:"Audit tahunan gedung kami sudah 3 kali berturut-turut kami percayakan ke ABI STUDIO. Laporan audit sangat komprehensif dan rekomendasi perawatan preventifnya sangat membantu menjaga keselamatan penghuni gedung."}
+         {name:"Manajemen G***** S*******",loc:"Kota Tangerang",rating:5,text:"Audit tahunan gedung kami sudah 3 kali berturut-turut kami percayakan ke ABI STUDIO. Laporan audit sangat komprehensif dan rekomendasi perawatan preventifnya sangat membantu menjaga keselamatan penghuni gedung."}
        ]}
     ]
   }
@@ -737,20 +741,42 @@ function renderGrid(cat){
   const grid=document.getElementById('grid-'+cat);
   SD[cat].items.forEach((item,i)=>{
     const scopeHtml=item.scope.map(s=>`<li>${s}</li>`).join('');
-    const reviewsHtml=item.reviews.map((r,ri)=>{
+    const reviews=item.reviews||[];
+    const rCount=reviews.length;
+
+    const reviewsHtml=reviews.map((r,ri)=>{
       const col=AC[ri%AC.length];
       const av=ini(r.name);
+      const stars=starsDisplay(r.rating||5);
       return `<div class="review-item">
         <div class="review-header">
           <div class="review-avatar" style="background:${col}">${av}</div>
           <div><div class="review-name">${r.name}</div><div class="review-meta">${r.loc}</div></div>
-          <div class="review-rating">★★★★★</div>
+          <div class="review-rating">${stars}</div>
         </div>
         <div class="review-text">${r.text}</div>
       </div>`;
     }).join('');
+
     const tid=`rt-${cat}-${i}`,pid=`rp-${cat}-${i}`;
-    const rCount=item.reviews.length;
+    const avg=avgRating(reviews);
+    const aggStarStr=rCount>0?starsDisplay(Math.round(avg)):'';
+
+    const reviewSection=rCount>0?`
+      <div class="card-review-toggle" id="${tid}" onclick="toggleReview('${tid}','${pid}')">
+        <div class="review-toggle-left">
+          <span class="review-stars">${aggStarStr}</span>
+          <span class="review-count">${avg.toFixed(1)} · ${rCount} Ulasan</span>
+        </div>
+        <div class="review-toggle-right">
+          <span class="review-toggle-label">Lihat Ulasan</span>
+          <i class="fas fa-chevron-down review-chevron"></i>
+        </div>
+      </div>
+      <div class="card-review-panel" id="${pid}">
+        <div class="review-panel-inner">${reviewsHtml}</div>
+      </div>`:'';
+
     const card=document.createElement('div');
     card.className='service-card';
     card.style.animationDelay=`${i*55}ms`;
@@ -764,19 +790,7 @@ function renderGrid(cat){
         <span class="card-scope-label">Cakupan Layanan</span>
         <ul class="card-scope-list">${scopeHtml}</ul>
       </div>
-      <div class="card-review-toggle" id="${tid}" onclick="toggleReview('${tid}','${pid}')">
-        <div class="review-toggle-left">
-          <span class="review-stars">★★★★★</span>
-          <span class="review-count">${rCount} Ulasan</span>
-        </div>
-        <div class="review-toggle-right">
-          <span class="review-toggle-label">Lihat Ulasan</span>
-          <i class="fas fa-chevron-down review-chevron"></i>
-        </div>
-      </div>
-      <div class="card-review-panel" id="${pid}">
-        <div class="review-panel-inner">${reviewsHtml}</div>
-      </div>
+      ${reviewSection}
       <div class="card-footer">
         <span class="card-price">${item.price}</span>
         <button class="card-cta" onclick="openModal('${cat}',${i})">Konsultasikan <i class="fas fa-arrow-right" style="font-size:.58rem;"></i></button>
@@ -794,7 +808,6 @@ function toggleAcc(cat){
     renderGrid(cat);
     sec.classList.add('open');
     panel.classList.add('open');
-    // update navbar dropdown highlight
     document.querySelectorAll('.layanan-item').forEach((el,i)=>{
       el.classList.toggle('current',accOrder[i]===cat);
     });
@@ -908,12 +921,10 @@ document.querySelectorAll('.fade-up').forEach(el=>fObs.observe(el));
 
 document.addEventListener('DOMContentLoaded',()=>{
   changeLanguage(localStorage.getItem('selectedLang')||'id');
-  // Auto-open from URL hash e.g. /services#construction
   const hash=window.location.hash.replace('#acc-','').replace('#','');
   if(['design','construction','consultant'].includes(hash)){
     openAcc(hash);
   } else {
-    // Open design by default
     openAcc('design');
   }
 });
