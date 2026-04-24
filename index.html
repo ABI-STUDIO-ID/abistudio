@@ -2,17 +2,16 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <script>
-  if (window.location.pathname.endsWith("index.html")) {
-    window.location.replace("/");
-  }
-</script>
-
+        if (window.location.pathname.endsWith("index.html")) {
+            window.location.replace("/");
+        }
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HR1R62CT8X"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-HR1R62CT8X'); 
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HR1R62CT8X');
     </script>
 
     <meta charset="UTF-8">
@@ -34,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
+
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script>
@@ -57,21 +56,14 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { font-size: 16px; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--white);
-            color: var(--dark);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ── NAVBAR ── */
+        /* ══════════════════════════════════════
+           NAVBAR
+        ══════════════════════════════════════ */
         nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
+            position: fixed; top: 0; left: 0; right: 0;
             z-index: 100;
             background: rgba(255,255,255,0.96);
             backdrop-filter: blur(16px);
@@ -80,264 +72,247 @@
         }
         nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.07); }
         .nav-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
             height: 80px;
         }
         .nav-logo img { height: 60px; width: auto; object-fit: contain; display: block; }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
         .nav-links a {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--mid);
-            text-decoration: none;
-            transition: color 0.2s;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s;
         }
         .nav-links a:hover, .nav-links a.active { color: var(--teal); }
         .nav-cta {
-            background: var(--teal);
-            color: white !important;
-            padding: 0.55rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.72rem !important;
-            transition: background 0.2s, transform 0.2s !important;
+            background: var(--teal); color: white !important;
+            padding: 0.55rem 1.5rem; border-radius: 100px;
+            font-size: 0.72rem !important; transition: background 0.2s, transform 0.2s !important;
         }
-        .nav-cta:hover { background: var(--dark) !important; color: white !important; transform: translateY(-1px); }
+        .nav-cta:hover { background: var(--dark) !important; transform: translateY(-1px); }
         .lang-wrap { display: flex; align-items: center; gap: 0.5rem; padding-left: 1.5rem; border-left: 1px solid var(--border); }
-        .lang-btn { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; color: #999; transition: color 0.2s; }
+        .lang-btn { font-size: 0.7rem; font-weight: 700; cursor: pointer; color: #999; transition: color 0.2s; }
         .lang-btn.active { color: var(--teal); border-bottom: 1.5px solid var(--teal); }
         .lang-sep { color: #ddd; font-size: 0.7rem; }
         .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--teal); font-size: 1.4rem; }
 
-        /* ── HERO SLIDER ── */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 640px;
-            overflow: hidden;
+        /* ── LAYANAN DROPDOWN (matches services page) ── */
+        .nav-layanan-wrap { position: relative; }
+        .nav-layanan-btn {
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--mid);
+            background: none; border: none; cursor: pointer;
+            display: flex; align-items: center; gap: 5px; padding: 0;
+            transition: color 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
         }
+        .nav-layanan-btn:hover { color: var(--teal); }
+        .nav-layanan-btn.open { color: var(--teal); }
+        .nav-layanan-btn .caret { font-size: 0.55rem; transition: transform 0.25s; display: inline-block; }
+        .nav-layanan-btn.open .caret { transform: rotate(180deg); }
+
+        .layanan-dropdown {
+            position: absolute; top: calc(100% + 16px); left: 50%;
+            transform: translateX(-50%) translateY(-6px);
+            background: white; border: 1px solid var(--border);
+            border-radius: 16px; padding: 0.6rem; min-width: 268px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease; z-index: 200;
+        }
+        .layanan-dropdown::before {
+            content: ''; position: absolute; top: -6px; left: 50%;
+            width: 12px; height: 12px; background: white;
+            border-left: 1px solid var(--border); border-top: 1px solid var(--border);
+            transform: translateX(-50%) rotate(45deg);
+        }
+        .layanan-dropdown.open { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+
+        .ld-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 0.75rem 1rem; border-radius: 10px;
+            text-decoration: none; color: var(--mid);
+            transition: background 0.15s, color 0.15s;
+        }
+        .ld-item:hover { background: var(--teal-pale); color: var(--teal); }
+        .ld-ico {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: var(--teal-pale);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; color: var(--teal); flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        .ld-item:hover .ld-ico { background: rgba(74,109,109,0.18); }
+        .ld-label { font-size: 0.78rem; font-weight: 600; }
+        .ld-sub { font-size: 0.67rem; color: #aaa; font-weight: 400; margin-top: 1px; }
+
+        /* ── MOBILE MENU ── */
+        #mobileMenu {
+            display: none; position: absolute;
+            top: 80px; left: 0; right: 0;
+            background: white; border-top: 1px solid var(--border);
+            padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        #mobileMenu.open { display: block; }
+        #mobileMenu > a {
+            display: block; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--mid); text-decoration: none;
+            padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s;
+        }
+        #mobileMenu > a:last-child { border-bottom: none; }
+        #mobileMenu > a:hover { color: var(--teal); }
+        .mob-layanan-toggle {
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%; background: none; border: none;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--mid);
+            padding: 0.85rem 0; cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .mob-layanan-toggle:hover { color: var(--teal); }
+        .mob-layanan-toggle .caret { font-size: 0.6rem; transition: transform 0.25s; }
+        .mob-layanan-toggle.open .caret { transform: rotate(180deg); }
+        .mob-layanan-items { display: none; padding: 0.4rem 0 0.4rem 0.5rem; border-bottom: 1px solid var(--border); }
+        .mob-layanan-items.open { display: block; }
+        .mob-layanan-items a {
+            display: flex; align-items: center; gap: 10px;
+            padding: 0.6rem 0.5rem; font-size: 0.78rem;
+            color: var(--mid); text-decoration: none;
+            border-radius: 8px; font-weight: 500;
+        }
+        .mob-layanan-items a:hover { color: var(--teal); background: var(--teal-pale); }
+        .mob-layanan-items a i { color: var(--teal); width: 16px; text-align: center; }
+
+        /* ══════════════════════════════════════
+           HERO SLIDER — 6 slides
+        ══════════════════════════════════════ */
+        .hero { position: relative; height: 100vh; min-height: 640px; overflow: hidden; }
         .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
+            position: absolute; inset: 0; opacity: 0;
             transition: opacity 1.6s ease-in-out;
-            background-size: cover;
-            background-position: center;
+            background-size: cover; background-position: center;
         }
-        .slide.active { opacity: 1; animation: kenBurns 10s ease-in-out infinite alternate; }
+        .slide.active { opacity: 1; animation: kenBurns 12s ease-in-out infinite alternate; }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
         .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(160deg, rgba(10,14,18,0.65) 0%, rgba(10,14,18,0.35) 60%, rgba(74,109,109,0.15) 100%);
+            position: absolute; inset: 0;
+            background: linear-gradient(160deg, rgba(10,14,18,0.68) 0%, rgba(10,14,18,0.38) 60%, rgba(74,109,109,0.15) 100%);
         }
         .hero-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 2rem 3rem;
+            position: relative; z-index: 2; height: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; padding: 6rem 2rem 3rem;
         }
         .slide-content { display: none; opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s; }
         .slide-content.active { display: block; }
         .slide-content.visible { opacity: 1; transform: translateY(0); }
+
+        /* Slide category pill */
         .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            padding: 0.45rem 1.2rem;
-            border-radius: 100px;
-            margin-bottom: 1.8rem;
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
+            backdrop-filter: blur(8px); color: #fff;
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em;
+            text-transform: uppercase; padding: 0.45rem 1.2rem;
+            border-radius: 100px; margin-bottom: 1.8rem;
         }
         .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #7EC8C8; }
         .hero-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(3.2rem, 8vw, 6.5rem);
-            font-weight: 300;
-            color: #fff;
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-            margin-bottom: 2.4rem;
+            font-weight: 300; color: #fff;
+            line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2.4rem;
         }
         .hero-title strong { font-weight: 600; display: block; }
         .hero-btn {
-            display: inline-block;
-            background: var(--teal);
-            color: #fff;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            padding: 0.9rem 2.4rem;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-block; background: var(--teal); color: #fff;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+            text-transform: uppercase; padding: 0.9rem 2.4rem;
+            border-radius: 100px; text-decoration: none;
             transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 8px 28px rgba(74,109,109,0.45);
         }
         .hero-btn:hover { background: #fff; color: var(--dark); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(74,109,109,0.35); }
+
+        /* Slide counter label */
+        .hero-counter {
+            position: absolute; bottom: 2.5rem; right: 3rem;
+            z-index: 5; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.15em; color: rgba(255,255,255,0.45);
+        }
+        .hero-counter span { color: white; }
+
+        /* Dots */
         .hero-dots {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            display: flex;
-            gap: 0.5rem;
+            position: absolute; bottom: 2.5rem; left: 50%;
+            transform: translateX(-50%); z-index: 5;
+            display: flex; gap: 0.5rem;
         }
         .hero-dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.35);
-            cursor: pointer;
-            transition: all 0.3s;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s;
         }
         .hero-dot.active { background: white; width: 24px; border-radius: 3px; }
 
-        /* ── STATS BAR ── */
-        .stats-bar {
-            background: var(--dark);
-            padding: 2rem;
-        }
-        .stats-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .stat-item {
-            background: var(--dark-2);
-            padding: 1.8rem 1.5rem;
-            text-align: center;
+        /* Prev/Next arrows */
+        .hero-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            z-index: 5; background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(6px);
+            color: white; width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 0.85rem;
             transition: background 0.2s;
         }
-        .stat-item:hover { background: #252b32; }
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 300;
-            color: #7EC8C8;
-            line-height: 1;
-            margin-bottom: 0.3rem;
-        }
-        .stat-label {
-            font-size: 0.67rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
-        }
+        .hero-arrow:hover { background: rgba(74,109,109,0.5); }
+        .hero-arrow.prev { left: 2rem; }
+        .hero-arrow.next { right: 2rem; }
 
-        /* ── SECTION SHARED ── */
+        /* ══════════════════════════════════════
+           STATS BAR
+        ══════════════════════════════════════ */
+        .stats-bar { background: var(--dark); padding: 2rem; }
+        .stats-inner {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4,1fr);
+            gap: 1px; background: rgba(255,255,255,0.08);
+            border-radius: 16px; overflow: hidden;
+        }
+        .stat-item { background: var(--dark-2); padding: 1.8rem 1.5rem; text-align: center; transition: background 0.2s; }
+        .stat-item:hover { background: #252b32; }
+        .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: #7EC8C8; line-height: 1; margin-bottom: 0.3rem; }
+        .stat-label { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+
+        /* ══════════════════════════════════════
+           SHARED
+        ══════════════════════════════════════ */
         section { padding: 6rem 2rem; }
         .container { max-width: 1280px; margin: 0 auto; }
-        .section-label {
-            font-size: 0.67rem;
-            font-weight: 700;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--teal);
-            display: block;
-            margin-bottom: 1rem;
-        }
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 4vw, 3.4rem);
-            font-weight: 300;
-            line-height: 1.2;
-            color: var(--dark);
-        }
+        .section-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 1rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.2; color: var(--dark); }
         .section-title strong { font-weight: 600; }
         .divider { width: 40px; height: 2px; background: var(--teal); margin: 1.5rem 0; }
 
-        /* ── ABOUT / VISION ── */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
-        }
-        .about-desc {
-            font-size: 1rem;
-            line-height: 1.85;
-            color: var(--mid);
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-        .text-link {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--teal);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1.5px solid var(--teal);
-            padding-bottom: 2px;
-            transition: color 0.2s, border-color 0.2s;
-        }
+        /* ══════════════════════════════════════
+           ABOUT
+        ══════════════════════════════════════ */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+        .about-desc { font-size: 1rem; line-height: 1.85; color: var(--mid); font-weight: 300; margin-bottom: 2rem; }
+        .text-link { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border-bottom: 1.5px solid var(--teal); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
         .text-link:hover { color: var(--dark); border-color: var(--dark); }
-        .team-title {
-            font-size: 0.67rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #aaa;
-            margin-bottom: 1.5rem;
-        }
-        .team-card {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            padding: 1.2rem 1.4rem;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: #fff;
-            margin-bottom: 1rem;
-            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-            cursor: default;
-        }
+        .team-title { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; margin-bottom: 1.5rem; }
+        .team-card { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.4rem; border: 1px solid var(--border); border-radius: 14px; background: #fff; margin-bottom: 1rem; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
         .team-card:hover { border-color: var(--teal); box-shadow: 0 6px 28px rgba(74,109,109,0.1); transform: translateY(-2px); }
-        .team-avatar {
-            width: 56px; height: 56px;
-            border-radius: 50%;
-            overflow: hidden;
-            flex-shrink: 0;
-            border: 2px solid var(--teal-pale);
-        }
+        .team-avatar { width: 56px; height: 56px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid var(--teal-pale); }
         .team-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .team-name { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
         .team-role { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
         .team-desc { font-size: 0.8rem; color: #888; line-height: 1.5; }
 
-        /* ── LOGOS ── */
+        /* ══════════════════════════════════════
+           LOGOS / CLIENTS
+        ══════════════════════════════════════ */
         .logos-section { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; }
         .logos-header { text-align: center; margin-bottom: 3rem; }
         .assoc-logos { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
@@ -346,152 +321,115 @@
         .divider-line { width: 1px; height: 40px; background: var(--border); }
         .clients-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; text-align: center; margin-bottom: 2rem; }
         .ticker-wrap { overflow: hidden; width: 100%; position: relative; }
-        .ticker-wrap::before, .ticker-wrap::after {
-            content: '';
-            position: absolute;
-            top: 0; bottom: 0;
-            width: 80px;
-            z-index: 2;
-        }
+        .ticker-wrap::before, .ticker-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; }
         .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--light), transparent); }
         .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--light), transparent); }
-        .ticker-track {
-            display: flex;
-            gap: 1.5rem;
-            animation: ticker 20s linear infinite;
-            width: max-content;
-        }
+        .ticker-track { display: flex; gap: 1.5rem; animation: ticker 20s linear infinite; width: max-content; }
         .ticker-track:hover { animation-play-state: paused; }
         @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        /* ── LOGO SIZE UPGRADE ── */
-.client-card {
-    width: 240px;
-    height: 120px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem;
-    flex-shrink: 0;
-    transition: border-color 0.2s;
-}
+        .client-card { width: 240px; height: 120px; background: white; border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 1.2rem; flex-shrink: 0; transition: border-color 0.2s; }
+        .client-card:hover { border-color: var(--teal); }
+        .client-card img { max-height: 80px; max-width: 180px; object-fit: contain; filter: grayscale(0.3) opacity(0.85); transition: all 0.3s ease; }
+        .client-card:hover img { filter: grayscale(0) opacity(1); transform: scale(1.08); }
 
-.client-card:hover {
-    border-color: var(--teal);
-}
-
-.client-card img {
-    max-height: 80px;
-    max-width: 180px;
-    object-fit: contain;
-    filter: grayscale(0.3) opacity(0.85);
-    transition: all 0.3s ease;
-}
-
-.client-card:hover img {
-    filter: grayscale(0) opacity(1);
-    transform: scale(1.1);
-}
-
-        /* ── SERVICES ── */
+        /* ══════════════════════════════════════
+           SERVICES (dark section — 3 accordion-style cards linking to /services)
+        ══════════════════════════════════════ */
         .services-section { background: var(--dark); color: white; }
         .services-header { text-align: center; margin-bottom: 4rem; }
         .services-header .section-title { color: white; }
         .services-header p { font-size: 0.95rem; color: rgba(255,255,255,0.45); margin-top: 1rem; font-weight: 300; }
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .service-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            display: flex;
-            flex-direction: column;
-            transition: background 0.25s, border-color 0.25s, transform 0.25s;
-            cursor: pointer;
-            text-decoration: none;
+
+        /* ── ACCORDION CARDS (same visual as services.html acc-section) ── */
+        .home-acc-grid { display: flex; flex-direction: column; gap: 1rem; }
+        .home-acc {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px; overflow: hidden;
+            transition: border-color 0.25s, transform 0.25s;
         }
-        .service-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(126,200,200,0.3); transform: translateY(-3px); }
-        .service-icon {
-            width: 52px; height: 52px;
-            background: rgba(74,109,109,0.25);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: #7EC8C8;
-            margin-bottom: 1.6rem;
+        .home-acc:hover { border-color: rgba(126,200,200,0.3); transform: translateY(-2px); }
+        .home-acc-toggle {
+            width: 100%; display: flex; align-items: center; justify-content: space-between;
+            padding: 1.5rem 2rem; background: none; border: none; cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif; gap: 1rem;
         }
-        .service-name { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.7rem; }
-        .service-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; flex: 1; }
-        .service-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #7EC8C8;
-            margin-top: 1.8rem;
-            text-decoration: none;
-            transition: gap 0.2s;
+        .home-acc-left { display: flex; align-items: center; gap: 1.2rem; text-align: left; }
+        .home-acc-ico {
+            width: 48px; height: 48px; border-radius: 13px;
+            background: rgba(74,109,109,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: #7EC8C8; flex-shrink: 0;
+            transition: background 0.25s;
         }
-        .service-card:hover .service-link { gap: 0.7rem; }
-        .services-cta { text-align: center; margin-top: 3rem; }
-        .outline-btn {
-            display: inline-block;
-            border: 1.5px solid var(--teal-light);
-            color: #7EC8C8;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            padding: 0.85rem 2.4rem;
-            border-radius: 100px;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
+        .home-acc:hover .home-acc-ico { background: rgba(74,109,109,0.5); }
+        .home-acc-title { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 3px; }
+        .home-acc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 300; }
+        .home-acc-right { display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; }
+        .home-acc-badge { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(126,200,200,0.15); color: #7EC8C8; padding: 0.28rem 0.85rem; border-radius: 100px; white-space: nowrap; }
+        .home-acc-caret { font-size: 0.6rem; color: rgba(255,255,255,0.4); transition: transform 0.3s; }
+
+        /* Panel */
+        .home-acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1); }
+        .home-acc-panel.open { grid-template-rows: 1fr; }
+        .home-acc-overflow { overflow: hidden; }
+        .home-acc-inner {
+            padding: 0 2rem 1.8rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
+        .home-acc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.75; font-weight: 300; margin-bottom: 1.2rem; padding-top: 1.4rem; }
+        .home-acc-items { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+        .home-acc-tag {
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em;
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6); padding: 0.3rem 0.85rem; border-radius: 100px;
+        }
+        .home-acc-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #7EC8C8;
+            text-decoration: none; transition: gap 0.2s;
+        }
+        .home-acc-link:hover { gap: 0.8rem; }
+
+        .home-acc-open .home-acc-caret { transform: rotate(180deg); }
+        .home-acc-open { border-color: rgba(126,200,200,0.25); }
+        .home-acc-open .home-acc-ico { background: rgba(74,109,109,0.5); }
+
+        .services-cta { text-align: center; margin-top: 2.5rem; }
+        .outline-btn { display: inline-block; border: 1.5px solid var(--teal-light); color: #7EC8C8; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.85rem 2.4rem; border-radius: 100px; text-decoration: none; transition: background 0.2s, color 0.2s; }
         .outline-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
 
-        /* ── BLOG ── */
+        /* ══════════════════════════════════════
+           BLOG
+        ══════════════════════════════════════ */
         .blog-section { background: var(--light); border-top: 1px solid var(--border); }
         .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
         .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .article-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
+        .article-card { background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; cursor: pointer; text-decoration: none; color: inherit; }
         .article-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); transform: translateY(-3px); border-color: transparent; }
         .article-img { height: 200px; overflow: hidden; background: #eee; flex-shrink: 0; }
         .article-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .article-card:hover .article-img img { transform: scale(1.05); }
         .article-body { padding: 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+        .article-date { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
         .article-title { font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.45; margin-bottom: 0.6rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .article-desc { font-size: 0.83rem; color: #888; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-weight: 300; }
         .article-more { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-top: auto; padding-top: 1.2rem; }
+        .blog-skeleton { background: #eee; border-radius: 16px; height: 320px; animation: shimmer 1.2s infinite; }
+        @keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:.5} }
         .blog-cta { text-align: center; margin-top: 2.5rem; }
         .blog-cta a { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1.5px solid var(--teal); padding-bottom: 2px; transition: color 0.2s; }
         .blog-cta a:hover { color: var(--dark); border-color: var(--dark); }
 
-        /* ── FOOTER ── */
+        /* ══════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════ */
         footer { background: var(--dark); color: white; padding: 4.5rem 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
         .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 4rem; }
-        .footer-brand { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; color: white; margin-bottom: 1.2rem; }
-        .footer-address { font-size: 0.83rem; line-height: 1.75; color: rgba(255,255,255,0.45); display: flex; align-items: flex-start; gap: 0.7rem; font-weight: 300; }
+        .footer-address { font-size: 0.83rem; line-height: 1.75; color: rgba(255,255,255,0.45); display: flex; align-items: flex-start; gap: 0.7rem; font-weight: 300; text-decoration: none; margin-bottom: 1rem; }
         .footer-address i { color: var(--teal-light); margin-top: 3px; flex-shrink: 0; font-size: 0.8rem; }
         .footer-col-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.4rem; }
-        .footer-contact-item { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1.4rem; cursor: pointer; transition: opacity 0.2s; opacity: 0.7; }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1.4rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
         .footer-contact-item:hover { opacity: 1; }
         .footer-contact-item i { font-size: 1.1rem; color: var(--teal-light); margin-top: 2px; flex-shrink: 0; }
         .footer-contact-name { font-size: 0.88rem; font-weight: 700; color: white; }
@@ -502,57 +440,70 @@
         .footer-bottom { max-width: 1280px; margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; }
         .footer-bottom p { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; }
 
-        /* ── MOBILE MENU ── */
-        #mobileMenu { display: none; position: absolute; top: 80px; left: 0; right: 0; background: white; border-top: 1px solid var(--border); padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-        #mobileMenu.open { display: block; }
-        #mobileMenu a { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
-        #mobileMenu a:hover { color: var(--teal); }
-        #mobileMenu a:last-child { border-bottom: none; }
+        /* ══════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════ */
+        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .hamburger { display: block; }
             .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .services-grid { grid-template-columns: 1fr; }
             .blog-grid { grid-template-columns: 1fr; }
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .stats-inner { grid-template-columns: repeat(2,1fr); }
             .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
             .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
             .hero-title { font-size: clamp(2.6rem, 10vw, 4rem); }
             section { padding: 4rem 1.5rem; }
+            .hero-arrow { display: none; }
         }
         @media (max-width: 600px) {
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .stats-inner { grid-template-columns: repeat(2,1fr); }
             .assoc-logos { gap: 1.5rem; }
             .assoc-logos img { height: 44px; }
             .nav-inner { padding: 0 1.25rem; }
-            .client-card {
-    width: 180px;
-    height: 100px;
-}
-
-.client-card img {
-    max-height: 70px;
-    max-width: 140px;
-}
+            .client-card { width: 180px; height: 100px; }
+            .client-card img { max-height: 70px; max-width: 140px; }
+            .home-acc-toggle { padding: 1.2rem 1.2rem; }
+            .home-acc-inner { padding: 0 1.2rem 1.4rem; }
         }
-
-        /* ── FADE IN ON SCROLL ── */
-        .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
 <nav id="mainNav">
     <div class="nav-inner">
         <a href="/" class="nav-logo"><img src="/assets/images/logo.png" alt="ABI STUDIO"></a>
+
         <div class="nav-links">
             <a href="/" class="active" data-i18n="nav_home">Home</a>
             <a href="/about" data-i18n="nav_about">About</a>
-            <a href="/services" data-i18n="nav_services">Layanan & Harga</a>
+
+            <!-- Layanan dropdown — same as services.html -->
+            <div class="nav-layanan-wrap">
+                <button class="nav-layanan-btn" id="layananBtn" onclick="toggleLayanan(event)">
+                    Layanan <i class="fas fa-chevron-down caret"></i>
+                </button>
+                <div class="layanan-dropdown" id="layananDropdown">
+                    <a href="/services#acc-design" class="ld-item">
+                        <div class="ld-ico"><i class="fas fa-pen-ruler"></i></div>
+                        <div><div class="ld-label">Design & Planning</div><div class="ld-sub">Arsitektur, Interior, Struktur</div></div>
+                    </a>
+                    <a href="/services#acc-construction" class="ld-item">
+                        <div class="ld-ico"><i class="fas fa-hammer"></i></div>
+                        <div><div class="ld-label">Construction</div><div class="ld-sub">Bangun baru, Renovasi, Finishing</div></div>
+                    </a>
+                    <a href="/services#acc-consultant" class="ld-item">
+                        <div class="ld-ico"><i class="fas fa-file-contract"></i></div>
+                        <div><div class="ld-label">Consultant & Audit</div><div class="ld-sub">PBG/SLF, Pengawasan, Teknis</div></div>
+                    </a>
+                </div>
+            </div>
+
             <a href="/portfolio" data-i18n="nav_portfolio">Portfolio</a>
             <a href="/blog" data-i18n="nav_blog">Blog</a>
             <a href="https://wa.me/6285157577465" target="_blank" class="nav-cta" data-i18n="nav_contact">Contact</a>
@@ -562,118 +513,174 @@
                 <span class="lang-btn" id="btn-en" onclick="changeLanguage('en')">EN</span>
             </div>
         </div>
+
         <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
     </div>
+
+    <!-- Mobile Menu -->
     <div id="mobileMenu">
         <a href="/" data-i18n="nav_home">Home</a>
         <a href="/about" data-i18n="nav_about">About</a>
-        <a href="/services" data-i18n="nav_services">Layanan & Harga</a>
+        <button class="mob-layanan-toggle" id="mobLayananBtn" onclick="toggleMobLayanan()">
+            Layanan <i class="fas fa-chevron-down caret"></i>
+        </button>
+        <div class="mob-layanan-items" id="mobLayananItems">
+            <a href="/services#acc-design"><i class="fas fa-pen-ruler"></i> Design & Planning</a>
+            <a href="/services#acc-construction"><i class="fas fa-hammer"></i> Construction</a>
+            <a href="/services#acc-consultant"><i class="fas fa-file-contract"></i> Consultant & Audit</a>
+        </div>
         <a href="/portfolio" data-i18n="nav_portfolio">Portfolio</a>
         <a href="/blog" data-i18n="nav_blog">Blog</a>
-        <a href="https://wa.me/6285157577465" target="_blank" style="color: var(--teal);" data-i18n="nav_contact">Contact</a>
+        <a href="https://wa.me/6285157577465" target="_blank" style="color:var(--teal);" data-i18n="nav_contact">Contact</a>
     </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- ══════════════════════════════════════
+     HERO — 6 slides covering all services
+══════════════════════════════════════ -->
 <section class="hero">
-    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');"></div>
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');"></div>
+    <!-- Slide backgrounds -->
+    <!-- 0: Desain Arsitektur – modern house exterior -->
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');"></div>
+    <!-- 1: Desain Interior – luxury living room -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');"></div>
+    <!-- 2: Struktur & Konstruksi Beton – construction site -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070');"></div>
+    <!-- 3: Fabrikasi & Struktur Baja – steel fabrication workshop -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1565008576549-57569a49371d?q=80&w=2070');"></div>
+    <!-- 4: Renovasi & Fit Out – renovation in progress -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070');"></div>
+    <!-- 5: Konsultan & Perizinan – architect planning/blueprint -->
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070');"></div>
+
     <div class="hero-overlay"></div>
+
     <div class="hero-content">
+        <!-- Slide 0 -->
         <div class="slide-content" id="slideContent0">
-            <div class="hero-eyebrow">Architect Building & Interior</div>
+            <div class="hero-eyebrow">Desain Arsitektur</div>
             <h1 class="hero-title">
-                <span data-i18n="hero_title_1">Mewujudkan Bangunan</span>
-                <strong data-i18n="hero_bold_1">Impian Anda.</strong>
+                <span data-i18n="hero_title_0">Mewujudkan Bangunan</span>
+                <strong data-i18n="hero_bold_0">Impian Anda.</strong>
             </h1>
-            <a href="/services" class="hero-btn" data-i18n="btn_check_package">Lihat Layanan</a>
+            <a href="/services#acc-design" class="hero-btn">Lihat Layanan Design</a>
         </div>
+        <!-- Slide 1 -->
         <div class="slide-content" id="slideContent1">
-            <div class="hero-eyebrow">Integrated Solution</div>
+            <div class="hero-eyebrow">Desain Interior</div>
             <h1 class="hero-title">
-                <span data-i18n="hero_title_2">Desain Presisi</span>
-                <strong data-i18n="hero_bold_2">Konstruksi Kokoh.</strong>
+                <span data-i18n="hero_title_1">Ruang yang Bercerita,</span>
+                <strong data-i18n="hero_bold_1">Estetika Tanpa Batas.</strong>
             </h1>
-            <a href="/services" class="hero-btn" data-i18n="btn_check_package">Lihat Layanan</a>
+            <a href="/services#acc-design" class="hero-btn">Lihat Layanan Interior</a>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide-content" id="slideContent2">
+            <div class="hero-eyebrow">Konstruksi Bangunan</div>
+            <h1 class="hero-title">
+                <span data-i18n="hero_title_2">Dibangun dengan Presisi,</span>
+                <strong data-i18n="hero_bold_2">Kokoh Selamanya.</strong>
+            </h1>
+            <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Konstruksi</a>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide-content" id="slideContent3">
+            <div class="hero-eyebrow">Fabrikasi & Struktur Baja</div>
+            <h1 class="hero-title">
+                <span data-i18n="hero_title_3">Kekuatan Struktural</span>
+                <strong data-i18n="hero_bold_3">Standar Industri.</strong>
+            </h1>
+            <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Struktur</a>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide-content" id="slideContent4">
+            <div class="hero-eyebrow">Renovasi & Fit Out</div>
+            <h1 class="hero-title">
+                <span data-i18n="hero_title_4">Transformasi Ruang,</span>
+                <strong data-i18n="hero_bold_4">Tampil Seperti Baru.</strong>
+            </h1>
+            <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Renovasi</a>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide-content" id="slideContent5">
+            <div class="hero-eyebrow">Konsultan & Perizinan</div>
+            <h1 class="hero-title">
+                <span data-i18n="hero_title_5">Proyek Legal,</span>
+                <strong data-i18n="hero_bold_5">Terstruktur & Aman.</strong>
+            </h1>
+            <a href="/services#acc-consultant" class="hero-btn">Lihat Layanan Konsultan</a>
         </div>
     </div>
-    <div class="hero-dots">
+
+    <!-- Arrows -->
+    <button class="hero-arrow prev" onclick="changeSlide(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="hero-arrow next" onclick="changeSlide(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+
+    <!-- Dots (6) -->
+    <div class="hero-dots" id="heroDots">
         <div class="hero-dot active" onclick="goToSlide(0)"></div>
         <div class="hero-dot" onclick="goToSlide(1)"></div>
+        <div class="hero-dot" onclick="goToSlide(2)"></div>
+        <div class="hero-dot" onclick="goToSlide(3)"></div>
+        <div class="hero-dot" onclick="goToSlide(4)"></div>
+        <div class="hero-dot" onclick="goToSlide(5)"></div>
     </div>
+
+    <!-- Counter -->
+    <div class="hero-counter"><span id="heroCountCur">1</span> / <span id="heroCountTotal">6</span></div>
 </section>
 
-<!-- ── STATS BAR ── -->
+<!-- ══════════════════════════════════════
+     STATS BAR
+══════════════════════════════════════ -->
 <div class="stats-bar">
     <div class="stats-inner">
-        <div class="stat-item fade-up">
-            <div class="stat-number">7+</div>
-            <div class="stat-label">Tahun Pengalaman</div>
-        </div>
-        <div class="stat-item fade-up" style="transition-delay:.1s">
-            <div class="stat-number">150+</div>
-            <div class="stat-label">Proyek Selesai</div>
-        </div>
-        <div class="stat-item fade-up" style="transition-delay:.2s">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Kategori Layanan</div>
-        </div>
-        <div class="stat-item fade-up" style="transition-delay:.3s">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Klien Puas</div>
-        </div>
+        <div class="stat-item fade-up"><div class="stat-number">7+</div><div class="stat-label">Tahun Pengalaman</div></div>
+        <div class="stat-item fade-up" style="transition-delay:.1s"><div class="stat-number">150+</div><div class="stat-label">Proyek Selesai</div></div>
+        <div class="stat-item fade-up" style="transition-delay:.2s"><div class="stat-number">3</div><div class="stat-label">Kategori Layanan</div></div>
+        <div class="stat-item fade-up" style="transition-delay:.3s"><div class="stat-number">100%</div><div class="stat-label">Klien Puas</div></div>
     </div>
 </div>
 
-<!-- ── ABOUT / COMPANY PROFILE ── -->
-<section style="background: white; padding: 7rem 2rem;">
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section style="background:white; padding:7rem 2rem;">
     <div class="container">
         <div class="about-grid">
             <div class="fade-up">
                 <span class="section-label">Company Profile</span>
                 <h2 class="section-title" data-i18n="vision_title">Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.</h2>
                 <div class="divider"></div>
-                <p class="about-desc" data-i18n="vision_desc">
-                    ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi yang terintegrasi.
-                </p>
+                <p class="about-desc" data-i18n="vision_desc">ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi yang terintegrasi.</p>
                 <a href="/about" class="text-link" data-i18n="read_more">Baca Selengkapnya <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
             </div>
             <div class="fade-up" style="transition-delay:.15s">
                 <p class="team-title" data-i18n="leadership_title">Leadership Kami</p>
                 <div class="team-card">
                     <div class="team-avatar"><img src="/assets/images/rama.jpg" alt="Rama Ganeza" onerror="this.src='https://ui-avatars.com/api/?name=Rama+Ganeza&background=4A6D6D&color=fff&size=56'"></div>
-                    <div>
-                        <div class="team-name">Ir. Rama Ganeza, ST., MPr.</div>
-                        <div class="team-role">Founder & CEO</div>
-                        <div class="team-desc" data-i18n="rama_role">Ahli konstruksi dan manajemen proyek di Abistudio.</div>
-                    </div>
+                    <div><div class="team-name">Ir. Rama Ganeza, ST., MPr.</div><div class="team-role">Founder & CEO</div><div class="team-desc" data-i18n="rama_role">Ahli konstruksi dan manajemen proyek di Abistudio.</div></div>
                 </div>
                 <div class="team-card">
                     <div class="team-avatar"><img src="/assets/images/chandra.jpg" alt="Chandra Prasetyo" onerror="this.src='https://ui-avatars.com/api/?name=Chandra+Prasetyo&background=4A6D6D&color=fff&size=56'"></div>
-                    <div>
-                        <div class="team-name">Chandra Prasetyo, S.T.</div>
-                        <div class="team-role">Quantity Surveyor | Estimator</div>
-                        <div class="team-desc" data-i18n="chandra_role">Ahli perhitungan volume dan estimasi biaya proyek secara presisi.</div>
-                    </div>
+                    <div><div class="team-name">Chandra Prasetyo, S.T.</div><div class="team-role">Quantity Surveyor | Estimator</div><div class="team-desc" data-i18n="chandra_role">Ahli perhitungan volume dan estimasi biaya proyek secara presisi.</div></div>
                 </div>
                 <div class="team-card">
                     <div class="team-avatar"><img src="/assets/images/angga.jpg" alt="Angga Aditya" onerror="this.src='https://ui-avatars.com/api/?name=Angga+Aditya&background=4A6D6D&color=fff&size=56'"></div>
-                    <div>
-                        <div class="team-name">Angga Aditya Pratama, SE.</div>
-                        <div class="team-role">Co-Founder & Head of Business</div>
-                        <div class="team-desc" data-i18n="angga_role">Business development dan hubungan klien.</div>
-                    </div>
+                    <div><div class="team-name">Angga Aditya Pratama, SE.</div><div class="team-role">Co-Founder & Head of Business</div><div class="team-desc" data-i18n="angga_role">Business development dan hubungan klien.</div></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ── LOGOS ── -->
+<!-- ══════════════════════════════════════
+     LOGOS
+══════════════════════════════════════ -->
 <div class="logos-section">
     <div class="container">
         <div class="logos-header fade-up">
-            <span class="section-label" style="text-align:center; display:block;" data-i18n="part_of">Proudly Part Of</span>
+            <span class="section-label" style="text-align:center;display:block;" data-i18n="part_of">Proudly Part Of</span>
             <div class="assoc-logos">
                 <img src="/assets/images/PII.png" alt="PII">
                 <div class="divider-line"></div>
@@ -682,48 +689,44 @@
                 <img src="/assets/images/HIPMI.png" alt="HIPMI">
             </div>
         </div>
-
         <div class="fade-up" style="transition-delay:.1s">
             <p class="clients-label"><span data-i18n="trusted_by">Dipercaya oleh</span> <span data-i18n="industry_leaders">Pemimpin Industri</span></p>
             <div class="ticker-wrap">
                 <div class="ticker-track">
-    <!-- Existing -->
-    <div class="client-card"><img src="/assets/images/paramount.png" alt="Paramount"></div>
-    <div class="client-card"><img src="/assets/images/alamsutera.png" alt="Alam Sutera"></div>
-    <div class="client-card"><img src="/assets/images/summarecon.png" alt="Summarecon"></div>
-
-    <!-- NEW CLIENTS -->
-    <div class="client-card"><img src="/assets/images/fanfora.png" alt="Fanfora"></div>
-    <div class="client-card"><img src="/assets/images/flame.png" alt="Flame"></div>
-    <div class="client-card"><img src="/assets/images/mamalaundry.png" alt="Mama Laundry"></div>
-    <div class="client-card"><img src="/assets/images/primapool.png" alt="Prima Pool"></div>
-    <div class="client-card"><img src="/assets/images/protera.png" alt="Protera"></div>
-    <div class="client-card"><img src="/assets/images/reflexykuu.png" alt="Reflexykuu"></div>
-    <div class="client-card"><img src="/assets/images/rhosigma.png" alt="Rhosigma"></div>
-    <div class="client-card"><img src="/assets/images/sinarmandiri.png" alt="Sinar Mandiri"></div>
-    <div class="client-card"><img src="/assets/images/vistaland.png" alt="Vista Land"></div>
-
-    <!-- DUPLICATE FOR LOOP (WAJIB untuk ticker smooth) -->
-    <div class="client-card"><img src="/assets/images/paramount.png" alt="Paramount"></div>
-    <div class="client-card"><img src="/assets/images/alamsutera.png" alt="Alam Sutera"></div>
-    <div class="client-card"><img src="/assets/images/summarecon.png" alt="Summarecon"></div>
-
-    <div class="client-card"><img src="/assets/images/fanfora.png" alt="Fanfora"></div>
-    <div class="client-card"><img src="/assets/images/flame.png" alt="Flame"></div>
-    <div class="client-card"><img src="/assets/images/mamalaundry.png" alt="Mama Laundry"></div>
-    <div class="client-card"><img src="/assets/images/primapool.png" alt="Prima Pool"></div>
-    <div class="client-card"><img src="/assets/images/protera.png" alt="Protera"></div>
-    <div class="client-card"><img src="/assets/images/reflexykuu.png" alt="Reflexykuu"></div>
-    <div class="client-card"><img src="/assets/images/rhosigma.png" alt="Rhosigma"></div>
-    <div class="client-card"><img src="/assets/images/sinarmandiri.png" alt="Sinar Mandiri"></div>
-    <div class="client-card"><img src="/assets/images/vistaland.png" alt="Vista Land"></div>
-</div>
+                    <div class="client-card"><img src="/assets/images/paramount.png" alt="Paramount"></div>
+                    <div class="client-card"><img src="/assets/images/alamsutera.png" alt="Alam Sutera"></div>
+                    <div class="client-card"><img src="/assets/images/summarecon.png" alt="Summarecon"></div>
+                    <div class="client-card"><img src="/assets/images/fanfora.png" alt="Fanfora"></div>
+                    <div class="client-card"><img src="/assets/images/flame.png" alt="Flame"></div>
+                    <div class="client-card"><img src="/assets/images/mamalaundry.png" alt="Mama Laundry"></div>
+                    <div class="client-card"><img src="/assets/images/primapool.png" alt="Prima Pool"></div>
+                    <div class="client-card"><img src="/assets/images/protera.png" alt="Protera"></div>
+                    <div class="client-card"><img src="/assets/images/reflexykuu.png" alt="Reflexykuu"></div>
+                    <div class="client-card"><img src="/assets/images/rhosigma.png" alt="Rhosigma"></div>
+                    <div class="client-card"><img src="/assets/images/sinarmandiri.png" alt="Sinar Mandiri"></div>
+                    <div class="client-card"><img src="/assets/images/vistaland.png" alt="Vista Land"></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="client-card"><img src="/assets/images/paramount.png" alt="Paramount"></div>
+                    <div class="client-card"><img src="/assets/images/alamsutera.png" alt="Alam Sutera"></div>
+                    <div class="client-card"><img src="/assets/images/summarecon.png" alt="Summarecon"></div>
+                    <div class="client-card"><img src="/assets/images/fanfora.png" alt="Fanfora"></div>
+                    <div class="client-card"><img src="/assets/images/flame.png" alt="Flame"></div>
+                    <div class="client-card"><img src="/assets/images/mamalaundry.png" alt="Mama Laundry"></div>
+                    <div class="client-card"><img src="/assets/images/primapool.png" alt="Prima Pool"></div>
+                    <div class="client-card"><img src="/assets/images/protera.png" alt="Protera"></div>
+                    <div class="client-card"><img src="/assets/images/reflexykuu.png" alt="Reflexykuu"></div>
+                    <div class="client-card"><img src="/assets/images/rhosigma.png" alt="Rhosigma"></div>
+                    <div class="client-card"><img src="/assets/images/sinarmandiri.png" alt="Sinar Mandiri"></div>
+                    <div class="client-card"><img src="/assets/images/vistaland.png" alt="Vista Land"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ── SERVICES ── -->
+<!-- ══════════════════════════════════════
+     SERVICES — Accordion cards (same look as services.html)
+══════════════════════════════════════ -->
 <section class="services-section">
     <div class="container">
         <div class="services-header fade-up">
@@ -731,33 +734,116 @@
             <h2 class="section-title" data-i18n="service_title">Layanan Komprehensif</h2>
             <p>Solusi lengkap dari perencanaan hingga pelaksanaan, disesuaikan dengan kebutuhan Anda.</p>
         </div>
-        <div class="services-grid">
-            <a href="/services" class="service-card fade-up">
-                <div class="service-icon"><i class="fas fa-pen-ruler"></i></div>
-                <div class="service-name">Design & Planning</div>
-                <p class="service-desc">Perencanaan desain arsitektur, interior, struktur, hingga landscape yang estetik dan fungsional.</p>
-                <span class="service-link">Pilih Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></span>
-            </a>
-            <a href="/services" class="service-card fade-up" style="transition-delay:.1s">
-                <div class="service-icon"><i class="fas fa-hammer"></i></div>
-                <div class="service-name">Construction</div>
-                <p class="service-desc">Realisasi fisik bangunan dari nol, renovasi, hingga finishing interior dengan standar tinggi.</p>
-                <span class="service-link">Pilih Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></span>
-            </a>
-            <a href="/services" class="service-card fade-up" style="transition-delay:.2s">
-                <div class="service-icon"><i class="fas fa-file-contract"></i></div>
-                <div class="service-name">Consultant & Audit</div>
-                <p class="service-desc">Layanan legalitas, pengawasan proyek, dan pemeriksaan teknis keamanan bangunan.</p>
-                <span class="service-link">Pilih Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></span>
-            </a>
+
+        <div class="home-acc-grid fade-up" style="transition-delay:.1s">
+
+            <!-- Design & Planning -->
+            <div class="home-acc" id="hacc-design">
+                <button class="home-acc-toggle" onclick="toggleHomeAcc('design')">
+                    <div class="home-acc-left">
+                        <div class="home-acc-ico"><i class="fas fa-pen-ruler"></i></div>
+                        <div>
+                            <div class="home-acc-title">Design & Planning</div>
+                            <div class="home-acc-sub">Arsitektur, Interior, Struktur, Landscape, MEP & RAB</div>
+                        </div>
+                    </div>
+                    <div class="home-acc-right">
+                        <span class="home-acc-badge">6 Layanan</span>
+                        <i class="fas fa-chevron-down home-acc-caret" id="caret-design"></i>
+                    </div>
+                </button>
+                <div class="home-acc-panel" id="panel-design">
+                    <div class="home-acc-overflow">
+                        <div class="home-acc-inner">
+                            <p class="home-acc-desc">Perencanaan desain arsitektur, interior, struktur, landscape, dan MEP yang estetik, presisi, dan fungsional — dari konsep hingga gambar kerja lengkap.</p>
+                            <div class="home-acc-items">
+                                <span class="home-acc-tag">Desain Arsitektur</span>
+                                <span class="home-acc-tag">Desain Interior</span>
+                                <span class="home-acc-tag">Desain Struktur</span>
+                                <span class="home-acc-tag">Desain Landscape</span>
+                                <span class="home-acc-tag">Desain MEP</span>
+                                <span class="home-acc-tag">Studi Kelayakan & RAB</span>
+                            </div>
+                            <a href="/services#acc-design" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Construction -->
+            <div class="home-acc" id="hacc-construction">
+                <button class="home-acc-toggle" onclick="toggleHomeAcc('construction')">
+                    <div class="home-acc-left">
+                        <div class="home-acc-ico"><i class="fas fa-hammer"></i></div>
+                        <div>
+                            <div class="home-acc-title">Construction</div>
+                            <div class="home-acc-sub">Bangun baru, Renovasi, Fit Out, Finishing & Pemeliharaan</div>
+                        </div>
+                    </div>
+                    <div class="home-acc-right">
+                        <span class="home-acc-badge">6 Layanan</span>
+                        <i class="fas fa-chevron-down home-acc-caret" id="caret-construction"></i>
+                    </div>
+                </button>
+                <div class="home-acc-panel" id="panel-construction">
+                    <div class="home-acc-overflow">
+                        <div class="home-acc-inner">
+                            <p class="home-acc-desc">Realisasi fisik bangunan dari nol, renovasi, hingga finishing interior dengan standar kualitas tinggi, material terpilih, dan pengawasan ketat di setiap tahap.</p>
+                            <div class="home-acc-items">
+                                <span class="home-acc-tag">Pekerjaan Sipil & Bangunan</span>
+                                <span class="home-acc-tag">Struktur Beton & Baja</span>
+                                <span class="home-acc-tag">Renovasi & Rehabilitasi</span>
+                                <span class="home-acc-tag">Fit Out Interior</span>
+                                <span class="home-acc-tag">Arsitektural & Finishing</span>
+                                <span class="home-acc-tag">Pemeliharaan Bangunan</span>
+                            </div>
+                            <a href="/services#acc-construction" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consultant & Audit -->
+            <div class="home-acc" id="hacc-consultant">
+                <button class="home-acc-toggle" onclick="toggleHomeAcc('consultant')">
+                    <div class="home-acc-left">
+                        <div class="home-acc-ico"><i class="fas fa-file-contract"></i></div>
+                        <div>
+                            <div class="home-acc-title">Consultant & Audit</div>
+                            <div class="home-acc-sub">Perizinan PBG/SLF, Supervisi Proyek & Audit Teknis</div>
+                        </div>
+                    </div>
+                    <div class="home-acc-right">
+                        <span class="home-acc-badge">3 Layanan</span>
+                        <i class="fas fa-chevron-down home-acc-caret" id="caret-consultant"></i>
+                    </div>
+                </button>
+                <div class="home-acc-panel" id="panel-consultant">
+                    <div class="home-acc-overflow">
+                        <div class="home-acc-inner">
+                            <p class="home-acc-desc">Layanan legalitas bangunan, pengawasan proyek, dan audit teknis keamanan yang memastikan proyek Anda berjalan sesuai standar regulasi dan keselamatan.</p>
+                            <div class="home-acc-items">
+                                <span class="home-acc-tag">Konsultan Perizinan (PBG/SLF)</span>
+                                <span class="home-acc-tag">Supervisi & Manajemen Proyek</span>
+                                <span class="home-acc-tag">Audit Teknis Bangunan</span>
+                            </div>
+                            <a href="/services#acc-consultant" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="services-cta fade-up">
-            <a href="/services" class="outline-btn" data-i18n="see_more">Lihat Semua Paket</a>
+
+        <div class="services-cta fade-up" style="transition-delay:.2s">
+            <a href="/services" class="outline-btn" data-i18n="see_more">Lihat Semua Layanan &amp; Harga</a>
         </div>
     </div>
 </section>
 
-<!-- ── BLOG ── -->
+<!-- ══════════════════════════════════════
+     BLOG — Live feed from Firebase
+══════════════════════════════════════ -->
 <section class="blog-section">
     <div class="container">
         <div class="blog-header">
@@ -765,69 +851,56 @@
                 <span class="section-label">Insight & Tips</span>
                 <h2 class="section-title" data-i18n="latest_articles">Artikel Terbaru</h2>
             </div>
+            <a href="/blog" class="text-link fade-up" style="font-size:0.72rem;" data-i18n="view_archive">Lihat Semua Artikel <i class="fas fa-arrow-right" style="font-size:.65rem;"></i></a>
         </div>
-        <div id="latestArticlesGrid" class="blog-grid"></div>
+        <!-- Skeleton shown while loading -->
+        <div id="latestArticlesGrid" class="blog-grid">
+            <div class="blog-skeleton"></div>
+            <div class="blog-skeleton"></div>
+            <div class="blog-skeleton"></div>
+        </div>
         <div class="blog-cta fade-up">
             <a href="/blog" data-i18n="view_archive">Lihat Arsip Artikel Lainnya →</a>
         </div>
     </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
 <footer id="contact">
     <div class="footer-inner">
         <div>
-           <!-- Kantor Utama -->
-<a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="footer-address" style="text-decoration:none; display:flex; margin-bottom:1rem;">
-    <i class="fas fa-building"></i>
-    <span>
-        <strong>Kantor Utama:</strong><br>
-        Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>
-        Sudimara Pinang, Kec. Pinang,<br>
-        Kota Tangerang, Banten 15145.
-    </span>
-</a>
-
-<!-- Workshop -->
-<a href="https://maps.app.goo.gl/PsEPkbn6rijnyJCs7?g_st=ic" target="_blank" class="footer-address" style="text-decoration:none; display:flex;">
-    <i class="fas fa-warehouse"></i>
-    <span>
-        <strong>Workshop:</strong><br>
-        Jl. Wijaya Kusuma 1, Duri Kosambi,<br>
-        Kecamatan Cengkareng,<br>
-        Kota Jakarta Barat, DKI Jakarta 11750
-    </span>
-</a>
+            <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="footer-address" style="text-decoration:none;">
+                <i class="fas fa-building"></i>
+                <span><strong>Kantor Utama:</strong><br>Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>Sudimara Pinang, Kec. Pinang,<br>Kota Tangerang, Banten 15145.</span>
+            </a>
+            <a href="https://maps.app.goo.gl/PsEPkbn6rijnyJCs7" target="_blank" class="footer-address" style="text-decoration:none;">
+                <i class="fas fa-warehouse"></i>
+                <span><strong>Workshop:</strong><br>Jl. Wijaya Kusuma 1, Duri Kosambi,<br>Kecamatan Cengkareng,<br>Kota Jakarta Barat, DKI Jakarta 11750</span>
+            </a>
         </div>
         <div>
             <div class="footer-col-title">Contact Us</div>
             <div class="footer-contact-item" onclick="window.open('https://wa.me/6285157577465','_blank')">
                 <i class="fab fa-whatsapp"></i>
-                <div>
-                    <div class="footer-contact-name">Angga Aditya Pratama, SE</div>
-                    <div class="footer-contact-sub">Co-Founder & Head of Marketing</div>
-                    <div class="footer-contact-sub">0851-5757-7465</div>
-                </div>
+                <div><div class="footer-contact-name">Angga Aditya Pratama, SE</div><div class="footer-contact-sub">Co-Founder & Head of Marketing</div><div class="footer-contact-sub">0851-5757-7465</div></div>
             </div>
             <div class="footer-contact-item">
                 <i class="far fa-envelope"></i>
-                <div>
-                    <a href="mailto:abi.studio.id@gmail.com" style="color:rgba(255,255,255,0.45); text-decoration:none; font-size:.83rem; font-weight:300;" class="footer-contact-sub">abi.studio.id@gmail.com</a>
-                </div>
+                <div><a href="mailto:abi.studio.id@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:.83rem;font-weight:300;">abi.studio.id@gmail.com</a></div>
             </div>
         </div>
         <div>
             <div class="footer-col-title">Social</div>
-            <div class="footer-social">
-                <a href="https://www.instagram.com/abi.studio.id/" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div style="margin-top: 2rem;">
+            <div class="footer-social"><a href="https://www.instagram.com/abi.studio.id/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+            <div style="margin-top:2rem;">
                 <div class="footer-col-title">Navigation</div>
-                <div style="display:flex; flex-direction:column; gap:.5rem; margin-top:.5rem;">
-                    <a href="/about" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">About</a>
-                    <a href="/services" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Services</a>
-                    <a href="/portfolio" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Portfolio</a>
-                    <a href="/blog" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Blog</a>
+                <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem;">
+                    <a href="/about" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">About</a>
+                    <a href="/services" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Services</a>
+                    <a href="/portfolio" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Portfolio</a>
+                    <a href="/blog" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Blog</a>
                 </div>
             </div>
         </div>
@@ -839,36 +912,46 @@
 </footer>
 
 <script>
-// ── TRANSLATIONS ──
+/* ══════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════ */
 const translations = {
     id: {
-        nav_home:"Home", nav_about:"About", nav_services:"Layanan & Harga", nav_portfolio:"Portfolio", nav_blog:"blog", nav_contact:"Contact",
-        hero_title_1:"Mewujudkan Bangunan", hero_bold_1:"Impian Anda.",
-        hero_title_2:"Desain Presisi", hero_bold_2:"Konstruksi Kokoh.",
-        btn_check_package:"Lihat Layanan",
+        nav_home:"Home", nav_about:"About", nav_portfolio:"Portfolio", nav_blog:"Blog", nav_contact:"Contact",
+        hero_title_0:"Mewujudkan Bangunan", hero_bold_0:"Impian Anda.",
+        hero_title_1:"Ruang yang Bercerita,", hero_bold_1:"Estetika Tanpa Batas.",
+        hero_title_2:"Dibangun dengan Presisi,", hero_bold_2:"Kokoh Selamanya.",
+        hero_title_3:"Kekuatan Struktural", hero_bold_3:"Standar Industri.",
+        hero_title_4:"Transformasi Ruang,", hero_bold_4:"Tampil Seperti Baru.",
+        hero_title_5:"Proyek Legal,", hero_bold_5:"Terstruktur & Aman.",
         vision_title:"Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.",
         vision_desc:"ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi yang terintegrasi.",
-        read_more:"Baca Selengkapnya", leadership_title:"Leadership Kami",
+        read_more:"Baca Selengkapnya",
+        leadership_title:"Leadership Kami",
         rama_role:"Memimpin serta bertumbuh sebagai ahli konstruksi dan manajemen proyek.",
         chandra_role:"Ahli perhitungan volume dan estimasi biaya proyek secara presisi.",
         angga_role:"Business development dan hubungan klien.",
         part_of:"Anggota Resmi Dari", trusted_by:"Dipercaya oleh", industry_leaders:"Pemimpin Industri",
-        service_title:"Layanan Komprehensif", see_more:"Lihat Semua Paket",
+        service_title:"Layanan Komprehensif", see_more:"Lihat Semua Layanan & Harga",
         latest_articles:"Artikel Terbaru", view_archive:"Lihat Arsip Artikel Lainnya →"
     },
     en: {
-        nav_home:"Home", nav_about:"About", nav_services:"Services & Pricing", nav_portfolio:"Portfolio", nav_blog:"blog", nav_contact:"Contact Us",
-        hero_title_1:"Manifesting Your", hero_bold_1:"Dream Building.",
-        hero_title_2:"Precision Design", hero_bold_2:"Solid Construction.",
-        btn_check_package:"Check Services",
+        nav_home:"Home", nav_about:"About", nav_portfolio:"Portfolio", nav_blog:"Blog", nav_contact:"Contact Us",
+        hero_title_0:"Manifesting Your", hero_bold_0:"Dream Building.",
+        hero_title_1:"Spaces That Tell Stories,", hero_bold_1:"Aesthetics Without Limits.",
+        hero_title_2:"Built with Precision,", hero_bold_2:"Solid Forever.",
+        hero_title_3:"Structural Strength", hero_bold_3:"Industry Standard.",
+        hero_title_4:"Transform Your Space,", hero_bold_4:"Look Brand New.",
+        hero_title_5:"Legal Projects,", hero_bold_5:"Structured & Safe.",
         vision_title:"Our vision is to be a leading company with the highest quality standards.",
         vision_desc:"ABI STUDIO offers a unique combination of detailed planning, precise calculation, and interior services. Our mission is to provide a transformative experience through integrated design and construction excellence.",
-        read_more:"Read More", leadership_title:"Our Leadership",
+        read_more:"Read More",
+        leadership_title:"Our Leadership",
         rama_role:"Construction expert and project management specialist.",
         chandra_role:"Expert in volume calculation and precise project cost estimation.",
         angga_role:"Business strategy and client relations.",
         part_of:"Proudly Part Of", trusted_by:"Trusted by", industry_leaders:"Industry Leaders",
-        service_title:"Comprehensive Services", see_more:"See All Packages",
+        service_title:"Comprehensive Services", see_more:"See All Services & Pricing",
         latest_articles:"Latest Articles", view_archive:"View Article Archive →"
     }
 };
@@ -877,89 +960,174 @@ function changeLanguage(lang) {
     localStorage.setItem('selectedLang', lang);
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) el.innerText = translations[lang][key];
+        if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key];
     });
     document.getElementById('btn-id').classList.toggle('active', lang === 'id');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
 
-// ── SLIDER ──
+/* ══════════════════════════════════════
+   HERO SLIDER — 6 slides, 5s interval
+══════════════════════════════════════ */
+const TOTAL_SLIDES = 6;
 let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.hero-dot');
+let autoTimer;
+
+const slides    = document.querySelectorAll('.slide');
+const dots      = document.querySelectorAll('.hero-dot');
+const counterCur = document.getElementById('heroCountCur');
 
 function getContent(idx) { return document.getElementById('slideContent' + idx); }
 
 function goToSlide(idx) {
+    // out
     slides[currentSlide].classList.remove('active');
     dots[currentSlide].classList.remove('active');
-    const prev = getContent(currentSlide);
-    prev.classList.remove('active', 'visible');
+    getContent(currentSlide).classList.remove('active','visible');
 
-    currentSlide = idx;
+    currentSlide = (idx + TOTAL_SLIDES) % TOTAL_SLIDES;
+
+    // in
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
+    if (counterCur) counterCur.textContent = currentSlide + 1;
     const next = getContent(currentSlide);
     next.classList.add('active');
     requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add('visible')));
 }
 
-// Init first slide
+function changeSlide(dir) {
+    clearInterval(autoTimer);
+    goToSlide(currentSlide + dir);
+    startAuto();
+}
+
+function startAuto() {
+    autoTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
+}
+
+// Override dot clicks to reset timer
+document.querySelectorAll('.hero-dot').forEach((dot, i) => {
+    dot.onclick = () => { clearInterval(autoTimer); goToSlide(i); startAuto(); };
+});
+
+// Init
 (function() {
     const first = getContent(0);
     first.classList.add('active');
     requestAnimationFrame(() => requestAnimationFrame(() => first.classList.add('visible')));
+    startAuto();
 })();
 
-setInterval(() => { goToSlide((currentSlide + 1) % slides.length); }, 6000);
+/* ══════════════════════════════════════
+   NAV DROPDOWN
+══════════════════════════════════════ */
+function toggleLayanan(e) {
+    e.stopPropagation();
+    const btn  = document.getElementById('layananBtn');
+    const drop = document.getElementById('layananDropdown');
+    const isOpen = drop.classList.contains('open');
+    closeLayanan();
+    if (!isOpen) { btn.classList.add('open'); drop.classList.add('open'); }
+}
+function closeLayanan() {
+    document.getElementById('layananBtn').classList.remove('open');
+    document.getElementById('layananDropdown').classList.remove('open');
+}
+document.addEventListener('click', closeLayanan);
 
-// ── NAVBAR SCROLL ──
-window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
-});
-
-// ── MOBILE MENU ──
-function toggleMobileMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function toggleMobLayanan() {
+    document.getElementById('mobLayananBtn').classList.toggle('open');
+    document.getElementById('mobLayananItems').classList.toggle('open');
 }
 
-// ── BLOG ARTICLES ──
+/* ══════════════════════════════════════
+   HOME ACCORDION (services section)
+══════════════════════════════════════ */
+function toggleHomeAcc(key) {
+    const el    = document.getElementById('hacc-' + key);
+    const panel = document.getElementById('panel-' + key);
+    const caret = document.getElementById('caret-' + key);
+    const isOpen = panel.classList.contains('open');
+
+    // Toggle
+    panel.classList.toggle('open', !isOpen);
+    el.classList.toggle('home-acc-open', !isOpen);
+    if (caret) caret.style.transform = isOpen ? '' : 'rotate(180deg)';
+}
+
+/* ══════════════════════════════════════
+   BLOG — Live Firebase feed
+   Re-runs every time the page loads, so
+   it always shows the latest 3 articles.
+══════════════════════════════════════ */
+function fmtDate(ts) {
+    if (!ts) return '';
+    const d = ts.toDate ? ts.toDate() : new Date(ts);
+    return d.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
+}
+
 async function loadLatestArticles() {
     const grid = document.getElementById('latestArticlesGrid');
     if (!grid) return;
     try {
-        const snapshot = await db.collection("articles").orderBy("tanggal", "desc").limit(3).get();
-        if (snapshot.empty) {
-            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color:#aaa; font-size:.9rem;">Belum ada artikel.</div>`;
+        const snap = await db.collection("articles")
+                             .orderBy("tanggal", "desc")
+                             .limit(3)
+                             .get();
+
+        if (snap.empty) {
+            grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;font-size:.9rem;">Belum ada artikel.</div>`;
             return;
         }
-        let html = "";
-        snapshot.forEach(doc => {
-            const data = doc.data();
-            const img = data.gambar || 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800';
+
+        let html = '';
+        snap.forEach(doc => {
+            const d   = doc.data();
+            const img = d.gambar || 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800';
+            const url = `/blog?id=${doc.id}`;
+            const date = fmtDate(d.tanggal);
             html += `
-            <article class="article-card" onclick="window.location.href='blog.html?id=${doc.id}'">
+            <a class="article-card" href="${url}">
                 <div class="article-img">
-                    <img src="${img}" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'" alt="${data.judul}">
+                    <img src="${img}" loading="lazy"
+                         onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'"
+                         alt="${d.judul || ''}">
                 </div>
                 <div class="article-body">
-                    <h3 class="article-title">${data.judul}</h3>
-                    <p class="article-desc">${data.deskripsi || ''}</p>
+                    ${date ? `<div class="article-date">${date}</div>` : ''}
+                    <h3 class="article-title">${d.judul || ''}</h3>
+                    <p class="article-desc">${d.deskripsi || ''}</p>
                     <span class="article-more">Baca Selengkapnya →</span>
                 </div>
-            </article>`;
+            </a>`;
         });
         grid.innerHTML = html;
-    } catch (e) { console.error(e); }
+    } catch(err) {
+        console.error('Blog load error:', err);
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;font-size:.9rem;">Gagal memuat artikel.</div>`;
+    }
 }
 
-// ── FADE UP ON SCROLL ──
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+/* ══════════════════════════════════════
+   NAVBAR SCROLL
+══════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ══════════════════════════════════════
+   FADE UP
+══════════════════════════════════════ */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// ── INIT ──
+/* ══════════════════════════════════════
+   INIT
+══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
     changeLanguage(localStorage.getItem('selectedLang') || 'id');
     loadLatestArticles();
