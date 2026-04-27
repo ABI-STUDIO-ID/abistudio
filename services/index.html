@@ -161,44 +161,125 @@
         .acc-cat-link{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;border-bottom:1.5px solid var(--teal);padding-bottom:2px;white-space:nowrap;}
 
         /* ══════════════════════════════════════
-           SERVICE CARDS GRID
+           SERVICE CARDS GRID — ENHANCED
         ══════════════════════════════════════ */
         .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-        .service-card{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.25s,box-shadow 0.25s,transform 0.25s;animation:cardIn 0.4s ease both;}
-        @keyframes cardIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-        .service-card:hover{border-color:var(--teal);box-shadow:0 10px 36px rgba(74,109,109,0.1);transform:translateY(-2px);}
-        .card-top{padding:1.6rem 1.6rem 1.2rem;border-bottom:1px solid var(--border);}
-        .card-icon{width:44px;height:44px;background:var(--teal-pale);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:var(--teal);margin-bottom:1rem;transition:background 0.2s;}
-        .service-card:hover .card-icon{background:var(--teal);color:white;}
-        .card-name{font-size:0.98rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+
+        .service-card{
+            background:white;
+            border:1px solid var(--border);
+            border-radius:18px;
+            overflow:hidden;
+            display:flex;
+            flex-direction:column;
+            transition:border-color 0.25s, box-shadow 0.3s, transform 0.25s;
+            animation:cardIn 0.4s ease both;
+            position:relative;
+        }
+        /* Top accent line */
+        .service-card::before{
+            content:'';
+            position:absolute;
+            top:0; left:0; right:0;
+            height:3px;
+            background:linear-gradient(90deg, var(--teal), var(--teal-light));
+            opacity:0;
+            transition:opacity 0.25s;
+        }
+        .service-card:hover::before{ opacity:1; }
+
+        @keyframes cardIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+        .service-card:hover{
+            border-color:var(--teal);
+            box-shadow:0 12px 40px rgba(74,109,109,0.14);
+            transform:translateY(-3px);
+        }
+
+        .card-top{
+            padding:1.6rem 1.6rem 1.2rem;
+            border-bottom:1px solid var(--border);
+            background:linear-gradient(135deg, #fff 0%, #f9fbfb 100%);
+        }
+        .card-icon{
+            width:48px;height:48px;
+            background:linear-gradient(135deg, var(--teal-pale), #dceaea);
+            border-radius:13px;
+            display:flex;align-items:center;justify-content:center;
+            font-size:1.1rem;color:var(--teal);
+            margin-bottom:1rem;
+            transition:background 0.2s, transform 0.2s;
+            box-shadow:0 2px 8px rgba(74,109,109,0.12);
+        }
+        .service-card:hover .card-icon{
+            background:linear-gradient(135deg, var(--teal), var(--teal-light));
+            color:white;
+            transform:scale(1.06) rotate(-3deg);
+        }
+        .card-name{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
         .card-desc{font-size:0.8rem;color:#888;line-height:1.6;font-weight:300;}
+
         .card-body{padding:1.1rem 1.6rem 0.9rem;flex:1;}
         .card-scope-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#bbb;margin-bottom:0.6rem;display:block;}
         .card-scope-list{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
-        .card-scope-list li{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--mid);font-weight:300;}
-        .card-scope-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--teal);flex-shrink:0;opacity:0.6;}
+        .card-scope-list li{
+            display:flex;align-items:center;gap:0.5rem;
+            font-size:0.78rem;color:var(--mid);font-weight:300;
+        }
+        .card-scope-list li::before{
+            content:'';width:5px;height:5px;border-radius:50%;
+            background:var(--teal);flex-shrink:0;opacity:0.55;
+        }
 
-        /* ── REVIEW TOGGLE ── */
+        /* ── REVIEW TOGGLE — FIXED ── */
         .card-review-toggle{
-            display:flex;align-items:center;justify-content:space-between;
-            padding:0.7rem 1.6rem;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            flex-wrap:nowrap;
+            gap:0.5rem;
+            padding:0.75rem 1.4rem;
             background:var(--gold-pale);
             border-top:1px solid rgba(200,150,62,0.18);
             border-bottom:1px solid rgba(200,150,62,0.18);
-            cursor:pointer;transition:background 0.2s;user-select:none;
+            cursor:pointer;
+            transition:background 0.2s;
+            user-select:none;
+            min-width:0;
         }
         .card-review-toggle:hover{background:#faeedd;}
-        .review-toggle-left{display:flex;align-items:center;gap:7px;}
-        .review-stars{color:var(--gold);font-size:0.68rem;letter-spacing:1px;}
-        .review-count{font-size:0.7rem;font-weight:700;color:var(--gold);}
-        .review-toggle-right{display:flex;align-items:center;gap:5px;}
-        .review-toggle-label{font-size:0.65rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#b8822e;}
-        .review-chevron{font-size:0.52rem;color:var(--gold);transition:transform 0.28s;}
+
+        .review-toggle-left{
+            display:flex;align-items:center;gap:6px;
+            min-width:0;
+            flex:1 1 auto;
+            overflow:hidden;
+        }
+        .review-stars{
+            color:var(--gold);font-size:0.62rem;letter-spacing:0.5px;
+            flex-shrink:0;
+        }
+        .review-count{
+            font-size:0.7rem;font-weight:700;color:var(--gold);
+            white-space:nowrap;
+            overflow:hidden;text-overflow:ellipsis;
+        }
+
+        .review-toggle-right{
+            display:flex;align-items:center;gap:4px;
+            flex-shrink:0;
+        }
+        .review-toggle-label{
+            font-size:0.62rem;font-weight:700;letter-spacing:0.05em;
+            text-transform:uppercase;color:#b8822e;
+            white-space:nowrap;
+        }
+        .review-chevron{font-size:0.5rem;color:var(--gold);transition:transform 0.28s;flex-shrink:0;}
         .card-review-toggle.open .review-chevron{transform:rotate(180deg);}
+
         .card-review-panel{max-height:0;overflow:hidden;transition:max-height 0.42s cubic-bezier(0.4,0,0.2,1);background:var(--gold-pale);}
         .card-review-panel.open{max-height:4000px;}
-        .review-panel-inner{padding:0.5rem 1.6rem 1.2rem;display:flex;flex-direction:column;gap:0.8rem;}
-        .review-item{background:white;border:1px solid rgba(200,150,62,0.14);border-radius:11px;padding:0.9rem 1rem;}
+        .review-panel-inner{padding:0.6rem 1.4rem 1.2rem;display:flex;flex-direction:column;gap:0.75rem;}
+        .review-item{background:white;border:1px solid rgba(200,150,62,0.14);border-radius:11px;padding:0.85rem 1rem;}
         .review-header{display:flex;align-items:center;gap:0.65rem;margin-bottom:0.45rem;}
         .review-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:white;flex-shrink:0;}
         .review-name{font-size:0.8rem;font-weight:700;color:var(--dark);}
@@ -208,11 +289,43 @@
         .review-text::before{content:'\201C';}
         .review-text::after{content:'\201D';}
 
-        /* ── CARD FOOTER ── */
-        .card-footer{padding:1.1rem 1.6rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:0.8rem;}
-        .card-price{font-size:0.75rem;font-weight:700;color:var(--teal);background:var(--teal-pale);padding:0.32rem 0.85rem;border-radius:100px;white-space:nowrap;}
-        .card-cta{display:inline-flex;align-items:center;gap:0.4rem;background:var(--dark);color:white;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.52rem 1rem;border-radius:8px;border:none;cursor:pointer;transition:background 0.2s;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap;}
-        .card-cta:hover{background:var(--teal);}
+        /* ── CARD FOOTER — FIXED FOR MOBILE ── */
+        .card-footer{
+            padding:1rem 1.4rem 1.3rem;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:0.75rem;
+            flex-wrap:wrap;           /* ← KEY FIX: allow wrap */
+        }
+        .card-price{
+            font-size:0.75rem;font-weight:700;color:var(--teal);
+            background:var(--teal-pale);
+            padding:0.35rem 0.9rem;border-radius:100px;
+            white-space:nowrap;
+            flex-shrink:0;
+        }
+        .card-cta{
+            display:inline-flex;align-items:center;justify-content:center;gap:0.45rem;
+            background:var(--dark);color:white;
+            font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+            padding:0.6rem 1.1rem;border-radius:10px;border:none;cursor:pointer;
+            transition:background 0.2s, transform 0.15s;
+            font-family:'Plus Jakarta Sans',sans-serif;
+            white-space:nowrap;
+            flex-shrink:0;
+        }
+        .card-cta:hover{background:var(--teal);transform:translateY(-1px);}
+        .card-cta i{font-size:0.55rem;}
+
+        /* ── POPULAR BADGE ── */
+        .card-popular-badge{
+            position:absolute;top:14px;right:14px;
+            background:var(--gold);color:white;
+            font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+            padding:0.28rem 0.75rem;border-radius:100px;
+            box-shadow:0 2px 8px rgba(200,150,62,0.35);
+        }
 
         /* ══ MODAL ══ */
         .modal-backdrop{position:fixed;inset:0;background:rgba(10,14,18,0.6);backdrop-filter:blur(4px);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.25s;}
@@ -269,9 +382,56 @@
         .fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
         .fade-up.visible{opacity:1;transform:translateY(0);}
 
-        @media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr);}}
-        @media(max-width:900px){.nav-links{display:none;}.hamburger{display:block;}.guide-steps{grid-template-columns:1fr;}.why-grid{grid-template-columns:repeat(2,1fr);}.footer-inner{grid-template-columns:1fr;gap:2.5rem;}.footer-bottom{flex-direction:column;gap:0.5rem;text-align:center;}}
-        @media(max-width:640px){.services-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.nav-inner{padding:0 1.25rem;}.why-grid{grid-template-columns:1fr 1fr;}.acc-wrap{padding:1.5rem 1rem 4rem;}.acc-panel-inner{padding:1.2rem;}}
+        /* ══ RESPONSIVE ══ */
+        @media(max-width:1024px){
+            .services-grid{grid-template-columns:repeat(2,1fr);}
+        }
+        @media(max-width:900px){
+            .nav-links{display:none;}
+            .hamburger{display:block;}
+            .guide-steps{grid-template-columns:1fr;}
+            .why-grid{grid-template-columns:repeat(2,1fr);}
+            .footer-inner{grid-template-columns:1fr;gap:2.5rem;}
+            .footer-bottom{flex-direction:column;gap:0.5rem;text-align:center;}
+        }
+        @media(max-width:640px){
+            .services-grid{grid-template-columns:1fr;}
+            .form-row{grid-template-columns:1fr;}
+            .nav-inner{padding:0 1.25rem;}
+            .why-grid{grid-template-columns:1fr 1fr;}
+            .acc-wrap{padding:1.5rem 1rem 4rem;}
+            .acc-panel-inner{padding:1.2rem;}
+
+            /* ── Mobile card footer fix ── */
+            .card-footer{
+                flex-direction:row;
+                flex-wrap:wrap;
+                align-items:center;
+                padding:0.9rem 1.2rem 1.2rem;
+                gap:0.6rem;
+            }
+            .card-cta{
+                flex:1 1 auto;        /* stretch to fill remaining space */
+                min-width:0;
+                text-align:center;
+            }
+            .card-price{
+                flex-shrink:0;
+            }
+
+            /* ── Mobile review toggle ── */
+            .card-review-toggle{padding:0.7rem 1.2rem;}
+            .review-toggle-label{display:none;} /* hide text label, keep icon */
+            .review-stars{font-size:0.58rem;}
+            .review-count{font-size:0.66rem;}
+        }
+
+        /* Very small screens */
+        @media(max-width:380px){
+            .card-footer{flex-direction:column;align-items:stretch;}
+            .card-price{text-align:center;}
+            .card-cta{width:100%;}
+        }
     </style>
 </head>
 <body>
@@ -529,7 +689,7 @@ const SD={
   design:{
     desc:'Perencanaan desain arsitektur, interior, struktur, landscape, dan MEP yang estetik, presisi, dan fungsional.',
     items:[
-      {title:"Desain Arsitektur",icon:"fas fa-home",
+      {title:"Desain Arsitektur",icon:"fas fa-home",popular:true,
        desc:"Perencanaan bangunan estetik dan fungsional sesuai kebutuhan klien.",
        scope:["Paket Basic","Paket Standard","Paket Premium"],
        options:["Paket Basic","Paket Standard","Paket Premium"],price:"Hubungi Admin",
@@ -558,7 +718,7 @@ const SD={
          {name:"Bpk. M***** R*****",loc:"Kalideres, Jakarta Barat",rating:5,text:"Transformasi bangunan kos-kosan lama kami menjadi hunian modern dengan desain yang matang. Nilai properti kami naik signifikan setelah redesign ini. Investasi yang sangat tepat."},
          {name:"Dr. K***** S.",loc:"Tebet, Jakarta Selatan",rating:5,text:"Pengalaman bekerja dengan ABI STUDIO sangat menyenangkan dan profesional. Jadwal konsultasi selalu tepat waktu dan setiap pertemuan selalu produktif menghasilkan perkembangan desain yang signifikan."}
        ]},
-      {title:"Desain Interior",icon:"fas fa-couch",
+      {title:"Desain Interior",icon:"fas fa-couch",popular:true,
        desc:"Menciptakan suasana ruang yang nyaman dan memiliki karakter kuat.",
        scope:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],
        options:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],price:"Mulai Rp 25.000/m²",
@@ -624,7 +784,7 @@ const SD={
   construction:{
     desc:'Realisasi fisik bangunan dari nol, renovasi, hingga finishing interior dengan standar kualitas tinggi dan pengawasan ketat.',
     items:[
-      {title:"Pekerjaan Sipil & Bangunan",icon:"fas fa-hard-hat",
+      {title:"Pekerjaan Sipil & Bangunan",icon:"fas fa-hard-hat",popular:true,
        desc:"Konstruksi fisik bangunan dari fondasi hingga serah terima kunci.",
        scope:["Rumah Tinggal, Ruko, Kantor","Sekolah, Sarana Ibadah","Gedung Bertingkat"],
        options:["Rumah Tinggal","Ruko","Kantor","Sarana Pendidikan","Sarana Ibadah","Gedung Bertingkat"],price:"Sesuai RAB",
@@ -660,7 +820,7 @@ const SD={
          {name:"PT. R****** D*****",loc:"Bekasi Selatan",rating:5,text:"Pekerjaan struktur beton untuk gedung produksi kami sesuai spesifikasi dan sangat teliti pengerjaannya. Tim tekniknya berpengalaman dan sangat paham detail konstruksi bangunan industri."},
          {name:"Bpk. H***** N*****",loc:"Balaraja, Tangerang",rating:5,text:"Tangga baja custom untuk mezzanine kantor kami sangat kokoh dan tampilannya elegan. Finishing powder coat yang dipilih sangat tahan lama. Hasilnya jauh melebihi ekspektasi saya."}
        ]},
-      {title:"Renovasi & Rehabilitasi",icon:"fas fa-tools",
+      {title:"Renovasi & Rehabilitasi",icon:"fas fa-tools",popular:true,
        desc:"Perbaikan sebagian atau menyeluruh untuk hunian dan komersial.",
        scope:["Dapur, Plafon, Atap, Dinding","Kamar Mandi","Perbaikan Struktur Ringan"],
        options:["Perbaikan Dapur","Perbaikan Plafon","Perbaikan Atap/Dak","Perbaikan Dinding","Renovasi Kamar Mandi","Perbaikan Struktur Ringan"],price:"Sesuai Survey",
@@ -777,10 +937,13 @@ function renderGrid(cat){
         <div class="review-panel-inner">${reviewsHtml}</div>
       </div>`:'';
 
+    const popularBadge=item.popular?`<div class="card-popular-badge">⭐ Terpopuler</div>`:'';
+
     const card=document.createElement('div');
     card.className='service-card';
     card.style.animationDelay=`${i*55}ms`;
     card.innerHTML=`
+      ${popularBadge}
       <div class="card-top">
         <div class="card-icon"><i class="${item.icon}"></i></div>
         <div class="card-name">${item.title}</div>
@@ -793,7 +956,7 @@ function renderGrid(cat){
       ${reviewSection}
       <div class="card-footer">
         <span class="card-price">${item.price}</span>
-        <button class="card-cta" onclick="openModal('${cat}',${i})">Konsultasikan <i class="fas fa-arrow-right" style="font-size:.58rem;"></i></button>
+        <button class="card-cta" onclick="openModal('${cat}',${i})">Konsultasikan <i class="fas fa-arrow-right"></i></button>
       </div>`;
     grid.appendChild(card);
   });
