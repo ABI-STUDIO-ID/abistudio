@@ -32,7 +32,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── NAVBAR (matched to index.html) ── */
+        /* ── NAVBAR ── */
         nav#mainNav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -43,210 +43,90 @@
             transition: box-shadow 0.3s;
         }
         nav#mainNav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.07); }
-
         .nav-inner {
-            max-width: 1280px;
-            margin: 0 auto;
+            max-width: 1280px; margin: 0 auto;
             padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between;
             height: 80px;
         }
-
-        .nav-logo img {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
+        .nav-logo img { height: 60px; width: auto; object-fit: contain; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
         .nav-links a {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--mid);
-            text-decoration: none;
-            transition: color 0.2s;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--teal); }
         .nav-links a.active { color: var(--teal); }
-
         .nav-cta {
-            background: var(--teal) !important;
-            color: white !important;
-            padding: 0.55rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.72rem !important;
+            background: var(--teal) !important; color: white !important;
+            padding: 0.55rem 1.5rem; border-radius: 100px; font-size: 0.72rem !important;
             transition: background 0.2s, transform 0.2s !important;
         }
-        .nav-cta:hover {
-            background: var(--dark) !important;
-            color: white !important;
-            transform: translateY(-1px);
-        }
+        .nav-cta:hover { background: var(--dark) !important; transform: translateY(-1px); }
 
         /* ── LAYANAN DROPDOWN ── */
-        .nav-layanan-wrap {
-            position: relative;
-        }
-
+        .nav-layanan-wrap { position: relative; }
         .nav-layanan-btn {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--mid);
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0;
-            transition: color 0.2s;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--mid); background: none; border: none;
+            cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0;
+            transition: color 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .nav-layanan-btn:hover { color: var(--teal); }
-        .nav-layanan-btn .chevron {
-            font-size: 0.55rem;
-            transition: transform 0.25s ease;
-            display: inline-block;
-        }
+        .nav-layanan-btn:hover, .nav-layanan-btn.open { color: var(--teal); }
+        .nav-layanan-btn .chevron { font-size: 0.55rem; transition: transform 0.25s ease; display: inline-block; }
         .nav-layanan-btn.open .chevron { transform: rotate(180deg); }
-        .nav-layanan-btn.open { color: var(--teal); }
-
         .layanan-dropdown {
-            position: absolute;
-            top: calc(100% + 16px);
-            left: 50%;
+            position: absolute; top: calc(100% + 16px); left: 50%;
             transform: translateX(-50%) translateY(-6px);
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 0.6rem;
-            min-width: 240px;
+            background: white; border: 1px solid var(--border); border-radius: 16px;
+            padding: 0.6rem; min-width: 240px;
             box-shadow: 0 12px 40px rgba(0,0,0,0.10);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            z-index: 200;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease; z-index: 200;
         }
         .layanan-dropdown::before {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-left: 1px solid var(--border);
-            border-top: 1px solid var(--border);
+            content: ''; position: absolute; top: -6px; left: 50%;
+            width: 12px; height: 12px; background: white;
+            border-left: 1px solid var(--border); border-top: 1px solid var(--border);
             transform: translateX(-50%) rotate(45deg);
         }
-        .layanan-dropdown.open {
-            opacity: 1;
-            pointer-events: all;
-            transform: translateX(-50%) translateY(0);
-        }
-
+        .layanan-dropdown.open { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
         .layanan-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--mid);
+            display: flex; align-items: center; gap: 12px; padding: 0.75rem 1rem;
+            border-radius: 10px; text-decoration: none; color: var(--mid);
             transition: background 0.15s, color 0.15s;
-            font-size: 0.82rem;
-            font-weight: 500;
         }
-        .layanan-item:hover {
-            background: var(--teal-pale);
-            color: var(--teal);
-        }
+        .layanan-item:hover { background: var(--teal-pale); color: var(--teal); }
         .layanan-item .li-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            background: var(--teal-pale);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: var(--teal);
-            flex-shrink: 0;
-            transition: background 0.15s;
+            width: 32px; height: 32px; border-radius: 8px; background: var(--teal-pale);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; color: var(--teal); flex-shrink: 0; transition: background 0.15s;
         }
         .layanan-item:hover .li-icon { background: rgba(74,109,109,0.15); }
         .layanan-item .li-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; }
         .layanan-item .li-sub { font-size: 0.68rem; color: #aaa; font-weight: 400; margin-top: 1px; }
 
-        /* ── HAMBURGER ── */
-        .hamburger {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--teal);
-            font-size: 1.4rem;
-        }
-
-        /* ── MOBILE MENU ── */
+        /* ── HAMBURGER & MOBILE MENU ── */
+        .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--teal); font-size: 1.4rem; }
         #mobileMenu {
-            display: none;
-            position: absolute;
-            top: 80px;
-            left: 0; right: 0;
-            background: white;
-            border-top: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            display: none; position: absolute; top: 80px; left: 0; right: 0;
+            background: white; border-top: 1px solid var(--border);
+            padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
         #mobileMenu.open { display: block; }
         #mobileMenu > a {
-            display: block;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--mid);
-            text-decoration: none;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid var(--border);
-            transition: color 0.2s;
+            display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--mid); text-decoration: none;
+            padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s;
         }
-        #mobileMenu > a:hover { color: var(--teal); }
-        #mobileMenu > a.active { color: var(--teal); }
+        #mobileMenu > a:hover, #mobileMenu > a.active { color: var(--teal); }
         #mobileMenu > a:last-child { border-bottom: none; }
-
-        /* Mobile layanan accordion */
         .mob-layanan-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            background: none;
-            border: none;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--mid);
-            padding: 0.85rem 0;
-            cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%; background: none; border: none; border-bottom: 1px solid var(--border);
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--mid); padding: 0.85rem 0; cursor: pointer;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            text-align: left;
         }
         .mob-layanan-toggle.open { color: var(--teal); }
         .mob-layanan-toggle .chevron { transition: transform 0.25s; font-size: 0.6rem; }
@@ -254,399 +134,278 @@
         .mob-layanan-items { display: none; padding: 0.4rem 0 0.6rem; border-bottom: 1px solid var(--border); }
         .mob-layanan-items.open { display: block; }
         .mob-layanan-items a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.6rem 0.5rem;
-            font-size: 0.78rem;
-            color: var(--mid);
-            text-decoration: none;
-            border-radius: 8px;
-            border-bottom: none !important;
-            font-weight: 500;
+            display: flex; align-items: center; gap: 10px; padding: 0.6rem 0.5rem;
+            font-size: 0.78rem; color: var(--mid); text-decoration: none;
+            border-radius: 8px; border-bottom: none !important; font-weight: 500;
         }
         .mob-layanan-items a:hover { color: var(--teal); background: var(--teal-pale); }
         .mob-layanan-items a i { color: var(--teal); width: 16px; text-align: center; }
 
         /* ── HERO ── */
         .hero {
-            padding: 130px 2rem 70px;
-            text-align: center;
-            background: var(--white);
-            position: relative;
-            overflow: hidden;
+            padding: 130px 2rem 70px; text-align: center;
+            background: var(--white); position: relative; overflow: hidden;
         }
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -80px; left: 50%;
-            transform: translateX(-50%);
-            width: 700px; height: 400px;
+            content: ''; position: absolute; top: -80px; left: 50%;
+            transform: translateX(-50%); width: 700px; height: 400px;
             background: radial-gradient(ellipse at center, rgba(74,109,109,0.07) 0%, transparent 70%);
             pointer-events: none;
         }
         .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--teal);
-            margin-bottom: 20px;
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--teal); margin-bottom: 20px;
+            animation: fadeUp 0.6s ease both;
         }
-        .hero-label::before, .hero-label::after {
-            content: '';
-            width: 28px; height: 0.5px;
-            background: var(--teal-light);
-        }
+        .hero-label::before, .hero-label::after { content: ''; width: 28px; height: 0.5px; background: var(--teal-light); }
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(3rem, 6vw, 5.5rem);
-            font-weight: 300;
-            line-height: 1.1;
-            color: var(--dark);
+            font-weight: 300; line-height: 1.1; color: var(--dark);
             letter-spacing: -0.02em;
+            animation: fadeUp 0.7s 0.1s ease both;
         }
-        .hero h1 em {
-            font-style: italic;
-            color: var(--teal);
-        }
+        .hero h1 em { font-style: italic; color: var(--teal); }
         .hero p {
-            margin: 24px auto 0;
-            max-width: 520px;
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.75;
-            font-weight: 300;
+            margin: 24px auto 0; max-width: 520px; font-size: 15px;
+            color: var(--text-muted); line-height: 1.75; font-weight: 300;
+            animation: fadeUp 0.7s 0.2s ease both;
         }
 
         /* ── STATS STRIP ── */
-        .stats-strip { background: var(--dark); padding: 2rem; }
+        .stats-strip { background: var(--dark); padding: 2rem; animation: fadeUp 0.6s 0.3s ease both; }
         .stats-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 16px;
-            overflow: hidden;
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 1px; background: rgba(255,255,255,0.08);
+            border-radius: 16px; overflow: hidden;
         }
-        .stat-item {
-            background: var(--dark-2);
-            padding: 1.8rem 1.5rem;
-            text-align: center;
-            transition: background 0.2s;
-        }
+        .stat-item { background: var(--dark-2); padding: 1.8rem 1.5rem; text-align: center; transition: background 0.2s; }
         .stat-item:hover { background: #252b32; }
-        .stat-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 300;
-            color: #7EC8C8;
-            line-height: 1;
-            margin-bottom: 0.3rem;
-        }
-        .stat-label {
-            font-size: 0.67rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
-        }
+        .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: #7EC8C8; line-height: 1; margin-bottom: 0.3rem; }
+        .stat-label { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
 
         /* ── FILTER BAR ── */
-        .filter-section {
-            padding: 50px 2rem 40px;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        .filter-bar {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        .filter-section { padding: 50px 2rem 40px; max-width: 1280px; margin: 0 auto; }
+        .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
         .filter-btn {
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--mid);
-            background: transparent;
-            border: 1px solid var(--border);
-            padding: 8px 20px;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--mid); background: transparent; border: 1px solid var(--border);
+            padding: 8px 20px; border-radius: 100px; cursor: pointer;
+            transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--teal);
-            color: #fff;
-            border-color: var(--teal);
-        }
+        .filter-btn:hover, .filter-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
 
         /* ── PROJECTS ── */
-        .projects-section {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem 100px;
-        }
+        .projects-section { max-width: 1280px; margin: 0 auto; padding: 0 2rem 100px; }
+
         .project-entry {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            padding: 70px 0;
-            border-bottom: 1px solid var(--border);
-            opacity: 0;
-            transform: translateY(30px);
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: center;
+            padding: 70px 0; border-bottom: 1px solid var(--border);
+            opacity: 0; transform: translateY(30px);
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        .project-entry.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .project-entry.visible { opacity: 1; transform: translateY(0); }
         .project-entry:last-child { border-bottom: none; }
         .project-entry.reverse .project-images { order: 2; }
         .project-entry.reverse .project-info { order: 1; }
 
+        /* ── BEFORE/AFTER GRID ── */
         .project-images { position: relative; }
-        .before-after-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
+        .before-after-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
         .img-wrap {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            background: var(--light);
+            position: relative; overflow: hidden;
+            border-radius: 12px; background: var(--light);
         }
         .img-wrap img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
+            width: 100%; height: 280px; object-fit: cover; display: block;
             transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+            /* Smooth image loading */
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
         }
-        .project-entry:hover .img-wrap img { transform: scale(1.06); }
+        .img-wrap img.loaded { opacity: 1; }
+        .img-wrap .img-skeleton {
+            position: absolute; inset: 0;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 12px;
+        }
+        .project-entry:hover .img-wrap img { transform: scale(1.05); }
         .img-badge {
-            position: absolute;
-            bottom: 12px; left: 12px;
-            font-size: 0.6rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 4px 12px;
-            border-radius: 100px;
+            position: absolute; bottom: 12px; left: 12px;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
         }
-        .badge-before {
-            background: rgba(17,17,16,0.7);
-            color: rgba(255,255,255,0.85);
+        .badge-before { background: rgba(17,17,16,0.7); color: rgba(255,255,255,0.85); backdrop-filter: blur(4px); }
+        .badge-after { background: var(--teal); color: #fff; }
+
+        /* ── GALLERY GRID (5 photos for kos-kosan) ── */
+        .gallery-grid-5 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 10px;
+        }
+        .gallery-grid-5 .img-wrap:first-child {
+            grid-column: 1 / -1;
+        }
+        .gallery-grid-5 .img-wrap:first-child img { height: 260px; }
+        .gallery-grid-5 .img-wrap:not(:first-child) img { height: 170px; }
+
+        /* Badge styles for gallery */
+        .badge-photo {
+            background: rgba(17,17,16,0.6);
+            color: rgba(255,255,255,0.9);
             backdrop-filter: blur(4px);
         }
-        .badge-after {
-            background: var(--teal);
-            color: #fff;
+
+        /* Photo count indicator */
+        .gallery-more {
+            position: absolute; inset: 0;
+            background: rgba(17,17,16,0.45);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+            opacity: 0; transition: opacity 0.25s;
+            cursor: pointer;
+        }
+        .gallery-grid-5 .img-wrap:last-child .gallery-more { opacity: 1; }
+        .gallery-more-label {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: white;
         }
 
-        /* INFO */
+        /* ── PROJECT INFO ── */
         .project-info { padding: 0 10px; }
         .project-index {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 72px;
-            font-weight: 300;
-            color: rgba(74,109,109,0.1);
-            line-height: 1;
-            margin-bottom: -10px;
-            letter-spacing: -0.03em;
+            font-family: 'Cormorant Garamond', serif; font-size: 72px;
+            font-weight: 300; color: rgba(74,109,109,0.1);
+            line-height: 1; margin-bottom: -10px; letter-spacing: -0.03em;
         }
         .project-category {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--teal);
-            margin-bottom: 10px;
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
         }
         .project-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.4rem;
-            font-weight: 400;
-            line-height: 1.2;
-            color: var(--dark);
-            letter-spacing: -0.01em;
-            margin-bottom: 16px;
+            font-family: 'Cormorant Garamond', serif; font-size: 2.4rem;
+            font-weight: 400; line-height: 1.2; color: var(--dark);
+            letter-spacing: -0.01em; margin-bottom: 16px;
         }
         .project-desc {
-            font-size: 0.87rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-            font-weight: 300;
-            max-width: 400px;
-            margin-bottom: 28px;
+            font-size: 0.87rem; line-height: 1.8; color: var(--text-muted);
+            font-weight: 300; max-width: 400px; margin-bottom: 28px;
         }
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 30px;
-        }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 30px; }
         .tag {
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--teal);
-            background: var(--teal-pale);
-            border: 1px solid rgba(74,109,109,0.15);
-            padding: 5px 14px;
-            border-radius: 100px;
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em;
+            text-transform: uppercase; color: var(--teal); background: var(--teal-pale);
+            border: 1px solid rgba(74,109,109,0.15); padding: 5px 14px; border-radius: 100px;
         }
         .project-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--teal);
-            text-decoration: none;
-            border-bottom: 1.5px solid rgba(74,109,109,0.3);
-            padding-bottom: 3px;
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--teal); text-decoration: none;
+            border-bottom: 1.5px solid rgba(74,109,109,0.3); padding-bottom: 3px;
             transition: color 0.2s, border-color 0.2s, gap 0.2s;
         }
-        .project-cta:hover {
-            color: var(--dark);
-            border-color: var(--dark);
-            gap: 12px;
+        .project-cta:hover { color: var(--dark); border-color: var(--dark); gap: 12px; }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 500;
+            background: rgba(10,14,18,0.95); backdrop-filter: blur(8px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.open { opacity: 1; pointer-events: all; }
+        .lightbox-img {
+            max-width: 90vw; max-height: 85vh;
+            border-radius: 8px; object-fit: contain;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+            transform: scale(0.94);
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .lightbox.open .lightbox-img { transform: scale(1); }
+        .lightbox-close {
+            position: absolute; top: 24px; right: 28px;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+            color: white; width: 44px; height: 44px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1rem; transition: background 0.2s;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+            color: white; width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 0.9rem; transition: background 0.2s;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-prev { left: 24px; }
+        .lightbox-next { right: 24px; }
+        .lightbox-counter {
+            position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+            text-transform: uppercase; color: rgba(255,255,255,0.5);
+        }
+        .lightbox-caption {
+            position: absolute; bottom: 52px; left: 50%; transform: translateX(-50%);
+            font-size: 0.82rem; color: rgba(255,255,255,0.75); font-weight: 300;
+            letter-spacing: 0.04em; white-space: nowrap;
         }
 
         /* ── CTA BAND ── */
-        .cta-band {
-            background: var(--teal);
-            padding: 80px 2rem;
-            text-align: center;
-        }
+        .cta-band { background: var(--teal); padding: 80px 2rem; text-align: center; }
         .cta-band h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            font-weight: 300;
-            color: #fff;
-            line-height: 1.3;
-            margin-bottom: 14px;
+            font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300;
+            color: #fff; line-height: 1.3; margin-bottom: 14px;
         }
         .cta-band h2 em { font-style: italic; }
-        .cta-band p {
-            font-size: 0.87rem;
-            color: rgba(255,255,255,0.65);
-            max-width: 400px;
-            margin: 0 auto 32px;
-            line-height: 1.7;
-            font-weight: 300;
-        }
+        .cta-band p { font-size: 0.87rem; color: rgba(255,255,255,0.65); max-width: 400px; margin: 0 auto 32px; line-height: 1.7; font-weight: 300; }
         .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background: #fff;
-            color: var(--teal);
-            padding: 16px 36px;
-            border-radius: 100px;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; background: #fff; color: var(--teal);
+            padding: 16px 36px; border-radius: 100px; text-decoration: none;
             transition: background 0.2s, color 0.2s, transform 0.15s;
         }
-        .cta-btn:hover {
-            background: var(--dark);
-            color: #fff;
-            transform: translateY(-2px);
-        }
+        .cta-btn:hover { background: var(--dark); color: #fff; transform: translateY(-2px); }
 
         /* ── FOOTER ── */
-        footer {
-            background: var(--dark);
-            color: #fff;
-            padding: 4.5rem 2rem 3rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-        .footer-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
-            gap: 4rem;
-        }
-        .footer-address {
-            font-size: 0.83rem;
-            line-height: 1.75;
-            color: rgba(255,255,255,0.45);
-            display: flex;
-            align-items: flex-start;
-            gap: 0.7rem;
-            font-weight: 300;
-            text-decoration: none;
-            margin-bottom: 1rem;
-        }
+        footer { background: var(--dark); color: #fff; padding: 4.5rem 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 4rem; }
+        .footer-address { font-size: 0.83rem; line-height: 1.75; color: rgba(255,255,255,0.45); display: flex; align-items: flex-start; gap: 0.7rem; font-weight: 300; text-decoration: none; margin-bottom: 1rem; }
         .footer-address i { color: var(--teal-light); margin-top: 3px; flex-shrink: 0; font-size: 0.8rem; }
-        .footer-col-title {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.3);
-            margin-bottom: 1.4rem;
-        }
-        .footer-contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.9rem;
-            margin-bottom: 1.4rem;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            opacity: 0.7;
-        }
+        .footer-col-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.4rem; }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1.4rem; cursor: pointer; transition: opacity 0.2s; opacity: 0.7; }
         .footer-contact-item:hover { opacity: 1; }
         .footer-contact-item i { font-size: 1.1rem; color: var(--teal-light); margin-top: 2px; flex-shrink: 0; }
         .footer-contact-name { font-size: 0.88rem; font-weight: 700; color: white; }
         .footer-contact-sub { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 2px; font-weight: 300; }
         .footer-social { display: flex; gap: 0.8rem; margin-top: 0.5rem; }
-        .footer-social a {
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.15);
-            display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
+        .footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 0.95rem; transition: all 0.2s; text-decoration: none; }
         .footer-social a:hover { border-color: var(--teal-light); color: #7EC8C8; background: rgba(74,109,109,0.2); }
-        .footer-bottom {
-            max-width: 1280px;
-            margin: 3rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.07);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .footer-bottom { max-width: 1280px; margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; }
         .footer-bottom p { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .project-entry { gap: 40px; }
             .project-title { font-size: 2.1rem; }
             .project-index { font-size: 60px; }
-            .img-wrap img { height: 240px; }
+            .img-wrap img, .gallery-grid-5 .img-wrap:first-child img { height: 220px; }
+            .gallery-grid-5 .img-wrap:not(:first-child) img { height: 150px; }
         }
         @media (max-width: 900px) {
             .nav-links { display: none; }
@@ -656,403 +415,552 @@
             .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
         @media (max-width: 768px) {
-            .project-entry {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 50px 0;
-            }
+            .project-entry { grid-template-columns: 1fr; gap: 28px; padding: 50px 0; }
             .project-entry.reverse .project-images { order: 1; }
             .project-entry.reverse .project-info { order: 2; }
             .project-title { font-size: 1.9rem; }
             .project-index { font-size: 50px; }
-            .img-wrap img { height: 200px; }
+            .img-wrap img { height: 180px !important; }
+            .gallery-grid-5 .img-wrap:first-child img { height: 200px !important; }
+            .gallery-grid-5 .img-wrap:not(:first-child) img { height: 130px !important; }
+            .lightbox-nav { display: none; }
         }
-
-        /* ── ANIMATIONS ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 480px) {
+            .projects-section { padding: 0 1.2rem 80px; }
+            .filter-section { padding: 36px 1.2rem 28px; }
         }
-        .hero-label { animation: fadeUp 0.6s ease both; }
-        .hero h1 { animation: fadeUp 0.7s 0.1s ease both; }
-        .hero p { animation: fadeUp 0.7s 0.2s ease both; }
-        .stats-strip { animation: fadeUp 0.6s 0.3s ease both; }
     </style>
 </head>
 <body>
 
-    <!-- ── NAVBAR ── -->
-    <nav id="mainNav">
-        <div class="nav-inner">
-            <a href="/" class="nav-logo">
-                <img src="/assets/images/logo.png" alt="ABI STUDIO">
-            </a>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-
-                <!-- Layanan dropdown -->
-                <div class="nav-layanan-wrap">
-                    <button class="nav-layanan-btn" id="layananBtn" onclick="toggleLayanan(event)">
-                        Layanan
-                        <i class="fas fa-chevron-down chevron"></i>
-                    </button>
-                    <div class="layanan-dropdown" id="layananDropdown">
-                        <a href="/services#design" class="layanan-item">
-                            <div class="li-icon"><i class="fas fa-pen-ruler"></i></div>
-                            <div>
-                                <div class="li-label">Design & Planning</div>
-                                <div class="li-sub">Arsitektur, Interior, Struktur</div>
-                            </div>
-                        </a>
-                        <a href="/services#construction" class="layanan-item">
-                            <div class="li-icon"><i class="fas fa-hammer"></i></div>
-                            <div>
-                                <div class="li-label">Construction</div>
-                                <div class="li-sub">Bangun baru, Renovasi, Finishing</div>
-                            </div>
-                        </a>
-                        <a href="/services#consultant" class="layanan-item">
-                            <div class="li-icon"><i class="fas fa-file-contract"></i></div>
-                            <div>
-                                <div class="li-label">Consultant & Audit</div>
-                                <div class="li-sub">PBG/SLF, Pengawasan, Teknis</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <a href="/portfolio" class="active">Portfolio</a>
-                <a href="/blog">Blog</a>
-                <a href="https://wa.me/6285157577465" target="_blank" class="nav-cta">Contact</a>
-            </div>
-            <button class="hamburger" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu">
+<!-- ── NAVBAR ── -->
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo"><img src="/assets/images/logo.png" alt="ABI STUDIO"></a>
+        <div class="nav-links">
             <a href="/">Home</a>
             <a href="/about">About</a>
-
-            <!-- Mobile Layanan accordion -->
-            <button class="mob-layanan-toggle" id="mobLayananBtn" onclick="toggleMobLayanan()">
-                Layanan
-                <i class="fas fa-chevron-down chevron"></i>
-            </button>
-            <div class="mob-layanan-items" id="mobLayananItems">
-                <a href="/services#design"><i class="fas fa-pen-ruler"></i> Design & Planning</a>
-                <a href="/services#construction"><i class="fas fa-hammer"></i> Construction</a>
-                <a href="/services#consultant"><i class="fas fa-file-contract"></i> Consultant & Audit</a>
+            <div class="nav-layanan-wrap">
+                <button class="nav-layanan-btn" id="layananBtn" onclick="toggleLayanan(event)">
+                    Layanan <i class="fas fa-chevron-down chevron"></i>
+                </button>
+                <div class="layanan-dropdown" id="layananDropdown">
+                    <a href="/services#design" class="layanan-item">
+                        <div class="li-icon"><i class="fas fa-pen-ruler"></i></div>
+                        <div><div class="li-label">Design & Planning</div><div class="li-sub">Arsitektur, Interior, Struktur</div></div>
+                    </a>
+                    <a href="/services#construction" class="layanan-item">
+                        <div class="li-icon"><i class="fas fa-hammer"></i></div>
+                        <div><div class="li-label">Construction</div><div class="li-sub">Bangun baru, Renovasi, Finishing</div></div>
+                    </a>
+                    <a href="/services#consultant" class="layanan-item">
+                        <div class="li-icon"><i class="fas fa-file-contract"></i></div>
+                        <div><div class="li-label">Consultant & Audit</div><div class="li-sub">PBG/SLF, Pengawasan, Teknis</div></div>
+                    </a>
+                </div>
             </div>
-
             <a href="/portfolio" class="active">Portfolio</a>
             <a href="/blog">Blog</a>
-            <a href="https://wa.me/6285157577465" target="_blank" style="color: var(--teal);">Contact</a>
+            <a href="https://wa.me/6285157577465" target="_blank" class="nav-cta">Contact</a>
         </div>
-    </nav>
+        <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobileMenu">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <button class="mob-layanan-toggle" id="mobLayananBtn" onclick="toggleMobLayanan()">
+            Layanan <i class="fas fa-chevron-down chevron"></i>
+        </button>
+        <div class="mob-layanan-items" id="mobLayananItems">
+            <a href="/services#design"><i class="fas fa-pen-ruler"></i> Design & Planning</a>
+            <a href="/services#construction"><i class="fas fa-hammer"></i> Construction</a>
+            <a href="/services#consultant"><i class="fas fa-file-contract"></i> Consultant & Audit</a>
+        </div>
+        <a href="/portfolio" class="active">Portfolio</a>
+        <a href="/blog">Blog</a>
+        <a href="https://wa.me/6285157577465" target="_blank" style="color:var(--teal);">Contact</a>
+    </div>
+</nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero-label">Our Work</div>
-            <h1>Setiap Ruang,<br><em>Sebuah Karya.</em></h1>
-            <p>Transformasi hunian dan komersial yang kami bangun dengan presisi desain, kedalaman material, dan kepercayaan klien selama lebih dari 6 tahun.</p>
-        </section>
+<main>
+    <!-- ── HERO ── -->
+    <section class="hero">
+        <div class="hero-label">Our Work</div>
+        <h1>Setiap Ruang,<br><em>Sebuah Karya.</em></h1>
+        <p>Transformasi hunian dan komersial yang kami bangun dengan presisi desain, kedalaman material, dan kepercayaan klien selama lebih dari 6 tahun.</p>
+    </section>
 
-        <div class="stats-strip">
-            <div class="stats-inner">
-                <div class="stat-item">
-                    <div class="stat-num">150+</div>
-                    <div class="stat-label">Proyek Selesai</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">7+</div>
-                    <div class="stat-label">Tahun Pengalaman</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">Klien Puas</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">3</div>
-                    <div class="stat-label">Kategori Layanan</div>
+    <!-- ── STATS ── -->
+    <div class="stats-strip">
+        <div class="stats-inner">
+            <div class="stat-item"><div class="stat-num">150+</div><div class="stat-label">Proyek Selesai</div></div>
+            <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">Tahun Pengalaman</div></div>
+            <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Klien Puas</div></div>
+            <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Kategori Layanan</div></div>
+        </div>
+    </div>
+
+    <!-- ── FILTER ── -->
+    <section class="filter-section">
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">Semua Proyek</button>
+            <button class="filter-btn" data-filter="residential">Residential</button>
+            <button class="filter-btn" data-filter="renovation">Renovation</button>
+            <button class="filter-btn" data-filter="interior">Interior Design</button>
+            <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <button class="filter-btn" data-filter="kos">Kos & Hunian Sewa</button>
+        </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section class="projects-section">
+
+        <!-- PROJECT 01: Pondok Indah 2 -->
+        <article class="project-entry" data-category="residential">
+            <div class="project-images">
+                <div class="before-after-grid">
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_pi2_before.jpg" alt="Pondok Indah 2 Before" loading="lazy">
+                        <span class="img-badge badge-before">Before</span>
+                    </div>
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_pi2_after.jpg" alt="Pondok Indah 2 After" loading="lazy">
+                        <span class="img-badge badge-after">After</span>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <section class="filter-section">
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">Semua Proyek</button>
-                <button class="filter-btn" data-filter="residential">Residential</button>
-                <button class="filter-btn" data-filter="renovation">Renovation</button>
-                <button class="filter-btn" data-filter="interior">Interior Design</button>
-                <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <div class="project-info">
+                <div class="project-index">01</div>
+                <div class="project-category">Residential</div>
+                <h3 class="project-title">Pondok Indah 2 –<br>Mr. E Project</h3>
+                <p class="project-desc">Transformasi hunian eksklusif dengan konsep modern klasik. Memaksimalkan sirkulasi udara dan cahaya alami untuk menghasilkan ruang yang elegan sekaligus nyaman sebagai tempat tinggal.</p>
+                <div class="project-tags">
+                    <span class="tag">Modern Klasik</span>
+                    <span class="tag">Pencahayaan Alami</span>
+                    <span class="tag">Renovasi Total</span>
+                </div>
+                <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Pondok%20Indah%202" target="_blank" class="project-cta">
+                    Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
+                </a>
             </div>
-        </section>
+        </article>
 
-        <section class="projects-section">
+        <!-- PROJECT 02: Griya Dadap -->
+        <article class="project-entry reverse" data-category="renovation">
+            <div class="project-images">
+                <div class="before-after-grid">
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_dadap_before.jpg" alt="Griya Dadap Before" loading="lazy">
+                        <span class="img-badge badge-before">Before</span>
+                    </div>
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_dadap_after.jpg" alt="Griya Dadap After" loading="lazy">
+                        <span class="img-badge badge-after">After</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-info">
+                <div class="project-index">02</div>
+                <div class="project-category">Renovation</div>
+                <h3 class="project-title">Griya Dadap –<br>Mr. A Project</h3>
+                <p class="project-desc">Renovasi fasad dan interior untuk menciptakan kesan rumah yang lebih luas, bersih, dan fungsional. Solusi hunian modern bagi keluarga yang menginginkan estetika tanpa mengorbankan fungsi.</p>
+                <div class="project-tags">
+                    <span class="tag">Fasad Baru</span>
+                    <span class="tag">Efisiensi Ruang</span>
+                    <span class="tag">Family-Friendly</span>
+                </div>
+                <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Griya%20Dadap" target="_blank" class="project-cta">
+                    Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
+                </a>
+            </div>
+        </article>
 
-            <article class="project-entry" data-category="residential">
-                <div class="project-images">
-                    <div class="before-after-grid">
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_pi2_before.jpg" alt="Pondok Indah 2 Before">
-                            <span class="img-badge badge-before">Before</span>
-                        </div>
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_pi2_after.jpg" alt="Pondok Indah 2 After">
-                            <span class="img-badge badge-after">After</span>
-                        </div>
+        <!-- PROJECT 03: Green Garden -->
+        <article class="project-entry" data-category="interior">
+            <div class="project-images">
+                <div class="before-after-grid">
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_gg_before.jpg" alt="Green Garden Before" loading="lazy">
+                        <span class="img-badge badge-before">Before</span>
+                    </div>
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_gg_after.jpg" alt="Green Garden After" loading="lazy">
+                        <span class="img-badge badge-after">After</span>
                     </div>
                 </div>
-                <div class="project-info">
-                    <div class="project-index">01</div>
-                    <div class="project-category">Residential</div>
-                    <h3 class="project-title">Pondok Indah 2 –<br>Mr. E Project</h3>
-                    <p class="project-desc">Transformasi hunian eksklusif dengan konsep modern klasik. Memaksimalkan sirkulasi udara dan cahaya alami untuk menghasilkan ruang yang elegan sekaligus nyaman sebagai tempat tinggal.</p>
-                    <div class="project-tags">
-                        <span class="tag">Modern Klasik</span>
-                        <span class="tag">Pencahayaan Alami</span>
-                        <span class="tag">Renovasi Total</span>
-                    </div>
-                    <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Pondok%20Indah%202" target="_blank" class="project-cta">
-                        Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
-                    </a>
+            </div>
+            <div class="project-info">
+                <div class="project-index">03</div>
+                <div class="project-category">Interior Design</div>
+                <h3 class="project-title">Green Garden –<br>Mr. R Project</h3>
+                <p class="project-desc">Interior kustom bergaya industrial minimalis yang menonjolkan keindahan material mentah dan garis bersih. Setiap detail dirancang untuk memancarkan karakter kuat namun tetap bersahabat.</p>
+                <div class="project-tags">
+                    <span class="tag">Industrial Minimalis</span>
+                    <span class="tag">Custom Furniture</span>
+                    <span class="tag">Material Ekspose</span>
                 </div>
-            </article>
+                <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Green%20Garden" target="_blank" class="project-cta">
+                    Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
+                </a>
+            </div>
+        </article>
 
-            <article class="project-entry reverse" data-category="renovation">
-                <div class="project-images">
-                    <div class="before-after-grid">
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_dadap_before.jpg" alt="Griya Dadap Before">
-                            <span class="img-badge badge-before">Before</span>
-                        </div>
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_dadap_after.jpg" alt="Griya Dadap After">
-                            <span class="img-badge badge-after">After</span>
-                        </div>
+        <!-- PROJECT 04: PT. Sumber Pralin -->
+        <article class="project-entry reverse" data-category="commercial">
+            <div class="project-images">
+                <div class="before-after-grid">
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_pralin_before.jpg" alt="PT Sumber Pralin Before" loading="lazy">
+                        <span class="img-badge badge-before">Before</span>
+                    </div>
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/proyek_pralin_after.jpg" alt="PT Sumber Pralin After" loading="lazy">
+                        <span class="img-badge badge-after">After</span>
                     </div>
                 </div>
-                <div class="project-info">
-                    <div class="project-index">02</div>
-                    <div class="project-category">Renovation</div>
-                    <h3 class="project-title">Griya Dadap –<br>Mr. A Project</h3>
-                    <p class="project-desc">Renovasi fasad dan interior untuk menciptakan kesan rumah yang lebih luas, bersih, dan fungsional. Solusi hunian modern bagi keluarga yang menginginkan estetika tanpa mengorbankan fungsi.</p>
-                    <div class="project-tags">
-                        <span class="tag">Fasad Baru</span>
-                        <span class="tag">Efisiensi Ruang</span>
-                        <span class="tag">Family-Friendly</span>
-                    </div>
-                    <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Griya%20Dadap" target="_blank" class="project-cta">
-                        Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
-                    </a>
+            </div>
+            <div class="project-info">
+                <div class="project-index">04</div>
+                <div class="project-category">Commercial</div>
+                <h3 class="project-title">PT. Sumber Pralin<br>Utama Office</h3>
+                <p class="project-desc">Pengembangan area kantor korporat untuk meningkatkan produktivitas tim. Desain ruang kerja modern yang efisien, menciptakan lingkungan profesional yang mengangkat citra perusahahaan.</p>
+                <div class="project-tags">
+                    <span class="tag">Office Design</span>
+                    <span class="tag">Produktivitas Kerja</span>
+                    <span class="tag">Corporate Image</span>
                 </div>
-            </article>
+                <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20komersial%20kantor" target="_blank" class="project-cta">
+                    Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
+                </a>
+            </div>
+        </article>
 
-            <article class="project-entry" data-category="interior">
-                <div class="project-images">
-                    <div class="before-after-grid">
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_gg_before.jpg" alt="Green Garden Before">
-                            <span class="img-badge badge-before">Before</span>
-                        </div>
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_gg_after.jpg" alt="Green Garden After">
-                            <span class="img-badge badge-after">After</span>
-                        </div>
+        <!-- ═══════════════════════════════════════════════
+             PROJECT 05: Villa Besakih — Mrs. N  (BARU)
+             Format: Before / After
+        ════════════════════════════════════════════════ -->
+        <article class="project-entry" data-category="residential">
+            <div class="project-images">
+                <div class="before-after-grid">
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <!--
+                            GANTI PLACEHOLDER:
+                            Foto BEFORE Villa Besakih → /assets/images/villa_besakih_before.jpg
+                        -->
+                        <img src="/assets/images/villa_besakih_before.jpg" alt="Villa Besakih Before" loading="lazy">
+                        <span class="img-badge badge-before">Before</span>
+                    </div>
+                    <div class="img-wrap">
+                        <div class="img-skeleton"></div>
+                        <!--
+                            GANTI PLACEHOLDER:
+                            Foto AFTER Villa Besakih → /assets/images/villa_besakih_after.jpg
+                        -->
+                        <img src="/assets/images/villa_besakih_after.jpg" alt="Villa Besakih After" loading="lazy">
+                        <span class="img-badge badge-after">After</span>
                     </div>
                 </div>
-                <div class="project-info">
-                    <div class="project-index">03</div>
-                    <div class="project-category">Interior Design</div>
-                    <h3 class="project-title">Green Garden –<br>Mr. R Project</h3>
-                    <p class="project-desc">Interior kustom bergaya industrial minimalis yang menonjolkan keindahan material mentah dan garis bersih. Setiap detail dirancang untuk memancarkan karakter kuat namun tetap bersahabat.</p>
-                    <div class="project-tags">
-                        <span class="tag">Industrial Minimalis</span>
-                        <span class="tag">Custom Furniture</span>
-                        <span class="tag">Material Ekspose</span>
-                    </div>
-                    <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Green%20Garden" target="_blank" class="project-cta">
-                        Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
-                    </a>
+            </div>
+            <div class="project-info">
+                <div class="project-index">05</div>
+                <div class="project-category">Residential · Villa</div>
+                <h3 class="project-title">Villa Besakih,<br>Jatiwarna – Mrs. N</h3>
+                <p class="project-desc">Transformasi villa di Jatiwarna, Bekasi menjadi hunian premium dengan estetika tropis modern. Fasad dirancang ulang untuk memaksimalkan kesan luas dan sirkulasi udara alami di setiap ruangan.</p>
+                <div class="project-tags">
+                    <span class="tag">Tropis Modern</span>
+                    <span class="tag">Renovasi Villa</span>
+                    <span class="tag">Bekasi</span>
                 </div>
-            </article>
+                <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Villa%20Besakih%20Jatiwarna" target="_blank" class="project-cta">
+                    Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
+                </a>
+            </div>
+        </article>
 
-            <article class="project-entry reverse" data-category="commercial">
-                <div class="project-images">
-                    <div class="before-after-grid">
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_pralin_before.jpg" alt="PT Sumber Pralin Before">
-                            <span class="img-badge badge-before">Before</span>
-                        </div>
-                        <div class="img-wrap">
-                            <img src="/assets/images/proyek_pralin_after.jpg" alt="PT Sumber Pralin After">
-                            <span class="img-badge badge-after">After</span>
-                        </div>
+        <!-- ═══════════════════════════════════════════════
+             PROJECT 06: Kos-kosan Pasar Baru — Mr. P  (BARU)
+             Format: 5-photo gallery dengan lightbox
+        ════════════════════════════════════════════════ -->
+        <article class="project-entry reverse" data-category="kos">
+            <div class="project-images">
+                <!--
+                    GANTI PLACEHOLDER 5 foto kos-kosan:
+                    /assets/images/kos_pasarbaru_1.jpg  → foto utama / tampak luar
+                    /assets/images/kos_pasarbaru_2.jpg  → kamar
+                    /assets/images/kos_pasarbaru_3.jpg  → kamar mandi
+                    /assets/images/kos_pasarbaru_4.jpg  → koridor / common area
+                    /assets/images/kos_pasarbaru_5.jpg  → detail interior / dapur
+                -->
+                <div class="gallery-grid-5" id="gallery-kos">
+                    <!-- Foto 1: Hero / tampak luar -->
+                    <div class="img-wrap" onclick="openLightbox('kos', 0)" style="cursor:pointer;">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/kos_pasarbaru_1.jpg" alt="Kos Pasar Baru - Tampak Luar" loading="lazy">
+                        <span class="img-badge badge-photo">Tampak Luar</span>
+                    </div>
+                    <!-- Foto 2 -->
+                    <div class="img-wrap" onclick="openLightbox('kos', 1)" style="cursor:pointer;">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/kos_pasarbaru_2.jpg" alt="Kos Pasar Baru - Kamar" loading="lazy">
+                        <span class="img-badge badge-photo">Kamar</span>
+                    </div>
+                    <!-- Foto 3 -->
+                    <div class="img-wrap" onclick="openLightbox('kos', 2)" style="cursor:pointer;">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/kos_pasarbaru_3.jpg" alt="Kos Pasar Baru - Kamar Mandi" loading="lazy">
+                        <span class="img-badge badge-photo">Kamar Mandi</span>
+                    </div>
+                    <!-- Foto 4 -->
+                    <div class="img-wrap" onclick="openLightbox('kos', 3)" style="cursor:pointer;">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/kos_pasarbaru_4.jpg" alt="Kos Pasar Baru - Area Bersama" loading="lazy">
+                        <span class="img-badge badge-photo">Area Bersama</span>
+                    </div>
+                    <!-- Foto 5 -->
+                    <div class="img-wrap" onclick="openLightbox('kos', 4)" style="cursor:pointer; position:relative;">
+                        <div class="img-skeleton"></div>
+                        <img src="/assets/images/kos_pasarbaru_5.jpg" alt="Kos Pasar Baru - Interior" loading="lazy">
+                        <span class="img-badge badge-photo">Interior</span>
                     </div>
                 </div>
-                <div class="project-info">
-                    <div class="project-index">04</div>
-                    <div class="project-category">Commercial</div>
-                    <h3 class="project-title">PT. Sumber Pralin<br>Utama Office</h3>
-                    <p class="project-desc">Pengembangan area kantor korporat untuk meningkatkan produktivitas tim. Desain ruang kerja modern yang efisien, menciptakan lingkungan profesional yang mengangkat citra perusahaan.</p>
-                    <div class="project-tags">
-                        <span class="tag">Office Design</span>
-                        <span class="tag">Produktivitas Kerja</span>
-                        <span class="tag">Corporate Image</span>
-                    </div>
-                    <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20komersial%20kantor" target="_blank" class="project-cta">
-                        Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
-                    </a>
+            </div>
+            <div class="project-info">
+                <div class="project-index">06</div>
+                <div class="project-category">Kos & Hunian Sewa</div>
+                <h3 class="project-title">Kos-kosan<br>Pasar Baru – Mr. P</h3>
+                <p class="project-desc">Pembangunan kos-kosan premium di area Pasar Baru dengan desain modern minimalis. Setiap kamar dirancang efisien namun nyaman, dengan fasilitas kamar mandi dalam, pencahayaan optimal, dan material berkualitas.</p>
+                <div class="project-tags">
+                    <span class="tag">Kos Premium</span>
+                    <span class="tag">Modern Minimalis</span>
+                    <span class="tag">Kamar Mandi Dalam</span>
+                    <span class="tag">Pasar Baru</span>
                 </div>
-            </article>
+                <a href="https://wa.me/6285157577465?text=Halo%2C%20saya%20tertarik%20dengan%20proyek%20Kos-kosan%20Pasar%20Baru" target="_blank" class="project-cta">
+                    Konsultasi Proyek <i class="fas fa-arrow-right" style="font-size:.65rem;"></i>
+                </a>
+            </div>
+        </article>
 
-        </section>
+    </section>
 
-        <section class="cta-band">
-            <h2>Siap Mewujudkan<br><em>Ruang Impian Anda?</em></h2>
-            <p>Ceritakan kebutuhan Anda. Tim kami siap memberikan konsultasi awal secara gratis.</p>
-            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20STUDIO%2C%20saya%20ingin%20konsultasi%20proyek" target="_blank" class="cta-btn">
-                <i class="fab fa-whatsapp"></i> Mulai Konsultasi Gratis
+    <!-- ── CTA ── -->
+    <section class="cta-band">
+        <h2>Siap Mewujudkan<br><em>Ruang Impian Anda?</em></h2>
+        <p>Ceritakan kebutuhan Anda. Tim kami siap memberikan konsultasi awal secara gratis.</p>
+        <a href="https://wa.me/6285157577465?text=Halo%20ABI%20STUDIO%2C%20saya%20ingin%20konsultasi%20proyek" target="_blank" class="cta-btn">
+            <i class="fab fa-whatsapp"></i> Mulai Konsultasi Gratis
+        </a>
+    </section>
+</main>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)"><i class="fas fa-chevron-left"></i></button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div>
+            <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="footer-address">
+                <i class="fas fa-building"></i>
+                <span><strong>Kantor Utama:</strong><br>Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>Sudimara Pinang, Kec. Pinang,<br>Kota Tangerang, Banten 15145.</span>
             </a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-inner">
-            <div>
-                <a href="https://maps.app.goo.gl/hRz4h8xNWNQNWpV3A" target="_blank" class="footer-address">
-                    <i class="fas fa-building"></i>
-                    <span>
-                        <strong>Kantor Utama:</strong><br>
-                        Jl. Hidup Baru I No.8 Blok A49C, RT.09/RW.01,<br>
-                        Sudimara Pinang, Kec. Pinang,<br>
-                        Kota Tangerang, Banten 15145.
-                    </span>
-                </a>
-                <a href="https://maps.app.goo.gl/PsEPkbn6rijnyJCs7" target="_blank" class="footer-address">
-                    <i class="fas fa-warehouse"></i>
-                    <span>
-                        <strong>Workshop:</strong><br>
-                        Jl. Wijaya Kusuma 1, Duri Kosambi,<br>
-                        Kecamatan Cengkareng,<br>
-                        Kota Jakarta Barat, DKI Jakarta 11750
-                    </span>
-                </a>
-            </div>
-            <div>
-                <div class="footer-col-title">Contact Us</div>
-                <div class="footer-contact-item" onclick="window.open('https://wa.me/6285157577465','_blank')">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>
-                        <div class="footer-contact-name">Angga Aditya Pratama, SE</div>
-                        <div class="footer-contact-sub">Co-Founder & Head of Marketing</div>
-                        <div class="footer-contact-sub">0851-5757-7465</div>
-                    </div>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="far fa-envelope"></i>
-                    <div>
-                        <a href="mailto:abi.studio.id@gmail.com" style="color:rgba(255,255,255,0.45); text-decoration:none; font-size:.83rem; font-weight:300;">abi.studio.id@gmail.com</a>
-                    </div>
+            <a href="https://maps.app.goo.gl/PsEPkbn6rijnyJCs7" target="_blank" class="footer-address">
+                <i class="fas fa-warehouse"></i>
+                <span><strong>Workshop:</strong><br>Jl. Wijaya Kusuma 1, Duri Kosambi,<br>Kecamatan Cengkareng,<br>Kota Jakarta Barat, DKI Jakarta 11750</span>
+            </a>
+        </div>
+        <div>
+            <div class="footer-col-title">Contact Us</div>
+            <div class="footer-contact-item" onclick="window.open('https://wa.me/6285157577465','_blank')">
+                <i class="fab fa-whatsapp"></i>
+                <div>
+                    <div class="footer-contact-name">Angga Aditya Pratama, SE</div>
+                    <div class="footer-contact-sub">Co-Founder & Head of Marketing</div>
+                    <div class="footer-contact-sub">0851-5757-7465</div>
                 </div>
             </div>
-            <div>
-                <div class="footer-col-title">Social</div>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/abi.studio.id/" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div style="margin-top: 2rem;">
-                    <div class="footer-col-title">Navigation</div>
-                    <div style="display:flex; flex-direction:column; gap:.5rem; margin-top:.5rem;">
-                        <a href="/about" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">About</a>
-                        <a href="/services" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Services</a>
-                        <a href="/portfolio" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Portfolio</a>
-                        <a href="/blog" style="font-size:.78rem; color:rgba(255,255,255,0.4); text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Blog</a>
-                    </div>
+            <div class="footer-contact-item">
+                <i class="far fa-envelope"></i>
+                <div><a href="mailto:abi.studio.id@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:.83rem;font-weight:300;">abi.studio.id@gmail.com</a></div>
+            </div>
+        </div>
+        <div>
+            <div class="footer-col-title">Social</div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/abi.studio.id/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div style="margin-top:2rem;">
+                <div class="footer-col-title">Navigation</div>
+                <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem;">
+                    <a href="/about" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">About</a>
+                    <a href="/services" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Services</a>
+                    <a href="/portfolio" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Portfolio</a>
+                    <a href="/blog" style="font-size:.78rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='#7EC8C8'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Blog</a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 ABI STUDIO. All rights reserved.</p>
-            <p>Tangerang & Jabodetabek</p>
-        </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 ABI STUDIO. All rights reserved.</p>
+        <p>Tangerang & Jabodetabek</p>
+    </div>
+</footer>
 
-    <script>
-        // ── NAVBAR SCROLL ──
-        window.addEventListener('scroll', () => {
-            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+<script>
+/* ── NAVBAR ── */
+window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function toggleLayanan(e) {
+    e.stopPropagation();
+    const btn = document.getElementById('layananBtn');
+    const drop = document.getElementById('layananDropdown');
+    const isOpen = drop.classList.contains('open');
+    closeLayanan();
+    if (!isOpen) { btn.classList.add('open'); drop.classList.add('open'); }
+}
+function closeLayanan() {
+    document.getElementById('layananBtn').classList.remove('open');
+    document.getElementById('layananDropdown').classList.remove('open');
+}
+document.addEventListener('click', closeLayanan);
+function toggleMobLayanan() {
+    document.getElementById('mobLayananBtn').classList.toggle('open');
+    document.getElementById('mobLayananItems').classList.toggle('open');
+}
+
+/* ── SMOOTH IMAGE LOADING (shimmer → fade in) ── */
+document.querySelectorAll('.img-wrap img').forEach(img => {
+    const skeleton = img.previousElementSibling;
+    const onLoad = () => {
+        img.classList.add('loaded');
+        if (skeleton && skeleton.classList.contains('img-skeleton')) {
+            skeleton.style.opacity = '0';
+            setTimeout(() => skeleton.remove(), 400);
+        }
+    };
+    if (img.complete && img.naturalWidth > 0) {
+        onLoad();
+    } else {
+        img.addEventListener('load', onLoad);
+        img.addEventListener('error', () => {
+            // If image fails to load: hide skeleton, show subtle placeholder
+            img.classList.add('loaded');
+            img.style.opacity = '0.3';
+            img.style.filter = 'grayscale(1)';
+            if (skeleton) skeleton.remove();
         });
+    }
+});
 
-        // ── MOBILE MENU ──
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('open');
+/* ── SCROLL ANIMATION ── */
+const entries = document.querySelectorAll('.project-entry');
+const observer = new IntersectionObserver((items) => {
+    items.forEach(item => {
+        if (item.isIntersecting) {
+            item.target.classList.add('visible');
+            observer.unobserve(item.target);
         }
+    });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+entries.forEach(e => observer.observe(e));
 
-        // ── LAYANAN DROPDOWN (desktop) ──
-        function toggleLayanan(e) {
-            e.stopPropagation();
-            const btn = document.getElementById('layananBtn');
-            const drop = document.getElementById('layananDropdown');
-            const isOpen = drop.classList.contains('open');
-            // close first
-            closeLayanan();
-            if (!isOpen) {
-                btn.classList.add('open');
-                drop.classList.add('open');
-            }
-        }
-        function closeLayanan() {
-            document.getElementById('layananBtn').classList.remove('open');
-            document.getElementById('layananDropdown').classList.remove('open');
-        }
-        document.addEventListener('click', closeLayanan);
-
-        // ── MOBILE LAYANAN ACCORDION ──
-        function toggleMobLayanan() {
-            const btn = document.getElementById('mobLayananBtn');
-            const items = document.getElementById('mobLayananItems');
-            btn.classList.toggle('open');
-            items.classList.toggle('open');
-        }
-
-        // ── SCROLL ANIMATION ──
-        const entries = document.querySelectorAll('.project-entry');
-        const observer = new IntersectionObserver((items) => {
-            items.forEach(item => {
-                if (item.isIntersecting) {
-                    item.target.classList.add('visible');
-                    observer.unobserve(item.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-        entries.forEach(e => observer.observe(e));
-
-        // ── FILTER ──
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                entries.forEach(entry => {
-                    const category = entry.dataset.category;
-                    if (filter === 'all' || category === filter) {
-                        entry.style.display = 'grid';
-                        setTimeout(() => entry.classList.add('visible'), 50);
-                    } else {
-                        entry.classList.remove('visible');
-                        setTimeout(() => {
-                            if (!entry.classList.contains('visible')) entry.style.display = 'none';
-                        }, 300);
-                    }
+/* ── FILTER ── */
+const filterBtns = document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        entries.forEach(entry => {
+            const cat = entry.dataset.category;
+            const match = filter === 'all' || cat === filter;
+            if (match) {
+                entry.style.display = 'grid';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => entry.classList.add('visible'));
                 });
-            });
+            } else {
+                entry.classList.remove('visible');
+                setTimeout(() => {
+                    if (!entry.classList.contains('visible')) entry.style.display = 'none';
+                }, 350);
+            }
         });
-    </script>
+    });
+});
 
+/* ── LIGHTBOX ── */
+const galleryData = {
+    kos: [
+        { src: '/assets/images/kos_pasarbaru_1.jpg', caption: 'Tampak Luar' },
+        { src: '/assets/images/kos_pasarbaru_2.jpg', caption: 'Kamar' },
+        { src: '/assets/images/kos_pasarbaru_3.jpg', caption: 'Kamar Mandi' },
+        { src: '/assets/images/kos_pasarbaru_4.jpg', caption: 'Area Bersama' },
+        { src: '/assets/images/kos_pasarbaru_5.jpg', caption: 'Interior' }
+    ]
+};
+let currentGallery = null;
+let currentIndex = 0;
+
+function openLightbox(gallery, index) {
+    currentGallery = gallery;
+    currentIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function closeLightboxOnBg(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+function lightboxNav(dir) {
+    const items = galleryData[currentGallery];
+    currentIndex = (currentIndex + dir + items.length) % items.length;
+    updateLightbox();
+}
+function updateLightbox() {
+    const items = galleryData[currentGallery];
+    const item = items[currentIndex];
+    const img = document.getElementById('lightboxImg');
+    img.style.opacity = '0';
+    img.style.transform = 'scale(0.96)';
+    img.src = item.src;
+    img.alt = item.caption;
+    img.onload = () => {
+        img.style.transition = 'opacity 0.3s ease, transform 0.35s cubic-bezier(0.34,1.2,0.64,1)';
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+    };
+    document.getElementById('lightboxCaption').textContent = item.caption;
+    document.getElementById('lightboxCounter').textContent = `${currentIndex + 1} / ${items.length}`;
+}
+document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+});
+</script>
 </body>
 </html>
