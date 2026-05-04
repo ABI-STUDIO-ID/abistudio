@@ -1043,26 +1043,82 @@ function closeModal(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 /* ── SUBMIT ── */
-function submitToWA(e){
-  e.preventDefault();
-  const name=document.getElementById('clientName').value;
-  const wa=document.getElementById('clientWA').value;
-  const service=document.getElementById('selectedService').value;
-  const pkg=document.getElementById('packageSelect').value;
-  const loc=document.getElementById('projectLoc').value;
-  const area=document.getElementById('projectArea').value;
-  const note=document.getElementById('projectNote').value;
-  if(!pkg){document.getElementById('packageSelect').focus();return;}
-  const msg=`Halo ABI STUDIO, saya tertarik dengan layanan Anda.%0A%0A`+
-            `📋 *DATA KLIEN*%0ANama: ${name}%0ANo. WA: ${wa}%0A%0A`+
-            `🏗️ *DETAIL PROYEK*%0ALayanan: ${service}%0A*Paket/Tipe: ${pkg}*%0A`+
-            `Lokasi: ${loc}%0ALuas: ${area?area+' m²':'-'}%0ACatatan: ${note||'-'}%0A%0AMohon info penawaran harganya. Terima kasih.`;
-  window.open(`https://wa.me/6285157577465?text=${msg}`,'_blank');
-  const btn=document.getElementById('submitBtn');
-  const orig=btn.innerHTML;
-  btn.innerHTML='<i class="fas fa-check"></i> Terkirim!';btn.disabled=true;
-  db.collection("leads").add({nama_klien:name,no_hp:wa,jenis_bangunan:service,paket_dipilih:pkg,lokasi:loc,luas_bangunan:area,catatan:note,waktu_input:firebase.firestore.FieldValue.serverTimestamp()})
-  .finally(()=>setTimeout(()=>{closeModal();btn.innerHTML=orig;btn.disabled=false;},1200));
+/* ══ SUBMIT → sessionStorage → redirect /thank-you ══ */
+function submitToWA(e) {
+    e.preventDefault();
+ 
+    // 1. Ambil nilai form
+    var name    = document.getElementById('clientName').value.trim();
+    var wa      = document.getElementById('clientWA').value.trim();
+    var service = document.getElementById('selectedService').value;
+    var pkg     = document.getElementById('packageSelect').value;
+    var loc     = document.getElementById('projectLoc').value.trim();
+    var area    = document.getElementById('projectArea').value.trim();
+    var note    = document.getElementById('projectNote').value.trim();
+ 
+    if (!pkg) { document.getElementById('packageSelect').focus(); return; }
+ 
+    // 2. Bangun pesan WhatsApp
+    var msg = encodeURIComponent(
+        'Halo ABI STUDIO, saya tertarik dengan layanan Anda.\n\n' +
+        '📋 *DATA KLIEN*\n' +
+        'Nama: ' + name + '\n' +
+        'No. WA: ' + wa + '\n\n' +
+        '🏗️ *DETAIL PROYEK*\n' +
+        'Layanan: ' + service + '\n' +
+        '*Paket/Tipe: ' + pkg + '*\n' +
+        'Lokasi: ' + loc + '\n' +
+        'Luas: ' + (area ? area + ' m²' : '-') + '\n' +
+        'Catatan: ' + (note || '-') + '\n\n' +
+        'Mohon info penawaran harganya. Terima kasih.'
+    );
+    var waUrl = 'https://wa.me/6285157577465?text=' + msg;
+ 
+    // 3. Simpan data ke sessionStorage (dibaca oleh /thank-you)
+    var leadData = {
+        name:    name,
+        wa:      wa,
+        service: service,
+        package: pkg,
+        loc:     loc,
+        area:    area,
+        note:    note,
+        waUrl:   waUrl
+    };
+    try { sessionStorage.setItem('abi_lead', JSON.stringify(leadData)); } catch(err) {}
+ 
+    // 4. GA4 — begin_checkout event sebelum redirect
+    if (typeof gtag === 'function') {
+        gtag('event', 'begin_checkout', {
+            event_category: 'Konsultasi',
+            event_label: service + ' – ' + pkg,
+            value: 1
+        });
+    }
+ 
+    // 5. Loading state pada tombol
+    var btn = document.getElementById('submitBtn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+    btn.disabled = true;
+ 
+    // 6. Simpan lead ke Firestore (tidak blocking redirect)
+    if (typeof db !== 'undefined') {
+        db.collection('leads').add({
+            nama_klien:      name,
+            no_hp:           wa,
+            jenis_bangunan:  service,
+            paket_dipilih:   pkg,
+            lokasi:          loc,
+            luas_bangunan:   area,
+            catatan:         note,
+            waktu_input:     firebase.firestore.FieldValue.serverTimestamp()
+        }).catch(function(err) { console.warn('Firestore error:', err); });
+    }
+ 
+    // 7. Redirect ke /thank-you setelah 600ms (beri waktu Firestore write mulai)
+    setTimeout(function () {
+        window.location.href = '/thank-you';
+    }, 600);
 }
 
 /* ── LANGUAGE ── */
