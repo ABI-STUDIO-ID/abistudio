@@ -103,13 +103,32 @@
         .blog-layout { padding: 3rem 2rem 6rem; }
         .blog-grid-wrap { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 3.5rem; align-items: start; }
 
-        /* ── FEATURED ARTICLE ── */
-        .featured-wrap { margin-bottom: 2.5rem; }
-        .featured-card { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 1.1fr 1fr; cursor: pointer; transition: box-shadow 0.3s, border-color 0.3s; background: white; }
-        .featured-card:hover { box-shadow: 0 16px 56px rgba(0,0,0,0.09); border-color: transparent; }
+        /* ── FEATURED HEADLINE CAROUSEL ── */
+        .featured-wrap { margin-bottom: 2.5rem; position: relative; }
+        .featured-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+        .featured-header-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 0.5rem; }
+        .featured-header-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse-dot 2s infinite; }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
+
+        /* Carousel nav dots */
+        .featured-dots { display: flex; align-items: center; gap: 0.4rem; }
+        .featured-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); border: none; cursor: pointer; padding: 0; transition: all 0.3s; }
+        .featured-dot.active { width: 20px; border-radius: 3px; background: var(--teal); }
+
+        /* Carousel arrows */
+        .featured-arrows { display: flex; gap: 0.4rem; }
+        .featured-arrow { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--mid); transition: all 0.2s; }
+        .featured-arrow:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-pale); }
+
+        /* Carousel track */
+        .featured-carousel { overflow: hidden; border-radius: 20px; border: 1px solid var(--border); }
+        .featured-track { display: flex; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; }
+        .featured-slide { min-width: 100%; }
+
+        .featured-card { display: grid; grid-template-columns: 1.1fr 1fr; cursor: pointer; background: white; }
+        .featured-card:hover .featured-img img { transform: scale(1.04); }
         .featured-img { overflow: hidden; height: 320px; }
         .featured-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
-        .featured-card:hover .featured-img img { transform: scale(1.04); }
         .featured-body { padding: 2.2rem 2rem; display: flex; flex-direction: column; justify-content: center; }
         .featured-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; display: inline-block; padding: 0.28rem 0.8rem; border-radius: 100px; background: var(--teal-pale); color: var(--teal); margin-bottom: 1rem; }
         .featured-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 400; line-height: 1.25; color: var(--dark); margin-bottom: 0.8rem; transition: color 0.2s; }
@@ -117,8 +136,12 @@
         .featured-desc { font-size: 0.82rem; color: #888; line-height: 1.7; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         .featured-meta { display: flex; align-items: center; gap: 1rem; margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
         .featured-date { font-size: 0.7rem; color: #bbb; font-weight: 300; }
-        .read-btn { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 0.4rem; margin-left: auto; text-decoration: none; transition: gap 0.2s; }
+        .read-btn { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); display: inline-flex; align-items: center; gap: 0.4rem; margin-left: auto; text-decoration: none; transition: gap 0.2s; cursor: pointer; background: none; border: none; font-family: 'Plus Jakarta Sans', sans-serif; }
         .featured-card:hover .read-btn { gap: 0.7rem; }
+
+        /* Auto-progress bar */
+        .featured-progress { height: 2px; background: var(--border); margin-top: 0; border-radius: 0 0 20px 20px; overflow: hidden; }
+        .featured-progress-bar { height: 100%; background: var(--teal); width: 0%; transition: width linear; }
 
         /* ── ARTICLE LIST ── */
         .articles-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
@@ -148,6 +171,11 @@
         .skel-img { width: 100px; height: 70px; border-radius: 10px; }
         .skel-line { height: 12px; border-radius: 6px; margin-bottom: 8px; }
 
+        /* Featured skeleton */
+        .featured-skel { border-radius: 20px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 1.1fr 1fr; height: 320px; }
+        .featured-skel-img { height: 100%; }
+        .featured-skel-body { padding: 2rem; display: flex; flex-direction: column; gap: 0.8rem; justify-content: center; }
+
         /* ── SIDEBAR ── */
         .sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 136px; }
         .sidebar-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem; }
@@ -171,13 +199,6 @@
         .cta-card p { font-size: 0.78rem; color: rgba(255,255,255,0.65); font-weight: 300; line-height: 1.6; margin-bottom: 1.4rem; position: relative; z-index: 1; }
         .cta-card-btn { display: block; background: white; color: var(--teal); text-align: center; padding: 0.75rem; border-radius: 10px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s; position: relative; z-index: 1; }
         .cta-card-btn:hover { background: var(--dark); color: white; }
-        .update-guide { background: var(--light); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; }
-        .update-guide-title { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.9rem; }
-        .update-step { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 0.7rem; font-size: 0.75rem; color: var(--mid); line-height: 1.5; }
-        .update-step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--teal-pale); color: var(--teal); font-size: 0.6rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-        .update-step:last-child { margin-bottom: 0; }
-        .admin-link { display: block; margin-top: 1rem; text-align: center; font-size: 0.68rem; font-weight: 700; color: var(--teal); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; border-top: 1px solid var(--border); padding-top: 0.9rem; transition: color 0.2s; }
-        .admin-link:hover { color: var(--dark); }
 
         /* ── ARTICLE MODAL ── */
         .modal-backdrop { position: fixed; inset: 0; background: rgba(10,14,18,0.65); backdrop-filter: blur(6px); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
@@ -234,8 +255,8 @@
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 1060px) { .blog-grid-wrap { grid-template-columns: 1fr; } .sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; } .update-guide { display: none; } }
-        @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: block; } .featured-card { grid-template-columns: 1fr; } .featured-img { height: 220px; } .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; } .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; } }
+        @media (max-width: 1060px) { .blog-grid-wrap { grid-template-columns: 1fr; } .sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+        @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: block; } .featured-card { grid-template-columns: 1fr; } .featured-img { height: 220px; } .featured-skel { grid-template-columns: 1fr; height: auto; } .featured-skel-img { height: 200px; } .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; } .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; } }
         @media (max-width: 640px) { .sidebar { grid-template-columns: 1fr; } .nav-inner { padding: 0 1.25rem; } .filter-bar-inner { gap: 0.6rem; } .search-input { width: 160px; } .modal-content { padding: 0.5rem 1.4rem 4rem; } }
     </style>
 </head>
@@ -322,31 +343,53 @@
 
         <!-- LEFT: Articles -->
         <div>
-            <!-- Featured -->
+            <!-- Featured Headline Carousel -->
             <div class="featured-wrap fade-up" id="featuredWrap" style="display:none;">
-                <div class="featured-card" id="featuredCard" onclick="">
-                    <div class="featured-img"><img id="featuredImg" src="" alt=""></div>
-                    <div class="featured-body">
-                        <span class="featured-tag" id="featuredTag">—</span>
-                        <div class="featured-title" id="featuredTitle">—</div>
-                        <div class="featured-desc" id="featuredDesc">—</div>
-                        <div class="featured-meta">
-                            <span class="featured-date" id="featuredDate">—</span>
-                            <span class="read-btn">Baca <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></span>
+                <div class="featured-header">
+                    <span class="featured-header-label">Headline Terbaru</span>
+                    <div style="display:flex;align-items:center;gap:0.8rem;">
+                        <div class="featured-dots" id="featuredDots"></div>
+                        <div class="featured-arrows">
+                            <button class="featured-arrow" onclick="prevSlide()" title="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
+                            <button class="featured-arrow" onclick="nextSlide()" title="Berikutnya"><i class="fas fa-chevron-right"></i></button>
                         </div>
+                    </div>
+                </div>
+                <div class="featured-carousel">
+                    <div class="featured-track" id="featuredTrack"></div>
+                </div>
+                <div class="featured-progress">
+                    <div class="featured-progress-bar" id="featuredProgressBar"></div>
+                </div>
+            </div>
+
+            <!-- Featured skeleton -->
+            <div id="featuredSkel" class="fade-up">
+                <div style="margin-bottom:1rem;display:flex;justify-content:space-between;">
+                    <div class="skeleton" style="height:12px;width:120px;border-radius:6px;"></div>
+                    <div class="skeleton" style="height:24px;width:80px;border-radius:12px;"></div>
+                </div>
+                <div class="featured-skel">
+                    <div class="skeleton featured-skel-img"></div>
+                    <div class="featured-skel-body">
+                        <div class="skeleton" style="height:10px;width:60px;border-radius:5px;"></div>
+                        <div class="skeleton" style="height:20px;width:90%;border-radius:5px;"></div>
+                        <div class="skeleton" style="height:20px;width:70%;border-radius:5px;"></div>
+                        <div class="skeleton" style="height:12px;width:100%;border-radius:5px;"></div>
+                        <div class="skeleton" style="height:12px;width:80%;border-radius:5px;"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Articles header -->
-            <div class="articles-header">
+            <div class="articles-header" style="margin-top:2.5rem;">
                 <div>
                     <span class="section-label">Semua Artikel</span>
                 </div>
                 <span class="articles-count" id="articlesCount"></span>
             </div>
 
-            <!-- Skeleton -->
+            <!-- Skeleton rows -->
             <div id="skeletonGrid" style="display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:16px;overflow:hidden;">
                 <div class="skel-row"><div class="skeleton skel-img"></div><div style="flex:1;padding:0.4rem 0;"><div class="skeleton skel-line" style="width:40%;margin-bottom:10px;"></div><div class="skeleton skel-line" style="width:90%;"></div><div class="skeleton skel-line" style="width:70%;"></div></div></div>
                 <div class="skel-row"><div class="skeleton skel-img"></div><div style="flex:1;padding:0.4rem 0;"><div class="skeleton skel-line" style="width:35%;margin-bottom:10px;"></div><div class="skeleton skel-line" style="width:85%;"></div><div class="skeleton skel-line" style="width:60%;"></div></div></div>
@@ -404,6 +447,10 @@
                 <a href="https://wa.me/6285157577465?text=Halo ABI STUDIO, saya ingin konsultasi desain gratis." target="_blank" class="cta-card-btn">Hubungi Kami</a>
             </div>
 
+        </aside>
+    </div>
+</div>
+
 <!-- ── FOOTER ── -->
 <footer id="contact">
     <div class="footer-inner">
@@ -446,49 +493,94 @@
 </footer>
 
 <script>
-// ── STATE ──
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
 let allArticles = [];
 let filteredArticles = [];
 let displayedCount = 0;
 const PAGE_SIZE = 8;
 let activeCategory = 'all';
-let lastDoc = null;
 
-// ── FETCH FROM FIREBASE ──
+// Carousel state
+let carouselArticles = []; // top 5 by date for headline rotation
+let currentSlide = 0;
+let carouselTimer = null;
+const CAROUSEL_INTERVAL = 5000; // 5 seconds
+let progressAnimation = null;
+
+// ══════════════════════════════════════════
+// FIREBASE FETCH — sorted by date descending
+// ══════════════════════════════════════════
 async function loadArticles() {
     try {
-        const snap = await db.collection('articles').orderBy('tanggal', 'desc').limit(40).get();
-        allArticles = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const snap = await db.collection('articles')
+            .orderBy('tanggal', 'desc')
+            .limit(60)
+            .get();
+
+        // Map and ensure date field is normalized for sorting
+        allArticles = snap.docs.map(doc => {
+            const data = doc.data();
+            return {
+                id: doc.id,
+                ...data,
+                _dateMs: getDateMs(data.tanggal)
+            };
+        });
+
+        // Sort client-side by date descending (belt & suspenders)
+        allArticles.sort((a, b) => b._dateMs - a._dateMs);
+
         applyFilter();
         renderSidebar();
     } catch(e) {
-        console.error(e);
+        console.error('Firebase error:', e);
         showEmpty();
     }
 }
 
-// ── APPLY FILTER + SEARCH ──
+// Helper: normalize any date format to milliseconds
+function getDateMs(val) {
+    if (!val) return 0;
+    try {
+        if (val && typeof val.toDate === 'function') return val.toDate().getTime();
+        if (val && val.seconds) return val.seconds * 1000;
+        return new Date(val).getTime() || 0;
+    } catch { return 0; }
+}
+
+// ══════════════════════════════════════════
+// FILTER + SEARCH
+// ══════════════════════════════════════════
 function applyFilter() {
     const q = document.getElementById('searchInput').value.toLowerCase().trim();
     filteredArticles = allArticles.filter(a => {
         const matchCat = activeCategory === 'all' || (a.kategori || '').toLowerCase() === activeCategory.toLowerCase();
-        const matchQ = !q || (a.judul || '').toLowerCase().includes(q) || (a.deskripsi || '').toLowerCase().includes(q) || (a.kategori || '').toLowerCase().includes(q);
+        const matchQ = !q ||
+            (a.judul || '').toLowerCase().includes(q) ||
+            (a.deskripsi || '').toLowerCase().includes(q) ||
+            (a.kategori || '').toLowerCase().includes(q);
         return matchCat && matchQ;
     });
     displayedCount = 0;
     renderArticles(true);
 }
 
-// ── RENDER FEATURED + GRID ──
+// ══════════════════════════════════════════
+// RENDER ARTICLES
+// ══════════════════════════════════════════
 function renderArticles(reset) {
     const grid = document.getElementById('articlesGrid');
     const skel = document.getElementById('skeletonGrid');
+    const featSkel = document.getElementById('featuredSkel');
     const empty = document.getElementById('emptyState');
     const lmBtn = document.getElementById('loadMoreBtn');
     const featWrap = document.getElementById('featuredWrap');
     const count = document.getElementById('articlesCount');
 
     skel.style.display = 'none';
+    featSkel.style.display = 'none';
 
     if (filteredArticles.length === 0) {
         grid.style.display = 'none';
@@ -496,88 +588,226 @@ function renderArticles(reset) {
         empty.style.display = 'block';
         lmBtn.style.display = 'none';
         count.textContent = '';
+        stopCarousel();
         return;
     }
 
     empty.style.display = 'none';
     count.textContent = filteredArticles.length + ' artikel';
 
-    // Featured = first article
-    const featured = filteredArticles[0];
-    renderFeatured(featured);
+    // Build carousel from top 5 articles by date
+    const headlineCount = Math.min(5, filteredArticles.length);
+    carouselArticles = filteredArticles.slice(0, headlineCount);
+    buildCarousel();
     featWrap.style.display = 'block';
 
-    // Rest goes into list
+    // The rest go into the list (start after carouselArticles)
     if (reset) { grid.innerHTML = ''; displayedCount = 0; }
-    const toShow = filteredArticles.slice(1, displayedCount + 1 + PAGE_SIZE);
+    const listStart = headlineCount;
+    const toShow = filteredArticles.slice(listStart, listStart + displayedCount + PAGE_SIZE);
     displayedCount = toShow.length;
 
     grid.innerHTML = toShow.map(a => buildRow(a)).join('');
-    grid.style.display = filteredArticles.length > 1 ? 'flex' : 'none';
+    grid.style.display = filteredArticles.length > headlineCount ? 'flex' : 'none';
 
-    lmBtn.style.display = (1 + displayedCount) < filteredArticles.length ? 'inline-block' : 'none';
+    const totalShown = headlineCount + displayedCount;
+    lmBtn.style.display = totalShown < filteredArticles.length ? 'inline-block' : 'none';
 }
 
 function loadMoreArticles() {
     const grid = document.getElementById('articlesGrid');
     const lmBtn = document.getElementById('loadMoreBtn');
-    const next = filteredArticles.slice(1 + displayedCount, 1 + displayedCount + PAGE_SIZE);
+    const headlineCount = carouselArticles.length;
+    const listStart = headlineCount + displayedCount;
+    const next = filteredArticles.slice(listStart, listStart + PAGE_SIZE);
     displayedCount += next.length;
     grid.innerHTML += next.map(a => buildRow(a)).join('');
-    lmBtn.style.display = (1 + displayedCount) < filteredArticles.length ? 'inline-block' : 'none';
+    const totalShown = headlineCount + displayedCount;
+    lmBtn.style.display = totalShown < filteredArticles.length ? 'inline-block' : 'none';
 }
 
-// ── FEATURED CARD ──
-function renderFeatured(a) {
+// ══════════════════════════════════════════
+// CAROUSEL — ROTATING FEATURED HEADLINE
+// ══════════════════════════════════════════
+function buildCarousel() {
+    stopCarousel();
+    currentSlide = 0;
+
+    const track = document.getElementById('featuredTrack');
+    const dotsContainer = document.getElementById('featuredDots');
     const fallback = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800';
-    document.getElementById('featuredImg').src = a.gambar || fallback;
-    document.getElementById('featuredImg').onerror = function(){ this.src = fallback; };
-    document.getElementById('featuredTag').textContent = a.kategori || 'Artikel';
-    document.getElementById('featuredTitle').textContent = a.judul || '';
-    document.getElementById('featuredDesc').textContent = a.deskripsi || '';
-    document.getElementById('featuredDate').textContent = formatDate(a.tanggal);
-    document.getElementById('featuredCard').onclick = () => openArticle(a.id);
+
+    // Build slides (one per headline article, sorted by date — newest first)
+    track.innerHTML = carouselArticles.map((a, i) => `
+        <div class="featured-slide">
+            <div class="featured-card" onclick="openArticle('${a.id}')">
+                <div class="featured-img">
+                    <img src="${a.gambar || fallback}" alt="${escapeHtml(a.judul || '')}" 
+                         onerror="this.src='${fallback}'">
+                </div>
+                <div class="featured-body">
+                    <span class="featured-tag">${escapeHtml(a.kategori || 'Artikel')}</span>
+                    <div class="featured-title">${escapeHtml(a.judul || '')}</div>
+                    <div class="featured-desc">${escapeHtml(a.deskripsi || '')}</div>
+                    <div class="featured-meta">
+                        <span class="featured-date">${formatDate(a.tanggal)}</span>
+                        <button class="read-btn">Baca <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    // Build dots
+    dotsContainer.innerHTML = carouselArticles.map((_, i) => `
+        <button class="featured-dot ${i === 0 ? 'active' : ''}" 
+                onclick="goToSlide(${i})" 
+                title="Artikel ${i + 1}"></button>
+    `).join('');
+
+    // Start autoplay only if more than 1 article
+    if (carouselArticles.length > 1) {
+        startCarouselTimer();
+    }
+
+    updateCarouselPosition(false);
 }
 
-// ── ROW CARD ──
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarouselPosition(true);
+    resetCarouselTimer();
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % carouselArticles.length;
+    updateCarouselPosition(true);
+    resetCarouselTimer();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + carouselArticles.length) % carouselArticles.length;
+    updateCarouselPosition(true);
+    resetCarouselTimer();
+}
+
+function updateCarouselPosition(animate) {
+    const track = document.getElementById('featuredTrack');
+    if (!track) return;
+    track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // Update dots
+    document.querySelectorAll('.featured-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function startCarouselTimer() {
+    stopCarousel();
+    startProgressBar();
+    carouselTimer = setTimeout(() => {
+        nextSlide();
+        startCarouselTimer();
+    }, CAROUSEL_INTERVAL);
+}
+
+function resetCarouselTimer() {
+    if (carouselArticles.length > 1) {
+        startCarouselTimer();
+    }
+}
+
+function stopCarousel() {
+    if (carouselTimer) { clearTimeout(carouselTimer); carouselTimer = null; }
+    stopProgressBar();
+}
+
+// Progress bar animation
+function startProgressBar() {
+    stopProgressBar();
+    const bar = document.getElementById('featuredProgressBar');
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    // Force reflow
+    bar.offsetWidth;
+    bar.style.transition = `width ${CAROUSEL_INTERVAL}ms linear`;
+    bar.style.width = '100%';
+}
+
+function stopProgressBar() {
+    const bar = document.getElementById('featuredProgressBar');
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+}
+
+// Pause carousel on hover
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.featured-carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', () => stopCarousel());
+        carousel.addEventListener('mouseleave', () => {
+            if (carouselArticles.length > 1) startCarouselTimer();
+        });
+    }
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    carousel && carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carousel && carousel.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+            diff > 0 ? nextSlide() : prevSlide();
+        }
+    });
+});
+
+// ══════════════════════════════════════════
+// ROW CARD
+// ══════════════════════════════════════════
 function buildRow(a) {
     const fallback = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=200';
     const img = a.gambar || fallback;
     return `
     <div class="article-row" onclick="openArticle('${a.id}')">
         <div class="article-row-thumb">
-            <img src="${img}" alt="${a.judul || ''}" onerror="this.src='${fallback}'">
+            <img src="${img}" alt="${escapeHtml(a.judul || '')}" onerror="this.src='${fallback}'">
         </div>
         <div class="article-row-body">
-            <span class="article-row-cat">${a.kategori || 'Artikel'}</span>
-            <div class="article-row-title">${a.judul || ''}</div>
+            <span class="article-row-cat">${escapeHtml(a.kategori || 'Artikel')}</span>
+            <div class="article-row-title">${escapeHtml(a.judul || '')}</div>
             <div class="article-row-date">${formatDate(a.tanggal)}</div>
         </div>
     </div>`;
 }
 
-// ── SIDEBAR RECENTS ──
+// ══════════════════════════════════════════
+// SIDEBAR RECENTS
+// ══════════════════════════════════════════
 function renderSidebar() {
     const container = document.getElementById('sidebarRecents');
-    const recent = allArticles.slice(0, 5);
+    const recent = allArticles.slice(0, 5); // already sorted by date desc
     const fallback = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=200';
     container.innerHTML = recent.map(a => `
     <div class="sidebar-item" onclick="openArticle('${a.id}')">
         <div class="sidebar-thumb"><img src="${a.gambar || fallback}" alt="" onerror="this.src='${fallback}'"></div>
         <div>
-            <div class="sidebar-item-title">${a.judul || ''}</div>
+            <div class="sidebar-item-title">${escapeHtml(a.judul || '')}</div>
             <div class="sidebar-item-date">${formatDate(a.tanggal)}</div>
         </div>
     </div>`).join('');
 }
 
-// ── OPEN ARTICLE MODAL (slide-in) ──
+// ══════════════════════════════════════════
+// ARTICLE MODAL
+// ══════════════════════════════════════════
 async function openArticle(docId) {
     const backdrop = document.getElementById('modalBackdrop');
     const sheet = document.getElementById('modalSheet');
     const inner = document.getElementById('modalInner');
 
-    // Show loader
     inner.innerHTML = `<div class="modal-loader"><div class="spinner"></div><span style="font-size:.75rem;color:#bbb;font-weight:300;">Memuat artikel…</span></div>`;
     backdrop.classList.add('open');
     sheet.classList.add('open');
@@ -585,7 +815,6 @@ async function openArticle(docId) {
     sheet.scrollTop = 0;
 
     try {
-        // Check cache first
         let data = allArticles.find(a => a.id === docId);
         if (!data) {
             const doc = await db.collection('articles').doc(docId).get();
@@ -596,16 +825,16 @@ async function openArticle(docId) {
         const fallback = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200';
         inner.innerHTML = `
         <div class="modal-hero">
-            <img src="${data.gambar || fallback}" alt="${data.judul || ''}" onerror="this.src='${fallback}'">
+            <img src="${data.gambar || fallback}" alt="${escapeHtml(data.judul || '')}" onerror="this.src='${fallback}'">
         </div>
         <div class="modal-content">
             <div class="modal-meta">
-                <span class="modal-cat">${data.kategori || 'Artikel'}</span>
+                <span class="modal-cat">${escapeHtml(data.kategori || 'Artikel')}</span>
                 <span class="modal-date">${formatDate(data.tanggal)}</span>
             </div>
-            <h1 class="modal-title">${data.judul || ''}</h1>
+            <h1 class="modal-title">${escapeHtml(data.judul || '')}</h1>
             <div class="modal-divider"></div>
-            <div class="modal-body-text">${data.konten || '<p>' + (data.deskripsi || '') + '</p>'}</div>
+            <div class="modal-body-text">${data.konten || '<p>' + escapeHtml(data.deskripsi || '') + '</p>'}</div>
             <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);text-align:center;">
                 <p style="font-size:.82rem;color:#aaa;font-weight:300;margin-bottom:1.2rem;">Ada pertanyaan seputar artikel ini?</p>
                 <a href="https://wa.me/6285157577465?text=Halo ABI STUDIO, saya tertarik dengan artikel: ${encodeURIComponent(data.judul || '')}. Bisa konsultasi?" target="_blank" style="display:inline-flex;align-items:center;gap:.6rem;background:var(--teal);color:white;padding:.75rem 1.6rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='var(--dark)'" onmouseout="this.style.background='var(--teal)'"><i class="fab fa-whatsapp" style="font-size:1rem;"></i> Konsultasi Sekarang</a>
@@ -623,18 +852,16 @@ function closeArticle() {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
 
-// ── FILTER ──
+// ══════════════════════════════════════════
+// FILTER
+// ══════════════════════════════════════════
 function filterByCategory(cat, btn) {
     activeCategory = cat;
-    // Update bar buttons
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-    // Update sidebar topics
     document.querySelectorAll('.sidebar-topic').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-    // Clear search
     document.getElementById('searchInput').value = '';
     applyFilter();
-    // Scroll to articles
     document.getElementById('featuredWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -642,19 +869,31 @@ function searchArticles() { applyFilter(); }
 
 function showEmpty() {
     document.getElementById('skeletonGrid').style.display = 'none';
+    document.getElementById('featuredSkel').style.display = 'none';
     document.getElementById('emptyState').style.display = 'block';
 }
 
-// ── DATE FORMAT ──
+// ══════════════════════════════════════════
+// DATE FORMAT
+// ══════════════════════════════════════════
 function formatDate(val) {
     if (!val) return '';
     try {
         let d;
-        if (val && val.toDate) d = val.toDate();
+        if (val && typeof val.toDate === 'function') d = val.toDate();
+        else if (val && val.seconds) d = new Date(val.seconds * 1000);
         else if (typeof val === 'string') d = new Date(val);
         else d = new Date(val);
         return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
     } catch { return val || ''; }
+}
+
+// ══════════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════════
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 // ── LANGUAGE ──
@@ -665,13 +904,17 @@ function changeLanguage(lang) {
 }
 
 // ── NAV SCROLL ──
-window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20); });
+window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
 
 // ── MOBILE MENU ──
 function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
 // ── FADE UP ──
-const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // ── URL PARAM: ?id=docId ──
