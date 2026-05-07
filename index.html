@@ -843,9 +843,46 @@ function toMs(ts) {
     if (!ts) return 0;
     try {
         if (ts.toDate) return ts.toDate().getTime();
-        if (ts.seconds) return ts.seconds * 1000;
+        if (ts.seconds) return (ts.seconds * 1000) + Math.floor((ts.nanoseconds || 0) / 1000000);
+        if (ts instanceof Date) return ts.getTime() || 0;
+        if (typeof ts === 'number') return ts;
+        if (typeof ts === 'string') {
+            const normalized = ts.includes(' ') && !ts.includes('T') ? ts.replace(' ', 'T') : ts;
+            const parsed = new Date(normalized).getTime();
+            if (!Number.isNaN(parsed)) return parsed;
+
+            const dateParts = ts.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})(?:\s+(\d{1,2}:\d{2}(?::\d{2})?))?$/);
+            if (dateParts) {
+                const [, day, month, year, time = '00:00:00'] = dateParts;
+                const [hour = '0', minute = '0', second = '0'] = time.split(':');
+                return new Date(+year, +month - 1, +day, +hour, +minute, +second).getTime() || 0;
+            }
+        }
         return new Date(ts).getTime() || 0;
     } catch { return 0; }
+}
+
+function articleTimeMs(article) {
+    const primaryCandidates = [
+        article.tanggalTimestamp,
+        article.timestamp,
+        article.timestand,
+        article.publishedAt,
+        article.tanggal
+    ];
+
+    let best = Math.max(...primaryCandidates.map(toMs));
+
+    if (article.tanggal && article.waktu) {
+        const combined = toMs(`${article.tanggal} ${article.waktu}`);
+        if (combined > best) best = combined;
+    }
+
+    if (!best) {
+        best = Math.max(toMs(article.createdAt), toMs(article.updatedAt));
+    }
+
+    return Number.isFinite(best) ? best : 0;
 }
 
 async function loadLatestArticles() {
@@ -854,7 +891,7 @@ async function loadLatestArticles() {
     try {
         const snap = await db.collection('articles')
             .orderBy('tanggal', 'desc')
-            .limit(3)
+            .limit(24)
             .get();
 
         if (snap.empty) {
@@ -862,9 +899,12 @@ async function loadLatestArticles() {
             return;
         }
 
-        // Map docs and sort client-side for safety
-        const articles = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        articles.sort((a, b) => toMs(b.tanggal) - toMs(a.tanggal));
+        // Map docs and sort client-side by the full article timestamp so the
+        // preview always shows the newest date + time first, even when the
+        // Firestore query returns several articles with the same date.
+        const articles = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+            .sort((a, b) => articleTimeMs(b) - articleTimeMs(a))
+            .slice(0, 3);
 
         const fallback = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800';
 
