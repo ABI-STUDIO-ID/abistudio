@@ -168,11 +168,28 @@
             display: flex; align-items: center;
             justify-content: space-between; gap: 0.75rem;
         }
-        /* Scrollable category chips on mobile */
+
+        /* FIX: Scrollable category chips — tambah fade indicator kanan */
+        .cat-filters-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+        /* Fade gradient di kanan untuk indikasi scroll */
+        .cat-filters-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 32px;
+            background: linear-gradient(to right, transparent, white);
+            pointer-events: none;
+        }
         .cat-filters {
             display: flex; gap: 0.35rem;
             overflow-x: auto; -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; flex: 1; min-width: 0;
+            scrollbar-width: none;
+            padding-right: 28px; /* ruang untuk fade */
         }
         .cat-filters::-webkit-scrollbar { display: none; }
         .cat-btn {
@@ -255,41 +272,50 @@
         }
         .featured-slide { min-width: 100%; }
 
-        /* Desktop: image left, text right */
+        /* FIX: Desktop featured card — hapus justify-content:center penyebab whitespace */
         .featured-card {
             display: grid; grid-template-columns: 1.1fr 1fr;
             cursor: pointer; background: white;
+            /* DIHAPUS: tidak ada min-height di sini */
         }
         .featured-card:hover .featured-img img { transform: scale(1.04); }
         .featured-img { overflow: hidden; height: 300px; }
         .featured-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; display: block; }
+
+        /* FIX: featured-body — ganti justify-content:center ke flex-start + gap konsisten */
         .featured-body {
-            padding: 2rem 1.8rem;
-            display: flex; flex-direction: column; justify-content: center;
+            padding: 1.75rem 1.8rem;
+            display: flex; flex-direction: column;
+            justify-content: flex-start; /* FIX: was 'center' — penyebab whitespace */
+            gap: 0; /* managed per-element */
         }
         .featured-tag {
             font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
             text-transform: uppercase; display: inline-block;
             padding: 0.25rem 0.75rem; border-radius: 100px;
-            background: var(--teal-pale); color: var(--teal); margin-bottom: 0.9rem;
+            background: var(--teal-pale); color: var(--teal);
+            margin-bottom: 0.75rem; /* FIX: was 0.9rem */
             align-self: flex-start;
         }
         .featured-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.35rem, 2.5vw, 1.7rem);
-            font-weight: 400; line-height: 1.25; color: var(--dark);
-            margin-bottom: 0.7rem; transition: color 0.2s;
+            font-size: clamp(1.25rem, 2.5vw, 1.7rem); /* FIX: turunkan min */
+            font-weight: 400; line-height: 1.3; color: var(--dark);
+            margin-bottom: 0.65rem; transition: color 0.2s;
         }
         .featured-card:hover .featured-title { color: var(--teal); }
         .featured-desc {
             font-size: 0.8rem; color: #888; line-height: 1.7;
             font-weight: 300; display: -webkit-box;
             -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+            flex: 1; /* FIX: ambil sisa ruang agar meta tetap di bawah */
         }
         .featured-meta {
             display: flex; align-items: center; gap: 0.75rem;
-            margin-top: 1.2rem; padding-top: 1rem;
+            margin-top: 0.85rem; /* FIX: was 1.2rem */
+            padding-top: 0.85rem; /* FIX: was 1rem */
             border-top: 1px solid var(--border);
+            flex-shrink: 0; /* FIX: jangan menyusut */
         }
         .featured-date { font-size: 0.68rem; color: #bbb; font-weight: 300; }
         .read-btn {
@@ -562,15 +588,24 @@
             .nav-links { display: none; }
             .hamburger { display: flex; }
 
-            /* Featured card stacks vertically */
+            /* FIX: Featured card stacks vertically — lebih compact */
             .featured-card { grid-template-columns: 1fr; }
-            .featured-img { height: 200px; }
-            .featured-body { padding: 1.4rem 1.25rem; }
-            .featured-title { font-size: 1.25rem; }
+            .featured-img { height: 180px; } /* FIX: was 200px */
+            .featured-body {
+                padding: 1.25rem 1.25rem 1.4rem; /* FIX: padding lebih kecil dan konsisten */
+                gap: 0;
+            }
+            .featured-title { font-size: 1.2rem; } /* FIX: was 1.25rem */
+            /* FIX: kurangi clamp desc di mobile agar meta tidak terdorong */
+            .featured-desc { -webkit-line-clamp: 2; flex: none; }
+            .featured-meta {
+                margin-top: 0.75rem;
+                padding-top: 0.75rem;
+            }
 
-            /* Skeleton also stacks */
+            /* FIX: Skeleton juga stacks */
             .featured-skel { grid-template-columns: 1fr; height: auto; }
-            .featured-skel-img { height: 180px; }
+            .featured-skel-img { height: 160px; } /* FIX: was 180px */
 
             /* Footer stacks */
             .footer-inner { grid-template-columns: 1fr; gap: 2.25rem; }
@@ -587,10 +622,10 @@
             .page-hero { height: 44vh; min-height: 320px; }
             .page-hero p { display: none; }
 
-            /* Filter bar: chips scroll, hide search on very narrow, or keep compact */
+            /* FIX: Filter bar lebih compact */
             .filter-bar-inner { padding: 0.55rem 1rem; gap: 0.5rem; }
-            .search-input { width: 120px; font-size: 0.72rem; }
-            .search-input:focus { width: 145px; }
+            .search-input { width: 110px; font-size: 0.72rem; }
+            .search-input:focus { width: 135px; }
 
             /* Blog layout */
             .blog-layout { padding: 1.75rem 1rem 4rem; }
@@ -599,13 +634,15 @@
             /* Sidebar single column on mobile */
             .sidebar { grid-template-columns: 1fr; }
 
-            /* Featured: tighter body padding */
-            .featured-body { padding: 1.2rem 1rem; }
-            .featured-title { font-size: 1.15rem; }
-            .featured-desc { -webkit-line-clamp: 2; }
+            /* FIX: Featured body mobile */
+            .featured-body { padding: 1rem 1rem 1.25rem; }
+            .featured-title { font-size: 1.05rem; line-height: 1.3; }
+            .featured-tag { margin-bottom: 0.55rem; }
+            .featured-desc { -webkit-line-clamp: 2; font-size: 0.78rem; }
+            .featured-meta { margin-top: 0.65rem; padding-top: 0.65rem; }
 
-            /* Article rows */
-            .article-row { padding: 0.9rem 1rem; gap: 0.75rem; }
+            /* FIX: Article rows lebih compact */
+            .article-row { padding: 0.85rem 1rem; gap: 0.75rem; }
             .article-row-thumb { width: 76px; height: 56px; }
             .article-row-title { font-size: 0.82rem; }
 
@@ -622,7 +659,8 @@
         /* Very small: ≤380px */
         @media (max-width: 380px) {
             .search-wrap { display: none; }
-            .cat-filters { width: 100%; }
+            .cat-filters { width: 100%; padding-right: 0; }
+            .cat-filters-wrap::after { display: none; }
         }
     </style>
 </head>
@@ -689,14 +727,17 @@
 <!-- ══ FILTER BAR ══ -->
 <div class="filter-bar">
     <div class="filter-bar-inner">
-        <div class="cat-filters" id="catFilters">
-            <button class="cat-btn active" data-cat="all" onclick="filterByCategory('all', this)">Semua</button>
-            <button class="cat-btn" data-cat="Arsitektur" onclick="filterByCategory('Arsitektur', this)">Arsitektur</button>
-            <button class="cat-btn" data-cat="Interior" onclick="filterByCategory('Interior', this)">Interior</button>
-            <button class="cat-btn" data-cat="Konstruksi" onclick="filterByCategory('Konstruksi', this)">Konstruksi</button>
-            <button class="cat-btn" data-cat="Material" onclick="filterByCategory('Material', this)">Material</button>
-            <button class="cat-btn" data-cat="Renovasi" onclick="filterByCategory('Renovasi', this)">Renovasi</button>
-            <button class="cat-btn" data-cat="Tren" onclick="filterByCategory('Tren', this)">Tren</button>
+        <!-- FIX: Bungkus cat-filters dengan wrapper untuk fade indicator -->
+        <div class="cat-filters-wrap">
+            <div class="cat-filters" id="catFilters">
+                <button class="cat-btn active" data-cat="all" onclick="filterByCategory('all', this)">Semua</button>
+                <button class="cat-btn" data-cat="Arsitektur" onclick="filterByCategory('Arsitektur', this)">Arsitektur</button>
+                <button class="cat-btn" data-cat="Interior" onclick="filterByCategory('Interior', this)">Interior</button>
+                <button class="cat-btn" data-cat="Konstruksi" onclick="filterByCategory('Konstruksi', this)">Konstruksi</button>
+                <button class="cat-btn" data-cat="Material" onclick="filterByCategory('Material', this)">Material</button>
+                <button class="cat-btn" data-cat="Renovasi" onclick="filterByCategory('Renovasi', this)">Renovasi</button>
+                <button class="cat-btn" data-cat="Tren" onclick="filterByCategory('Tren', this)">Tren</button>
+            </div>
         </div>
         <div class="search-wrap">
             <i class="fas fa-search search-icon" aria-hidden="true"></i>
