@@ -37,8 +37,9 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <script>
-        const firebaseConfig = { apiKey: "AIzaSyC9JW1Rc3VFnJRYofHiorqDN4MWHjBrVi0", authDomain: "abistudio-db.firebaseapp.com", projectId: "abistudio-db", storageBucket: "abistudio-db.firebasestorage.app", messagingSenderId: "249751405902", appId: "1:249751405902:web:6061648be8e6a51a69ca1f" };
-        firebase.initializeApp(firebaseConfig);
+        if (!firebase.apps.length) {
+            firebase.initializeApp({ apiKey: "AIzaSyC9JW1Rc3VFnJRYofHiorqDN4MWHjBrVi0", authDomain: "abistudio-db.firebaseapp.com", projectId: "abistudio-db", storageBucket: "abistudio-db.firebasestorage.app", messagingSenderId: "249751405902", appId: "1:249751405902:web:6061648be8e6a51a69ca1f" });
+        }
         const db = firebase.firestore();
     </script>
 
@@ -59,35 +60,15 @@
         html { font-size: 16px; scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-        /* ══════════════════════════════════════
-           NAVBAR
-        ══════════════════════════════════════ */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            transition: box-shadow 0.3s;
-        }
+        /* ══ NAVBAR ══ */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s; }
         nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.07); }
-        .nav-inner {
-            max-width: 1280px; margin: 0 auto; padding: 0 2rem;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 80px;
-        }
+        .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 80px; }
         .nav-logo img { height: 60px; width: auto; object-fit: contain; display: block; }
         .nav-links { display: flex; align-items: center; gap: 2rem; }
-        .nav-links a {
-            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s;
-        }
+        .nav-links a { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
         .nav-links a:hover, .nav-links a.active { color: var(--teal); }
-        .nav-cta {
-            background: var(--teal); color: white !important;
-            padding: 0.55rem 1.5rem; border-radius: 100px;
-            font-size: 0.72rem !important; transition: background 0.2s, transform 0.2s !important;
-        }
+        .nav-cta { background: var(--teal); color: white !important; padding: 0.55rem 1.5rem; border-radius: 100px; font-size: 0.72rem !important; transition: background 0.2s, transform 0.2s !important; }
         .nav-cta:hover { background: var(--dark) !important; transform: translateY(-1px); }
         .lang-wrap { display: flex; align-items: center; gap: 0.5rem; padding-left: 1.5rem; border-left: 1px solid var(--border); }
         .lang-btn { font-size: 0.7rem; font-weight: 700; cursor: pointer; color: #999; transition: color 0.2s; }
@@ -95,198 +76,74 @@
         .lang-sep { color: #ddd; font-size: 0.7rem; }
         .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--teal); font-size: 1.4rem; }
 
-        /* ── LAYANAN DROPDOWN (matches services page) ── */
+        /* Layanan dropdown */
         .nav-layanan-wrap { position: relative; }
-        .nav-layanan-btn {
-            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--mid);
-            background: none; border: none; cursor: pointer;
-            display: flex; align-items: center; gap: 5px; padding: 0;
-            transition: color 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        .nav-layanan-btn { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; transition: color 0.2s; font-family: 'Plus Jakarta Sans', sans-serif; }
         .nav-layanan-btn:hover { color: var(--teal); }
         .nav-layanan-btn.open { color: var(--teal); }
         .nav-layanan-btn .caret { font-size: 0.55rem; transition: transform 0.25s; display: inline-block; }
         .nav-layanan-btn.open .caret { transform: rotate(180deg); }
-
-        .layanan-dropdown {
-            position: absolute; top: calc(100% + 16px); left: 50%;
-            transform: translateX(-50%) translateY(-6px);
-            background: white; border: 1px solid var(--border);
-            border-radius: 16px; padding: 0.6rem; min-width: 268px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.10);
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.2s ease, transform 0.2s ease; z-index: 200;
-        }
-        .layanan-dropdown::before {
-            content: ''; position: absolute; top: -6px; left: 50%;
-            width: 12px; height: 12px; background: white;
-            border-left: 1px solid var(--border); border-top: 1px solid var(--border);
-            transform: translateX(-50%) rotate(45deg);
-        }
+        .layanan-dropdown { position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%) translateY(-6px); background: white; border: 1px solid var(--border); border-radius: 16px; padding: 0.6rem; min-width: 268px; box-shadow: 0 12px 40px rgba(0,0,0,0.10); opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 200; }
+        .layanan-dropdown::before { content: ''; position: absolute; top: -6px; left: 50%; width: 12px; height: 12px; background: white; border-left: 1px solid var(--border); border-top: 1px solid var(--border); transform: translateX(-50%) rotate(45deg); }
         .layanan-dropdown.open { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
-
-        .ld-item {
-            display: flex; align-items: center; gap: 12px;
-            padding: 0.75rem 1rem; border-radius: 10px;
-            text-decoration: none; color: var(--mid);
-            transition: background 0.15s, color 0.15s;
-        }
+        .ld-item { display: flex; align-items: center; gap: 12px; padding: 0.75rem 1rem; border-radius: 10px; text-decoration: none; color: var(--mid); transition: background 0.15s, color 0.15s; }
         .ld-item:hover { background: var(--teal-pale); color: var(--teal); }
-        .ld-ico {
-            width: 32px; height: 32px; border-radius: 8px;
-            background: var(--teal-pale);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.8rem; color: var(--teal); flex-shrink: 0;
-            transition: background 0.15s;
-        }
+        .ld-ico { width: 32px; height: 32px; border-radius: 8px; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--teal); flex-shrink: 0; transition: background 0.15s; }
         .ld-item:hover .ld-ico { background: rgba(74,109,109,0.18); }
         .ld-label { font-size: 0.78rem; font-weight: 600; }
         .ld-sub { font-size: 0.67rem; color: #aaa; font-weight: 400; margin-top: 1px; }
 
-        /* ── MOBILE MENU ── */
-        #mobileMenu {
-            display: none; position: absolute;
-            top: 80px; left: 0; right: 0;
-            background: white; border-top: 1px solid var(--border);
-            padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
+        /* Mobile menu */
+        #mobileMenu { display: none; position: absolute; top: 80px; left: 0; right: 0; background: white; border-top: 1px solid var(--border); padding: 1.5rem 2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
         #mobileMenu.open { display: block; }
-        #mobileMenu > a {
-            display: block; font-size: 0.78rem; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            color: var(--mid); text-decoration: none;
-            padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s;
-        }
+        #mobileMenu > a { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; padding: 0.85rem 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
         #mobileMenu > a:last-child { border-bottom: none; }
         #mobileMenu > a:hover { color: var(--teal); }
-        .mob-layanan-toggle {
-            display: flex; justify-content: space-between; align-items: center;
-            width: 100%; background: none; border: none;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--mid);
-            padding: 0.85rem 0; cursor: pointer;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        .mob-layanan-toggle { display: flex; justify-content: space-between; align-items: center; width: 100%; background: none; border: none; border-bottom: 1px solid var(--border); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); padding: 0.85rem 0; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; }
         .mob-layanan-toggle:hover { color: var(--teal); }
         .mob-layanan-toggle .caret { font-size: 0.6rem; transition: transform 0.25s; }
         .mob-layanan-toggle.open .caret { transform: rotate(180deg); }
         .mob-layanan-items { display: none; padding: 0.4rem 0 0.4rem 0.5rem; border-bottom: 1px solid var(--border); }
         .mob-layanan-items.open { display: block; }
-        .mob-layanan-items a {
-            display: flex; align-items: center; gap: 10px;
-            padding: 0.6rem 0.5rem; font-size: 0.78rem;
-            color: var(--mid); text-decoration: none;
-            border-radius: 8px; font-weight: 500;
-        }
+        .mob-layanan-items a { display: flex; align-items: center; gap: 10px; padding: 0.6rem 0.5rem; font-size: 0.78rem; color: var(--mid); text-decoration: none; border-radius: 8px; font-weight: 500; }
         .mob-layanan-items a:hover { color: var(--teal); background: var(--teal-pale); }
         .mob-layanan-items a i { color: var(--teal); width: 16px; text-align: center; }
 
-        /* ══════════════════════════════════════
-           HERO SLIDER — 6 slides
-        ══════════════════════════════════════ */
+        /* ══ HERO ══ */
         .hero { position: relative; height: 100vh; min-height: 640px; overflow: hidden; }
-        .slide {
-            position: absolute; inset: 0; opacity: 0;
-            transition: opacity 1.6s ease-in-out;
-            background-size: cover; background-position: center;
-        }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; animation: kenBurns 12s ease-in-out infinite alternate; }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
-        .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(160deg, rgba(10,14,18,0.68) 0%, rgba(10,14,18,0.38) 60%, rgba(74,109,109,0.15) 100%);
-        }
-        .hero-content {
-            position: relative; z-index: 2; height: 100%;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            text-align: center; padding: 6rem 2rem 3rem;
-        }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(10,14,18,0.68) 0%, rgba(10,14,18,0.38) 60%, rgba(74,109,109,0.15) 100%); }
+        .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 3rem; }
         .slide-content { display: none; opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s; }
         .slide-content.active { display: block; }
         .slide-content.visible { opacity: 1; transform: translateY(0); }
-
-        /* Slide category pill */
-        .hero-eyebrow {
-            display: inline-flex; align-items: center; gap: 0.6rem;
-            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
-            backdrop-filter: blur(8px); color: #fff;
-            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em;
-            text-transform: uppercase; padding: 0.45rem 1.2rem;
-            border-radius: 100px; margin-bottom: 1.8rem;
-        }
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(8px); color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; padding: 0.45rem 1.2rem; border-radius: 100px; margin-bottom: 1.8rem; }
         .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #7EC8C8; }
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.2rem, 8vw, 6.5rem);
-            font-weight: 300; color: #fff;
-            line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2.4rem;
-        }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 300; color: #fff; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2.4rem; }
         .hero-title strong { font-weight: 600; display: block; }
-        .hero-btn {
-            display: inline-block; background: var(--teal); color: #fff;
-            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
-            text-transform: uppercase; padding: 0.9rem 2.4rem;
-            border-radius: 100px; text-decoration: none;
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 8px 28px rgba(74,109,109,0.45);
-        }
+        .hero-btn { display: inline-block; background: var(--teal); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.9rem 2.4rem; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 8px 28px rgba(74,109,109,0.45); }
         .hero-btn:hover { background: #fff; color: var(--dark); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(74,109,109,0.35); }
-
-        /* Slide counter label */
-        .hero-counter {
-            position: absolute; bottom: 2.5rem; right: 3rem;
-            z-index: 5; font-size: 0.65rem; font-weight: 700;
-            letter-spacing: 0.15em; color: rgba(255,255,255,0.45);
-        }
+        .hero-counter { position: absolute; bottom: 2.5rem; right: 3rem; z-index: 5; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.45); }
         .hero-counter span { color: white; }
-
-        /* Dots */
-        .hero-dots {
-            position: absolute; bottom: 2.5rem; left: 50%;
-            transform: translateX(-50%); z-index: 5;
-            display: flex; gap: 0.5rem;
-        }
-        .hero-dot {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s;
-        }
+        .hero-dots { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; gap: 0.5rem; }
+        .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s; }
         .hero-dot.active { background: white; width: 24px; border-radius: 3px; }
-
-        /* Prev/Next arrows */
-        .hero-arrow {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            z-index: 5; background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(6px);
-            color: white; width: 44px; height: 44px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; font-size: 0.85rem;
-            transition: background 0.2s;
-        }
+        .hero-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(6px); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.85rem; transition: background 0.2s; }
         .hero-arrow:hover { background: rgba(74,109,109,0.5); }
         .hero-arrow.prev { left: 2rem; }
         .hero-arrow.next { right: 2rem; }
 
-        /* ══════════════════════════════════════
-           STATS BAR
-        ══════════════════════════════════════ */
+        /* ══ STATS ══ */
         .stats-bar { background: var(--dark); padding: 2rem; }
-        .stats-inner {
-            max-width: 900px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(4,1fr);
-            gap: 1px; background: rgba(255,255,255,0.08);
-            border-radius: 16px; overflow: hidden;
-        }
+        .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
         .stat-item { background: var(--dark-2); padding: 1.8rem 1.5rem; text-align: center; transition: background 0.2s; }
         .stat-item:hover { background: #252b32; }
         .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: #7EC8C8; line-height: 1; margin-bottom: 0.3rem; }
         .stat-label { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
 
-        /* ══════════════════════════════════════
-           SHARED
-        ══════════════════════════════════════ */
+        /* ══ SHARED ══ */
         section { padding: 6rem 2rem; }
         .container { max-width: 1280px; margin: 0 auto; }
         .section-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 1rem; }
@@ -294,9 +151,7 @@
         .section-title strong { font-weight: 600; }
         .divider { width: 40px; height: 2px; background: var(--teal); margin: 1.5rem 0; }
 
-        /* ══════════════════════════════════════
-           ABOUT
-        ══════════════════════════════════════ */
+        /* ══ ABOUT ══ */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
         .about-desc { font-size: 1rem; line-height: 1.85; color: var(--mid); font-weight: 300; margin-bottom: 2rem; }
         .text-link { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border-bottom: 1.5px solid var(--teal); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
@@ -310,9 +165,7 @@
         .team-role { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
         .team-desc { font-size: 0.8rem; color: #888; line-height: 1.5; }
 
-        /* ══════════════════════════════════════
-           LOGOS / CLIENTS
-        ══════════════════════════════════════ */
+        /* ══ LOGOS ══ */
         .logos-section { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; }
         .logos-header { text-align: center; margin-bottom: 3rem; }
         .assoc-logos { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
@@ -332,98 +185,79 @@
         .client-card img { max-height: 80px; max-width: 180px; object-fit: contain; filter: grayscale(0.3) opacity(0.85); transition: all 0.3s ease; }
         .client-card:hover img { filter: grayscale(0) opacity(1); transform: scale(1.08); }
 
-        /* ══════════════════════════════════════
-           SERVICES (dark section — 3 accordion-style cards linking to /services)
-        ══════════════════════════════════════ */
+        /* ══ SERVICES ══ */
         .services-section { background: var(--dark); color: white; }
         .services-header { text-align: center; margin-bottom: 4rem; }
         .services-header .section-title { color: white; }
         .services-header p { font-size: 0.95rem; color: rgba(255,255,255,0.45); margin-top: 1rem; font-weight: 300; }
-
-        /* ── ACCORDION CARDS (same visual as services.html acc-section) ── */
         .home-acc-grid { display: flex; flex-direction: column; gap: 1rem; }
-        .home-acc {
-            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px; overflow: hidden;
-            transition: border-color 0.25s, transform 0.25s;
-        }
+        .home-acc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; transition: border-color 0.25s, transform 0.25s; }
         .home-acc:hover { border-color: rgba(126,200,200,0.3); transform: translateY(-2px); }
-        .home-acc-toggle {
-            width: 100%; display: flex; align-items: center; justify-content: space-between;
-            padding: 1.5rem 2rem; background: none; border: none; cursor: pointer;
-            font-family: 'Plus Jakarta Sans', sans-serif; gap: 1rem;
-        }
+        .home-acc-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 2rem; background: none; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; gap: 1rem; }
         .home-acc-left { display: flex; align-items: center; gap: 1.2rem; text-align: left; }
-        .home-acc-ico {
-            width: 48px; height: 48px; border-radius: 13px;
-            background: rgba(74,109,109,0.3);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; color: #7EC8C8; flex-shrink: 0;
-            transition: background 0.25s;
-        }
+        .home-acc-ico { width: 48px; height: 48px; border-radius: 13px; background: rgba(74,109,109,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #7EC8C8; flex-shrink: 0; transition: background 0.25s; }
         .home-acc:hover .home-acc-ico { background: rgba(74,109,109,0.5); }
         .home-acc-title { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 3px; }
         .home-acc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 300; }
         .home-acc-right { display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; }
         .home-acc-badge { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(126,200,200,0.15); color: #7EC8C8; padding: 0.28rem 0.85rem; border-radius: 100px; white-space: nowrap; }
         .home-acc-caret { font-size: 0.6rem; color: rgba(255,255,255,0.4); transition: transform 0.3s; }
-
-        /* Panel */
         .home-acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1); }
         .home-acc-panel.open { grid-template-rows: 1fr; }
         .home-acc-overflow { overflow: hidden; }
-        .home-acc-inner {
-            padding: 0 2rem 1.8rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
+        .home-acc-inner { padding: 0 2rem 1.8rem; border-top: 1px solid rgba(255,255,255,0.06); }
         .home-acc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.75; font-weight: 300; margin-bottom: 1.2rem; padding-top: 1.4rem; }
         .home-acc-items { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
-        .home-acc-tag {
-            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em;
-            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6); padding: 0.3rem 0.85rem; border-radius: 100px;
-        }
-        .home-acc-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #7EC8C8;
-            text-decoration: none; transition: gap 0.2s;
-        }
+        .home-acc-tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); padding: 0.3rem 0.85rem; border-radius: 100px; }
+        .home-acc-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7EC8C8; text-decoration: none; transition: gap 0.2s; }
         .home-acc-link:hover { gap: 0.8rem; }
-
         .home-acc-open .home-acc-caret { transform: rotate(180deg); }
         .home-acc-open { border-color: rgba(126,200,200,0.25); }
         .home-acc-open .home-acc-ico { background: rgba(74,109,109,0.5); }
-
         .services-cta { text-align: center; margin-top: 2.5rem; }
         .outline-btn { display: inline-block; border: 1.5px solid var(--teal-light); color: #7EC8C8; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.85rem 2.4rem; border-radius: 100px; text-decoration: none; transition: background 0.2s, color 0.2s; }
         .outline-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
 
-        /* ══════════════════════════════════════
-           BLOG
-        ══════════════════════════════════════ */
+        /* ══ BLOG SECTION — Updated card style ══ */
         .blog-section { background: var(--light); border-top: 1px solid var(--border); }
         .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        .article-card { background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s; cursor: pointer; text-decoration: none; color: inherit; }
-        .article-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); transform: translateY(-3px); border-color: transparent; }
-        .article-img { height: 200px; overflow: hidden; background: #eee; flex-shrink: 0; }
-        .article-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .article-card:hover .article-img img { transform: scale(1.05); }
-        .article-body { padding: 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
-        .article-date { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
-        .article-title { font-size: 1rem; font-weight: 700; color: var(--dark); line-height: 1.45; margin-bottom: 0.6rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .article-desc { font-size: 0.83rem; color: #888; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-weight: 300; }
-        .article-more { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-top: auto; padding-top: 1.2rem; }
-        .blog-skeleton { background: #eee; border-radius: 16px; height: 320px; animation: shimmer 1.2s infinite; }
-        @keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:.5} }
         .blog-cta { text-align: center; margin-top: 2.5rem; }
         .blog-cta a { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1.5px solid var(--teal); padding-bottom: 2px; transition: color 0.2s; }
         .blog-cta a:hover { color: var(--dark); border-color: var(--dark); }
 
-        /* ══════════════════════════════════════
-           FOOTER
-        ══════════════════════════════════════ */
+        /* Card grid */
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 580px) { .blog-grid { grid-template-columns: 1fr; } }
+
+        /* HB card (new style) */
+        .hb-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s; display: flex; flex-direction: column; }
+        .hb-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); border-color: transparent; transform: translateY(-3px); }
+        .hb-card-img { height: 200px; overflow: hidden; flex-shrink: 0; position: relative; }
+        .hb-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .hb-card:hover .hb-card-img img { transform: scale(1.05); }
+        /* "TERBARU" badge */
+        .hb-badge { position: absolute; top: 0.7rem; left: 0.7rem; background: var(--teal); color: white; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.22rem 0.65rem; border-radius: 100px; display: flex; align-items: center; gap: 0.35rem; }
+        .hb-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: #7EC8C8; animation: hb-pulse 1.8s infinite; }
+        @keyframes hb-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.6); } }
+        .hb-card-body { padding: 1.3rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .hb-cat { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; display: block; }
+        .hb-title { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; font-weight: 400; line-height: 1.3; color: var(--dark); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0.5rem; transition: color 0.2s; flex: 1; }
+        .hb-card:hover .hb-title { color: var(--teal); }
+        .hb-desc { font-size: 0.8rem; color: #999; line-height: 1.65; font-weight: 300; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1rem; }
+        .hb-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 0.9rem; border-top: 1px solid var(--border); margin-top: auto; }
+        .hb-date { font-size: 0.67rem; color: #bbb; font-weight: 300; }
+        .hb-read { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; }
+        .hb-card:hover .hb-read { gap: 0.55rem; }
+
+        /* Skeleton for blog */
+        .hb-skel-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+        .hb-skel-img { height: 200px; background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%); background-size: 200% 100%; animation: hb-shimmer 1.4s infinite; }
+        .hb-skel-body { padding: 1.3rem 1.5rem; display: flex; flex-direction: column; gap: 0.65rem; }
+        .hb-skel-line { height: 11px; border-radius: 5px; background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%); background-size: 200% 100%; animation: hb-shimmer 1.4s infinite; }
+        @keyframes hb-shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+        /* ══ FOOTER ══ */
         footer { background: var(--dark); color: white; padding: 4.5rem 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
         .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 4rem; }
         .footer-address { font-size: 0.83rem; line-height: 1.75; color: rgba(255,255,255,0.45); display: flex; align-items: flex-start; gap: 0.7rem; font-weight: 300; text-decoration: none; margin-bottom: 1rem; }
@@ -440,9 +274,7 @@
         .footer-bottom { max-width: 1280px; margin: 3rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; }
         .footer-bottom p { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; }
 
-        /* ══════════════════════════════════════
-           RESPONSIVE
-        ══════════════════════════════════════ */
+        /* ══ UTILS ══ */
         .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
@@ -450,7 +282,6 @@
             .nav-links { display: none; }
             .hamburger { display: block; }
             .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .blog-grid { grid-template-columns: 1fr; }
             .stats-inner { grid-template-columns: repeat(2,1fr); }
             .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
             .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -472,18 +303,13 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     NAVBAR
-══════════════════════════════════════ -->
+<!-- ══ NAVBAR ══ -->
 <nav id="mainNav">
     <div class="nav-inner">
         <a href="/" class="nav-logo"><img src="/assets/images/logo.png" alt="ABI STUDIO"></a>
-
         <div class="nav-links">
             <a href="/" class="active" data-i18n="nav_home">Home</a>
             <a href="/about" data-i18n="nav_about">About</a>
-
-            <!-- Layanan dropdown — same as services.html -->
             <div class="nav-layanan-wrap">
                 <button class="nav-layanan-btn" id="layananBtn" onclick="toggleLayanan(event)">
                     Layanan <i class="fas fa-chevron-down caret"></i>
@@ -503,7 +329,6 @@
                     </a>
                 </div>
             </div>
-
             <a href="/portfolio" data-i18n="nav_portfolio">Portfolio</a>
             <a href="/blog" data-i18n="nav_blog">Blog</a>
             <a href="https://wa.me/6285157577465" target="_blank" class="nav-cta" data-i18n="nav_contact">Contact</a>
@@ -513,11 +338,8 @@
                 <span class="lang-btn" id="btn-en" onclick="changeLanguage('en')">EN</span>
             </div>
         </div>
-
         <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
     </div>
-
-    <!-- Mobile Menu -->
     <div id="mobileMenu">
         <a href="/" data-i18n="nav_home">Home</a>
         <a href="/about" data-i18n="nav_about">About</a>
@@ -535,88 +357,49 @@
     </div>
 </nav>
 
-<!-- ══════════════════════════════════════
-     HERO — 6 slides covering all services
-══════════════════════════════════════ -->
+<!-- ══ HERO ══ -->
 <section class="hero">
-    <!-- Slide backgrounds -->
-    <!-- 0: Desain Arsitektur – modern house exterior -->
     <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070');"></div>
-    <!-- 1: Desain Interior – luxury living room -->
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070');"></div>
-    <!-- 2: Struktur & Konstruksi Beton – construction site -->
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070');"></div>
-    <!-- 3: Fabrikasi & Struktur Baja – steel fabrication workshop -->
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1565008576549-57569a49371d?q=80&w=2070');"></div>
-    <!-- 4: Renovasi & Fit Out – renovation in progress -->
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070');"></div>
-    <!-- 5: Konsultan & Perizinan – architect planning/blueprint -->
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070');"></div>
-
     <div class="hero-overlay"></div>
-
     <div class="hero-content">
-        <!-- Slide 0 -->
         <div class="slide-content" id="slideContent0">
             <div class="hero-eyebrow">Desain Arsitektur</div>
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_0">Mewujudkan Bangunan</span>
-                <strong data-i18n="hero_bold_0">Impian Anda.</strong>
-            </h1>
+            <h1 class="hero-title"><span data-i18n="hero_title_0">Mewujudkan Bangunan</span><strong data-i18n="hero_bold_0">Impian Anda.</strong></h1>
             <a href="/services#acc-design" class="hero-btn">Lihat Layanan Design</a>
         </div>
-        <!-- Slide 1 -->
         <div class="slide-content" id="slideContent1">
             <div class="hero-eyebrow">Desain Interior</div>
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_1">Ruang yang Bercerita,</span>
-                <strong data-i18n="hero_bold_1">Estetika Tanpa Batas.</strong>
-            </h1>
+            <h1 class="hero-title"><span data-i18n="hero_title_1">Ruang yang Bercerita,</span><strong data-i18n="hero_bold_1">Estetika Tanpa Batas.</strong></h1>
             <a href="/services#acc-design" class="hero-btn">Lihat Layanan Interior</a>
         </div>
-        <!-- Slide 2 -->
         <div class="slide-content" id="slideContent2">
             <div class="hero-eyebrow">Konstruksi Bangunan</div>
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_2">Dibangun dengan Presisi,</span>
-                <strong data-i18n="hero_bold_2">Kokoh Selamanya.</strong>
-            </h1>
+            <h1 class="hero-title"><span data-i18n="hero_title_2">Dibangun dengan Presisi,</span><strong data-i18n="hero_bold_2">Kokoh Selamanya.</strong></h1>
             <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Konstruksi</a>
         </div>
-        <!-- Slide 3 -->
         <div class="slide-content" id="slideContent3">
             <div class="hero-eyebrow">Fabrikasi & Struktur Baja</div>
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_3">Kekuatan Struktural</span>
-                <strong data-i18n="hero_bold_3">Standar Industri.</strong>
-            </h1>
+            <h1 class="hero-title"><span data-i18n="hero_title_3">Kekuatan Struktural</span><strong data-i18n="hero_bold_3">Standar Industri.</strong></h1>
             <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Struktur</a>
         </div>
-        <!-- Slide 4 -->
         <div class="slide-content" id="slideContent4">
             <div class="hero-eyebrow">Renovasi & Fit Out</div>
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_4">Transformasi Ruang,</span>
-                <strong data-i18n="hero_bold_4">Tampil Seperti Baru.</strong>
-            </h1>
+            <h1 class="hero-title"><span data-i18n="hero_title_4">Transformasi Ruang,</span><strong data-i18n="hero_bold_4">Tampil Seperti Baru.</strong></h1>
             <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Renovasi</a>
         </div>
-        <!-- Slide 5 -->
         <div class="slide-content" id="slideContent5">
             <div class="hero-eyebrow">Konsultan & Perizinan</div>
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_5">Proyek Legal,</span>
-                <strong data-i18n="hero_bold_5">Terstruktur & Aman.</strong>
-            </h1>
+            <h1 class="hero-title"><span data-i18n="hero_title_5">Proyek Legal,</span><strong data-i18n="hero_bold_5">Terstruktur & Aman.</strong></h1>
             <a href="/services#acc-consultant" class="hero-btn">Lihat Layanan Konsultan</a>
         </div>
     </div>
-
-    <!-- Arrows -->
     <button class="hero-arrow prev" onclick="changeSlide(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
     <button class="hero-arrow next" onclick="changeSlide(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-
-    <!-- Dots (6) -->
     <div class="hero-dots" id="heroDots">
         <div class="hero-dot active" onclick="goToSlide(0)"></div>
         <div class="hero-dot" onclick="goToSlide(1)"></div>
@@ -625,14 +408,10 @@
         <div class="hero-dot" onclick="goToSlide(4)"></div>
         <div class="hero-dot" onclick="goToSlide(5)"></div>
     </div>
-
-    <!-- Counter -->
     <div class="hero-counter"><span id="heroCountCur">1</span> / <span id="heroCountTotal">6</span></div>
 </section>
 
-<!-- ══════════════════════════════════════
-     STATS BAR
-══════════════════════════════════════ -->
+<!-- ══ STATS ══ -->
 <div class="stats-bar">
     <div class="stats-inner">
         <div class="stat-item fade-up"><div class="stat-number">7+</div><div class="stat-label">Tahun Pengalaman</div></div>
@@ -642,9 +421,7 @@
     </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     ABOUT
-══════════════════════════════════════ -->
+<!-- ══ ABOUT ══ -->
 <section style="background:white; padding:7rem 2rem;">
     <div class="container">
         <div class="about-grid">
@@ -674,9 +451,7 @@
     </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     LOGOS
-══════════════════════════════════════ -->
+<!-- ══ LOGOS ══ -->
 <div class="logos-section">
     <div class="container">
         <div class="logos-header fade-up">
@@ -705,7 +480,6 @@
                     <div class="client-card"><img src="/assets/images/rhosigma.png" alt="Rhosigma"></div>
                     <div class="client-card"><img src="/assets/images/sinarmandiri.png" alt="Sinar Mandiri"></div>
                     <div class="client-card"><img src="/assets/images/vistaland.png" alt="Vista Land"></div>
-                    <!-- Duplicate for seamless loop -->
                     <div class="client-card"><img src="/assets/images/paramount.png" alt="Paramount"></div>
                     <div class="client-card"><img src="/assets/images/alamsutera.png" alt="Alam Sutera"></div>
                     <div class="client-card"><img src="/assets/images/summarecon.png" alt="Summarecon"></div>
@@ -724,9 +498,7 @@
     </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     SERVICES — Accordion cards (same look as services.html)
-══════════════════════════════════════ -->
+<!-- ══ SERVICES ══ -->
 <section class="services-section">
     <div class="container">
         <div class="services-header fade-up">
@@ -734,10 +506,7 @@
             <h2 class="section-title" data-i18n="service_title">Layanan Komprehensif</h2>
             <p>Solusi lengkap dari perencanaan hingga pelaksanaan, disesuaikan dengan kebutuhan Anda.</p>
         </div>
-
         <div class="home-acc-grid fade-up" style="transition-delay:.1s">
-
-            <!-- Design & Planning -->
             <div class="home-acc" id="hacc-design">
                 <button class="home-acc-toggle" onclick="toggleHomeAcc('design')">
                     <div class="home-acc-left">
@@ -769,8 +538,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Construction -->
             <div class="home-acc" id="hacc-construction">
                 <button class="home-acc-toggle" onclick="toggleHomeAcc('construction')">
                     <div class="home-acc-left">
@@ -802,8 +569,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Consultant & Audit -->
             <div class="home-acc" id="hacc-consultant">
                 <button class="home-acc-toggle" onclick="toggleHomeAcc('consultant')">
                     <div class="home-acc-left">
@@ -832,18 +597,14 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="services-cta fade-up" style="transition-delay:.2s">
             <a href="/services" class="outline-btn" data-i18n="see_more">Lihat Semua Layanan &amp; Harga</a>
         </div>
     </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     BLOG — Live feed from Firebase
-══════════════════════════════════════ -->
+<!-- ══ BLOG — Live feed from Firebase, sorted by date desc ══ -->
 <section class="blog-section">
     <div class="container">
         <div class="blog-header">
@@ -853,21 +614,45 @@
             </div>
             <a href="/blog" class="text-link fade-up" style="font-size:0.72rem;" data-i18n="view_archive">Lihat Semua Artikel <i class="fas fa-arrow-right" style="font-size:.65rem;"></i></a>
         </div>
+
         <!-- Skeleton shown while loading -->
         <div id="latestArticlesGrid" class="blog-grid">
-            <div class="blog-skeleton"></div>
-            <div class="blog-skeleton"></div>
-            <div class="blog-skeleton"></div>
+            <div class="hb-skel-card">
+                <div class="hb-skel-img"></div>
+                <div class="hb-skel-body">
+                    <div class="hb-skel-line" style="width:40%;"></div>
+                    <div class="hb-skel-line" style="width:85%;height:15px;"></div>
+                    <div class="hb-skel-line" style="width:70%;height:15px;"></div>
+                    <div class="hb-skel-line" style="width:55%;"></div>
+                </div>
+            </div>
+            <div class="hb-skel-card">
+                <div class="hb-skel-img"></div>
+                <div class="hb-skel-body">
+                    <div class="hb-skel-line" style="width:50%;"></div>
+                    <div class="hb-skel-line" style="width:90%;height:15px;"></div>
+                    <div class="hb-skel-line" style="width:75%;height:15px;"></div>
+                    <div class="hb-skel-line" style="width:40%;"></div>
+                </div>
+            </div>
+            <div class="hb-skel-card">
+                <div class="hb-skel-img"></div>
+                <div class="hb-skel-body">
+                    <div class="hb-skel-line" style="width:45%;"></div>
+                    <div class="hb-skel-line" style="width:80%;height:15px;"></div>
+                    <div class="hb-skel-line" style="width:65%;height:15px;"></div>
+                    <div class="hb-skel-line" style="width:50%;"></div>
+                </div>
+            </div>
         </div>
+
         <div class="blog-cta fade-up">
             <a href="/blog" data-i18n="view_archive">Lihat Arsip Artikel Lainnya →</a>
         </div>
     </div>
 </section>
 
-<!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
+<!-- ══ FOOTER ══ -->
 <footer id="contact">
     <div class="footer-inner">
         <div>
@@ -912,9 +697,7 @@
 </footer>
 
 <script>
-/* ══════════════════════════════════════
-   TRANSLATIONS
-══════════════════════════════════════ */
+/* ══ TRANSLATIONS ══ */
 const translations = {
     id: {
         nav_home:"Home", nav_about:"About", nav_portfolio:"Portfolio", nav_blog:"Blog", nav_contact:"Contact",
@@ -966,28 +749,21 @@ function changeLanguage(lang) {
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
 
-/* ══════════════════════════════════════
-   HERO SLIDER — 6 slides, 5s interval
-══════════════════════════════════════ */
+/* ══ HERO SLIDER ══ */
 const TOTAL_SLIDES = 6;
 let currentSlide = 0;
 let autoTimer;
-
-const slides    = document.querySelectorAll('.slide');
-const dots      = document.querySelectorAll('.hero-dot');
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.hero-dot');
 const counterCur = document.getElementById('heroCountCur');
 
 function getContent(idx) { return document.getElementById('slideContent' + idx); }
 
 function goToSlide(idx) {
-    // out
     slides[currentSlide].classList.remove('active');
     dots[currentSlide].classList.remove('active');
     getContent(currentSlide).classList.remove('active','visible');
-
     currentSlide = (idx + TOTAL_SLIDES) % TOTAL_SLIDES;
-
-    // in
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
     if (counterCur) counterCur.textContent = currentSlide + 1;
@@ -1006,12 +782,10 @@ function startAuto() {
     autoTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
 }
 
-// Override dot clicks to reset timer
 document.querySelectorAll('.hero-dot').forEach((dot, i) => {
     dot.onclick = () => { clearInterval(autoTimer); goToSlide(i); startAuto(); };
 });
 
-// Init
 (function() {
     const first = getContent(0);
     first.classList.add('active');
@@ -1019,12 +793,10 @@ document.querySelectorAll('.hero-dot').forEach((dot, i) => {
     startAuto();
 })();
 
-/* ══════════════════════════════════════
-   NAV DROPDOWN
-══════════════════════════════════════ */
+/* ══ NAV DROPDOWN ══ */
 function toggleLayanan(e) {
     e.stopPropagation();
-    const btn  = document.getElementById('layananBtn');
+    const btn = document.getElementById('layananBtn');
     const drop = document.getElementById('layananDropdown');
     const isOpen = drop.classList.contains('open');
     closeLayanan();
@@ -1042,92 +814,107 @@ function toggleMobLayanan() {
     document.getElementById('mobLayananItems').classList.toggle('open');
 }
 
-/* ══════════════════════════════════════
-   HOME ACCORDION (services section)
-══════════════════════════════════════ */
+/* ══ HOME ACCORDION ══ */
 function toggleHomeAcc(key) {
     const el    = document.getElementById('hacc-' + key);
     const panel = document.getElementById('panel-' + key);
     const caret = document.getElementById('caret-' + key);
     const isOpen = panel.classList.contains('open');
-
-    // Toggle
     panel.classList.toggle('open', !isOpen);
     el.classList.toggle('home-acc-open', !isOpen);
     if (caret) caret.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
 
-/* ══════════════════════════════════════
-   BLOG — Live Firebase feed
-   Re-runs every time the page loads, so
-   it always shows the latest 3 articles.
-══════════════════════════════════════ */
+/* ══ BLOG — Live Firebase feed, sorted by tanggal desc ══ */
 function fmtDate(ts) {
     if (!ts) return '';
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
-    return d.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
+    try {
+        const d = (ts.toDate) ? ts.toDate() : (ts.seconds ? new Date(ts.seconds * 1000) : new Date(ts));
+        return d.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
+    } catch { return ''; }
+}
+
+function escHtml(s) {
+    if (!s) return '';
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toMs(ts) {
+    if (!ts) return 0;
+    try {
+        if (ts.toDate) return ts.toDate().getTime();
+        if (ts.seconds) return ts.seconds * 1000;
+        return new Date(ts).getTime() || 0;
+    } catch { return 0; }
 }
 
 async function loadLatestArticles() {
     const grid = document.getElementById('latestArticlesGrid');
     if (!grid) return;
     try {
-        const snap = await db.collection("articles")
-                             .orderBy("tanggal", "desc")
-                             .limit(3)
-                             .get();
+        const snap = await db.collection('articles')
+            .orderBy('tanggal', 'desc')
+            .limit(3)
+            .get();
 
         if (snap.empty) {
             grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;font-size:.9rem;">Belum ada artikel.</div>`;
             return;
         }
 
-        let html = '';
-        snap.forEach(doc => {
-            const d   = doc.data();
-            const img = d.gambar || 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800';
-            const url = `/blog?id=${doc.id}`;
+        // Map docs and sort client-side for safety
+        const articles = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        articles.sort((a, b) => toMs(b.tanggal) - toMs(a.tanggal));
+
+        const fallback = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800';
+
+        grid.innerHTML = articles.map((d, i) => {
+            const img  = d.gambar || fallback;
+            const url  = `/blog?id=${d.id}`;
             const date = fmtDate(d.tanggal);
-            html += `
-            <a class="article-card" href="${url}">
-                <div class="article-img">
+            // Badge "TERBARU" hanya di artikel pertama (paling baru)
+            const badge = (i === 0)
+                ? `<div class="hb-badge"><span class="hb-badge-dot"></span>Terbaru</div>`
+                : '';
+
+            return `
+            <div class="hb-card" onclick="window.location.href='${url}'">
+                <div class="hb-card-img">
                     <img src="${img}" loading="lazy"
-                         onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800'"
-                         alt="${d.judul || ''}">
+                         onerror="this.src='${fallback}'"
+                         alt="${escHtml(d.judul || '')}">
+                    ${badge}
                 </div>
-                <div class="article-body">
-                    ${date ? `<div class="article-date">${date}</div>` : ''}
-                    <h3 class="article-title">${d.judul || ''}</h3>
-                    <p class="article-desc">${d.deskripsi || ''}</p>
-                    <span class="article-more">Baca Selengkapnya →</span>
+                <div class="hb-card-body">
+                    <span class="hb-cat">${escHtml(d.kategori || 'Artikel')}</span>
+                    <div class="hb-title">${escHtml(d.judul || '')}</div>
+                    <div class="hb-desc">${escHtml(d.deskripsi || '')}</div>
+                    <div class="hb-meta">
+                        <span class="hb-date">${date}</span>
+                        <span class="hb-read">Baca <i class="fas fa-arrow-right" style="font-size:.55rem;"></i></span>
+                    </div>
                 </div>
-            </a>`;
-        });
-        grid.innerHTML = html;
+            </div>`;
+        }).join('');
+
     } catch(err) {
         console.error('Blog load error:', err);
         grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;font-size:.9rem;">Gagal memuat artikel.</div>`;
     }
 }
 
-/* ══════════════════════════════════════
-   NAVBAR SCROLL
-══════════════════════════════════════ */
+/* ══ NAV SCROLL ══ */
 window.addEventListener('scroll', () => {
     document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
 });
 
-/* ══════════════════════════════════════
-   FADE UP
-══════════════════════════════════════ */
+/* ══ FADE UP ══ */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-/* ══════════════════════════════════════
-   INIT
-══════════════════════════════════════ */
+/* ══ INIT ══ */
 document.addEventListener('DOMContentLoaded', () => {
     changeLanguage(localStorage.getItem('selectedLang') || 'id');
     loadLatestArticles();
