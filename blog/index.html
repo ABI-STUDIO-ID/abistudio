@@ -14,7 +14,7 @@
     <title>Blog & Artikel - ABI STUDIO</title>
     <link rel="icon" type="image/png" href="/assets/images/logo.png">
     <meta name="description" content="Tips, tren, dan insight seputar arsitektur, desain interior, dan konstruksi dari tim ABI STUDIO.">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -254,13 +254,326 @@
         .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1060px) { .blog-grid-wrap { grid-template-columns: 1fr; } .sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
-        @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: block; } .featured-card { grid-template-columns: 1fr; } .featured-img { height: 220px; } .featured-skel { grid-template-columns: 1fr; height: auto; } .featured-skel-img { height: 200px; } .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; } .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; } }
-        @media (max-width: 640px) { .sidebar { grid-template-columns: 1fr; } .nav-inner { padding: 0 1.25rem; } .filter-bar-inner { gap: 0.6rem; } .search-input { width: 160px; } .modal-content { padding: 0.5rem 1.4rem 4rem; } }
-    </style>
-</head>
-<body>
+        /* ─────────────────────────────
+   RESPONSIVE IMPROVED
+───────────────────────────── */
+
+/* Tablet */
+@media (max-width: 1060px) {
+
+    .blog-grid-wrap {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .featured-card {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-img {
+        height: 260px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    html {
+        font-size: 15px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .nav-inner {
+        height: 72px;
+        padding: 0 1rem;
+    }
+
+    .nav-logo img {
+        height: 46px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 1.3rem;
+    }
+
+    #mobileMenu {
+        top: 72px;
+        padding: 1rem 1.25rem;
+    }
+
+    #mobileMenu a {
+        font-size: 0.75rem;
+        padding: 1rem 0;
+    }
+
+    /* HERO */
+    .page-hero {
+        min-height: 340px;
+        height: auto;
+        padding: 7rem 1rem 4rem;
+    }
+
+    .page-hero-content {
+        padding: 0;
+    }
+
+    .page-hero h1 {
+        font-size: 2.7rem;
+        line-height: 1.1;
+    }
+
+    .page-hero p {
+        font-size: 0.85rem;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+    .page-eyebrow {
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+        padding: 0.75rem 1rem;
+    }
+
+    .breadcrumb-inner {
+        font-size: 0.68rem;
+        flex-wrap: wrap;
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+        top: 72px;
+        padding: 0 1rem;
+    }
+
+    .filter-bar-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+        padding: 0.8rem 0;
+    }
+
+    .cat-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        scrollbar-width: none;
+    }
+
+    .cat-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cat-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .search-wrap {
+        width: 100%;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .search-input:focus {
+        width: 100%;
+    }
+
+    /* LAYOUT */
+    .blog-layout {
+        padding: 2rem 1rem 4rem;
+    }
+
+    .blog-grid-wrap {
+        gap: 2rem;
+    }
+
+    /* FEATURED */
+    .featured-header {
+        align-items: flex-start;
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .featured-card {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-img {
+        height: 220px;
+    }
+
+    .featured-body {
+        padding: 1.3rem;
+    }
+
+    .featured-title {
+        font-size: 1.4rem;
+    }
+
+    .featured-desc {
+        font-size: 0.8rem;
+    }
+
+    .featured-meta {
+        flex-wrap: wrap;
+        gap: 0.7rem;
+    }
+
+    .featured-arrows {
+        display: none;
+    }
+
+    /* ARTICLE LIST */
+    .article-row {
+        grid-template-columns: 80px 1fr;
+        gap: 0.9rem;
+        padding: 1rem;
+    }
+
+    .article-row-thumb {
+        width: 80px;
+        height: 64px;
+    }
+
+    .article-row-title {
+        font-size: 0.82rem;
+    }
+
+    .article-row-date {
+        font-size: 0.65rem;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-card {
+        padding: 1.2rem;
+    }
+
+    .cta-card {
+        padding: 1.5rem 1.3rem;
+    }
+
+    .cta-card h3 {
+        font-size: 1.3rem;
+    }
+
+    /* MODAL */
+    .modal-sheet {
+        width: 100%;
+    }
+
+    .modal-hero {
+        height: 220px;
+    }
+
+    .modal-content {
+        padding: 1rem 1.2rem 3rem;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+    }
+
+    .modal-body-text {
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 3rem 1rem 2rem;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.62rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    .page-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .featured-title {
+        font-size: 1.25rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .modal-title {
+        font-size: 1.7rem;
+    }
+
+    .article-row {
+        grid-template-columns: 72px 1fr;
+    }
+
+    .article-row-thumb {
+        width: 72px;
+        height: 58px;
+    }
+
+    .featured-img {
+        height: 190px;
+    }
+
+    .modal-hero {
+        height: 180px;
+    }
+
+    .load-more-btn {
+        width: 100%;
+    }
+}
 
 <!-- ── ARTICLE MODAL ── -->
 <div class="modal-backdrop" id="modalBackdrop" onclick="closeArticle()"></div>
