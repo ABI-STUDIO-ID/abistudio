@@ -16,16 +16,16 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABI STUDIO - Arsitektur & Interior Design Terbaik</title>
+    <title>ABI STUDIO - Jasa Arsitek & Interior Design Tangerang | Konsultasi Gratis</title>
     <link rel="icon" type="image/png" href="/assets/images/logo.png">
-    <meta name="description" content="Jasa arsitek dan desain interior profesional di Tangerang & Jabodetabek. Spesialis rumah tinggal, komersial, renovasi, dan perizinan PBG/SLF. Konsultasi Gratis.">
-    <meta name="keywords" content="jasa arsitek tangerang, desain interior, kontraktor rumah, renovasi rumah, jasa sipil, konsultan PBG SLF, ABI Studio">
+    <meta name="description" content="Jasa arsitek dan desain interior profesional di Tangerang & Jabodetabek. Konsultasi GRATIS. Spesialis rumah tinggal, komersial, renovasi, dan perizinan PBG/SLF. Hubungi sekarang!">
+    <meta name="keywords" content="jasa arsitek tangerang, desain interior tangerang, kontraktor rumah jabodetabek, renovasi rumah, jasa sipil, konsultan PBG SLF, ABI Studio, harga arsitek tangerang">
     <meta name="author" content="ABI STUDIO">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abistudio.id/">
-    <meta property="og:title" content="ABI STUDIO - Wujudkan Bangunan Impian Anda">
-    <meta property="og:description" content="Solusi desain arsitektur, interior, dan konstruksi terintegrasi.">
+    <meta property="og:title" content="ABI STUDIO - Konsultasi Gratis, Wujudkan Bangunan Impian Anda">
+    <meta property="og:description" content="Jasa arsitek & desain interior profesional. Konsultasi GRATIS, estimasi proyek transparan. Melayani Tangerang & Jabodetabek.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -54,15 +54,49 @@
             --light: #F7F8F6;
             --white: #FFFFFF;
             --border: #E8EAE6;
+            --wa-green: #25D366;
+            --wa-dark: #128C7E;
+            --urgent: #E8540A;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { font-size: 16px; scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
+        /* ══ ANNOUNCEMENT BAR ══ */
+        .announce-bar {
+            background: var(--teal);
+            color: white;
+            text-align: center;
+            padding: 0.55rem 1rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            position: relative;
+            z-index: 101;
+        }
+        .announce-bar a {
+            color: #7EC8C8;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+        .announce-bar .pulse-dot {
+            display: inline-block;
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #7EC8C8;
+            margin-right: 6px;
+            vertical-align: middle;
+            animation: pulse-anim 1.6s infinite;
+        }
+        @keyframes pulse-anim {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.6); }
+        }
+
         /* ══ NAVBAR ══ */
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s; }
-        nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.07); }
+        nav { position: fixed; top: 36px; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s, top 0.3s; }
+        nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.07); top: 0; }
         .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 80px; }
         .nav-logo img { height: 60px; width: auto; object-fit: contain; display: block; }
         .nav-links { display: flex; align-items: center; gap: 2rem; }
@@ -110,21 +144,30 @@
         .mob-layanan-items a i { color: var(--teal); width: 16px; text-align: center; }
 
         /* ══ HERO ══ */
-        .hero { position: relative; height: 100vh; min-height: 640px; overflow: hidden; }
+        .hero { position: relative; height: 100vh; min-height: 640px; overflow: hidden; margin-top: 116px; }
+        @media (max-width: 900px) { .hero { margin-top: 116px; } }
         .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; animation: kenBurns 12s ease-in-out infinite alternate; }
         @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(10,14,18,0.68) 0%, rgba(10,14,18,0.38) 60%, rgba(74,109,109,0.15) 100%); }
-        .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 3rem; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(160deg, rgba(10,14,18,0.72) 0%, rgba(10,14,18,0.42) 60%, rgba(74,109,109,0.18) 100%); }
+        .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem 3rem; }
         .slide-content { display: none; opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s; }
         .slide-content.active { display: block; }
         .slide-content.visible { opacity: 1; transform: translateY(0); }
-        .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(8px); color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; padding: 0.45rem 1.2rem; border-radius: 100px; margin-bottom: 1.8rem; }
+        .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(8px); color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; padding: 0.45rem 1.2rem; border-radius: 100px; margin-bottom: 1.4rem; }
         .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #7EC8C8; }
-        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 300; color: #fff; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2.4rem; }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 300; color: #fff; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 1.8rem; }
         .hero-title strong { font-weight: 600; display: block; }
-        .hero-btn { display: inline-block; background: var(--teal); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.9rem 2.4rem; border-radius: 100px; text-decoration: none; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 8px 28px rgba(74,109,109,0.45); }
-        .hero-btn:hover { background: #fff; color: var(--dark); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(74,109,109,0.35); }
+
+        /* CTA Group */
+        .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+        .hero-btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--wa-green); color: #fff; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.95rem 2rem; border-radius: 100px; text-decoration: none; transition: all 0.25s; box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+        .hero-btn-primary:hover { background: #1db954; transform: translateY(-2px); box-shadow: 0 14px 36px rgba(37,211,102,0.45); }
+        .hero-btn-secondary { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.4); color: #fff; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.95rem 2rem; border-radius: 100px; text-decoration: none; transition: all 0.25s; backdrop-filter: blur(8px); }
+        .hero-btn-secondary:hover { background: rgba(255,255,255,0.22); transform: translateY(-2px); }
+        .hero-trust { margin-top: 1.6rem; color: rgba(255,255,255,0.5); font-size: 0.68rem; font-weight: 400; letter-spacing: 0.08em; }
+        .hero-trust strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
         .hero-counter { position: absolute; bottom: 2.5rem; right: 3rem; z-index: 5; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(255,255,255,0.45); }
         .hero-counter span { color: white; }
         .hero-dots { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; gap: 0.5rem; }
@@ -134,6 +177,250 @@
         .hero-arrow:hover { background: rgba(74,109,109,0.5); }
         .hero-arrow.prev { left: 2rem; }
         .hero-arrow.next { right: 2rem; }
+
+        /* ══ FLOATING WA BUTTON ══ */
+        .wa-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.7rem;
+        }
+        .wa-float-bubble {
+            background: white;
+            border-radius: 14px;
+            padding: 0.9rem 1.2rem;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.16);
+            max-width: 230px;
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: var(--dark);
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(8px) scale(0.95);
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: bottom right;
+        }
+        .wa-float-bubble.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+        .wa-float-bubble strong { color: var(--dark); display: block; margin-bottom: 2px; }
+        .wa-float-bubble .wa-bubble-close {
+            position: absolute;
+            top: 0.4rem; right: 0.5rem;
+            font-size: 0.7rem;
+            color: #bbb;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .wa-float-btn {
+            width: 62px; height: 62px;
+            border-radius: 50%;
+            background: var(--wa-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+            text-decoration: none;
+            color: white;
+            font-size: 1.65rem;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .wa-float-btn:hover { transform: scale(1.08); box-shadow: 0 10px 36px rgba(37,211,102,0.6); }
+        .wa-float-btn .wa-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37,211,102,0.4);
+            animation: wa-ring-anim 2s infinite;
+        }
+        .wa-float-btn .wa-ring2 {
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(37,211,102,0.2);
+            animation: wa-ring-anim 2s 0.5s infinite;
+        }
+        @keyframes wa-ring-anim {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        .wa-float-badge {
+            position: absolute;
+            top: -4px; right: -4px;
+            background: var(--urgent);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0.15rem 0.4rem;
+            border-radius: 100px;
+            border: 2px solid white;
+            white-space: nowrap;
+        }
+
+        /* ══ LEAD FORM SECTION ══ */
+        .lead-form-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a2a2a 50%, #0f1e1e 100%);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .lead-form-section::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(74,109,109,0.3) 0%, transparent 70%);
+        }
+        .lead-form-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -40px;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(126,200,200,0.1) 0%, transparent 70%);
+        }
+        .lead-form-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .lead-form-left { color: white; }
+        .lead-form-left .section-label { color: #7EC8C8; }
+        .lead-form-left .section-title { color: white; margin-bottom: 1.2rem; }
+        .lead-benefits { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.8rem; }
+        .lead-benefits li { display: flex; align-items: center; gap: 0.8rem; font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+        .lead-benefits li i { color: #7EC8C8; font-size: 0.9rem; width: 18px; flex-shrink: 0; }
+        .lead-form-urgency {
+            margin-top: 2rem;
+            background: rgba(232,84,10,0.15);
+            border: 1px solid rgba(232,84,10,0.35);
+            border-radius: 12px;
+            padding: 0.9rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.78rem;
+            color: #FFA07A;
+        }
+        .lead-form-urgency i { font-size: 1rem; color: var(--urgent); flex-shrink: 0; }
+
+        /* Form Card */
+        .lead-form-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.2rem;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+        }
+        .lead-form-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.35rem;
+        }
+        .lead-form-card p {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 1.6rem;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 0.4rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.88rem;
+            color: var(--dark);
+            background: var(--light);
+            transition: border-color 0.2s, background 0.2s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--teal);
+            background: white;
+        }
+        .form-group textarea { resize: none; height: 80px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+        .form-submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--wa-green);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            transition: background 0.2s, transform 0.2s;
+            margin-top: 0.5rem;
+        }
+        .form-submit-btn:hover { background: #1db954; transform: translateY(-1px); }
+        .form-privacy {
+            text-align: center;
+            font-size: 0.67rem;
+            color: #bbb;
+            margin-top: 0.75rem;
+        }
+        .form-privacy i { color: var(--teal); margin-right: 3px; }
+
+        /* Form success state */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .form-success.show { display: block; }
+        .form-success-icon {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: rgba(37,211,102,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--wa-green);
+            margin: 0 auto 1rem;
+        }
 
         /* ══ STATS ══ */
         .stats-bar { background: var(--dark); padding: 2rem; }
@@ -209,34 +496,32 @@
         .home-acc-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.75; font-weight: 300; margin-bottom: 1.2rem; padding-top: 1.4rem; }
         .home-acc-items { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
         .home-acc-tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); padding: 0.3rem 0.85rem; border-radius: 100px; }
+        .home-acc-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
         .home-acc-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7EC8C8; text-decoration: none; transition: gap 0.2s; }
         .home-acc-link:hover { gap: 0.8rem; }
+        .home-acc-wa-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(37,211,102,0.15); color: #25D366; border: 1px solid rgba(37,211,102,0.3); padding: 0.45rem 1rem; border-radius: 100px; text-decoration: none; transition: all 0.2s; }
+        .home-acc-wa-btn:hover { background: rgba(37,211,102,0.25); }
         .home-acc-open .home-acc-caret { transform: rotate(180deg); }
         .home-acc-open { border-color: rgba(126,200,200,0.25); }
         .home-acc-open .home-acc-ico { background: rgba(74,109,109,0.5); }
-        .services-cta { text-align: center; margin-top: 2.5rem; }
+        .services-cta { text-align: center; margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
         .outline-btn { display: inline-block; border: 1.5px solid var(--teal-light); color: #7EC8C8; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.85rem 2.4rem; border-radius: 100px; text-decoration: none; transition: background 0.2s, color 0.2s; }
         .outline-btn:hover { background: var(--teal); color: white; border-color: var(--teal); }
+        .wa-outline-btn { display: inline-flex; align-items: center; gap: 0.6rem; border: 1.5px solid rgba(37,211,102,0.5); color: #25D366; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.85rem 2.4rem; border-radius: 100px; text-decoration: none; transition: all 0.2s; }
+        .wa-outline-btn:hover { background: rgba(37,211,102,0.12); }
 
-        /* ══ BLOG SECTION — Updated card style ══ */
+        /* ══ BLOG ══ */
         .blog-section { background: var(--light); border-top: 1px solid var(--border); }
         .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
         .blog-cta { text-align: center; margin-top: 2.5rem; }
         .blog-cta a { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1.5px solid var(--teal); padding-bottom: 2px; transition: color 0.2s; }
         .blog-cta a:hover { color: var(--dark); border-color: var(--dark); }
-
-        /* Card grid */
         .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 580px) { .blog-grid { grid-template-columns: 1fr; } }
-
-        /* HB card (new style) */
         .hb-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s; display: flex; flex-direction: column; }
         .hb-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); border-color: transparent; transform: translateY(-3px); }
         .hb-card-img { height: 200px; overflow: hidden; flex-shrink: 0; position: relative; }
         .hb-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .hb-card:hover .hb-card-img img { transform: scale(1.05); }
-        /* "TERBARU" badge */
         .hb-badge { position: absolute; top: 0.7rem; left: 0.7rem; background: var(--teal); color: white; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.22rem 0.65rem; border-radius: 100px; display: flex; align-items: center; gap: 0.35rem; }
         .hb-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: #7EC8C8; animation: hb-pulse 1.8s infinite; }
         @keyframes hb-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.6); } }
@@ -249,8 +534,6 @@
         .hb-date { font-size: 0.67rem; color: #bbb; font-weight: 300; }
         .hb-read { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; }
         .hb-card:hover .hb-read { gap: 0.55rem; }
-
-        /* Skeleton for blog */
         .hb-skel-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
         .hb-skel-img { height: 200px; background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%); background-size: 200% 100%; animation: hb-shimmer 1.4s infinite; }
         .hb-skel-body { padding: 1.3rem 1.5rem; display: flex; flex-direction: column; gap: 0.65rem; }
@@ -278,6 +561,12 @@
         .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+        @media (max-width: 960px) {
+            .lead-form-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .lead-form-left { text-align: center; }
+            .lead-benefits { align-items: flex-start; max-width: 360px; margin-left: auto; margin-right: auto; }
+            .lead-form-urgency { justify-content: center; }
+        }
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .hamburger { display: block; }
@@ -288,6 +577,8 @@
             .hero-title { font-size: clamp(2.6rem, 10vw, 4rem); }
             section { padding: 4rem 1.5rem; }
             .hero-arrow { display: none; }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .announce-bar { font-size: 0.65rem; padding: 0.5rem 0.75rem; }
         }
         @media (max-width: 600px) {
             .stats-inner { grid-template-columns: repeat(2,1fr); }
@@ -298,29 +589,30 @@
             .client-card img { max-height: 70px; max-width: 140px; }
             .home-acc-toggle { padding: 1.2rem 1.2rem; }
             .home-acc-inner { padding: 0 1.2rem 1.4rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .hero-cta-group { flex-direction: column; gap: 0.75rem; }
+            .hero-btn-primary, .hero-btn-secondary { width: 100%; max-width: 280px; justify-content: center; }
+            .form-row { grid-template-columns: 1fr; }
+            .wa-float { bottom: 1.2rem; right: 1.2rem; }
+            .wa-float-btn { width: 54px; height: 54px; font-size: 1.4rem; }
+            .services-cta { flex-direction: column; align-items: center; }
+            .announce-bar .hide-mobile { display: none; }
         }
     </style>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WV725CX8');</script>
-<!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) event -->
-<script>
-  gtag('event', 'conversion_event_submit_lead_form_1', {
-    // <event_parameters>
-  });
-</script>
-
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WV725CX8');</script>
 </head>
 <body>
 
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WV725CX8"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WV725CX8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ══ ANNOUNCEMENT BAR ══ -->
+<div class="announce-bar">
+    <span class="pulse-dot"></span>
+    <strong>Konsultasi Gratis</strong> <span class="hide-mobile">— Dapatkan estimasi biaya proyek Anda hari ini.</span>
+    <a href="#lead-form" onclick="trackWA('announce_bar')">Hubungi Sekarang →</a>
+</div>
 
 <!-- ══ NAVBAR ══ -->
 <nav id="mainNav">
@@ -350,7 +642,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <a href="/portfolio" data-i18n="nav_portfolio">Portfolio</a>
             <a href="/blog" data-i18n="nav_blog">Blog</a>
-            <a href="https://wa.me/6285157577465" target="_blank" class="nav-cta" data-i18n="nav_contact">Contact</a>
+            <a href="#lead-form" class="nav-cta" onclick="trackWA('nav_cta')" data-i18n="nav_contact">Konsultasi Gratis</a>
             <div class="lang-wrap">
                 <span class="lang-btn active" id="btn-id" onclick="changeLanguage('id')">ID</span>
                 <span class="lang-sep">|</span>
@@ -372,7 +664,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <a href="/portfolio" data-i18n="nav_portfolio">Portfolio</a>
         <a href="/blog" data-i18n="nav_blog">Blog</a>
-        <a href="https://wa.me/6285157577465" target="_blank" style="color:var(--teal);" data-i18n="nav_contact">Contact</a>
+        <a href="#lead-form" style="color:var(--teal);" onclick="trackWA('mobile_nav_cta')" data-i18n="nav_contact">Konsultasi Gratis</a>
     </div>
 </nav>
 
@@ -389,32 +681,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="slide-content" id="slideContent0">
             <div class="hero-eyebrow">Desain Arsitektur</div>
             <h1 class="hero-title"><span data-i18n="hero_title_0">Mewujudkan Bangunan</span><strong data-i18n="hero_bold_0">Impian Anda.</strong></h1>
-            <a href="/services#acc-design" class="hero-btn">Lihat Layanan Design</a>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20proyek%20desain%20arsitektur." target="_blank" class="hero-btn-primary" onclick="trackWA('hero_konsultasi_gratis')">
+                    <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+                </a>
+                <a href="#lead-form" class="hero-btn-secondary">
+                    <i class="fas fa-calculator"></i> Hitung Estimasi
+                </a>
+            </div>
+            <p class="hero-trust">⭐ Dipercaya <strong>150+ proyek</strong> di Tangerang & Jabodetabek</p>
         </div>
         <div class="slide-content" id="slideContent1">
             <div class="hero-eyebrow">Desain Interior</div>
             <h1 class="hero-title"><span data-i18n="hero_title_1">Ruang yang Bercerita,</span><strong data-i18n="hero_bold_1">Estetika Tanpa Batas.</strong></h1>
-            <a href="/services#acc-design" class="hero-btn">Lihat Layanan Interior</a>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20desain%20interior." target="_blank" class="hero-btn-primary" onclick="trackWA('hero_interior')">
+                    <i class="fab fa-whatsapp"></i> Diskusikan Proyek Anda
+                </a>
+                <a href="/portfolio" class="hero-btn-secondary">
+                    <i class="fas fa-images"></i> Lihat Portfolio
+                </a>
+            </div>
+            <p class="hero-trust">⭐ Dipercaya <strong>150+ proyek</strong> di Tangerang & Jabodetabek</p>
         </div>
         <div class="slide-content" id="slideContent2">
             <div class="hero-eyebrow">Konstruksi Bangunan</div>
             <h1 class="hero-title"><span data-i18n="hero_title_2">Dibangun dengan Presisi,</span><strong data-i18n="hero_bold_2">Kokoh Selamanya.</strong></h1>
-            <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Konstruksi</a>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20jadwalkan%20survey%20untuk%20proyek%20konstruksi." target="_blank" class="hero-btn-primary" onclick="trackWA('hero_konstruksi')">
+                    <i class="fab fa-whatsapp"></i> Jadwalkan Survey
+                </a>
+                <a href="#lead-form" class="hero-btn-secondary">
+                    <i class="fas fa-calculator"></i> Hitung Estimasi
+                </a>
+            </div>
+            <p class="hero-trust">⭐ Dipercaya <strong>150+ proyek</strong> di Tangerang & Jabodetabek</p>
         </div>
         <div class="slide-content" id="slideContent3">
             <div class="hero-eyebrow">Fabrikasi & Struktur Baja</div>
             <h1 class="hero-title"><span data-i18n="hero_title_3">Kekuatan Struktural</span><strong data-i18n="hero_bold_3">Standar Industri.</strong></h1>
-            <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Struktur</a>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20struktur%20baja." target="_blank" class="hero-btn-primary" onclick="trackWA('hero_struktur')">
+                    <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+                </a>
+                <a href="/services#acc-construction" class="hero-btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Lihat Layanan
+                </a>
+            </div>
+            <p class="hero-trust">⭐ Dipercaya <strong>150+ proyek</strong> di Tangerang & Jabodetabek</p>
         </div>
         <div class="slide-content" id="slideContent4">
             <div class="hero-eyebrow">Renovasi & Fit Out</div>
             <h1 class="hero-title"><span data-i18n="hero_title_4">Transformasi Ruang,</span><strong data-i18n="hero_bold_4">Tampil Seperti Baru.</strong></h1>
-            <a href="/services#acc-construction" class="hero-btn">Lihat Layanan Renovasi</a>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20renovasi." target="_blank" class="hero-btn-primary" onclick="trackWA('hero_renovasi')">
+                    <i class="fab fa-whatsapp"></i> Diskusikan Renovasi
+                </a>
+                <a href="#lead-form" class="hero-btn-secondary">
+                    <i class="fas fa-calculator"></i> Hitung Estimasi
+                </a>
+            </div>
+            <p class="hero-trust">⭐ Dipercaya <strong>150+ proyek</strong> di Tangerang & Jabodetabek</p>
         </div>
         <div class="slide-content" id="slideContent5">
             <div class="hero-eyebrow">Konsultan & Perizinan</div>
             <h1 class="hero-title"><span data-i18n="hero_title_5">Proyek Legal,</span><strong data-i18n="hero_bold_5">Terstruktur & Aman.</strong></h1>
-            <a href="/services#acc-consultant" class="hero-btn">Lihat Layanan Konsultan</a>
+            <div class="hero-cta-group">
+                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20PBG%2FSLF." target="_blank" class="hero-btn-primary" onclick="trackWA('hero_pbg')">
+                    <i class="fab fa-whatsapp"></i> Konsultasi PBG/SLF
+                </a>
+                <a href="/services#acc-consultant" class="hero-btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Lihat Layanan
+                </a>
+            </div>
+            <p class="hero-trust">⭐ Dipercaya <strong>150+ proyek</strong> di Tangerang & Jabodetabek</p>
         </div>
     </div>
     <button class="hero-arrow prev" onclick="changeSlide(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
@@ -449,7 +789,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h2 class="section-title" data-i18n="vision_title">Visi kami adalah menjadi perusahaan terkemuka dengan standar kualitas tertinggi.</h2>
                 <div class="divider"></div>
                 <p class="about-desc" data-i18n="vision_desc">ABI STUDIO hadir dengan kombinasi unik antara perencanaan detail, perhitungan presisi, dan layanan interior. Misi kami adalah memberikan pengalaman transformatif melalui keunggulan layanan desain dan konstruksi yang terintegrasi.</p>
-                <a href="/about" class="text-link" data-i18n="read_more">Baca Selengkapnya <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+                <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem;">
+                    <a href="/about" class="text-link" data-i18n="read_more">Baca Selengkapnya <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+                    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" onclick="trackWA('about_cta')" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--wa-green);color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.6rem 1.4rem;border-radius:100px;text-decoration:none;transition:all 0.2s;">
+                        <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+                    </a>
+                </div>
             </div>
             <div class="fade-up" style="transition-delay:.15s">
                 <p class="team-title" data-i18n="leadership_title">Leadership Kami</p>
@@ -499,6 +844,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="client-card"><img src="/assets/images/rhosigma.png" alt="Rhosigma"></div>
                     <div class="client-card"><img src="/assets/images/sinarmandiri.png" alt="Sinar Mandiri"></div>
                     <div class="client-card"><img src="/assets/images/vistaland.png" alt="Vista Land"></div>
+                    <!-- duplicate for ticker -->
                     <div class="client-card"><img src="/assets/images/paramount.png" alt="Paramount"></div>
                     <div class="client-card"><img src="/assets/images/alamsutera.png" alt="Alam Sutera"></div>
                     <div class="client-card"><img src="/assets/images/summarecon.png" alt="Summarecon"></div>
@@ -552,7 +898,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <span class="home-acc-tag">Desain MEP</span>
                                 <span class="home-acc-tag">Studi Kelayakan & RAB</span>
                             </div>
-                            <a href="/services#acc-design" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                            <div class="home-acc-footer">
+                                <a href="/services#acc-design" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20tertarik%20dengan%20layanan%20Design%20%26%20Planning." target="_blank" class="home-acc-wa-btn" onclick="trackWA('service_design')">
+                                    <i class="fab fa-whatsapp"></i> Tanya Sekarang
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -583,7 +934,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <span class="home-acc-tag">Arsitektural & Finishing</span>
                                 <span class="home-acc-tag">Pemeliharaan Bangunan</span>
                             </div>
-                            <a href="/services#acc-construction" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                            <div class="home-acc-footer">
+                                <a href="/services#acc-construction" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20jadwalkan%20survey%20untuk%20proyek%20konstruksi." target="_blank" class="home-acc-wa-btn" onclick="trackWA('service_construction')">
+                                    <i class="fab fa-whatsapp"></i> Jadwalkan Survey
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -611,19 +967,111 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <span class="home-acc-tag">Supervisi & Manajemen Proyek</span>
                                 <span class="home-acc-tag">Audit Teknis Bangunan</span>
                             </div>
-                            <a href="/services#acc-consultant" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                            <div class="home-acc-footer">
+                                <a href="/services#acc-consultant" class="home-acc-link">Lihat Detail Layanan <i class="fas fa-arrow-right" style="font-size:.6rem;"></i></a>
+                                <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20PBG%2FSLF." target="_blank" class="home-acc-wa-btn" onclick="trackWA('service_consultant')">
+                                    <i class="fab fa-whatsapp"></i> Tanya PBG/SLF
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="services-cta fade-up" style="transition-delay:.2s">
-            <a href="/services" class="outline-btn" data-i18n="see_more">Lihat Semua Layanan &amp; Harga</a>
+            <a href="/services" class="outline-btn" data-i18n="see_more">Lihat Semua Layanan & Harga</a>
+            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20hitung%20estimasi%20proyek%20saya." target="_blank" class="wa-outline-btn" onclick="trackWA('services_estimasi')">
+                <i class="fab fa-whatsapp"></i> Hitung Estimasi Proyek
+            </a>
         </div>
     </div>
 </section>
 
-<!-- ══ BLOG — Live feed from Firebase, sorted by date desc ══ -->
+<!-- ══ LEAD FORM ══ -->
+<section class="lead-form-section" id="lead-form">
+    <div class="lead-form-grid">
+        <div class="lead-form-left fade-up">
+            <span class="section-label">Mulai Proyek Anda</span>
+            <h2 class="section-title" style="color:white;">Diskusikan Proyek<strong> Anda Bersama Kami</strong></h2>
+            <ul class="lead-benefits">
+                <li><i class="fas fa-check-circle"></i> Konsultasi awal 100% gratis, tanpa komitmen</li>
+                <li><i class="fas fa-check-circle"></i> Estimasi biaya transparan & terperinci</li>
+                <li><i class="fas fa-check-circle"></i> Jadwal survey fleksibel sesuai waktu Anda</li>
+                <li><i class="fas fa-check-circle"></i> Tim berpengalaman 7+ tahun di Jabodetabek</li>
+                <li><i class="fas fa-check-circle"></i> Respons cepat — biasanya dalam 1 jam kerja</li>
+            </ul>
+            <div class="lead-form-urgency">
+                <i class="fas fa-fire"></i>
+                <span>Slot konsultasi terbatas bulan ini. Daftar sekarang dan dapatkan <strong>konsultasi gratis</strong>.</span>
+            </div>
+        </div>
+        <div class="fade-up" style="transition-delay:.15s;">
+            <div class="lead-form-card">
+                <h3>Ceritakan Proyek Anda</h3>
+                <p>Isi form berikut dan tim kami akan menghubungi Anda dalam 1 jam kerja.</p>
+
+                <div id="leadFormContent">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nama Lengkap *</label>
+                            <input type="text" id="f-nama" placeholder="Budi Santoso" required>
+                        </div>
+                        <div class="form-group">
+                            <label>No. WhatsApp *</label>
+                            <input type="tel" id="f-wa" placeholder="08xx-xxxx-xxxx" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Proyek *</label>
+                        <select id="f-layanan">
+                            <option value="" disabled selected>Pilih layanan...</option>
+                            <option value="Desain Arsitektur">🏠 Desain Arsitektur</option>
+                            <option value="Desain Interior">🛋️ Desain Interior</option>
+                            <option value="Konstruksi Baru">🏗️ Konstruksi Baru</option>
+                            <option value="Renovasi">🔨 Renovasi & Fit Out</option>
+                            <option value="PBG/SLF">📋 Perizinan PBG/SLF</option>
+                            <option value="Konsultasi Umum">💬 Konsultasi Umum</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Lokasi Proyek</label>
+                            <input type="text" id="f-lokasi" placeholder="Tangerang, BSD, dll">
+                        </div>
+                        <div class="form-group">
+                            <label>Estimasi Budget</label>
+                            <select id="f-budget">
+                                <option value="" disabled selected>Pilih range...</option>
+                                <option value="< 100 Juta">&lt; 100 Juta</option>
+                                <option value="100-300 Juta">100 – 300 Juta</option>
+                                <option value="300-700 Juta">300 – 700 Juta</option>
+                                <option value="> 700 Juta">&gt; 700 Juta</option>
+                                <option value="Belum tahu">Belum tahu</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ceritakan Kebutuhan Anda</label>
+                        <textarea id="f-pesan" placeholder="Contoh: Saya ingin membangun rumah 2 lantai di Tangerang, luas tanah 150m²..."></textarea>
+                    </div>
+                    <button class="form-submit-btn" onclick="submitLeadForm()">
+                        <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i>
+                        Kirim via WhatsApp — Gratis!
+                    </button>
+                    <p class="form-privacy"><i class="fas fa-lock"></i> Data Anda aman & tidak akan dibagikan ke pihak lain.</p>
+                </div>
+
+                <div class="form-success" id="formSuccess">
+                    <div class="form-success-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h4 style="font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.4rem;">Terima kasih!</h4>
+                    <p style="font-size:0.85rem;color:#888;">Anda akan diarahkan ke WhatsApp. Tim kami siap merespons!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ BLOG ══ -->
 <section class="blog-section">
     <div class="container">
         <div class="blog-header">
@@ -633,38 +1081,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <a href="/blog" class="text-link fade-up" style="font-size:0.72rem;" data-i18n="view_archive">Lihat Semua Artikel <i class="fas fa-arrow-right" style="font-size:.65rem;"></i></a>
         </div>
-
-        <!-- Skeleton shown while loading -->
         <div id="latestArticlesGrid" class="blog-grid">
-            <div class="hb-skel-card">
-                <div class="hb-skel-img"></div>
-                <div class="hb-skel-body">
-                    <div class="hb-skel-line" style="width:40%;"></div>
-                    <div class="hb-skel-line" style="width:85%;height:15px;"></div>
-                    <div class="hb-skel-line" style="width:70%;height:15px;"></div>
-                    <div class="hb-skel-line" style="width:55%;"></div>
-                </div>
-            </div>
-            <div class="hb-skel-card">
-                <div class="hb-skel-img"></div>
-                <div class="hb-skel-body">
-                    <div class="hb-skel-line" style="width:50%;"></div>
-                    <div class="hb-skel-line" style="width:90%;height:15px;"></div>
-                    <div class="hb-skel-line" style="width:75%;height:15px;"></div>
-                    <div class="hb-skel-line" style="width:40%;"></div>
-                </div>
-            </div>
-            <div class="hb-skel-card">
-                <div class="hb-skel-img"></div>
-                <div class="hb-skel-body">
-                    <div class="hb-skel-line" style="width:45%;"></div>
-                    <div class="hb-skel-line" style="width:80%;height:15px;"></div>
-                    <div class="hb-skel-line" style="width:65%;height:15px;"></div>
-                    <div class="hb-skel-line" style="width:50%;"></div>
-                </div>
-            </div>
+            <div class="hb-skel-card"><div class="hb-skel-img"></div><div class="hb-skel-body"><div class="hb-skel-line" style="width:40%;"></div><div class="hb-skel-line" style="width:85%;height:15px;"></div><div class="hb-skel-line" style="width:70%;height:15px;"></div><div class="hb-skel-line" style="width:55%;"></div></div></div>
+            <div class="hb-skel-card"><div class="hb-skel-img"></div><div class="hb-skel-body"><div class="hb-skel-line" style="width:50%;"></div><div class="hb-skel-line" style="width:90%;height:15px;"></div><div class="hb-skel-line" style="width:75%;height:15px;"></div><div class="hb-skel-line" style="width:40%;"></div></div></div>
+            <div class="hb-skel-card"><div class="hb-skel-img"></div><div class="hb-skel-body"><div class="hb-skel-line" style="width:45%;"></div><div class="hb-skel-line" style="width:80%;height:15px;"></div><div class="hb-skel-line" style="width:65%;height:15px;"></div><div class="hb-skel-line" style="width:50%;"></div></div></div>
         </div>
-
         <div class="blog-cta fade-up">
             <a href="/blog" data-i18n="view_archive">Lihat Arsip Artikel Lainnya →</a>
         </div>
@@ -686,7 +1107,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div>
             <div class="footer-col-title">Contact Us</div>
-            <div class="footer-contact-item" onclick="window.open('https://wa.me/6285157577465','_blank')">
+            <div class="footer-contact-item" onclick="trackWA('footer_wa'); window.open('https://wa.me/6285157577465','_blank')">
                 <i class="fab fa-whatsapp"></i>
                 <div><div class="footer-contact-name">Angga Aditya Pratama, SE</div><div class="footer-contact-sub">Co-Founder & Head of Marketing</div><div class="footer-contact-sub">0851-5757-7465</div></div>
             </div>
@@ -715,11 +1136,116 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </footer>
 
+<!-- ══ FLOATING WA BUTTON ══ -->
+<div class="wa-float" id="waFloat">
+    <div class="wa-float-bubble" id="waBubble">
+        <button class="wa-bubble-close" onclick="dismissBubble()" aria-label="Tutup">✕</button>
+        <strong>👋 Halo! Ada yang bisa kami bantu?</strong>
+        Konsultasi desain & konstruksi gratis.<br>
+        <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" onclick="trackWA('float_bubble')" style="color:var(--wa-dark);font-weight:700;font-size:0.78rem;">Chat sekarang →</a>
+    </div>
+    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-float-btn" onclick="trackWA('float_btn')" aria-label="Chat WhatsApp">
+        <span class="wa-ring"></span>
+        <span class="wa-ring2"></span>
+        <i class="fab fa-whatsapp"></i>
+        <span class="wa-float-badge">Gratis</span>
+    </a>
+</div>
+
 <script>
+/* ══ WA TRACKING ══ */
+function trackWA(source) {
+    // Google Analytics event
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'whatsapp_click', {
+            event_category: 'engagement',
+            event_label: source,
+            value: 1
+        });
+        gtag('event', 'conversion_event_submit_lead_form_1', {
+            event_label: source
+        });
+    }
+    // GTM dataLayer push
+    if (typeof dataLayer !== 'undefined') {
+        dataLayer.push({
+            event: 'wa_click',
+            wa_source: source,
+            timestamp: new Date().toISOString()
+        });
+    }
+    // Log to console for debugging
+    console.log('[ABI] WA click tracked:', source);
+}
+
+/* ══ FLOATING WA ══ */
+let bubbleDismissed = false;
+let bubbleTimer;
+
+function dismissBubble() {
+    bubbleDismissed = true;
+    document.getElementById('waBubble').classList.remove('show');
+    sessionStorage.setItem('wa_bubble_dismissed', '1');
+}
+
+function initWAFloat() {
+    if (sessionStorage.getItem('wa_bubble_dismissed')) return;
+    bubbleTimer = setTimeout(() => {
+        if (!bubbleDismissed) {
+            document.getElementById('waBubble').classList.add('show');
+        }
+    }, 4000);
+}
+
+/* ══ LEAD FORM SUBMISSION ══ */
+function submitLeadForm() {
+    const nama    = document.getElementById('f-nama').value.trim();
+    const wa      = document.getElementById('f-wa').value.trim();
+    const layanan = document.getElementById('f-layanan').value;
+
+    if (!nama) { alert('Mohon isi nama Anda.'); document.getElementById('f-nama').focus(); return; }
+    if (!wa)   { alert('Mohon isi nomor WhatsApp Anda.'); document.getElementById('f-wa').focus(); return; }
+    if (!layanan) { alert('Mohon pilih jenis proyek.'); document.getElementById('f-layanan').focus(); return; }
+
+    const lokasi  = document.getElementById('f-lokasi').value.trim();
+    const budget  = document.getElementById('f-budget').value;
+    const pesan   = document.getElementById('f-pesan').value.trim();
+
+    // Build WhatsApp message
+    let msg = `Halo ABI Studio! Saya ingin konsultasi gratis 🙏\n\n`;
+    msg += `*Nama:* ${nama}\n`;
+    msg += `*No. WA:* ${wa}\n`;
+    msg += `*Layanan:* ${layanan}\n`;
+    if (lokasi)  msg += `*Lokasi:* ${lokasi}\n`;
+    if (budget)  msg += `*Budget:* ${budget}\n`;
+    if (pesan)   msg += `\n*Detail Proyek:*\n${pesan}`;
+
+    // Track
+    trackWA('lead_form_submit');
+
+    // Save to Firestore (optional, non-blocking)
+    try {
+        db.collection('leads').add({
+            nama, wa, layanan, lokasi: lokasi || '', budget: budget || '',
+            pesan: pesan || '', source: 'homepage_form',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    } catch(e) { console.warn('Firestore lead save failed:', e); }
+
+    // Show success state
+    document.getElementById('leadFormContent').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+
+    // Open WhatsApp
+    setTimeout(() => {
+        window.open('https://wa.me/6285157577465?text=' + encodeURIComponent(msg), '_blank');
+    }, 400);
+}
+
 /* ══ TRANSLATIONS ══ */
 const translations = {
     id: {
-        nav_home:"Home", nav_about:"About", nav_portfolio:"Portfolio", nav_blog:"Blog", nav_contact:"Contact",
+        nav_home:"Home", nav_about:"About", nav_portfolio:"Portfolio", nav_blog:"Blog", nav_contact:"Konsultasi Gratis",
         hero_title_0:"Mewujudkan Bangunan", hero_bold_0:"Impian Anda.",
         hero_title_1:"Ruang yang Bercerita,", hero_bold_1:"Estetika Tanpa Batas.",
         hero_title_2:"Dibangun dengan Presisi,", hero_bold_2:"Kokoh Selamanya.",
@@ -738,7 +1264,7 @@ const translations = {
         latest_articles:"Artikel Terbaru", view_archive:"Lihat Arsip Artikel Lainnya →"
     },
     en: {
-        nav_home:"Home", nav_about:"About", nav_portfolio:"Portfolio", nav_blog:"Blog", nav_contact:"Contact Us",
+        nav_home:"Home", nav_about:"About", nav_portfolio:"Portfolio", nav_blog:"Blog", nav_contact:"Free Consultation",
         hero_title_0:"Manifesting Your", hero_bold_0:"Dream Building.",
         hero_title_1:"Spaces That Tell Stories,", hero_bold_1:"Aesthetics Without Limits.",
         hero_title_2:"Built with Precision,", hero_bold_2:"Solid Forever.",
@@ -844,7 +1370,12 @@ function toggleHomeAcc(key) {
     if (caret) caret.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
 
-/* ══ BLOG — Live Firebase feed, sorted by tanggal desc ══ */
+/* ══ NAV SCROLL ══ */
+window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ══ BLOG — Live Firebase feed ══ */
 function fmtDate(ts) {
     if (!ts) return '';
     try {
@@ -852,12 +1383,10 @@ function fmtDate(ts) {
         return d.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
     } catch { return ''; }
 }
-
 function escHtml(s) {
     if (!s) return '';
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-
 function toMs(ts) {
     if (!ts) return 0;
     try {
@@ -869,38 +1398,12 @@ function toMs(ts) {
             const normalized = ts.includes(' ') && !ts.includes('T') ? ts.replace(' ', 'T') : ts;
             const parsed = new Date(normalized).getTime();
             if (!Number.isNaN(parsed)) return parsed;
-
-            const dateParts = ts.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})(?:\s+(\d{1,2}:\d{2}(?::\d{2})?))?$/);
-            if (dateParts) {
-                const [, day, month, year, time = '00:00:00'] = dateParts;
-                const [hour = '0', minute = '0', second = '0'] = time.split(':');
-                return new Date(+year, +month - 1, +day, +hour, +minute, +second).getTime() || 0;
-            }
         }
         return new Date(ts).getTime() || 0;
     } catch { return 0; }
 }
-
 function articleTimeMs(article) {
-    const primaryCandidates = [
-        article.tanggalTimestamp,
-        article.timestamp,
-        article.timestand,
-        article.publishedAt,
-        article.tanggal
-    ];
-
-    let best = Math.max(...primaryCandidates.map(toMs));
-
-    if (article.tanggal && article.waktu) {
-        const combined = toMs(`${article.tanggal} ${article.waktu}`);
-        if (combined > best) best = combined;
-    }
-
-    if (!best) {
-        best = Math.max(toMs(article.createdAt), toMs(article.updatedAt));
-    }
-
+    const best = Math.max(...[article.tanggalTimestamp, article.timestamp, article.timestand, article.publishedAt, article.tanggal].map(toMs));
     return Number.isFinite(best) ? best : 0;
 }
 
@@ -908,40 +1411,23 @@ async function loadLatestArticles() {
     const grid = document.getElementById('latestArticlesGrid');
     if (!grid) return;
     try {
-        const snap = await db.collection('articles')
-            .orderBy('tanggal', 'desc')
-            .limit(24)
-            .get();
-
+        const snap = await db.collection('articles').orderBy('tanggal', 'desc').limit(24).get();
         if (snap.empty) {
             grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;font-size:.9rem;">Belum ada artikel.</div>`;
             return;
         }
-
-        // Map docs and sort client-side by the full article timestamp so the
-        // preview always shows the newest date + time first, even when the
-        // Firestore query returns several articles with the same date.
         const articles = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-            .sort((a, b) => articleTimeMs(b) - articleTimeMs(a))
-            .slice(0, 3);
-
+            .sort((a, b) => articleTimeMs(b) - articleTimeMs(a)).slice(0, 3);
         const fallback = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800';
-
         grid.innerHTML = articles.map((d, i) => {
             const img  = d.gambar || fallback;
             const url  = `/blog?id=${d.id}`;
             const date = fmtDate(d.tanggal);
-            // Badge "TERBARU" hanya di artikel pertama (paling baru)
-            const badge = (i === 0)
-                ? `<div class="hb-badge"><span class="hb-badge-dot"></span>Terbaru</div>`
-                : '';
-
+            const badge = (i === 0) ? `<div class="hb-badge"><span class="hb-badge-dot"></span>Terbaru</div>` : '';
             return `
             <div class="hb-card" onclick="window.location.href='${url}'">
                 <div class="hb-card-img">
-                    <img src="${img}" loading="lazy"
-                         onerror="this.src='${fallback}'"
-                         alt="${escHtml(d.judul || '')}">
+                    <img src="${img}" loading="lazy" onerror="this.src='${fallback}'" alt="${escHtml(d.judul || '')}">
                     ${badge}
                 </div>
                 <div class="hb-card-body">
@@ -955,17 +1441,11 @@ async function loadLatestArticles() {
                 </div>
             </div>`;
         }).join('');
-
     } catch(err) {
         console.error('Blog load error:', err);
         grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#aaa;font-size:.9rem;">Gagal memuat artikel.</div>`;
     }
 }
-
-/* ══ NAV SCROLL ══ */
-window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
-});
 
 /* ══ FADE UP ══ */
 const observer = new IntersectionObserver(entries => {
@@ -977,6 +1457,15 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 document.addEventListener('DOMContentLoaded', () => {
     changeLanguage(localStorage.getItem('selectedLang') || 'id');
     loadLatestArticles();
+    initWAFloat();
+
+    // Auto-show bubble on scroll past hero
+    window.addEventListener('scroll', () => {
+        if (!bubbleDismissed && !sessionStorage.getItem('wa_bubble_dismissed') && window.scrollY > 500) {
+            clearTimeout(bubbleTimer);
+            document.getElementById('waBubble').classList.add('show');
+        }
+    }, { once: true });
 });
 </script>
 </body>
