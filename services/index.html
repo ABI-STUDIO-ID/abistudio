@@ -5,9 +5,9 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HR1R62CT8X');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layanan & Harga - ABI STUDIO</title>
+    <title>Layanan & Harga - ABI STUDIO | Konsultasi Gratis Tangerang & Jabodetabek</title>
     <link rel="icon" type="image/png" href="/assets/images/logo.png">
-    <meta name="description" content="Daftar paket harga jasa arsitek, desain interior, dan konstruksi ABI STUDIO. Transparan, terperinci, dan profesional.">
+    <meta name="description" content="Daftar paket harga jasa arsitek, desain interior, dan konstruksi ABI STUDIO. Konsultasi GRATIS. Transparan, terperinci, dan profesional. Melayani Tangerang & Jabodetabek.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,14 +25,21 @@
             --dark:#111418; --dark-2:#1E2328; --mid:#4A5260;
             --light:#F7F8F6; --white:#FFFFFF; --border:#E8EAE6;
             --gold:#C8963E; --gold-pale:#FDF6EC;
+            --wa-green:#25D366; --wa-dark:#128C7E; --urgent:#E8540A;
         }
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
         html{font-size:16px;scroll-behavior:smooth;}
         body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
+        /* ══ ANNOUNCEMENT BAR ══ */
+        .announce-bar{background:var(--teal);color:white;text-align:center;padding:0.55rem 1rem;font-size:0.72rem;font-weight:600;letter-spacing:0.05em;position:relative;z-index:101;}
+        .announce-bar a{color:#7EC8C8;text-decoration:underline;font-weight:700;}
+        .announce-bar .pulse-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7EC8C8;margin-right:6px;vertical-align:middle;animation:pulse-anim 1.6s infinite;}
+        @keyframes pulse-anim{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.6);}}
+
         /* ══ NAVBAR ══ */
-        nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
-        nav#mainNav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.07);}
+        nav#mainNav{position:fixed;top:36px;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s,top 0.3s;}
+        nav#mainNav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.07);top:0;}
         .nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:80px;}
         .nav-logo img{height:60px;width:auto;object-fit:contain;display:block;}
         .nav-links{display:flex;align-items:center;gap:2rem;}
@@ -71,14 +78,23 @@
         .mob-layanan-items a i{color:var(--teal);width:16px;text-align:center;}
 
         /* ══ PAGE HERO ══ */
-        .page-hero{position:relative;height:52vh;min-height:400px;background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2000');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+        .page-hero{position:relative;height:52vh;min-height:400px;margin-top:116px;background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2000');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
         .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,14,18,0.78) 0%,rgba(10,14,18,0.5) 60%,rgba(74,109,109,0.2) 100%);}
-        .page-hero-content{position:relative;z-index:2;padding:6rem 2rem 0;}
-        .page-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;padding:0.4rem 1.1rem;border-radius:100px;margin-bottom:1.4rem;}
+        .page-hero-content{position:relative;z-index:2;padding:4rem 2rem 0;}
+        .page-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;padding:0.4rem 1.1rem;border-radius:100px;margin-bottom:1.2rem;}
         .page-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#7EC8C8;}
         .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,6vw,4.8rem);font-weight:300;color:#fff;line-height:1.15;}
         .page-hero h1 strong{font-weight:600;display:block;}
-        .page-hero p{font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;margin-top:1rem;max-width:520px;margin-left:auto;margin-right:auto;}
+        .page-hero p{font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;margin-top:0.8rem;max-width:520px;margin-left:auto;margin-right:auto;}
+        /* Hero CTAs */
+        .hero-cta-row{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem;}
+        .hero-wa-btn{display:inline-flex;align-items:center;gap:0.55rem;background:var(--wa-green);color:white;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.8rem 1.8rem;border-radius:100px;text-decoration:none;transition:all 0.25s;box-shadow:0 6px 20px rgba(37,211,102,0.4);}
+        .hero-wa-btn:hover{background:#1db954;transform:translateY(-2px);}
+        .hero-outline-btn{display:inline-flex;align-items:center;gap:0.55rem;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.35);color:white;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.8rem 1.8rem;border-radius:100px;text-decoration:none;transition:all 0.25s;backdrop-filter:blur(6px);}
+        .hero-outline-btn:hover{background:rgba(255,255,255,0.2);}
+        .hero-trust-note{color:rgba(255,255,255,0.45);font-size:0.67rem;margin-top:1rem;letter-spacing:0.05em;}
+        .hero-trust-note strong{color:rgba(255,255,255,0.8);}
+
         .breadcrumb{background:var(--light);border-bottom:1px solid var(--border);padding:0.85rem 2rem;}
         .breadcrumb-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:0.5rem;font-size:0.72rem;color:#aaa;}
         .breadcrumb-inner a{color:var(--teal);text-decoration:none;font-weight:600;}
@@ -96,186 +112,66 @@
         .guide-step-title{font-size:0.82rem;font-weight:700;color:white;margin-bottom:3px;}
         .guide-step-desc{font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
 
-        /* ══════════════════════════════════════
-           ACCORDION CATEGORY SECTIONS
-        ══════════════════════════════════════ */
+        /* ══ ACCORDION ══ */
         .acc-wrap{max-width:1280px;margin:0 auto;padding:3rem 2rem 6rem;display:flex;flex-direction:column;gap:1.2rem;}
         .acc-bg{background:var(--light);padding:3rem 0;}
-
         .acc-section{background:white;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:box-shadow 0.3s;}
         .acc-section.open{box-shadow:0 8px 40px rgba(74,109,109,0.12);border-color:var(--teal);}
-
-        /* ── TOGGLE BUTTON ── */
-        .acc-toggle{
-            width:100%;display:flex;align-items:center;justify-content:space-between;
-            padding:1.6rem 2rem;background:none;border:none;cursor:pointer;
-            font-family:'Plus Jakarta Sans',sans-serif;
-            transition:background 0.25s;gap:1rem;
-        }
+        .acc-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 2rem;background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background 0.25s;gap:1rem;}
         .acc-toggle:hover{background:var(--light);}
         .acc-section.open .acc-toggle{background:var(--teal);}
-
         .acc-toggle-left{display:flex;align-items:center;gap:1.2rem;text-align:left;}
-        .acc-ico{
-            width:52px;height:52px;border-radius:14px;
-            background:var(--teal-pale);
-            display:flex;align-items:center;justify-content:center;
-            font-size:1.3rem;color:var(--teal);flex-shrink:0;
-            transition:background 0.25s,color 0.25s;
-        }
+        .acc-ico{width:52px;height:52px;border-radius:14px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--teal);flex-shrink:0;transition:background 0.25s,color 0.25s;}
         .acc-section.open .acc-ico{background:rgba(255,255,255,0.18);color:white;}
-
         .acc-title{font-size:1.05rem;font-weight:700;color:var(--dark);transition:color 0.25s;}
         .acc-subtitle{font-size:0.78rem;color:#999;font-weight:300;margin-top:3px;transition:color 0.25s;}
         .acc-section.open .acc-title{color:white;}
         .acc-section.open .acc-subtitle{color:rgba(255,255,255,0.65);}
-
         .acc-toggle-right{display:flex;align-items:center;gap:0.8rem;flex-shrink:0;}
-        .acc-badge{
-            font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-            background:var(--teal-pale);color:var(--teal);
-            padding:0.3rem 0.9rem;border-radius:100px;white-space:nowrap;
-            transition:background 0.25s,color 0.25s;
-        }
+        .acc-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--teal-pale);color:var(--teal);padding:0.3rem 0.9rem;border-radius:100px;white-space:nowrap;transition:background 0.25s,color 0.25s;}
         .acc-section.open .acc-badge{background:rgba(255,255,255,0.2);color:white;}
-
         .acc-chevron{font-size:0.65rem;color:var(--mid);transition:transform 0.35s ease,color 0.25s;}
         .acc-section.open .acc-chevron{transform:rotate(180deg);color:white;}
-
-        /* ── PANEL ── */
-        .acc-panel{
-            display:grid;
-            grid-template-rows:0fr;
-            transition:grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1);
-        }
+        .acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1);}
         .acc-panel.open{grid-template-rows:1fr;}
         .acc-panel-overflow{overflow:hidden;}
-        .acc-panel-inner{
-            padding:2rem;background:var(--light);
-            border-top:1px solid rgba(74,109,109,0.12);
-        }
-
-        /* ── CAT HEADER inside panel ── */
+        .acc-panel-inner{padding:2rem;background:var(--light);border-top:1px solid rgba(74,109,109,0.12);}
         .acc-cat-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem;}
         .acc-cat-desc{font-size:0.88rem;color:var(--mid);font-weight:300;max-width:520px;line-height:1.7;}
+        /* Cat header CTA row */
+        .acc-cat-ctas{display:flex;gap:0.7rem;align-items:center;flex-wrap:wrap;}
         .acc-cat-link{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);text-decoration:none;border-bottom:1.5px solid var(--teal);padding-bottom:2px;white-space:nowrap;}
+        .acc-cat-wa-btn{display:inline-flex;align-items:center;gap:0.45rem;background:var(--wa-green);color:white;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1.1rem;border-radius:100px;text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+        .acc-cat-wa-btn:hover{background:#1db954;transform:translateY(-1px);}
 
-        /* ══════════════════════════════════════
-           SERVICE CARDS GRID — ENHANCED
-        ══════════════════════════════════════ */
+        /* ══ SERVICE CARDS ══ */
         .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-
-        .service-card{
-            background:white;
-            border:1px solid var(--border);
-            border-radius:18px;
-            overflow:hidden;
-            display:flex;
-            flex-direction:column;
-            transition:border-color 0.25s, box-shadow 0.3s, transform 0.25s;
-            animation:cardIn 0.4s ease both;
-            position:relative;
-        }
-        /* Top accent line */
-        .service-card::before{
-            content:'';
-            position:absolute;
-            top:0; left:0; right:0;
-            height:3px;
-            background:linear-gradient(90deg, var(--teal), var(--teal-light));
-            opacity:0;
-            transition:opacity 0.25s;
-        }
-        .service-card:hover::before{ opacity:1; }
-
+        .service-card{background:white;border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:border-color 0.25s,box-shadow 0.3s,transform 0.25s;animation:cardIn 0.4s ease both;position:relative;}
+        .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light));opacity:0;transition:opacity 0.25s;}
+        .service-card:hover::before{opacity:1;}
         @keyframes cardIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-        .service-card:hover{
-            border-color:var(--teal);
-            box-shadow:0 12px 40px rgba(74,109,109,0.14);
-            transform:translateY(-3px);
-        }
-
-        .card-top{
-            padding:1.6rem 1.6rem 1.2rem;
-            border-bottom:1px solid var(--border);
-            background:linear-gradient(135deg, #fff 0%, #f9fbfb 100%);
-        }
-        .card-icon{
-            width:48px;height:48px;
-            background:linear-gradient(135deg, var(--teal-pale), #dceaea);
-            border-radius:13px;
-            display:flex;align-items:center;justify-content:center;
-            font-size:1.1rem;color:var(--teal);
-            margin-bottom:1rem;
-            transition:background 0.2s, transform 0.2s;
-            box-shadow:0 2px 8px rgba(74,109,109,0.12);
-        }
-        .service-card:hover .card-icon{
-            background:linear-gradient(135deg, var(--teal), var(--teal-light));
-            color:white;
-            transform:scale(1.06) rotate(-3deg);
-        }
+        .service-card:hover{border-color:var(--teal);box-shadow:0 12px 40px rgba(74,109,109,0.14);transform:translateY(-3px);}
+        .card-top{padding:1.6rem 1.6rem 1.2rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#fff 0%,#f9fbfb 100%);}
+        .card-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--teal-pale),#dceaea);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--teal);margin-bottom:1rem;transition:background 0.2s,transform 0.2s;box-shadow:0 2px 8px rgba(74,109,109,0.12);}
+        .service-card:hover .card-icon{background:linear-gradient(135deg,var(--teal),var(--teal-light));color:white;transform:scale(1.06) rotate(-3deg);}
         .card-name{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
         .card-desc{font-size:0.8rem;color:#888;line-height:1.6;font-weight:300;}
-
         .card-body{padding:1.1rem 1.6rem 0.9rem;flex:1;}
         .card-scope-label{font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#bbb;margin-bottom:0.6rem;display:block;}
         .card-scope-list{list-style:none;display:flex;flex-direction:column;gap:0.35rem;}
-        .card-scope-list li{
-            display:flex;align-items:center;gap:0.5rem;
-            font-size:0.78rem;color:var(--mid);font-weight:300;
-        }
-        .card-scope-list li::before{
-            content:'';width:5px;height:5px;border-radius:50%;
-            background:var(--teal);flex-shrink:0;opacity:0.55;
-        }
+        .card-scope-list li{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--mid);font-weight:300;}
+        .card-scope-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;opacity:0.55;}
 
-        /* ── REVIEW TOGGLE — FIXED ── */
-        .card-review-toggle{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            flex-wrap:nowrap;
-            gap:0.5rem;
-            padding:0.75rem 1.4rem;
-            background:var(--gold-pale);
-            border-top:1px solid rgba(200,150,62,0.18);
-            border-bottom:1px solid rgba(200,150,62,0.18);
-            cursor:pointer;
-            transition:background 0.2s;
-            user-select:none;
-            min-width:0;
-        }
+        /* Review toggle */
+        .card-review-toggle{display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:0.5rem;padding:0.75rem 1.4rem;background:var(--gold-pale);border-top:1px solid rgba(200,150,62,0.18);border-bottom:1px solid rgba(200,150,62,0.18);cursor:pointer;transition:background 0.2s;user-select:none;min-width:0;}
         .card-review-toggle:hover{background:#faeedd;}
-
-        .review-toggle-left{
-            display:flex;align-items:center;gap:6px;
-            min-width:0;
-            flex:1 1 auto;
-            overflow:hidden;
-        }
-        .review-stars{
-            color:var(--gold);font-size:0.62rem;letter-spacing:0.5px;
-            flex-shrink:0;
-        }
-        .review-count{
-            font-size:0.7rem;font-weight:700;color:var(--gold);
-            white-space:nowrap;
-            overflow:hidden;text-overflow:ellipsis;
-        }
-
-        .review-toggle-right{
-            display:flex;align-items:center;gap:4px;
-            flex-shrink:0;
-        }
-        .review-toggle-label{
-            font-size:0.62rem;font-weight:700;letter-spacing:0.05em;
-            text-transform:uppercase;color:#b8822e;
-            white-space:nowrap;
-        }
+        .review-toggle-left{display:flex;align-items:center;gap:6px;min-width:0;flex:1 1 auto;overflow:hidden;}
+        .review-stars{color:var(--gold);font-size:0.62rem;letter-spacing:0.5px;flex-shrink:0;}
+        .review-count{font-size:0.7rem;font-weight:700;color:var(--gold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .review-toggle-right{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+        .review-toggle-label{font-size:0.62rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#b8822e;white-space:nowrap;}
         .review-chevron{font-size:0.5rem;color:var(--gold);transition:transform 0.28s;flex-shrink:0;}
         .card-review-toggle.open .review-chevron{transform:rotate(180deg);}
-
         .card-review-panel{max-height:0;overflow:hidden;transition:max-height 0.42s cubic-bezier(0.4,0,0.2,1);background:var(--gold-pale);}
         .card-review-panel.open{max-height:4000px;}
         .review-panel-inner{padding:0.6rem 1.4rem 1.2rem;display:flex;flex-direction:column;gap:0.75rem;}
@@ -289,43 +185,33 @@
         .review-text::before{content:'\201C';}
         .review-text::after{content:'\201D';}
 
-        /* ── CARD FOOTER — FIXED FOR MOBILE ── */
-        .card-footer{
-            padding:1rem 1.4rem 1.3rem;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:0.75rem;
-            flex-wrap:wrap;           /* ← KEY FIX: allow wrap */
-        }
-        .card-price{
-            font-size:0.75rem;font-weight:700;color:var(--teal);
-            background:var(--teal-pale);
-            padding:0.35rem 0.9rem;border-radius:100px;
-            white-space:nowrap;
-            flex-shrink:0;
-        }
-        .card-cta{
-            display:inline-flex;align-items:center;justify-content:center;gap:0.45rem;
-            background:var(--dark);color:white;
-            font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-            padding:0.6rem 1.1rem;border-radius:10px;border:none;cursor:pointer;
-            transition:background 0.2s, transform 0.15s;
-            font-family:'Plus Jakarta Sans',sans-serif;
-            white-space:nowrap;
-            flex-shrink:0;
-        }
+        /* Card footer */
+        .card-footer{padding:1rem 1.4rem 1.3rem;display:flex;align-items:center;justify-content:space-between;gap:0.75rem;flex-wrap:wrap;}
+        .card-price{font-size:0.75rem;font-weight:700;color:var(--teal);background:var(--teal-pale);padding:0.35rem 0.9rem;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+
+        /* CTA group in footer — primary WA + secondary detail */
+        .card-cta-group{display:flex;gap:0.5rem;align-items:center;flex-shrink:0;}
+        .card-cta{display:inline-flex;align-items:center;justify-content:center;gap:0.45rem;background:var(--dark);color:white;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.6rem 1.1rem;border-radius:10px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap;flex-shrink:0;}
         .card-cta:hover{background:var(--teal);transform:translateY(-1px);}
+        .card-cta.wa{background:var(--wa-green);}
+        .card-cta.wa:hover{background:#1db954;}
         .card-cta i{font-size:0.55rem;}
 
-        /* ── POPULAR BADGE ── */
-        .card-popular-badge{
-            position:absolute;top:14px;right:14px;
-            background:var(--gold);color:white;
-            font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-            padding:0.28rem 0.75rem;border-radius:100px;
-            box-shadow:0 2px 8px rgba(200,150,62,0.35);
-        }
+        /* Popular badge */
+        .card-popular-badge{position:absolute;top:14px;right:14px;background:var(--gold);color:white;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.75rem;border-radius:100px;box-shadow:0 2px 8px rgba(200,150,62,0.35);}
+
+        /* ══ FLOATING WA ══ */
+        .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:0.7rem;}
+        .wa-float-bubble{background:white;border-radius:14px;padding:0.9rem 1.2rem;box-shadow:0 8px 40px rgba(0,0,0,0.16);max-width:230px;font-size:0.78rem;line-height:1.5;color:var(--dark);border:1px solid var(--border);opacity:0;transform:translateY(8px) scale(0.95);pointer-events:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);transform-origin:bottom right;position:relative;}
+        .wa-float-bubble.show{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
+        .wa-float-bubble strong{color:var(--dark);display:block;margin-bottom:2px;}
+        .wa-bubble-close{position:absolute;top:0.4rem;right:0.5rem;font-size:0.7rem;color:#bbb;cursor:pointer;background:none;border:none;line-height:1;}
+        .wa-float-btn{width:62px;height:62px;border-radius:50%;background:var(--wa-green);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,0.5);cursor:pointer;border:none;transition:transform 0.25s,box-shadow 0.25s;text-decoration:none;color:white;font-size:1.65rem;position:relative;flex-shrink:0;}
+        .wa-float-btn:hover{transform:scale(1.08);box-shadow:0 10px 36px rgba(37,211,102,0.6);}
+        .wa-float-btn .wa-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.4);animation:wa-ring-anim 2s infinite;}
+        .wa-float-btn .wa-ring2{position:absolute;inset:-10px;border-radius:50%;border:1.5px solid rgba(37,211,102,0.2);animation:wa-ring-anim 2s 0.5s infinite;}
+        @keyframes wa-ring-anim{0%{transform:scale(1);opacity:1;}100%{transform:scale(1.3);opacity:0;}}
+        .wa-float-badge{position:absolute;top:-4px;right:-4px;background:var(--urgent);color:white;font-size:0.6rem;font-weight:700;padding:0.15rem 0.4rem;border-radius:100px;border:2px solid white;white-space:nowrap;}
 
         /* ══ MODAL ══ */
         .modal-backdrop{position:fixed;inset:0;background:rgba(10,14,18,0.6);backdrop-filter:blur(4px);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.25s;}
@@ -348,9 +234,17 @@
         .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;}
         .form-textarea{resize:vertical;min-height:88px;line-height:1.6;}
         .form-note{font-size:0.72rem;color:#aaa;font-weight:300;margin-top:0.35rem;}
-        .submit-btn{width:100%;background:var(--teal);color:white;border:none;border-radius:12px;padding:1rem;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;font-family:'Plus Jakarta Sans',sans-serif;margin-top:1.4rem;}
-        .submit-btn:hover{background:var(--dark);}
+        .submit-btn{width:100%;background:var(--wa-green);color:white;border:none;border-radius:12px;padding:1rem;font-size:0.85rem;font-weight:700;letter-spacing:0.08em;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:0.6rem;font-family:'Plus Jakarta Sans',sans-serif;margin-top:1.4rem;}
+        .submit-btn:hover{background:#1db954;}
         .submit-note{text-align:center;font-size:0.7rem;color:#bbb;margin-top:0.6rem;font-weight:300;}
+
+        /* ══ STICKY BOTTOM CTA (mobile) ══ */
+        .sticky-bottom-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:white;border-top:1px solid var(--border);padding:0.8rem 1.25rem;box-shadow:0 -4px 24px rgba(0,0,0,0.1);}
+        @media(max-width:640px){.sticky-bottom-cta{display:flex;gap:0.6rem;}}
+        .sticky-wa-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--wa-green);color:white;font-size:0.78rem;font-weight:700;padding:0.75rem;border-radius:10px;text-decoration:none;transition:background 0.2s;}
+        .sticky-wa-btn:hover{background:#1db954;}
+        .sticky-est-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--teal);color:white;font-size:0.78rem;font-weight:700;padding:0.75rem;border-radius:10px;text-decoration:none;transition:background 0.2s;}
+        .sticky-est-btn:hover{background:var(--dark);}
 
         /* ══ WHY / CTA / FOOTER ══ */
         .why-strip{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3.5rem 2rem;}
@@ -362,8 +256,11 @@
         .cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:white;margin-bottom:0.6rem;}
         .cta-strip h2 strong{font-weight:600;}
         .cta-strip p{font-size:0.88rem;color:rgba(255,255,255,0.7);font-weight:300;margin-bottom:2rem;}
-        .cta-btn{display:inline-block;background:white;color:var(--teal);font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:0.9rem 2.4rem;border-radius:100px;text-decoration:none;transition:background 0.2s,color 0.2s,transform 0.2s;}
+        .cta-btn-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+        .cta-btn{display:inline-flex;align-items:center;gap:0.6rem;background:white;color:var(--teal);font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:0.9rem 2.2rem;border-radius:100px;text-decoration:none;transition:background 0.2s,color 0.2s,transform 0.2s;}
         .cta-btn:hover{background:var(--dark);color:white;transform:translateY(-2px);}
+        .cta-btn.wa{background:var(--wa-green);color:white;}
+        .cta-btn.wa:hover{background:#1db954;}
         footer{background:var(--dark);color:white;padding:4.5rem 2rem 3rem;border-top:1px solid rgba(255,255,255,0.06);}
         .footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4rem;}
         .footer-address{font-size:0.83rem;line-height:1.75;color:rgba(255,255,255,0.45);display:flex;align-items:flex-start;gap:0.7rem;font-weight:300;text-decoration:none;margin-bottom:1rem;}
@@ -383,9 +280,7 @@
         .fade-up.visible{opacity:1;transform:translateY(0);}
 
         /* ══ RESPONSIVE ══ */
-        @media(max-width:1024px){
-            .services-grid{grid-template-columns:repeat(2,1fr);}
-        }
+        @media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr);}}
         @media(max-width:900px){
             .nav-links{display:none;}
             .hamburger{display:block;}
@@ -393,40 +288,27 @@
             .why-grid{grid-template-columns:repeat(2,1fr);}
             .footer-inner{grid-template-columns:1fr;gap:2.5rem;}
             .footer-bottom{flex-direction:column;gap:0.5rem;text-align:center;}
+            .page-hero{margin-top:116px;}
+            .announce-bar .hide-mobile{display:none;}
         }
         @media(max-width:640px){
             .services-grid{grid-template-columns:1fr;}
             .form-row{grid-template-columns:1fr;}
             .nav-inner{padding:0 1.25rem;}
             .why-grid{grid-template-columns:1fr 1fr;}
-            .acc-wrap{padding:1.5rem 1rem 4rem;}
+            .acc-wrap{padding:1.5rem 1rem 5rem;}
             .acc-panel-inner{padding:1.2rem;}
-
-            /* ── Mobile card footer fix ── */
-            .card-footer{
-                flex-direction:row;
-                flex-wrap:wrap;
-                align-items:center;
-                padding:0.9rem 1.2rem 1.2rem;
-                gap:0.6rem;
-            }
-            .card-cta{
-                flex:1 1 auto;        /* stretch to fill remaining space */
-                min-width:0;
-                text-align:center;
-            }
-            .card-price{
-                flex-shrink:0;
-            }
-
-            /* ── Mobile review toggle ── */
+            .card-footer{flex-direction:row;flex-wrap:wrap;align-items:center;padding:0.9rem 1.2rem 1.2rem;gap:0.6rem;}
+            .card-cta{flex:1 1 auto;min-width:0;text-align:center;}
+            .card-price{flex-shrink:0;}
             .card-review-toggle{padding:0.7rem 1.2rem;}
-            .review-toggle-label{display:none;} /* hide text label, keep icon */
+            .review-toggle-label{display:none;}
             .review-stars{font-size:0.58rem;}
             .review-count{font-size:0.66rem;}
+            .wa-float{bottom:5.5rem;right:1.2rem;}
+            .wa-float-btn{width:54px;height:54px;font-size:1.4rem;}
+            .hero-cta-row{flex-direction:column;align-items:center;}
         }
-
-        /* Very small screens */
         @media(max-width:380px){
             .card-footer{flex-direction:column;align-items:stretch;}
             .card-price{text-align:center;}
@@ -435,6 +317,14 @@
     </style>
 </head>
 <body>
+
+<!-- ══ ANNOUNCEMENT BAR ══ -->
+<div class="announce-bar">
+    <span class="pulse-dot"></span>
+    <strong>Konsultasi Gratis</strong>
+    <span class="hide-mobile"> — Tim kami siap merespons dalam 1 jam kerja.</span>
+    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" onclick="trackWA('announce_bar_services')">Chat Sekarang →</a>
+</div>
 
 <!-- ══ NAVBAR ══ -->
 <nav id="mainNav">
@@ -464,7 +354,7 @@
             </div>
             <a href="/portfolio" data-i18n="nav_portfolio">Portfolio</a>
             <a href="/blog" data-i18n="nav_blog">Blog</a>
-            <a href="https://wa.me/6285157577465" target="_blank" class="nav-cta" data-i18n="nav_contact">Contact</a>
+            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" class="nav-cta" onclick="trackWA('nav_cta_services')">Konsultasi Gratis</a>
             <div style="display:flex;align-items:center;gap:0.5rem;padding-left:1.5rem;border-left:1px solid var(--border);">
                 <span id="btn-id" onclick="changeLanguage('id')" style="font-size:0.7rem;font-weight:700;cursor:pointer;color:var(--teal);">ID</span>
                 <span style="color:#ddd;font-size:0.7rem;">|</span>
@@ -484,7 +374,7 @@
         </div>
         <a href="/portfolio">Portfolio</a>
         <a href="/blog">Blog</a>
-        <a href="https://wa.me/6285157577465" target="_blank" style="color:var(--teal);">Contact</a>
+        <a href="https://wa.me/6285157577465" target="_blank" style="color:var(--teal);" onclick="trackWA('mobile_nav_services')">Konsultasi Gratis</a>
     </div>
 </nav>
 
@@ -494,6 +384,15 @@
         <div class="page-eyebrow">Our Services</div>
         <h1>Pilih Layanan yang <strong>Tepat untuk Anda.</strong></h1>
         <p data-i18n="header_desc">Klik kategori layanan di bawah, lalu pilih jenis layanan yang sesuai kebutuhan proyek Anda.</p>
+        <div class="hero-cta-row">
+            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20dan%20hitung%20estimasi%20proyek." target="_blank" class="hero-wa-btn" onclick="trackWA('hero_services_estimasi')">
+                <i class="fab fa-whatsapp"></i> Hitung Estimasi Proyek
+            </a>
+            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20jadwalkan%20survey%20gratis." target="_blank" class="hero-outline-btn" onclick="trackWA('hero_services_survey')">
+                <i class="fas fa-calendar-check"></i> Jadwalkan Survey Gratis
+            </a>
+        </div>
+        <p class="hero-trust-note">⭐ Dipercaya <strong>150+ proyek</strong> — Respons dalam <strong>1 jam kerja</strong></p>
     </div>
 </div>
 <div class="breadcrumb"><div class="breadcrumb-inner"><a href="/">Home</a><i class="fas fa-chevron-right"></i><span>Layanan &amp; Harga</span></div></div>
@@ -503,24 +402,21 @@
     <p class="guide-label">Cara Memilih Layanan</p>
     <div class="guide-steps">
         <div class="guide-step"><div class="guide-step-num">1</div><div><div class="guide-step-title">Klik Kategori</div><div class="guide-step-desc">Buka kategori Design, Construction, atau Consultant untuk melihat layanan di dalamnya.</div></div></div>
-        <div class="guide-step"><div class="guide-step-num">2</div><div><div class="guide-step-title">Pilih Layanan</div><div class="guide-step-desc">Klik "Konsultasikan" pada layanan yang sesuai untuk mengisi formulir singkat.</div></div></div>
-        <div class="guide-step"><div class="guide-step-num">3</div><div><div class="guide-step-title">Terima Penawaran</div><div class="guide-step-desc">Tim kami akan merespons via WhatsApp dengan penawaran detail dalam 1×24 jam.</div></div></div>
+        <div class="guide-step"><div class="guide-step-num">2</div><div><div class="guide-step-title">Diskusikan Proyek</div><div class="guide-step-desc">Klik "Konsultasikan" atau "Chat WA" untuk langsung terhubung dengan tim kami.</div></div></div>
+        <div class="guide-step"><div class="guide-step-num">3</div><div><div class="guide-step-title">Terima Penawaran</div><div class="guide-step-desc">Tim kami merespons via WhatsApp dengan penawaran detail dalam 1×24 jam.</div></div></div>
     </div>
 </div></div>
 
-<!-- ══ ACCORDION SECTIONS ══ -->
+<!-- ══ ACCORDION ══ -->
 <div class="acc-bg">
 <div class="acc-wrap">
 
-    <!-- DESIGN & PLANNING -->
+    <!-- DESIGN -->
     <div class="acc-section" id="acc-design">
         <button class="acc-toggle" onclick="toggleAcc('design')">
             <div class="acc-toggle-left">
                 <div class="acc-ico"><i class="fas fa-pen-ruler"></i></div>
-                <div>
-                    <div class="acc-title">Design & Planning</div>
-                    <div class="acc-subtitle">Arsitektur, Interior, Struktur, Landscape, MEP & RAB</div>
-                </div>
+                <div><div class="acc-title">Design & Planning</div><div class="acc-subtitle">Arsitektur, Interior, Struktur, Landscape, MEP & RAB</div></div>
             </div>
             <div class="acc-toggle-right">
                 <span class="acc-badge">6 Layanan</span>
@@ -532,7 +428,10 @@
                 <div class="acc-panel-inner">
                     <div class="acc-cat-header">
                         <p class="acc-cat-desc">Perencanaan desain arsitektur, interior, struktur, landscape, dan MEP yang estetik, presisi, dan fungsional — mulai dari konsep hingga gambar kerja lengkap.</p>
-                        <a href="https://wa.me/6285157577465?text=Halo ABI STUDIO, saya ingin konsultasi umum mengenai layanan Design & Planning." target="_blank" class="acc-cat-link">Tidak yakin? Tanya langsung →</a>
+                        <div class="acc-cat-ctas">
+                            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20layanan%20Design%20%26%20Planning." target="_blank" class="acc-cat-wa-btn" onclick="trackWA('cat_design_wa')"><i class="fab fa-whatsapp"></i> Konsultasi Gratis</a>
+                            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20STUDIO%2C%20saya%20ingin%20konsultasi%20umum%20mengenai%20layanan%20Design%20%26%20Planning." target="_blank" class="acc-cat-link" onclick="trackWA('cat_design_link')">Tidak yakin? Tanya langsung →</a>
+                        </div>
                     </div>
                     <div class="services-grid" id="grid-design"></div>
                 </div>
@@ -545,10 +444,7 @@
         <button class="acc-toggle" onclick="toggleAcc('construction')">
             <div class="acc-toggle-left">
                 <div class="acc-ico"><i class="fas fa-hammer"></i></div>
-                <div>
-                    <div class="acc-title">Construction</div>
-                    <div class="acc-subtitle">Bangun baru, Renovasi, Fit Out, Finishing & Pemeliharaan</div>
-                </div>
+                <div><div class="acc-title">Construction</div><div class="acc-subtitle">Bangun baru, Renovasi, Fit Out, Finishing & Pemeliharaan</div></div>
             </div>
             <div class="acc-toggle-right">
                 <span class="acc-badge">6 Layanan</span>
@@ -560,7 +456,10 @@
                 <div class="acc-panel-inner">
                     <div class="acc-cat-header">
                         <p class="acc-cat-desc">Realisasi fisik bangunan dari nol, renovasi, hingga finishing interior dengan standar kualitas tinggi, material terpilih, dan pengawasan ketat di setiap tahap.</p>
-                        <a href="https://wa.me/6285157577465?text=Halo ABI STUDIO, saya ingin konsultasi mengenai layanan Construction." target="_blank" class="acc-cat-link">Tidak yakin? Tanya langsung →</a>
+                        <div class="acc-cat-ctas">
+                            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20jadwalkan%20survey%20gratis%20untuk%20proyek%20konstruksi." target="_blank" class="acc-cat-wa-btn" onclick="trackWA('cat_construction_wa')"><i class="fab fa-whatsapp"></i> Jadwalkan Survey</a>
+                            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20STUDIO%2C%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Construction." target="_blank" class="acc-cat-link" onclick="trackWA('cat_construction_link')">Tidak yakin? Tanya langsung →</a>
+                        </div>
                     </div>
                     <div class="services-grid" id="grid-construction"></div>
                 </div>
@@ -568,15 +467,12 @@
         </div>
     </div>
 
-    <!-- CONSULTANT & AUDIT -->
+    <!-- CONSULTANT -->
     <div class="acc-section" id="acc-consultant">
         <button class="acc-toggle" onclick="toggleAcc('consultant')">
             <div class="acc-toggle-left">
                 <div class="acc-ico"><i class="fas fa-file-contract"></i></div>
-                <div>
-                    <div class="acc-title">Consultant & Audit</div>
-                    <div class="acc-subtitle">Perizinan PBG/SLF, Supervisi Proyek & Audit Teknis</div>
-                </div>
+                <div><div class="acc-title">Consultant & Audit</div><div class="acc-subtitle">Perizinan PBG/SLF, Supervisi Proyek & Audit Teknis</div></div>
             </div>
             <div class="acc-toggle-right">
                 <span class="acc-badge">3 Layanan</span>
@@ -588,7 +484,10 @@
                 <div class="acc-panel-inner">
                     <div class="acc-cat-header">
                         <p class="acc-cat-desc">Layanan legalitas bangunan, pengawasan proyek, dan audit teknis keamanan yang memastikan proyek Anda berjalan sesuai standar regulasi dan keselamatan.</p>
-                        <a href="https://wa.me/6285157577465?text=Halo ABI STUDIO, saya ingin konsultasi mengenai layanan Consultant & Audit." target="_blank" class="acc-cat-link">Tidak yakin? Tanya langsung →</a>
+                        <div class="acc-cat-ctas">
+                            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20PBG%2FSLF." target="_blank" class="acc-cat-wa-btn" onclick="trackWA('cat_consultant_wa')"><i class="fab fa-whatsapp"></i> Tanya PBG/SLF</a>
+                            <a href="https://wa.me/6285157577465?text=Halo%20ABI%20STUDIO%2C%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Consultant%20%26%20Audit." target="_blank" class="acc-cat-link" onclick="trackWA('cat_consultant_link')">Tidak yakin? Tanya langsung →</a>
+                        </div>
                     </div>
                     <div class="services-grid" id="grid-consultant"></div>
                 </div>
@@ -607,11 +506,18 @@
     <div><div class="why-icon"><i class="fas fa-headset"></i></div><div class="why-title">Konsultasi Gratis</div><div class="why-desc">Diskusi awal tanpa biaya. Kami bantu tentukan solusi terbaik untuk Anda.</div></div>
 </div></div>
 
-<!-- ══ CTA ══ -->
+<!-- ══ CTA STRIP ══ -->
 <div class="cta-strip"><div class="container">
     <h2>Belum menemukan layanan yang <strong>Anda cari?</strong></h2>
-    <p>Ceritakan kebutuhan Anda dan tim kami akan menyiapkan solusi yang tepat.</p>
-    <a href="https://wa.me/6285157577465?text=Halo ABI STUDIO, saya ingin berdiskusi mengenai kebutuhan proyek saya." target="_blank" class="cta-btn">Hubungi Kami Langsung</a>
+    <p>Ceritakan kebutuhan Anda dan tim kami akan menyiapkan solusi yang tepat, gratis.</p>
+    <div class="cta-btn-group">
+        <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20proyek%20saya." target="_blank" class="cta-btn wa" onclick="trackWA('cta_strip_wa')">
+            <i class="fab fa-whatsapp"></i> Konsultasi Gratis Sekarang
+        </a>
+        <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20jadwalkan%20survey%20gratis." target="_blank" class="cta-btn" onclick="trackWA('cta_strip_survey')">
+            <i class="fas fa-calendar-check"></i> Jadwalkan Survey
+        </a>
+    </div>
 </div></div>
 
 <!-- ══ FOOTER ══ -->
@@ -622,7 +528,7 @@
     </div>
     <div>
         <div class="footer-col-title">Contact Us</div>
-        <div class="footer-contact-item" onclick="window.open('https://wa.me/6285157577465','_blank')"><i class="fab fa-whatsapp"></i><div><div class="footer-contact-name">Angga Aditya Pratama, SE</div><div class="footer-contact-sub">Co-Founder & Head of Marketing</div><div class="footer-contact-sub">0851-5757-7465</div></div></div>
+        <div class="footer-contact-item" onclick="trackWA('footer_wa_services');window.open('https://wa.me/6285157577465','_blank')"><i class="fab fa-whatsapp"></i><div><div class="footer-contact-name">Angga Aditya Pratama, SE</div><div class="footer-contact-sub">Co-Founder & Head of Marketing</div><div class="footer-contact-sub">0851-5757-7465</div></div></div>
         <div class="footer-contact-item"><i class="far fa-envelope"></i><div><a href="mailto:abi.studio.id@gmail.com" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:.83rem;font-weight:300;">abi.studio.id@gmail.com</a></div></div>
     </div>
     <div>
@@ -645,7 +551,7 @@
     <div class="modal-header">
         <div>
             <div class="modal-title">Formulir Konsultasi</div>
-            <div class="modal-subtitle">Isi data berikut — tim kami akan balas via WhatsApp dalam 1×24 jam.</div>
+            <div class="modal-subtitle">Isi data berikut — tim kami balas via WhatsApp dalam 1×24 jam.</div>
             <div class="modal-service-badge" id="modalBadge"><i class="fas fa-tag" style="font-size:.65rem;"></i> <span id="modalServiceName">—</span></div>
         </div>
         <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
@@ -670,229 +576,99 @@
     </div>
 </div>
 
+<!-- ══ FLOATING WA ══ -->
+<div class="wa-float" id="waFloat">
+    <div class="wa-float-bubble" id="waBubble">
+        <button class="wa-bubble-close" onclick="dismissBubble()" aria-label="Tutup">✕</button>
+        <strong>💬 Ada pertanyaan soal layanan?</strong>
+        Konsultasi gratis, tanpa komitmen.<br>
+        <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20tanya%20soal%20layanan." target="_blank" onclick="trackWA('float_bubble_services')" style="color:var(--wa-dark);font-weight:700;font-size:0.78rem;">Tanya sekarang →</a>
+    </div>
+    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-float-btn" onclick="trackWA('float_btn_services')" aria-label="Chat WhatsApp">
+        <span class="wa-ring"></span>
+        <span class="wa-ring2"></span>
+        <i class="fab fa-whatsapp"></i>
+        <span class="wa-float-badge">Gratis</span>
+    </a>
+</div>
+
+<!-- ══ STICKY BOTTOM CTA (mobile) ══ -->
+<div class="sticky-bottom-cta">
+    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis." target="_blank" class="sticky-wa-btn" onclick="trackWA('sticky_wa_services')">
+        <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+    </a>
+    <a href="https://wa.me/6285157577465?text=Halo%20ABI%20Studio%2C%20saya%20ingin%20hitung%20estimasi%20proyek." target="_blank" class="sticky-est-btn" onclick="trackWA('sticky_estimasi_services')">
+        <i class="fas fa-calculator"></i> Hitung Estimasi
+    </a>
+</div>
+
 <script>
-/* ══════════════════════════════════════
-   HELPERS
-══════════════════════════════════════ */
+/* ══ WA TRACKING ══ */
+function trackWA(source){
+    if(typeof gtag!=='undefined'){
+        gtag('event','whatsapp_click',{event_category:'engagement',event_label:source,value:1});
+        gtag('event','begin_checkout',{event_category:'Konsultasi',event_label:source,value:1});
+    }
+    if(typeof dataLayer!=='undefined'){
+        dataLayer.push({event:'wa_click',wa_source:source,page:'services',timestamp:new Date().toISOString()});
+    }
+    console.log('[ABI] WA click tracked:',source);
+}
+
+/* ══ FLOATING WA ══ */
+let bubbleDismissed=false;
+function dismissBubble(){bubbleDismissed=true;document.getElementById('waBubble').classList.remove('show');sessionStorage.setItem('wa_bubble_dismissed','1');}
+function initWAFloat(){
+    if(sessionStorage.getItem('wa_bubble_dismissed'))return;
+    setTimeout(()=>{if(!bubbleDismissed)document.getElementById('waBubble').classList.add('show');},3500);
+}
+
+/* ══ HELPERS ══ */
 const AC=['#4A6D6D','#6A5D7B','#7B5D48','#4A6B8A','#7B6948','#5D7B4A','#6B4A5D','#48637B'];
 function ini(n){return n.replace(/PT\.|CV\.|Ir\.|Dr\.|Ibu|Bpk\.|Hj\.|Cafe|Yayasan|Manajemen|Developer|Komplek/gi,'').trim().split(/\s+/).map(x=>x[0]||'').slice(0,2).join('').toUpperCase();}
 function starsDisplay(n){let s='';for(let i=1;i<=5;i++)s+=i<=n?'★':'☆';return s;}
-function avgRating(reviews){
-  if(!reviews||!reviews.length)return 0;
-  return reviews.reduce((s,r)=>s+(r.rating||5),0)/reviews.length;
-}
+function avgRating(reviews){if(!reviews||!reviews.length)return 0;return reviews.reduce((s,r)=>s+(r.rating||5),0)/reviews.length;}
 
-/* ══════════════════════════════════════
-   SERVICE DATA + REVIEWS
-══════════════════════════════════════ */
+/* ══ SERVICE DATA ══ */
 const SD={
-  design:{
-    desc:'Perencanaan desain arsitektur, interior, struktur, landscape, dan MEP yang estetik, presisi, dan fungsional.',
-    items:[
-      {title:"Desain Arsitektur",icon:"fas fa-home",popular:true,
-       desc:"Perencanaan bangunan estetik dan fungsional sesuai kebutuhan klien.",
-       scope:["Paket Basic","Paket Standard","Paket Premium"],
-       options:["Paket Basic","Paket Standard","Paket Premium"],price:"Hubungi Admin",
-       reviews:[
-         {name:"Bpk. E****",loc:"Pondok Indah 2, Jakarta Selatan",rating:5,text:"Desain rumah kami benar-benar melebihi ekspektasi. Konsep modern klasik yang diminta berhasil diwujudkan dengan sangat elegan. Setiap sudut ruangan dirancang memaksimalkan cahaya alami masuk."},
-         {name:"Ibu D*** K*****",loc:"Bintaro Sektor 9, Tangerang Selatan",rating:5,text:"ABI STUDIO sangat sabar mengakomodasi revisi kami yang lumayan banyak. Hasilnya benar-benar memuaskan dan sesuai impian. Banyak tamu yang bertanya siapa arsiteknya."},
-         {name:"Bpk. H***** W*****",loc:"BSD City, Tangerang",rating:5,text:"Gambar kerja sangat detail dan lengkap sehingga kontraktor tidak kesulitan eksekusi. Rumah 2,5 lantai kami jadi terlihat premium padahal budget di tengah."},
-         {name:"Ibu M***** L*****",loc:"Kelapa Gading, Jakarta Utara",rating:5,text:"Komunikasi tim ABI STUDIO sangat responsif. Proses dari konsep hingga gambar kerja selesai dalam waktu yang lebih cepat dari estimasi. Highly recommended!"},
-         {name:"Bpk. S****** P*****",loc:"Serpong, Tangerang Selatan",rating:5,text:"Desain villa kami di Puncak dikerjakan dengan luar biasa. Perpaduan konsep tropis modern dan material lokal menghasilkan estetika yang sangat unik. Tamu yang menginap selalu memuji desainnya."},
-         {name:"Ibu R***** A*****",loc:"Ciputat Timur, Tangerang Selatan",rating:5,text:"Rumah type 45 kami direnovasi total dengan desain arsitektur baru dan hasilnya benar-benar memukau. Space planning-nya sangat cerdas membuat rumah kecil terasa lega dan modern."},
-         {name:"Bpk. W***** H.",loc:"Lebak Bulus, Jakarta Selatan",rating:5,text:"Sangat profesional dari awal konsultasi hingga final drawing. Konsep desain yang diajukan sangat sesuai karakter kami dan tidak terasa generik. Betul-betul custom sesuai keinginan kami."},
-         {name:"Ibu C****** S.",loc:"Cibubur, Jakarta Timur",rating:5,text:"Tim arsitek ABI STUDIO mampu mengoptimalkan lahan hook yang cukup menantang menjadi hunian yang fungsional dan cantik. Solusi desainnya benar-benar di luar ekspektasi kami."},
-         {name:"Bpk. F*** D*****",loc:"Tangerang Kota",rating:4,text:"Secara keseluruhan sangat puas dengan hasil desain. Ada beberapa revisi di tahap awal yang agak memakan waktu, namun hasil akhirnya sangat sepadan. Material specification-nya sangat detail dan terperinci."},
-         {name:"Bpk. A*** I*****",loc:"Kemang, Jakarta Selatan",rating:5,text:"Desain rumah tinggal berlantai 3 kami estetik sekaligus fungsional. Tim sangat terbuka dengan masukan kami tanpa mengorbankan kualitas desain keseluruhan. Gambar kerja sangat presisi."},
-         {name:"Ibu N***** K*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Proses dari brief awal hingga gambar kerja final sangat terstruktur dan jelas. Kami selalu di-update progresnya. Revisi gambar pun ditangani dengan sangat cepat."},
-         {name:"Bpk. O***** R.",loc:"Sunter, Jakarta Utara",rating:5,text:"Desain fasad yang diberikan sangat unik dan berbeda dari rumah lain di kompleks kami. Banyak tetangga yang bertanya siapa arsiteknya. Dengan senang hati merekomendasikan ABI STUDIO."},
-         {name:"CV. K***** M*****",loc:"Cipondoh, Tangerang",rating:5,text:"Desain bangunan showroom kami mendapat banyak komentar positif dari klien yang datang. Layout yang direncanakan membuat alur kunjungan terasa natural dan menarik perhatian produk kami."},
-         {name:"Ibu Y****** W*****",loc:"Pluit, Jakarta Utara",rating:4,text:"Desainnya bagus dan sesuai ekspektasi. Proses komunikasinya sudah baik walau sesekali ada sedikit delay. Tapi kualitas akhir gambar kerja tidak mengecewakan sama sekali."},
-         {name:"Bpk. P***** S*****",loc:"Bogor Selatan",rating:5,text:"Proyek rumah di lahan berkontur cukup menantang. Tim ABI STUDIO berhasil mengubah tantangan tersebut menjadi nilai tambah estetika. Split level yang didesain terasa sangat natural dan elegan."},
-         {name:"Ibu E******* P*****",loc:"Bekasi Barat",rating:5,text:"Desain ruko 3 lantai kami sangat fungsional dengan tampilan eksterior yang menarik. Pengaturan ruang usaha di setiap lantai efisien sesuai kebutuhan bisnis retail kami."},
-         {name:"Bpk. G****** H*****",loc:"Depok",rating:5,text:"Saya sudah mencoba beberapa arsitek sebelumnya tapi hasilnya tidak memuaskan. Dengan ABI STUDIO prosesnya jauh lebih terstruktur dan hasilnya jauh melampaui ekspektasi saya."},
-         {name:"Bpk. Z***** A.",loc:"Sentul City, Bogor",rating:5,text:"Desain rumah weekend di area pegunungan berhasil memaksimalkan view dan penghawaan alami. Konsepnya organik dan menyatu dengan lingkungan sekitar. Tim sangat memahami konteks tapak."},
-         {name:"Ibu F***** M*****",loc:"Bekasi Selatan",rating:4,text:"Desainnya modern dan fungsional. Saya sempat kurang paham beberapa istilah teknis di awal, tapi tim dengan sabar menjelaskan. Hasilnya bagus dan sesuai kebutuhan keluarga kami."},
-         {name:"Bpk. J***** P*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Proses desain sangat kolaboratif. Tim selalu mendengarkan masukan kami dan memberikan alternatif solusi yang menarik. Tidak terasa one-way sama sekali. Sangat merekomendasikan."},
-         {name:"Ibu A***** D*****",loc:"Pondok Aren, Tangerang Selatan",rating:5,text:"Desain interior dan eksterior yang terintegrasi menghasilkan tampilan yang sangat kohesif. Tidak ada kesan tambal sulam antar ruangan. ABI STUDIO benar-benar paham holistic design."},
-         {name:"Bpk. M***** R*****",loc:"Kalideres, Jakarta Barat",rating:5,text:"Transformasi bangunan kos-kosan lama kami menjadi hunian modern dengan desain yang matang. Nilai properti kami naik signifikan setelah redesign ini. Investasi yang sangat tepat."},
-         {name:"Dr. K***** S.",loc:"Tebet, Jakarta Selatan",rating:5,text:"Pengalaman bekerja dengan ABI STUDIO sangat menyenangkan dan profesional. Jadwal konsultasi selalu tepat waktu dan setiap pertemuan selalu produktif menghasilkan perkembangan desain yang signifikan."}
-       ]},
-      {title:"Desain Interior",icon:"fas fa-couch",popular:true,
-       desc:"Menciptakan suasana ruang yang nyaman dan memiliki karakter kuat.",
-       scope:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],
-       options:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],price:"Mulai Rp 25.000/m²",
-       reviews:[
-         {name:"Bpk. R*****",loc:"Green Garden, Jakarta Barat",rating:5,text:"Konsep industrial minimalis yang saya minta diterjemahkan dengan sempurna. Material ekspose yang dipilih sangat berkarakter tapi tetap terasa hangat sebagai hunian. Puas sekali."},
-         {name:"Ibu S*** R*****",loc:"Karawaci, Tangerang",rating:5,text:"3D render-nya sangat realistis sehingga kami bisa membayangkan hasil akhir jauh sebelum eksekusi. Interior kamar utama dan ruang keluarga kami sekarang benar-benar seperti di majalah."},
-         {name:"Bpk. F***** P*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Untuk paket Advance, value-nya luar biasa. Gambar kerja furniture custom sangat rinci sehingga tukang tidak bingung. Hasilnya presisi dan rapi."},
-         {name:"Ibu L***** H*****",loc:"BSD City, Tangerang",rating:5,text:"Konsep Japandi yang kami minta diterjemahkan dengan sangat cantik. Paduan kayu natural dan warna earthy tone yang dipilih memberikan ketenangan tersendiri setiap kali di rumah."},
-         {name:"Bpk. T***** S*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Renovasi interior ruang tamu dan ruang makan kami mengubah total suasana rumah. Sekarang rumah terasa lebih premium dan nyaman. Banyak tamu yang terkejut dengan perubahannya."},
-         {name:"Ibu D***** R*****",loc:"Bintaro Sektor 7, Tangsel",rating:5,text:"3D render yang diberikan sangat detail dan akurat. Saat eksekusi hasilnya benar-benar sama persis dengan renderan. Tidak ada kejutan yang tidak menyenangkan. Sangat profesional."},
-         {name:"Bpk. H**** A*****",loc:"Sunter, Jakarta Utara",rating:4,text:"Hasil desain interior kamar utama dan walk-in closet sangat memuaskan. Ada sedikit penyesuaian di proses revisi tapi tim sangat responsif menanggapinya. Overall sangat puas."},
-         {name:"CV. P***** I*****",loc:"Tangerang Kota",rating:5,text:"Interior showroom retail kami dirancang untuk memaksimalkan product display dan customer flow. Hasilnya sangat profesional dan meningkatkan kepercayaan pelanggan secara signifikan."},
-         {name:"Ibu M**** K*****",loc:"Kelapa Gading, Jakarta Utara",rating:5,text:"Desain interior dapur dan area makan kami luar biasa. Pilihan material dan hardware yang direkomendasikan berkualitas tinggi tapi masih dalam budget yang disepakati. Sangat puas."},
-         {name:"Bpk. R**** W*****",loc:"Cibubur, Jakarta Timur",rating:5,text:"Seluruh lantai 2 rumah kami di-desain ulang untuk 3 kamar anak dengan karakter masing-masing yang berbeda. Hasilnya anak-anak sangat senang dan betah di kamarnya masing-masing."},
-         {name:"Ibu S***** P*****",loc:"Ciputat, Tangerang Selatan",rating:5,text:"Gambar kerja furnitur custom sangat detail hingga ke ukuran dan detail joinery-nya. Tukang kayu kami tidak mengalami kesulitan eksekusi sama sekali. Hasilnya presisi dan sangat rapih."},
-         {name:"Bpk. A****** L.",loc:"Kemang, Jakarta Selatan",rating:5,text:"Home office yang kami rancang bersama ABI STUDIO menjadi ruang favorit di rumah. Ergonomis, estetis, dan akustiknya sangat baik untuk keperluan meeting online maupun fokus kerja."},
-         {name:"Ibu N******* S*****",loc:"Tangerang Selatan",rating:4,text:"Desain interior apartemen studio kami yang terbatas space-nya berhasil dimaksimalkan dengan sangat baik. Ada beberapa item yang perlu penyesuaian di akhir tapi secara keseluruhan sangat puas."},
-         {name:"Bpk. D***** P*****",loc:"Bekasi Barat",rating:5,text:"Konsep desain yang diberikan sangat matang dan mempertimbangkan kebiasaan hidup keluarga kami. Tim benar-benar mendengarkan lifestyle kami sebelum merancang. Hasilnya terasa sangat personal."},
-         {name:"Ibu W***** H*****",loc:"Pluit, Jakarta Utara",rating:5,text:"Interior cafe milik kami mendapat banyak pujian dari pelanggan dan sering viral di media sosial. ABI STUDIO benar-benar paham bagaimana menciptakan ruang yang instagrammable tapi tetap fungsional."}
-       ]},
-      {title:"Desain Struktur",icon:"fas fa-layer-group",
-       desc:"Perhitungan kekuatan struktural gedung, jalan, dan jembatan secara presisi.",
-       scope:["Gedung & Baja","Jalan & Jembatan","Pabrik & Dermaga"],
-       options:["Gedung","Baja","Jalan","Jembatan","Dermaga","Pabrik"],price:"Rp 8.500–15.000/m²",
-       reviews:[
-         {name:"Ir. B****** S.",loc:"Cikarang Barat, Bekasi",rating:5,text:"Perhitungan strukturnya sangat teliti dan sesuai standar SNI terbaru. Kontraktor lapangan kami memuji kelengkapan dan kejelasan gambar kerja yang dihasilkan ABI STUDIO."},
-         {name:"PT. M***** K***** I*****",loc:"Cibitung, Bekasi",rating:5,text:"Desain struktur baja untuk gedung pabrik kami dikerjakan profesional dan tepat waktu. Dokumen teknis sangat lengkap untuk keperluan izin IMB saat itu."},
-         {name:"Bpk. E**** S*****",loc:"Cikokol, Tangerang",rating:5,text:"Desain struktur untuk gedung ruko 5 lantai kami sangat teliti. Tim mendetailkan setiap elemen struktural dengan jelas dan sesuai standar SNI. Proses perizinan pun berjalan sangat lancar."},
-         {name:"PT. C****** T*****",loc:"Balaraja, Tangerang",rating:5,text:"Perhitungan struktur untuk bangunan pabrik dengan bentang lebar berhasil dioptimalkan sehingga efisien di material tapi tetap aman. Laporan hitungan strukturnya sangat komprehensif dan lengkap."}
-       ]},
-      {title:"Desain Landscape",icon:"fas fa-tree",
-       desc:"Penataan area luar ruangan hunian atau komersial yang estetik dan fungsional.",
-       scope:["Type Hunian","Type Komersil"],
-       options:["Type Hunian","Type Komersil"],price:"Rp 15.000/m²",
-       reviews:[
-         {name:"Ibu M****** H*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Taman depan dan belakang rumah kami berubah total jadi sangat cantik. Perencanaan tanaman, batu alam, dan lampu taman diperhatikan hingga detail terkecil. Tetangga kompleks ikutan order juga setelah lihat hasilnya."},
-         {name:"Bpk. S****** W*****",loc:"Serpong Utara, Tangerang Selatan",rating:5,text:"Penataan taman belakang rumah kami dengan kolam kecil dan area santai hasilnya sangat elegan dan natural. Pemilihan tanaman yang low maintenance sangat tepat untuk keluarga kami yang sibuk."}
-       ]},
-      {title:"Desain MEP",icon:"fas fa-bolt",
-       desc:"Mekanikal, Elektrikal, dan Plumbing terintegrasi dan efisien.",
-       scope:["Elektrikal","Plumbing","Full MEP"],
-       options:["Elektrikal","Plumbing","Full MEP"],price:"Rp 15.000/m²",
-       reviews:[]},
-      {title:"Studi Kelayakan & RAB",icon:"fas fa-calculator",
-       desc:"Estimasi biaya dan analisa kelayakan proyek secara akurat dan transparan.",
-       scope:["Paket Sipil","Paket Interior"],
-       options:["Paket Sipil","Paket Interior"],price:"Rp 10.000/m²",
-       reviews:[
-         {name:"CV. P***** J*****",loc:"Cipondoh, Tangerang",rating:5,text:"RAB yang disiapkan sangat rinci hingga level unit material. Kami bisa negosiasi harga dengan kontraktor jauh lebih percaya diri. Tidak ada biaya kejutan di tengah proyek."},
-         {name:"Ibu M******",loc:"Ciputat, Tangerang Selatan",rating:5,text:"Studi kelayakan dari ABI STUDIO membantu kami memutuskan renovasi bertahap mana yang lebih efisien secara biaya. Penjelasannya sangat mudah dipahami orang awam."},
-         {name:"Bpk. A**** S*****",loc:"Karawaci, Tangerang",rating:5,text:"RAB untuk proyek kos-kosan 20 kamar kami sangat detail dan akurat. Kami bisa kontrol pengeluaran dengan sangat ketat berdasarkan RAB ini. Tidak ada pembengkakan biaya yang signifikan."},
-         {name:"PT. I***** P*****",loc:"Tangerang Kota",rating:5,text:"Studi kelayakan proyek pembangunan gudang kami disajikan dengan sangat komprehensif. Data proyeksi biaya dan analisa ROI-nya sangat membantu kami mengambil keputusan investasi dengan tepat."},
-         {name:"Bpk. R***** H*****",loc:"BSD City, Tangerang",rating:5,text:"RAB renovasi rumah kami sangat transparan dan terperinci. Kami bisa mengecek harga satuan material di pasaran dan semuanya sangat masuk akal. Tidak ada item yang meragukan."},
-         {name:"Ibu L****** S*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Konsultasi RAB untuk rumah impian kami sangat membantu menyesuaikan desain dengan budget yang tersedia. Tim memberikan alternatif material yang efisien tanpa mengorbankan kualitas."},
-         {name:"Bpk. F****** P*****",loc:"Ciledug, Tangerang",rating:4,text:"Hasil RAB-nya cukup detail tapi ada beberapa item yang kurang saya mengerti di awal. Setelah dijelaskan oleh tim menjadi sangat jelas. Overall nilai layanannya sangat worth it."},
-         {name:"CV. B***** M*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Studi kelayakan pembangunan ruko sangat mendetail mencakup biaya konstruksi, finishing, hingga MEP. Kontraktor yang kami tunjuk pun terkesan dengan kelengkapan dokumen yang ada."},
-         {name:"Bpk. H*** W*****",loc:"Pamulang, Tangerang Selatan",rating:5,text:"Analisa RAB per tahap pembangunan sangat memudahkan kami mengatur cashflow. Bangunan bertahap jadi sangat terencana karena ada acuan biaya yang jelas di setiap fase pembangunan."},
-         {name:"Ibu T****** A*****",loc:"Bekasi Selatan",rating:5,text:"RAB untuk proyek klinik kami sangat komprehensif termasuk kebutuhan furnitur medis dan instalasi khusus. Data ini sangat berguna untuk pengajuan pembiayaan ke bank."}
-       ]}
-    ]
-  },
-
-  construction:{
-    desc:'Realisasi fisik bangunan dari nol, renovasi, hingga finishing interior dengan standar kualitas tinggi dan pengawasan ketat.',
-    items:[
-      {title:"Pekerjaan Sipil & Bangunan",icon:"fas fa-hard-hat",popular:true,
-       desc:"Konstruksi fisik bangunan dari fondasi hingga serah terima kunci.",
-       scope:["Rumah Tinggal, Ruko, Kantor","Sekolah, Sarana Ibadah","Gedung Bertingkat"],
-       options:["Rumah Tinggal","Ruko","Kantor","Sarana Pendidikan","Sarana Ibadah","Gedung Bertingkat"],price:"Sesuai RAB",
-       reviews:[
-         {name:"Bpk. B*** S*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Rumah 3 lantai kami selesai 2 minggu lebih cepat dari jadwal! Kualitas material premium dan tim pekerja sangat disiplin. Tidak ada debris berserakan selama pengerjaan."},
-         {name:"Hj. N****** R.",loc:"Pamulang, Tangerang Selatan",rating:5,text:"Alhamdulillah masjid di kompleks kami dibangun dengan sangat baik. Strukturnya kokoh, finishing rapih, dan tim ABI STUDIO sangat menghormati proses yang kami minta."},
-         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",rating:5,text:"Pembangunan kantor operasional kami diselesaikan sesuai target dan spesifikasi. Layout yang dirancang meningkatkan efisiensi alur kerja tim secara signifikan."},
-         {name:"Bpk. T***** H******",loc:"Cipondoh, Tangerang",rating:5,text:"Ruko 4 lantai kami dibangun dengan sangat rapih dan presisi. Koordinasi antara tim sipil dan MEP berjalan mulus. Tidak perlu repot mengurus sendiri sama sekali."},
-         {name:"Yayasan P***** I*****",loc:"Neglasari, Tangerang",rating:5,text:"Gedung sekolah kami dibangun dengan memperhatikan standar keamanan bangunan pendidikan. Anak-anak dan guru sangat nyaman beraktivitas di dalamnya."},
-         {name:"Ibu R****** P*****",loc:"Serpong, Tangerang Selatan",rating:5,text:"Pembangunan rumah tinggal 2 lantai kami selesai tepat waktu dan kualitasnya sangat memuaskan. Material bangunan sesuai spesifikasi RAB yang disepakati. Tidak ada pengurangan kualitas."},
-         {name:"Bpk. K***** A*****",loc:"Bintaro Sektor 5, Tangsel",rating:5,text:"Tim kontraktor ABI STUDIO sangat disiplin dan profesional. Area kerja selalu bersih dan rapi setiap harinya. Komunikasi progress harian sangat baik melalui WhatsApp group."},
-         {name:"CV. M**** H*****",loc:"Ciledug, Tangerang",rating:5,text:"Renovasi total bangunan ruko 2 lantai untuk kebutuhan kantor kami diselesaikan dengan sangat baik. Layout baru sangat efisien dan tampilan fasad jadi jauh lebih representatif."},
-         {name:"Bpk. D****** S.",loc:"Kalideres, Jakarta Barat",rating:4,text:"Pembangunan rumah kami secara keseluruhan memuaskan. Ada beberapa item minor yang perlu touch-up setelah serah terima tapi langsung ditangani dengan cepat. Kualitas struktur sangat solid."},
-         {name:"Ibu H****** W*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Rumah baru kami dibangun dengan standar kualitas yang sangat tinggi. Setiap detail diperhatikan dari pondasi hingga finishing. Kami sangat merekomendasikan ABI STUDIO kepada siapapun."},
-         {name:"PT. M****** I*****",loc:"Tangerang Kota",rating:5,text:"Pembangunan gedung kantor 4 lantai kami selesai sesuai jadwal dan anggaran. Tim manajemen proyeknya sangat profesional mengkoordinasikan berbagai subkontraktor yang terlibat."},
-         {name:"Bpk. A**** R*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Pembangunan musala di lingkungan kami dikerjakan dengan sangat amanah. Kualitas material dan workmanship sangat baik. Warga sangat puas dan bangga dengan hasilnya."},
-         {name:"Ibu S****** D*****",loc:"Bogor Selatan",rating:5,text:"Rumah 3 lantai kami di lahan 200m2 berhasil dimaksimalkan oleh ABI STUDIO. Setiap ruangan terasa lapang dan fungsional. Konstruksinya solid dan hasil akhirnya sangat memuaskan."},
-         {name:"Bpk. Y**** P*****",loc:"Bekasi Barat",rating:4,text:"Proses pembangunan berlangsung dengan baik meski ada beberapa keterlambatan kecil karena cuaca dan pengiriman material. Tim sangat komunikatif menjelaskan situasi dan langsung mencari solusi."},
-         {name:"Yayasan A***** N*****",loc:"Ciputat, Tangerang Selatan",rating:5,text:"Pembangunan gedung serbaguna yayasan kami diselesaikan dengan penuh tanggung jawab. Kualitas konstruksi sangat baik dan anggaran yang tersedia digunakan dengan sangat efisien."}
-       ]},
-      {title:"Struktur Beton & Baja",icon:"fas fa-building",
-       desc:"Pekerjaan struktur berat, penambahan lantai, dan modifikasi bangunan eksisting.",
-       scope:["Penambahan Ruang / Lantai","Pergudangan & Mezzanine","Penguatan Struktur"],
-       options:["Penambahan Ruang/Lantai","Pergudangan","Mezzanine","Penguatan Struktur","Struktur Tangga/Kanopi Baja"],price:"Sesuai RAB",
-       reviews:[
-         {name:"Bpk. D******",loc:"Tangerang Kota",rating:5,text:"Penambahan lantai 2 di ruko lama kami berjalan lancar tanpa mengganggu operasional toko di bawah sama sekali. Penguatan strukturnya sangat aman dan terpercaya."},
-         {name:"CV. M*** B******",loc:"Cikokol, Tangerang",rating:5,text:"Mezzanine gudang kami selesai cepat dan solid sesuai spesifikasi kapasitas beban yang kami minta. Finishing las dan catnya juga sangat rapi."},
-         {name:"Bpk. S****** H*****",loc:"Karawaci, Tangerang",rating:5,text:"Penambahan lantai 3 di rumah eksisting kami dikerjakan dengan sangat hati-hati dan aman. Tim melakukan penguatan fondasi terlebih dahulu sebelum pekerjaan lantai baru dimulai."},
-         {name:"PT. W****** M*****",loc:"Tangerang Kota",rating:5,text:"Struktur baja untuk hanggar penyimpanan kami dikerjakan dengan sangat presisi dan kuat. Estimasi beban strukturnya sangat akurat sesuai kebutuhan operasional kami."},
-         {name:"Bpk. F****** S*****",loc:"Cipondoh, Tangerang",rating:5,text:"Pekerjaan penambahan mezzanine di ruko kami sangat rapi dan tidak bising. Tim bekerja efisien sehingga operasional toko di bawah tidak terganggu selama proses berlangsung."},
-         {name:"CV. J***** P*****",loc:"Cengkareng, Jakarta Barat",rating:5,text:"Struktur kanopi baja untuk area parkir kantor kami sangat kuat dan rapih. Material yang digunakan berkualitas dan finishing anti karatnya sangat baik. Pemasangannya pun sangat presisi."},
-         {name:"Bpk. A***** K*****",loc:"Serpong, Tangerang Selatan",rating:4,text:"Pekerjaan penguatan struktur bangunan lama kami dikerjakan dengan baik. Proses assessment strukturnya sangat teliti sebelum pekerjaan dimulai. Hasil akhirnya memuaskan dan terpercaya."},
-         {name:"PT. R****** D*****",loc:"Bekasi Selatan",rating:5,text:"Pekerjaan struktur beton untuk gedung produksi kami sesuai spesifikasi dan sangat teliti pengerjaannya. Tim tekniknya berpengalaman dan sangat paham detail konstruksi bangunan industri."},
-         {name:"Bpk. H***** N*****",loc:"Balaraja, Tangerang",rating:5,text:"Tangga baja custom untuk mezzanine kantor kami sangat kokoh dan tampilannya elegan. Finishing powder coat yang dipilih sangat tahan lama. Hasilnya jauh melebihi ekspektasi saya."}
-       ]},
-      {title:"Renovasi & Rehabilitasi",icon:"fas fa-tools",popular:true,
-       desc:"Perbaikan sebagian atau menyeluruh untuk hunian dan komersial.",
-       scope:["Dapur, Plafon, Atap, Dinding","Kamar Mandi","Perbaikan Struktur Ringan"],
-       options:["Perbaikan Dapur","Perbaikan Plafon","Perbaikan Atap/Dak","Perbaikan Dinding","Renovasi Kamar Mandi","Perbaikan Struktur Ringan"],price:"Sesuai Survey",
-       reviews:[
-         {name:"Bpk. A******",loc:"Griya Dadap, Tangerang",rating:5,text:"Renovasi fasad dan interior rumah kami berhasil menghadirkan tampilan yang jauh lebih modern dan segar. Ruangan terasa lebih luas dan fungsional. Tim kerja sangat bersih dan tepat waktu."},
-         {name:"Ibu L*** H******",loc:"Griya Dadap, Tangerang",rating:5,text:"Renovasi dapur dan kamar mandi selesai 3 minggu, hasilnya seperti rumah baru! Tidak ada sampah berserakan selama proses pengerjaan. Sangat puas."},
-         {name:"Bpk. S*****",loc:"Ciledug, Tangerang",rating:5,text:"Atap rumah saya yang bocor parah bertahun-tahun akhirnya tuntas. Datang survey cepat, solusinya tepat, harganya transparan. Sangat puas."},
-         {name:"Ibu R***** W*****",loc:"Larangan, Tangerang",rating:4,text:"Renovasi dinding dan plafon rumah lama kami hasilnya memuaskan sekali. Motif plafon yang kami minta bisa dieksekusi dengan rapih dan presisi."},
-         {name:"Bpk. M***** D*****",loc:"Tangerang Kota",rating:5,text:"Renovasi kamar mandi total dengan desain modern minimalis hasilnya sangat elegan. Material keramik dan sanitasi yang direkomendasikan berkualitas premium. Tim kerjanya sangat bersih dan rapih."},
-         {name:"Ibu T****** S*****",loc:"Pamulang, Tangerang Selatan",rating:5,text:"Renovasi plafon dan dinding seluruh rumah selesai dalam waktu yang sangat cepat. Hasil finishing cat sangat rata dan rapih. Tidak ada bekas percikan cat di mana pun. Sangat puas."}
-       ]},
-      {title:"Fit Out Interior",icon:"fas fa-paint-roller",
-       desc:"Pengisian dan penyelesaian interior sesuai konsep desain untuk hunian dan komersial.",
-       scope:["Hunian & Komersial","Perkantoran, Cafe, Toko","Klinik & Fasilitas Umum"],
-       options:["Ruang Hunian","Komersial","Perkantoran","Cafe","Toko","Klinik"],price:"Sesuai Desain",
-       reviews:[
-         {name:"Bpk. A**** P*****",loc:"BSD, Tangerang",rating:5,text:"Kantor baru kami di-fit out dengan sangat baik. Suasana kerja jadi jauh lebih nyaman dan produktif. Banyak klien yang memberikan komentar positif saat pertama berkunjung."},
-         {name:"Cafe K*** N*******",loc:"Alam Sutera, Tangerang",rating:5,text:"Interior cafe kami mendapat banyak pujian dan sering jadi spot foto pengunjung. ABI STUDIO benar-benar paham konsep yang kami inginkan dan eksekusinya memuaskan."},
-         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",rating:5,text:"Ruang meeting dan area kerja kantor kami di-fit out ulang dan hasilnya mencerminkan citra profesional perusahaan. Klien-klien kami pun ikut terkesan."}
-       ]},
-      {title:"Arsitektural & Finishing",icon:"fas fa-brush",
-       desc:"Detail akhir eksterior dan interior untuk menyempurnakan estetika bangunan.",
-       scope:["Kanopi, Pagar, Kolam (Eksterior)","Pintu, Jendela, Studio (Interior)"],
-       options:["Elemen Eksterior (Kanopi/Pagar)","Elemen Interior (Pintu/Jendela)"],price:"Sesuai Spesifikasi",
-       reviews:[
-         {name:"Ibu Y***** S*****",loc:"Summarecon Tangerang",rating:5,text:"Pagar dan kanopi baru membuat tampilan rumah kami berubah total menjadi jauh lebih elegan. Material yang dipilih berkualitas dan pemasangannya sangat presisi. Tidak mengira hasilnya bisa sebagus ini."}
-       ]},
-      {title:"Pemeliharaan Bangunan",icon:"fas fa-broom",
-       desc:"Perawatan berkala agar bangunan tetap prima, aman, dan bernilai tinggi.",
-       scope:["Pengecatan & Sanitary","Perbaikan Kebocoran","Perawatan Atap & Gedung"],
-       options:["Pengecatan","Sanitary","Perbaikan Kebocoran","Perawatan Atap","Perawatan Berkala Gedung"],price:"Sesuai Survey",
-       reviews:[
-         {name:"PT. S****** P***** U*****",loc:"Tangerang Kota",rating:5,text:"Kami menggunakan layanan pemeliharaan rutin ABI STUDIO selama lebih dari 2 tahun. Kantor selalu dalam kondisi prima dan tim merespons sangat cepat jika ada masalah mendadak."},
-         {name:"Komplek P****** A****",loc:"Pinang, Tangerang",rating:5,text:"Pengecatan ulang fasilitas umum kompleks kami selesai cepat dan rapi tanpa mengganggu aktivitas warga. Warga sangat puas dengan hasilnya."}
-       ]}
-    ]
-  },
-
-  consultant:{
-    desc:'Layanan legalitas bangunan, pengawasan proyek, dan audit teknis keamanan yang memastikan proyek Anda berjalan sesuai standar.',
-    items:[
-      {title:"Konsultan Perizinan",icon:"fas fa-stamp",
-       desc:"Pengurusan legalitas dan dokumen perizinan bangunan secara resmi dan efisien.",
-       scope:["PBG (Persetujuan Bangunan Gedung)","SLF (Sertifikat Laik Fungsi)","Alih status IMB lama ke PBG"],
-       options:["PBG","SLF","IMB Lama → PBG","Pendampingan Full"],price:"Hubungi Kami",
-       reviews:[
-         {name:"Bpk. F*******",loc:"Kota Tangerang",rating:5,text:"PBG untuk ruko 3 lantai kami berhasil terbit lebih cepat dari perkiraan berkat pendampingan lengkap dari ABI STUDIO. Semua dokumen disiapkan dan tim selalu update progresnya."},
-         {name:"Yayasan A*-I*****",loc:"Tangerang Selatan",rating:5,text:"Alih status dari IMB lama ke PBG untuk gedung sekolah kami diurus dengan sangat profesional. Tidak ada kendala yang berarti dan prosesnya lebih mudah dari yang kami bayangkan."},
-         {name:"Bpk. R****** S.",loc:"Cipondoh, Tangerang",rating:5,text:"Proses SLF untuk gedung kantor yang sudah lama kami tunda akhirnya kelar berkat ABI STUDIO. Dokumen teknis yang disiapkan sangat lengkap dan diterima tanpa revisi."}
-       ]},
-      {title:"Supervisi & Manajemen",icon:"fas fa-tasks",
-       desc:"Pengawasan proyek agar sesuai desain, anggaran, dan jadwal yang telah disepakati.",
-       scope:["Kontrol Mutu, Waktu & Biaya","Laporan Harian / Mingguan / Bulanan"],
-       options:["Kontrol Mutu/Waktu/Biaya","Laporan Berkala"],price:"Bulanan / Per Proyek",
-       reviews:[
-         {name:"Ir. H*** P******",loc:"Cipondoh, Tangerang",rating:5,text:"Dengan supervisor dari ABI STUDIO, proyek gedung kantor kami terpantau sangat ketat. Laporan mingguan sangat detail lengkap dengan foto progress dan catatan keuangan yang transparan."},
-         {name:"Developer P***** R***",loc:"Neglasari, Tangerang",rating:5,text:"Kualitas bangunan di proyek perumahan kami jadi jauh lebih terjaga. Kontraktor menjadi lebih disiplin karena ada pihak ketiga independen yang mengawasi. Sangat worth the cost."}
-       ]},
-      {title:"Audit Teknis Bangunan",icon:"fas fa-search",
-       desc:"Pemeriksaan menyeluruh terhadap keamanan dan kelayakan fungsi bangunan.",
-       scope:["Audit Struktur","Audit Fungsi Bangunan"],
-       options:["Audit Struktur","Audit Fungsi Bangunan"],price:"Hubungi Kami",
-       reviews:[
-         {name:"Manajemen G***** S*******",loc:"Kota Tangerang",rating:5,text:"Audit tahunan gedung kami sudah 3 kali berturut-turut kami percayakan ke ABI STUDIO. Laporan audit sangat komprehensif dan rekomendasi perawatan preventifnya sangat membantu menjaga keselamatan penghuni gedung."}
-       ]}
-    ]
-  }
+  design:{items:[
+    {title:"Desain Arsitektur",icon:"fas fa-home",popular:true,desc:"Perencanaan bangunan estetik dan fungsional sesuai kebutuhan klien.",scope:["Paket Basic","Paket Standard","Paket Premium"],options:["Paket Basic","Paket Standard","Paket Premium"],price:"Hubungi Admin",waMsg:"Halo%20ABI%20Studio%2C%20saya%20tertarik%20dengan%20layanan%20Desain%20Arsitektur.%20Boleh%20info%20harganya%3F",
+     reviews:[{name:"Bpk. E****",loc:"Pondok Indah 2, Jakarta Selatan",rating:5,text:"Desain rumah kami benar-benar melebihi ekspektasi. Konsep modern klasik yang diminta berhasil diwujudkan dengan sangat elegan. Setiap sudut ruangan dirancang memaksimalkan cahaya alami masuk."},{name:"Ibu D*** K*****",loc:"Bintaro Sektor 9, Tangerang Selatan",rating:5,text:"ABI STUDIO sangat sabar mengakomodasi revisi kami yang lumayan banyak. Hasilnya benar-benar memuaskan dan sesuai impian. Banyak tamu yang bertanya siapa arsiteknya."},{name:"Bpk. H***** W*****",loc:"BSD City, Tangerang",rating:5,text:"Gambar kerja sangat detail dan lengkap sehingga kontraktor tidak kesulitan eksekusi. Rumah 2,5 lantai kami jadi terlihat premium padahal budget di tengah."},{name:"Ibu M***** L*****",loc:"Kelapa Gading, Jakarta Utara",rating:5,text:"Komunikasi tim ABI STUDIO sangat responsif. Proses dari konsep hingga gambar kerja selesai dalam waktu yang lebih cepat dari estimasi. Highly recommended!"},{name:"Bpk. S****** P*****",loc:"Serpong, Tangerang Selatan",rating:5,text:"Desain villa kami di Puncak dikerjakan dengan luar biasa. Perpaduan konsep tropis modern dan material lokal menghasilkan estetika yang sangat unik."}]},
+    {title:"Desain Interior",icon:"fas fa-couch",popular:true,desc:"Menciptakan suasana ruang yang nyaman dan memiliki karakter kuat.",scope:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],options:["Paket Basic (3D View)","Paket Advance (3D + Gambar Kerja)"],price:"Mulai Rp 25.000/m²",waMsg:"Halo%20ABI%20Studio%2C%20saya%20tertarik%20dengan%20layanan%20Desain%20Interior.%20Boleh%20konsultasi%3F",
+     reviews:[{name:"Bpk. R*****",loc:"Green Garden, Jakarta Barat",rating:5,text:"Konsep industrial minimalis yang saya minta diterjemahkan dengan sempurna. Material ekspose yang dipilih sangat berkarakter tapi tetap terasa hangat sebagai hunian."},{name:"Ibu S*** R*****",loc:"Karawaci, Tangerang",rating:5,text:"3D render-nya sangat realistis sehingga kami bisa membayangkan hasil akhir jauh sebelum eksekusi. Interior kamar utama dan ruang keluarga kami sekarang benar-benar seperti di majalah."},{name:"Bpk. F***** P*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Untuk paket Advance, value-nya luar biasa. Gambar kerja furniture custom sangat rinci sehingga tukang tidak bingung. Hasilnya presisi dan rapi."}]},
+    {title:"Desain Struktur",icon:"fas fa-layer-group",desc:"Perhitungan kekuatan struktural gedung, jalan, dan jembatan secara presisi.",scope:["Gedung & Baja","Jalan & Jembatan","Pabrik & Dermaga"],options:["Gedung","Baja","Jalan","Jembatan","Dermaga","Pabrik"],price:"Rp 8.500–15.000/m²",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20layanan%20Desain%20Struktur.%20Boleh%20info%20lebih%20lanjut%3F",
+     reviews:[{name:"Ir. B****** S.",loc:"Cikarang Barat, Bekasi",rating:5,text:"Perhitungan strukturnya sangat teliti dan sesuai standar SNI terbaru. Kontraktor lapangan kami memuji kelengkapan dan kejelasan gambar kerja yang dihasilkan ABI STUDIO."},{name:"PT. M***** K***** I*****",loc:"Cibitung, Bekasi",rating:5,text:"Desain struktur baja untuk gedung pabrik kami dikerjakan profesional dan tepat waktu. Dokumen teknis sangat lengkap untuk keperluan izin."}]},
+    {title:"Desain Landscape",icon:"fas fa-tree",desc:"Penataan area luar ruangan hunian atau komersial yang estetik dan fungsional.",scope:["Type Hunian","Type Komersil"],options:["Type Hunian","Type Komersil"],price:"Rp 15.000/m²",waMsg:"Halo%20ABI%20Studio%2C%20saya%20tertarik%20dengan%20layanan%20Desain%20Landscape.",
+     reviews:[{name:"Ibu M****** H*****",loc:"Gading Serpong, Tangerang",rating:5,text:"Taman depan dan belakang rumah kami berubah total jadi sangat cantik. Perencanaan tanaman, batu alam, dan lampu taman diperhatikan hingga detail terkecil."}]},
+    {title:"Desain MEP",icon:"fas fa-bolt",desc:"Mekanikal, Elektrikal, dan Plumbing terintegrasi dan efisien.",scope:["Elektrikal","Plumbing","Full MEP"],options:["Elektrikal","Plumbing","Full MEP"],price:"Rp 15.000/m²",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20layanan%20Desain%20MEP.",reviews:[]},
+    {title:"Studi Kelayakan & RAB",icon:"fas fa-calculator",desc:"Estimasi biaya dan analisa kelayakan proyek secara akurat dan transparan.",scope:["Paket Sipil","Paket Interior"],options:["Paket Sipil","Paket Interior"],price:"Rp 10.000/m²",waMsg:"Halo%20ABI%20Studio%2C%20saya%20ingin%20hitung%20estimasi%20dan%20RAB%20untuk%20proyek%20saya.",
+     reviews:[{name:"CV. P***** J*****",loc:"Cipondoh, Tangerang",rating:5,text:"RAB yang disiapkan sangat rinci hingga level unit material. Kami bisa negosiasi harga dengan kontraktor jauh lebih percaya diri."},{name:"Ibu M******",loc:"Ciputat, Tangerang Selatan",rating:5,text:"Studi kelayakan dari ABI STUDIO membantu kami memutuskan renovasi bertahap mana yang lebih efisien secara biaya. Penjelasannya sangat mudah dipahami orang awam."}]}
+  ]},
+  construction:{items:[
+    {title:"Pekerjaan Sipil & Bangunan",icon:"fas fa-hard-hat",popular:true,desc:"Konstruksi fisik bangunan dari fondasi hingga serah terima kunci.",scope:["Rumah Tinggal, Ruko, Kantor","Sekolah, Sarana Ibadah","Gedung Bertingkat"],options:["Rumah Tinggal","Ruko","Kantor","Sarana Pendidikan","Sarana Ibadah","Gedung Bertingkat"],price:"Sesuai RAB",waMsg:"Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20proyek%20konstruksi%20bangunan.",
+     reviews:[{name:"Bpk. B*** S*****",loc:"Alam Sutera, Tangerang",rating:5,text:"Rumah 3 lantai kami selesai 2 minggu lebih cepat dari jadwal! Kualitas material premium dan tim pekerja sangat disiplin."},{name:"Hj. N****** R.",loc:"Pamulang, Tangerang Selatan",rating:5,text:"Alhamdulillah masjid di kompleks kami dibangun dengan sangat baik. Strukturnya kokoh, finishing rapih, dan tim ABI STUDIO sangat menghormati proses yang kami minta."},{name:"Bpk. T***** H******",loc:"Cipondoh, Tangerang",rating:5,text:"Ruko 4 lantai kami dibangun dengan sangat rapih dan presisi. Koordinasi antara tim sipil dan MEP berjalan mulus."}]},
+    {title:"Struktur Beton & Baja",icon:"fas fa-building",desc:"Pekerjaan struktur berat, penambahan lantai, dan modifikasi bangunan eksisting.",scope:["Penambahan Ruang / Lantai","Pergudangan & Mezzanine","Penguatan Struktur"],options:["Penambahan Ruang/Lantai","Pergudangan","Mezzanine","Penguatan Struktur","Struktur Tangga/Kanopi Baja"],price:"Sesuai RAB",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20jasa%20Struktur%20Beton%20%26%20Baja.",
+     reviews:[{name:"Bpk. D******",loc:"Tangerang Kota",rating:5,text:"Penambahan lantai 2 di ruko lama kami berjalan lancar tanpa mengganggu operasional toko di bawah sama sekali."},{name:"CV. M*** B******",loc:"Cikokol, Tangerang",rating:5,text:"Mezzanine gudang kami selesai cepat dan solid sesuai spesifikasi kapasitas beban yang kami minta."}]},
+    {title:"Renovasi & Rehabilitasi",icon:"fas fa-tools",popular:true,desc:"Perbaikan sebagian atau menyeluruh untuk hunian dan komersial.",scope:["Dapur, Plafon, Atap, Dinding","Kamar Mandi","Perbaikan Struktur Ringan"],options:["Perbaikan Dapur","Perbaikan Plafon","Perbaikan Atap/Dak","Perbaikan Dinding","Renovasi Kamar Mandi","Perbaikan Struktur Ringan"],price:"Sesuai Survey",waMsg:"Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20renovasi%20rumah%20%2F%20bangunan.",
+     reviews:[{name:"Bpk. A******",loc:"Griya Dadap, Tangerang",rating:5,text:"Renovasi fasad dan interior rumah kami berhasil menghadirkan tampilan yang jauh lebih modern dan segar."},{name:"Ibu L*** H******",loc:"Griya Dadap, Tangerang",rating:5,text:"Renovasi dapur dan kamar mandi selesai 3 minggu, hasilnya seperti rumah baru! Tidak ada sampah berserakan selama proses."},{name:"Bpk. S*****",loc:"Ciledug, Tangerang",rating:5,text:"Atap rumah saya yang bocor parah bertahun-tahun akhirnya tuntas. Datang survey cepat, solusinya tepat, harganya transparan."}]},
+    {title:"Fit Out Interior",icon:"fas fa-paint-roller",desc:"Pengisian dan penyelesaian interior sesuai konsep desain untuk hunian dan komersial.",scope:["Hunian & Komersial","Perkantoran, Cafe, Toko","Klinik & Fasilitas Umum"],options:["Ruang Hunian","Komersial","Perkantoran","Cafe","Toko","Klinik"],price:"Sesuai Desain",waMsg:"Halo%20ABI%20Studio%2C%20saya%20ingin%20konsultasi%20Fit%20Out%20Interior.",
+     reviews:[{name:"Bpk. A**** P*****",loc:"BSD, Tangerang",rating:5,text:"Kantor baru kami di-fit out dengan sangat baik. Suasana kerja jadi jauh lebih nyaman dan produktif."},{name:"Cafe K*** N*******",loc:"Alam Sutera, Tangerang",rating:5,text:"Interior cafe kami mendapat banyak pujian dan sering jadi spot foto pengunjung. ABI STUDIO benar-benar paham konsep yang kami inginkan."}]},
+    {title:"Arsitektural & Finishing",icon:"fas fa-brush",desc:"Detail akhir eksterior dan interior untuk menyempurnakan estetika bangunan.",scope:["Kanopi, Pagar, Kolam (Eksterior)","Pintu, Jendela, Studio (Interior)"],options:["Elemen Eksterior (Kanopi/Pagar)","Elemen Interior (Pintu/Jendela)"],price:"Sesuai Spesifikasi",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20pekerjaan%20Finishing%20Arsitektural.",
+     reviews:[{name:"Ibu Y***** S*****",loc:"Summarecon Tangerang",rating:5,text:"Pagar dan kanopi baru membuat tampilan rumah kami berubah total menjadi jauh lebih elegan."}]},
+    {title:"Pemeliharaan Bangunan",icon:"fas fa-broom",desc:"Perawatan berkala agar bangunan tetap prima, aman, dan bernilai tinggi.",scope:["Pengecatan & Sanitary","Perbaikan Kebocoran","Perawatan Atap & Gedung"],options:["Pengecatan","Sanitary","Perbaikan Kebocoran","Perawatan Atap","Perawatan Berkala Gedung"],price:"Sesuai Survey",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20layanan%20Pemeliharaan%20Bangunan.",
+     reviews:[{name:"PT. S****** P***** U*****",loc:"Tangerang Kota",rating:5,text:"Kami menggunakan layanan pemeliharaan rutin ABI STUDIO selama lebih dari 2 tahun. Kantor selalu dalam kondisi prima."}]}
+  ]},
+  consultant:{items:[
+    {title:"Konsultan Perizinan",icon:"fas fa-stamp",desc:"Pengurusan legalitas dan dokumen perizinan bangunan secara resmi dan efisien.",scope:["PBG (Persetujuan Bangunan Gedung)","SLF (Sertifikat Laik Fungsi)","Alih status IMB lama ke PBG"],options:["PBG","SLF","IMB Lama → PBG","Pendampingan Full"],price:"Hubungi Kami",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20bantuan%20pengurusan%20PBG%2FSLF.%20Boleh%20konsultasi%3F",
+     reviews:[{name:"Bpk. F*******",loc:"Kota Tangerang",rating:5,text:"PBG untuk ruko 3 lantai kami berhasil terbit lebih cepat dari perkiraan berkat pendampingan lengkap dari ABI STUDIO."},{name:"Yayasan A*-I*****",loc:"Tangerang Selatan",rating:5,text:"Alih status dari IMB lama ke PBG untuk gedung sekolah kami diurus dengan sangat profesional."}]},
+    {title:"Supervisi & Manajemen",icon:"fas fa-tasks",desc:"Pengawasan proyek agar sesuai desain, anggaran, dan jadwal yang telah disepakati.",scope:["Kontrol Mutu, Waktu & Biaya","Laporan Harian / Mingguan / Bulanan"],options:["Kontrol Mutu/Waktu/Biaya","Laporan Berkala"],price:"Bulanan / Per Proyek",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20jasa%20Supervisi%20%26%20Manajemen%20Proyek.",
+     reviews:[{name:"Ir. H*** P******",loc:"Cipondoh, Tangerang",rating:5,text:"Dengan supervisor dari ABI STUDIO, proyek gedung kantor kami terpantau sangat ketat. Laporan mingguan sangat detail."}]},
+    {title:"Audit Teknis Bangunan",icon:"fas fa-search",desc:"Pemeriksaan menyeluruh terhadap keamanan dan kelayakan fungsi bangunan.",scope:["Audit Struktur","Audit Fungsi Bangunan"],options:["Audit Struktur","Audit Fungsi Bangunan"],price:"Hubungi Kami",waMsg:"Halo%20ABI%20Studio%2C%20saya%20butuh%20jasa%20Audit%20Teknis%20Bangunan.",
+     reviews:[{name:"Manajemen G***** S*******",loc:"Kota Tangerang",rating:5,text:"Audit tahunan gedung kami sudah 3 kali berturut-turut kami percayakan ke ABI STUDIO. Laporan audit sangat komprehensif."}]}
+  ]}
 };
 
-/* ══════════════════════════════════════
-   ACCORDION LOGIC
-══════════════════════════════════════ */
+/* ══ RENDER CARDS ══ */
 const accOrder=['design','construction','consultant'];
 let rendered={design:false,construction:false,consultant:false};
 
@@ -903,29 +679,23 @@ function renderGrid(cat){
     const scopeHtml=item.scope.map(s=>`<li>${s}</li>`).join('');
     const reviews=item.reviews||[];
     const rCount=reviews.length;
-
     const reviewsHtml=reviews.map((r,ri)=>{
       const col=AC[ri%AC.length];
-      const av=ini(r.name);
-      const stars=starsDisplay(r.rating||5);
       return `<div class="review-item">
         <div class="review-header">
-          <div class="review-avatar" style="background:${col}">${av}</div>
+          <div class="review-avatar" style="background:${col}">${ini(r.name)}</div>
           <div><div class="review-name">${r.name}</div><div class="review-meta">${r.loc}</div></div>
-          <div class="review-rating">${stars}</div>
+          <div class="review-rating">${starsDisplay(r.rating||5)}</div>
         </div>
         <div class="review-text">${r.text}</div>
       </div>`;
     }).join('');
-
     const tid=`rt-${cat}-${i}`,pid=`rp-${cat}-${i}`;
     const avg=avgRating(reviews);
-    const aggStarStr=rCount>0?starsDisplay(Math.round(avg)):'';
-
     const reviewSection=rCount>0?`
       <div class="card-review-toggle" id="${tid}" onclick="toggleReview('${tid}','${pid}')">
         <div class="review-toggle-left">
-          <span class="review-stars">${aggStarStr}</span>
+          <span class="review-stars">${starsDisplay(Math.round(avg))}</span>
           <span class="review-count">${avg.toFixed(1)} · ${rCount} Ulasan</span>
         </div>
         <div class="review-toggle-right">
@@ -933,12 +703,9 @@ function renderGrid(cat){
           <i class="fas fa-chevron-down review-chevron"></i>
         </div>
       </div>
-      <div class="card-review-panel" id="${pid}">
-        <div class="review-panel-inner">${reviewsHtml}</div>
-      </div>`:'';
-
+      <div class="card-review-panel" id="${pid}"><div class="review-panel-inner">${reviewsHtml}</div></div>`:'';
     const popularBadge=item.popular?`<div class="card-popular-badge">⭐ Terpopuler</div>`:'';
-
+    const waTrackId=`card_wa_${cat}_${i}`;
     const card=document.createElement('div');
     card.className='service-card';
     card.style.animationDelay=`${i*55}ms`;
@@ -956,42 +723,32 @@ function renderGrid(cat){
       ${reviewSection}
       <div class="card-footer">
         <span class="card-price">${item.price}</span>
-        <button class="card-cta" onclick="openModal('${cat}',${i})">Konsultasikan <i class="fas fa-arrow-right"></i></button>
+        <div class="card-cta-group">
+          <a href="https://wa.me/6285157577465?text=${item.waMsg}" target="_blank" class="card-cta wa" onclick="trackWA('${waTrackId}')"><i class="fab fa-whatsapp" style="font-size:0.75rem;"></i> Chat WA</a>
+          <button class="card-cta" onclick="openModal('${cat}',${i})">Konsultasikan <i class="fas fa-arrow-right"></i></button>
+        </div>
       </div>`;
     grid.appendChild(card);
   });
   rendered[cat]=true;
 }
 
+/* ══ ACCORDION ══ */
 function toggleAcc(cat){
   const sec=document.getElementById('acc-'+cat);
   const panel=document.getElementById('panel-'+cat);
   const isOpen=sec.classList.contains('open');
-  if(!isOpen){
-    renderGrid(cat);
-    sec.classList.add('open');
-    panel.classList.add('open');
-    document.querySelectorAll('.layanan-item').forEach((el,i)=>{
-      el.classList.toggle('current',accOrder[i]===cat);
-    });
-  } else {
-    sec.classList.remove('open');
-    panel.classList.remove('open');
-  }
+  if(!isOpen){renderGrid(cat);sec.classList.add('open');panel.classList.add('open');document.querySelectorAll('.layanan-item').forEach((el,i)=>{el.classList.toggle('current',accOrder[i]===cat);});}
+  else{sec.classList.remove('open');panel.classList.remove('open');}
 }
-
 function openAcc(cat){
   const sec=document.getElementById('acc-'+cat);
   const panel=document.getElementById('panel-'+cat);
-  if(!sec.classList.contains('open')){
-    renderGrid(cat);
-    sec.classList.add('open');
-    panel.classList.add('open');
-  }
+  if(!sec.classList.contains('open')){renderGrid(cat);sec.classList.add('open');panel.classList.add('open');}
   setTimeout(()=>sec.scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
-/* ── REVIEW TOGGLE ── */
+/* ══ REVIEW TOGGLE ══ */
 function toggleReview(tid,pid){
   const tog=document.getElementById(tid);
   const pan=document.getElementById(pid);
@@ -1001,27 +758,14 @@ function toggleReview(tid,pid){
   tog.querySelector('.review-toggle-label').textContent=opening?'Sembunyikan':'Lihat Ulasan';
 }
 
-/* ── NAV DROPDOWN ── */
-function toggleLayanan(e){
-  e.stopPropagation();
-  const btn=document.getElementById('layananBtn');
-  const drop=document.getElementById('layananDropdown');
-  const isOpen=drop.classList.contains('open');
-  closeLayanan();
-  if(!isOpen){btn.classList.add('open');drop.classList.add('open');}
-}
-function closeLayanan(){
-  document.getElementById('layananBtn').classList.remove('open');
-  document.getElementById('layananDropdown').classList.remove('open');
-}
+/* ══ NAV ══ */
+function toggleLayanan(e){e.stopPropagation();const btn=document.getElementById('layananBtn');const drop=document.getElementById('layananDropdown');const isOpen=drop.classList.contains('open');closeLayanan();if(!isOpen){btn.classList.add('open');drop.classList.add('open');}}
+function closeLayanan(){document.getElementById('layananBtn').classList.remove('open');document.getElementById('layananDropdown').classList.remove('open');}
 document.addEventListener('click',closeLayanan);
 function toggleMobileMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-function toggleMobLayanan(){
-  document.getElementById('mobLayananBtn').classList.toggle('open');
-  document.getElementById('mobLayananItems').classList.toggle('open');
-}
+function toggleMobLayanan(){document.getElementById('mobLayananBtn').classList.toggle('open');document.getElementById('mobLayananItems').classList.toggle('open');}
 
-/* ── MODAL ── */
+/* ══ MODAL ══ */
 function openModal(cat,idx){
   const item=SD[cat].items[idx];
   document.getElementById('consultationForm').reset();
@@ -1034,6 +778,7 @@ function openModal(cat,idx){
   document.getElementById('modalBackdrop').classList.add('open');
   document.getElementById('modalBox').classList.add('open');
   document.body.style.overflow='hidden';
+  trackWA('modal_open_'+cat+'_'+idx);
 }
 function closeModal(){
   document.getElementById('modalBackdrop').classList.remove('open');
@@ -1042,89 +787,34 @@ function closeModal(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-/* ── SUBMIT ── */
-/* ══ SUBMIT → sessionStorage → redirect /thank-you ══ */
-function submitToWA(e) {
-    e.preventDefault();
- 
-    // 1. Ambil nilai form
-    var name    = document.getElementById('clientName').value.trim();
-    var wa      = document.getElementById('clientWA').value.trim();
-    var service = document.getElementById('selectedService').value;
-    var pkg     = document.getElementById('packageSelect').value;
-    var loc     = document.getElementById('projectLoc').value.trim();
-    var area    = document.getElementById('projectArea').value.trim();
-    var note    = document.getElementById('projectNote').value.trim();
- 
-    if (!pkg) { document.getElementById('packageSelect').focus(); return; }
- 
-    // 2. Bangun pesan WhatsApp
-    var msg = encodeURIComponent(
-        'Halo ABI STUDIO, saya tertarik dengan layanan Anda.\n\n' +
-        '📋 *DATA KLIEN*\n' +
-        'Nama: ' + name + '\n' +
-        'No. WA: ' + wa + '\n\n' +
-        '🏗️ *DETAIL PROYEK*\n' +
-        'Layanan: ' + service + '\n' +
-        '*Paket/Tipe: ' + pkg + '*\n' +
-        'Lokasi: ' + loc + '\n' +
-        'Luas: ' + (area ? area + ' m²' : '-') + '\n' +
-        'Catatan: ' + (note || '-') + '\n\n' +
-        'Mohon info penawaran harganya. Terima kasih.'
-    );
-    var waUrl = 'https://wa.me/6285157577465?text=' + msg;
- 
-    // 3. Simpan data ke sessionStorage (dibaca oleh /thank-you)
-    var leadData = {
-        name:    name,
-        wa:      wa,
-        service: service,
-        package: pkg,
-        loc:     loc,
-        area:    area,
-        note:    note,
-        waUrl:   waUrl
-    };
-    try { sessionStorage.setItem('abi_lead', JSON.stringify(leadData)); } catch(err) {}
- 
-    // 4. GA4 — begin_checkout event sebelum redirect
-    if (typeof gtag === 'function') {
-        gtag('event', 'begin_checkout', {
-            event_category: 'Konsultasi',
-            event_label: service + ' – ' + pkg,
-            value: 1
-        });
-    }
- 
-    // 5. Loading state pada tombol
-    var btn = document.getElementById('submitBtn');
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
-    btn.disabled = true;
- 
-    // 6. Simpan lead ke Firestore (tidak blocking redirect)
-    if (typeof db !== 'undefined') {
-        db.collection('leads').add({
-            nama_klien:      name,
-            no_hp:           wa,
-            jenis_bangunan:  service,
-            paket_dipilih:   pkg,
-            lokasi:          loc,
-            luas_bangunan:   area,
-            catatan:         note,
-            waktu_input:     firebase.firestore.FieldValue.serverTimestamp()
-        }).catch(function(err) { console.warn('Firestore error:', err); });
-    }
- 
-    // 7. Redirect ke /thank-you setelah 600ms (beri waktu Firestore write mulai)
-    setTimeout(function () {
-        window.location.href = '/thank-you/';
-    }, 600);
+/* ══ SUBMIT ══ */
+function submitToWA(e){
+  e.preventDefault();
+  var name=document.getElementById('clientName').value.trim();
+  var wa=document.getElementById('clientWA').value.trim();
+  var service=document.getElementById('selectedService').value;
+  var pkg=document.getElementById('packageSelect').value;
+  var loc=document.getElementById('projectLoc').value.trim();
+  var area=document.getElementById('projectArea').value.trim();
+  var note=document.getElementById('projectNote').value.trim();
+  if(!pkg){document.getElementById('packageSelect').focus();return;}
+  var msg=encodeURIComponent('Halo ABI STUDIO, saya tertarik dengan layanan Anda.\n\n📋 *DATA KLIEN*\nNama: '+name+'\nNo. WA: '+wa+'\n\n🏗️ *DETAIL PROYEK*\nLayanan: '+service+'\n*Paket/Tipe: '+pkg+'*\nLokasi: '+loc+'\nLuas: '+(area?area+' m²':'-')+'\nCatatan: '+(note||'-')+'\n\nMohon info penawaran harganya. Terima kasih.');
+  var waUrl='https://wa.me/6285157577465?text='+msg;
+  var leadData={name,wa,service,package:pkg,loc,area,note,waUrl};
+  try{sessionStorage.setItem('abi_lead',JSON.stringify(leadData));}catch(err){}
+  trackWA('form_submit_'+service.replace(/\s/g,'_'));
+  if(typeof gtag==='function'){gtag('event','begin_checkout',{event_category:'Konsultasi',event_label:service+' – '+pkg,value:1});}
+  var btn=document.getElementById('submitBtn');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Memproses...';
+  btn.disabled=true;
+  if(typeof db!=='undefined'){db.collection('leads').add({nama_klien:name,no_hp:wa,jenis_bangunan:service,paket_dipilih:pkg,lokasi:loc,luas_bangunan:area,catatan:note,waktu_input:firebase.firestore.FieldValue.serverTimestamp()}).catch(err=>console.warn('Firestore:',err));}
+  setTimeout(()=>{window.location.href='/thank-you/';},600);
 }
 
-/* ── LANGUAGE ── */
+/* ══ LANGUAGE ══ */
 const T={
-  id:{nav_home:"Home",nav_about:"About",nav_portfolio:"Portfolio",nav_blog:"Blog",nav_contact:"Contact",header_desc:"Klik kategori layanan di bawah, lalu pilih jenis layanan yang sesuai kebutuhan proyek Anda."},
-  en:{nav_home:"Home",nav_about:"About",nav_portfolio:"Portfolio",nav_blog:"Blog",nav_contact:"Contact Us",header_desc:"Click a service category below, then select the service that fits your project needs."}
+  id:{nav_home:"Home",nav_about:"About",nav_portfolio:"Portfolio",nav_blog:"Blog",nav_contact:"Konsultasi Gratis",header_desc:"Klik kategori layanan di bawah, lalu pilih jenis layanan yang sesuai kebutuhan proyek Anda."},
+  en:{nav_home:"Home",nav_about:"About",nav_portfolio:"Portfolio",nav_blog:"Blog",nav_contact:"Free Consultation",header_desc:"Click a service category below, then select the service that fits your project needs."}
 };
 function changeLanguage(lang){
   localStorage.setItem('selectedLang',lang);
@@ -1133,7 +823,7 @@ function changeLanguage(lang){
   document.getElementById('btn-en').style.color=lang==='en'?'var(--teal)':'#999';
 }
 
-/* ── INIT ── */
+/* ══ INIT ══ */
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>20));
 const fObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>fObs.observe(el));
@@ -1141,11 +831,14 @@ document.querySelectorAll('.fade-up').forEach(el=>fObs.observe(el));
 document.addEventListener('DOMContentLoaded',()=>{
   changeLanguage(localStorage.getItem('selectedLang')||'id');
   const hash=window.location.hash.replace('#acc-','').replace('#','');
-  if(['design','construction','consultant'].includes(hash)){
-    openAcc(hash);
-  } else {
-    openAcc('design');
-  }
+  if(['design','construction','consultant'].includes(hash)){openAcc(hash);}
+  else{openAcc('design');}
+  initWAFloat();
+  window.addEventListener('scroll',()=>{
+    if(!bubbleDismissed&&!sessionStorage.getItem('wa_bubble_dismissed')&&window.scrollY>400){
+      document.getElementById('waBubble').classList.add('show');
+    }
+  },{once:true});
 });
 </script>
 </body>
